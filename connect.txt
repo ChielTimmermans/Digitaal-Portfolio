@@ -1,0 +1,2 @@
+192.168.0.100/inf1i
+http://192.168.0.100/phpMyAdmin/index.php
