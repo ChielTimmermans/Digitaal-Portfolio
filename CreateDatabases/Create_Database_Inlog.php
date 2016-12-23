@@ -5,8 +5,9 @@
     </head>
     <body>
         <?php
-        
-            $DBConnect = mysqli_connect("127.0.0.1", "root", "");
+        $ipadress = "localhost";
+        $ww = "";
+            $DBConnect = mysqli_connect("$ipadress", "root", "$ww");
             if ($DBConnect === FALSE) {
                 echo "<p>Unable to connect to the database server.</p>"
                 . "<p>Error code " . mysqli_errno() . ": "
@@ -31,10 +32,10 @@
                 $QueryResult = mysqli_query($DBConnect, $SQLstring);
                 if (mysqli_num_rows($QueryResult) == 0) {
                     $SQLstring = "CREATE TABLE $TableName(userID
-                    SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
-                    userName varchar(30),
-                    userPass Varchar(255),
-                    userEmail Varchar(60) UNIQUE KEY)";
+                    SMALLINT    NOT NULL        AUTO_INCREMENT  PRIMARY KEY, 
+                    userName    Varchar(30),
+                    userEmail   Varchar(60)     UNIQUE KEY,
+                    userPass    Varchar(255))";
                     $QueryResult = mysqli_query($DBConnect, $SQLstring);
                     if ($QueryResult === FALSE) {
                         echo "<p>Unable to create the table.</p>"
