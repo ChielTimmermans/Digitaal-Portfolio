@@ -7,17 +7,22 @@ include_once 'functions/common.php';
         <meta charset="UTF-8">
         <title><?php echo $lang['Title']; ?></title>
         <!--begin datum 13-12-2016-->
-        <link rel = "stylesheet" href = "style.css"/>
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-        <h1><?php echo $lang['SubTitle']; ?></h1>
-        <p> pils</p>
-        <div id = "nederlands">
-                        <a href = "?lang=nl">Nederlands</a>
-                    </div>
-                    <div id = "engels">
-                        <a href = "?lang=en" >Engels</a>
-                    </div>
+        <div id="container">
+            <div id="headerInclude">
+                <?php include 'headerInclude.php'; ?>   
+            </div>         
+            <h1><?php echo $lang['SubTitle']; ?></h1>
+            <p> pils</p>
+            <div id = "nederlands">
+                <a href = "?lang=nl">Nederlands</a>
+            </div>
+            <div id = "engels">
+                <a href = "?lang=en" >Engels</a>
+            </div>
+        </div>
     </body>
 </html>
 
