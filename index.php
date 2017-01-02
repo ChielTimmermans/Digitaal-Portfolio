@@ -1,4 +1,4 @@
-<!doctype HTML>
+<!DOCTYPE html>
 <?php
 include_once 'functions/common.php';
 ?>
@@ -6,7 +6,6 @@ include_once 'functions/common.php';
     <head>
         <meta charset="UTF-8">
         <title><?php echo $lang['Title']; ?></title>
-        <!--begin datum 13-12-2016-->
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
