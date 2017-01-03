@@ -14,7 +14,7 @@ include_once 'functions/common.php';
                 <?php include 'headerInclude.php'; ?>   
             </div>         
             <h1><?php echo $lang['SubTitle']; ?></h1>
-            <p> pils</p>
+            
             <div id = "nederlands">
                 <a href = "?lang=nl">Nederlands</a>
             </div>
