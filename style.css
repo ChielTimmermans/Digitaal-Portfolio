@@ -17,6 +17,7 @@ body {
     background: url(assets/images/header_bg.jpg);
     background-repeat: no-repeat;   
     background-color: #004489;
+    background-position: right center;
     margin: auto;
     height: 80px;
 }
