@@ -1,6 +1,6 @@
 <?php
 ob_start();
-session_start();
+
 require_once 'dbconnect.php';
 
 // it will never let you open index(login) page if session is set
@@ -69,7 +69,7 @@ if (isset($_POST['btn-login'])) {
             <hr />
             <button type="submit" class="btn btn-block btn-primary" name="btn-login">Sign In</button>
             <hr />
-            <a href="register.php">Sign Up Here...</a>
+
         </form>
     </body>
 </html>

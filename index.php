@@ -12,14 +12,19 @@ include_once 'functions/common.php';
         <div id="container">
             <div id="headerInclude">
                 <?php include 'headerInclude.php'; ?>   
-            </div>         
-            <h1><?php echo $lang['SubTitle']; ?></h1>
-            
-            <div id = "nederlands">
-                <a href = "?lang=nl">Nederlands</a>
             </div>
-            <div id = "engels">
-                <a href = "?lang=en" >Engels</a>
+            <div id="content">
+                <h1><?php echo $lang['SubTitle']; ?></h1>
+                <?php
+                include 'loginsystem/index.php';
+                ?>
+
+                <div id = "nederlands">
+                    <a href = "?lang=nl">Nederlands</a>
+                </div>
+                <div id = "engels">
+                    <a href = "?lang=en" >Engels</a>
+                </div>
             </div>
         </div>
     </body>
