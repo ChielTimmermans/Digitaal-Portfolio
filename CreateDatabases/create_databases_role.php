@@ -1,9 +1,4 @@
-<!DOCTYPE>
-<html>
-    <head>
-        <title>inloggen</title>
-    </head>
-    <body>
+
         <?php
         $ipadress = "localhost";
         $ww = "";
@@ -27,14 +22,15 @@
                     }
                 }
                 mysqli_select_db($DBConnect, $DBName);
-                $TableName = "users";
+                $TableName = "role";
                 $SQLstring = "SHOW TABLES LIKE '$TableName'";
                 $QueryResult = mysqli_query($DBConnect, $SQLstring);
                 if (mysqli_num_rows($QueryResult) == 0) {
-                    $SQLstring = "CREATE TABLE $TableName(userID
-                    SMALLINT    NOT NULL        AUTO_INCREMENT  PRIMARY KEY, 
-                    userEmail   Varchar(50)     UNIQUE KEY,
-                    userPass    Varchar(255))";
+                    $SQLstring = "CREATE TABLE $TableName(
+                    userID          SMALLINT,
+                    Rol             INT(11),
+                    permission      Varchar(30)
+                    )";
                     $QueryResult = mysqli_query($DBConnect, $SQLstring);
                     if ($QueryResult === FALSE) {
                         echo "<p>Unable to create the table.</p>"
@@ -48,5 +44,3 @@
             }
         
         ?>
-    </body>
-</html>
