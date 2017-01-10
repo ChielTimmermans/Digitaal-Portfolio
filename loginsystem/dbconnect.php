@@ -11,7 +11,7 @@ require_once 'CreateDatabases/Create_Database_Inlog.php';
 	define('DBPASS', $ww);
 	define('DBNAME', 'Portfolio');
 	
-	$conn = mysqli_connect($ipadress,'root',$ww);
+	$conn = mysqli_connect($ipadress,'root',$ww, 'Portfolio');
 	$dbcon = mysqli_select_db($conn, 'Portfolio');
 	
 	if ( !$conn ) {

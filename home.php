@@ -9,10 +9,17 @@ if (!isset($_SESSION['user'])) {
 }
 
 
-$res = mysql_query("SELECT * FROM `users` WHERE userEmail = ".$_SESSION['user']);
-$userrow=  mysqli_fetch_array($res, mysqli_both);
+$res = "SELECT * FROM `users` WHERE userEmail = ".$_SESSION['user'];
+$result = mysqli_query($conn, $res);
+$userrow=  mysqli_fetch_array($result, MYSQLI_BOTH);
+
 echo $_SESSION['user'];
 echo $res;
+echo $result;
+if (!$result){
+    echo "fout";
+}
+
 ?>
 <!DOCTYPE html>
 <html>
