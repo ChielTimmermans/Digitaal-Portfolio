@@ -11,8 +11,8 @@ require_once 'Create_Database_Inlog.php';
 	define('DBPASS', $ww);
 	define('DBNAME', 'Portfolio');
 	
-	$conn = mysqli_connect(DBHOST,DBUSER,DBPASS);
-	$dbcon = mysqli_select_db(DBNAME,DBPASS);
+	$conn = mysqli_connect($ipadress,'root',$ww);
+	$dbcon = mysqli_select_db($conn, 'Portfolio');
 	
 	if ( !$conn ) {
 		die("Connection failed : " . mysqli_error());
