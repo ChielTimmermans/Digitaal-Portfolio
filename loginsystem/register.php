@@ -36,8 +36,8 @@ if (isset($_POST['btn-signup'])) {
     }  else {
         // check name exist or not
         $query = "SELECT userName FROM users WHERE userName='$name'";
-        $result = mysql_query($query);
-        $count = mysql_num_rows($result);
+        $result = mysqli_query($query);
+        $count = mysqli_num_rows($result);
         if ($count != 0) {
             $error = true;
             $nameError = "Provided Name is already in use.";
@@ -51,8 +51,8 @@ if (isset($_POST['btn-signup'])) {
     } else {
         // check email exist or not
         $query = "SELECT userEmail FROM users WHERE userEmail='$email'";
-        $result = mysql_query($query);
-        $count = mysql_num_rows($result);
+        $result = mysqli_query($query);
+        $count = mysqli_num_rows($result);
         if ($count != 0) {
             $error = true;
             $emailError = "Provided Email is already in use.";
@@ -74,7 +74,7 @@ if (isset($_POST['btn-signup'])) {
     if (!$error) {
 
         $query = "INSERT INTO users(userName,userPass,userEmail) VALUES('$name','$password','$email')";
-        $res = mysql_query($query);
+        $res = mysqli_query($query);
 
         if ($res) {
             $errTyp = "success";

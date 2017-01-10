@@ -11,13 +11,13 @@ require_once 'CreateDatabases/Create_Database_Inlog.php';
 	define('DBPASS', $ww);
 	define('DBNAME', 'Portfolio');
 	
-	$conn = mysql_connect(DBHOST,DBUSER,DBPASS);
-	$dbcon = mysql_select_db(DBNAME);
+	$conn = mysqli_connect($ipadress,'root',$ww);
+	$dbcon = mysqli_select_db($conn, 'Portfolio');
 	
 	if ( !$conn ) {
-		die("Connection failed : " . mysql_error());
+		die("Connection failed : " . mysqli_error());
 	}
 	
 	if ( !$dbcon ) {
-		die("Database Connection failed : " . mysql_error());
+		die("Database Connection failed : " . mysqli_error());
 	}

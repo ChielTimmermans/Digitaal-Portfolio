@@ -43,9 +43,9 @@ if (isset($_POST['btn-login'])) {
 
         $password = hash('sha256', $pass); // password hashing using SHA256
 
-        $res = mysql_query("SELECT userEmail, userPass FROM users WHERE userEmail='$name'");
-        $row = mysql_fetch_array($res);
-        $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
+        $res = mysqli_query("SELECT userEmail, userPass FROM users WHERE userEmail='$name'");
+        $row = mysqli_fetch_array($res);
+        $count = mysqli_num_rows($res); // if uname/pass correct it returns must be 1 row
 
         if ($count == 1 && $row['userPass'] == $password) {
             $_SESSION['user'] = $row['userEmail'];
