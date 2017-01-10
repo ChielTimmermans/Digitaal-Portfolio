@@ -1,5 +1,4 @@
 <?php
-ob_start();
 if(isset($_SESSION['user']) != ""){
     session_start();
 } 
@@ -43,7 +42,7 @@ if (isset($_POST['btn-login'])) {
 
         $password = hash('sha256', $pass); // password hashing using SHA256
 
-        $res = mysqli_query("SELECT userEmail, userPass FROM users WHERE userEmail='$name'");
+        $res = mysqli_query($conn, "SELECT userEmail, userPass FROM users WHERE userEmail='$name'");
         $row = mysqli_fetch_array($res);
         $count = mysqli_num_rows($res); // if uname/pass correct it returns must be 1 row
 
@@ -79,4 +78,3 @@ if (isset($_POST['btn-login'])) {
         </form>
     </body>
 </html>
-<?php ob_end_flush(); ?>

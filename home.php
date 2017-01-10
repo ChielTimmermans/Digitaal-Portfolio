@@ -1,16 +1,18 @@
 <?php
-ob_start();
+
 session_start();
 require_once 'loginsystem/dbconnect.php';
 
-// if session is not set this will redirect to login page
 if (!isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
-// select loggedin users detail
-$res = mysqli_query("SELECT * FROM `users` WHERE userEmail = " . $_SESSION['user']);
-$userRow = mysqli_fetch_array($res);
+
+
+$res = mysql_query("SELECT * FROM `users` WHERE userEmail = ".$_SESSION['user']);
+$userrow=  mysqli_fetch_array($res, mysqli_both);
+echo $_SESSION['user'];
+echo $res;
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,4 +25,3 @@ $userRow = mysqli_fetch_array($res);
         <a href="logout.php?logout">&nbsp;Sign Out</a>
     </body>
 </html>
-<?php ob_end_flush(); ?>
