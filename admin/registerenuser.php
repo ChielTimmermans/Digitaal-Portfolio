@@ -1,9 +1,9 @@
 <?php
 ob_start();
 session_start();
-if (isset($_SESSION['user']) != "") {
-    header("Location: home.php");
-}
+//if (isset($_SESSION['user']) != "") {
+//    header("Location: ..\home.php");
+//}
 include_once '..\createdatabases/dbconnect.php';
 
 $error = false;

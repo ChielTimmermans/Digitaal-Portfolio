@@ -2,8 +2,10 @@
 ob_start();
 if(isset($_SESSION['user']) != ""){
     session_start();
-} elseif (isset($_SESSION['user']) != "") {
-    header("Location: ..\home.php");
+} 
+
+if (isset($_SESSION['user']) != "") {
+    header("Location: home.php");
     exit;
 }
 
@@ -46,7 +48,8 @@ if (isset($_POST['btn-login'])) {
         $count = mysql_num_rows($res); // if uname/pass correct it returns must be 1 row
 
         if ($count == 1 && $row['userPass'] == $password) {
-            $_SESSION['user'] = $row['userId'];
+            $_SESSION['user'] = $row['userEmail'];
+            echo "gelukt";
             header("Location: home.php");
         } else {
             $errMSG = "Incorrect Credentials, Try again...";
@@ -69,6 +72,7 @@ if (isset($_POST['btn-login'])) {
             <p><?php echo $emailError; ?></p>
             <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
             <p><?php echo $passError; ?></p>
+            <p><?php echo $error; ?></p>
             <hr />
             <button type="submit" class="btn btn-block btn-primary" name="btn-login">Sign In</button>
             <hr />
