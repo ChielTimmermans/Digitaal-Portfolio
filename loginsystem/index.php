@@ -3,10 +3,10 @@ if(isset($_SESSION['user']) != ""){
     session_start();
 } 
 
-if (isset($_SESSION['user']) != "") {
-    header("Location: home.php");
-    exit;
-}
+//if (isset($_SESSION['user']) != "") {
+//    header("Location: home.php");
+//    exit;
+//}
 
 require_once 'dbconnect.php';
 
