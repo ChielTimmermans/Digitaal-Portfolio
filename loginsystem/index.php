@@ -57,7 +57,7 @@ if (isset($_POST['btn-login'])) {
     }
 }
 ?>
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html>
     <head>
         <meta Charset="utf-8" />
@@ -77,4 +77,4 @@ if (isset($_POST['btn-login'])) {
             <hr />
         </form>
     </body>
-</html>
+</html>-->
