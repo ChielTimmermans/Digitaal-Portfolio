@@ -42,12 +42,12 @@ if (isset($_POST['btn-login'])) {
 
         $password = hash('sha256', $pass); // password hashing using SHA256
 
-        $res = mysqli_query($conn, "SELECT userEmail, userPass FROM users WHERE userEmail='$name'");
+        $res = mysqli_query($conn, "SELECT Studentnummer, userEmail, userPass FROM users WHERE userEmail='$name'");
         $row = mysqli_fetch_array($res);
         $count = mysqli_num_rows($res); // if uname/pass correct it returns must be 1 row
 
         if ($count == 1 && $row['userPass'] == $password) {
-            $_SESSION['user'] = $row['userEmail'];
+            $_SESSION['user'] = $row['Studentnummer'];
             echo "gelukt";
             header("Location: home.php");
         } else {
