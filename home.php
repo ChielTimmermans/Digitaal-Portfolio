@@ -10,7 +10,7 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-$query = "SELECT * FROM users WHERE userID = 2";
+$query = "SELECT * FROM users WHERE user = 2";
 $result = mysqli_query($conn, $query)
   or die("Error: ".mysqli_error($conn));
 $row=  mysqli_fetch_array($result,MYSQLI_ASSOC);
