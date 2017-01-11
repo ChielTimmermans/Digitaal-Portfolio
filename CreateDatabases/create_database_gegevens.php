@@ -1,9 +1,4 @@
-<!DOCTYPE>
-<html>
-    <head>
-        <title>inloggen</title>
-    </head>
-    <body>
+
         <?php
         $ipadress = "localhost";
         $ww = "";
@@ -27,15 +22,27 @@
                     }
                 }
                 mysqli_select_db($DBConnect, $DBName);
-                $TableName = "users";
+                $TableName = "gegevens";
                 $SQLstring = "SHOW TABLES LIKE '$TableName'";
                 $QueryResult = mysqli_query($DBConnect, $SQLstring);
                 if (mysqli_num_rows($QueryResult) == 0) {
-                    $SQLstring = "CREATE TABLE $TableName(userID
-                    SMALLINT    NOT NULL        AUTO_INCREMENT  PRIMARY KEY, 
-                    Studentnummer    int(8)     UNIQUE KEY,
-                    userEmail   Varchar(50)     UNIQUE KEY,
-                    userPass    Varchar(255))";
+                    $SQLstring = "CREATE TABLE $TableName(
+                    userID          SMALLINT,
+                    Studentnummer   INT(8),
+                    Voornaam        Varchar(30),
+                    Achternaam      Varchar(60),
+                    Email           Varchar(50),
+                    Mobielnummer    Int(15),
+                    Geboortedatum   Date,
+                    Adres           Varchar(30),
+                    Huisnummer      INT(5),
+                    Postcode        varchar(6),
+                    Woonplaats      varchar(30),
+                    Geslacht        ENUM('M','F'),
+                    Rol             int,
+                    Stijl1          int,
+                    Stijl2          int,
+                    Stijl3          int)";
                     $QueryResult = mysqli_query($DBConnect, $SQLstring);
                     if ($QueryResult === FALSE) {
                         echo "<p>Unable to create the table.</p>"
@@ -49,5 +56,3 @@
             }
         
         ?>
-    </body>
-</html>
