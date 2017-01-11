@@ -8,16 +8,29 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
+$user = $_SESSION['user'];
 
-$res = "SELECT * FROM `users` WHERE userEmail = ".$_SESSION['user'];
-$result = mysqli_query($conn, $res);
-$userrow=  mysqli_fetch_array($result, MYSQLI_BOTH);
+$query = "SELECT * FROM users WHERE userID = 2";
+$result = mysqli_query($conn, $query)
+  or die("Error: ".mysqli_error($conn));
+$row=  mysqli_fetch_array($result,MYSQLI_ASSOC);
+
+
 
 echo $_SESSION['user'];
-echo $res;
-echo $result;
+echo "&nbsp; &nbsp; &nbsp;";
+echo $query;
+echo "&nbsp; &nbsp; &nbsp;";
+foreach ($row as $data){
+    echo $data;
+}
+echo "&nbsp; &nbsp; &nbsp;";
+echo $user;
 if (!$result){
     echo "fout";
+}
+if (!$query){
+    echo "foutq";
 }
 
 ?>
@@ -25,10 +38,10 @@ if (!$result){
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Welcome - <?php echo $userRow['user']; ?></title>
+        <title>Welcome - <?php echo $result['0']; ?></title>
     </head>
     <body>
-        <p>Hi' <?php echo $userRow['userEmail']; ?></p>
+        <p>Hi' <?php echo $result['0']; ?></p>
         <a href="logout.php?logout">&nbsp;Sign Out</a>
     </body>
 </html>
