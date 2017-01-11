@@ -23,6 +23,9 @@ if (isset($_POST['btn-signup']))
     $pass = strip_tags($pass);
     $pass = htmlspecialchars($pass);
 
+    $pass2 = trim($_POST['pass2']);
+    $pass2 = strip_tags($pass2);
+    $pass2 = htmlspecialchars($pass2);
 
     //basic email validation
    
@@ -60,10 +63,14 @@ if (isset($_POST['btn-signup']))
         {
             $error = true;
             $passError = "Password must have atleast 6 characters.";
+        }        if ($pass !== $password2){
+            $error = true;
+            $passError2 = "password do not match.";
         }
 
         // password encrypt using SHA256();
         $password = hash('sha256', $pass);
+
 
         // if there's no error, continue to signup
         if (!$error)
@@ -104,10 +111,14 @@ if (isset($_POST['btn-signup']))
                 <span><?php echo $emailError; ?></span>
                 <br><br>
                 <input type="password" name="pass" placeholder="Enter Password" maxlength="15" />   
-                <span><?php echo $passError; ?></span>
+                <span><?php echo $passError, $passError2; ?></span>
+                <br><br>
+                <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" />   
+                
                 <br><br>
                 <button type="submit" name="btn-signup">Sign Up</button>
                 <span><?php echo $errMSG; ?></span>
+
                 <hr />
 
             </form>

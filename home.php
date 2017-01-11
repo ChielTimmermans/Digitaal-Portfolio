@@ -15,7 +15,7 @@ $result = mysqli_query($conn, $query)
   or die("Error: ".mysqli_error($conn));
 $row=  mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-$query_2 = "select userName"
+$query_2 = "select * From gegevens WHERE studentnummer = '$user'"
 
 
 ?>
