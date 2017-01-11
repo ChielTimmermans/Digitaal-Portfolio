@@ -54,7 +54,7 @@ if (isset($_POST['btn-signup']))
         } else
         {
             // check email exist or not
-            $query = "SELECT userEmail FROM users WHERE userEmail='$email'";
+            $query = "SELECT userEmail FROM users WHERE userEmail='$email '";
             $result = mysqli_query($conn, $query);
             $count = mysqli_num_rows($result);
             if ($count != 0)
@@ -78,7 +78,7 @@ if (isset($_POST['btn-signup']))
         }
 
         // password encrypt using SHA256();
-        $password = hash('sha256', $pass);
+        $password = hash('sha256', $pass  );
 
 
         // if there's no error, continue to signup

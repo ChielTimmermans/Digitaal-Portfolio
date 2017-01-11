@@ -13,9 +13,9 @@ $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
   or die("Error: ".mysqli_error($conn));
-$row=  mysqli_fetch_array($result,MYSQLI_ASSOC);
+$row =  mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-$query_2 = "select * From gegevens WHERE studentnummer = '$user'"
+
 
 
 ?>
@@ -23,10 +23,10 @@ $query_2 = "select * From gegevens WHERE studentnummer = '$user'"
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Welcome - <?php echo $row['0']; ?></title>
+        <title>Welcome - <?php echo $row ['userEmail']; ?></title>
     </head>
     <body>
-        <p>Hi' <?php echo $row['studentnummer']; ?></p>
+        <p>Hi' <?php echo $row ['userEmail']; ?></p>
         <a href="logout.php?logout">&nbsp;Sign Out</a>
     </body>
 </html>
