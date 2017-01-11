@@ -28,7 +28,7 @@ if (isset($_POST['btn-signup']))
     $pass2 = htmlspecialchars($pass2);
 
     //basic email validation
-   
+        
         $query = "SELECT studentnummer FROM users WHERE studentnummer='$studentnummer'";
         $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
@@ -36,6 +36,15 @@ if (isset($_POST['btn-signup']))
         {
             $error = true;
             $nummerError = "Provided studentnummer is already in use.";
+        }elseif (strlen($studentnummer) < 6 ){
+            $error = true;
+            $nummerError = "Provided studentnummer is to short";
+        }elseif (strlen($studentnummer) > 6 ){
+            $error = true;
+            $nummerError = "provided studentnumber is to long";
+        }elseif ($studentnummer < 0){
+            $error = true;
+            $nummerError = "provided Studentnumber is negative";
         }
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL))
@@ -63,7 +72,7 @@ if (isset($_POST['btn-signup']))
         {
             $error = true;
             $passError = "Password must have atleast 6 characters.";
-        }        if ($pass !== $password2){
+        }        if ($pass !== $pass2){
             $error = true;
             $passError2 = "password do not match.";
         }
@@ -104,7 +113,7 @@ if (isset($_POST['btn-signup']))
             <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
                 <p>user registeren</p>
                 <hr />
-                <input type="number" name="studentnummer" placeholder="Enter your studentnumber" maxlength="8" value="Studentnummer"/>
+                <input type="number" name="studentnummer" placeholder="Enter your studentnumber" maxlength="8" value="<?php echo $studentnummer ?>"/>
                 <span><?php echo $nummerError?></span>
                 <br><br>
                 <input type="email" name="email" placeholder="Enter Your Email" maxlength="40" value="<?php echo $email ?>" />
