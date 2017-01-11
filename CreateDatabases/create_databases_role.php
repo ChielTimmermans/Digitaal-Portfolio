@@ -44,28 +44,3 @@
             }
         
         ?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Coding Cage - Login & Registration System</title>
-    </head>
-    <body>
-        <form>
-            Username:      <input type="text" name="username" value="name"><br><br>
-            Studentnummer: <input type="number" name="studentnummer" value="number"><br><br>
-            Voornaam:      <input type="text" name="voornaam" value="fname"><br><br>
-            Achternaam:    <input type="text" name="achternaam" value="lname"><br><br>
-            Email adres:   <input type="email" name="email" value="email"><br><br>
-            Telefoonnummer:<input type="number" name="telnummer" value="telnumber"><br><br>
-            Geboortedatum: <input type="date" name="geboortedatum" value="bdate"><br><br>
-            Adres:         <input type="text" name="adres" value="adres"><br><br>
-            Huisnummer:    <input type="number" name="huisnummer" value="adres"><br><br>
-            Postcode:      <input type="text" name="postcode" value="postcode"><br><br>
-            Woonplaats:    <input type="text" name="woonplaats" value="city"><br><br>
-            <input type="radio" name="gender" value="m" checked>Man
-            <input type="radio" name="gender" value="f">Vrouw<br><br>
-            Rol:           <input type="text" name="rol" value="role">
-        </form>
-    </body>
-</html>
