@@ -13,6 +13,10 @@ if (isset($_POST['btn-signup'])) {
     $email = trim($_POST['email']);
     $email = strip_tags($email);
     $email = htmlspecialchars($email);
+    
+    $email = trim($_POST['email']);
+    $email = strip_tags($email);
+    $email = htmlspecialchars($email);
 
     $pass = trim($_POST['pass']);
     $pass = strip_tags($pass);
@@ -48,7 +52,7 @@ if (isset($_POST['btn-signup'])) {
     // if there's no error, continue to signup
     if (!$error) {
 
-        $query = "INSERT INTO users(userEmail,userPass) VALUES('$email','$password')";
+        $query = "INSERT INTO users(Studentnummer, userEmail,userPass) VALUES('$Studentnummer','$email','$password')";
         $res = mysqli_query($conn, $query);
 
         if ($res) {

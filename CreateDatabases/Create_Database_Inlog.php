@@ -33,6 +33,7 @@
                 if (mysqli_num_rows($QueryResult) == 0) {
                     $SQLstring = "CREATE TABLE $TableName(userID
                     SMALLINT    NOT NULL        AUTO_INCREMENT  PRIMARY KEY, 
+                    Studentnummer    int(8)     UNIQUE KEY,
                     userEmail   Varchar(50)     UNIQUE KEY,
                     userPass    Varchar(255))";
                     $QueryResult = mysqli_query($DBConnect, $SQLstring);
