@@ -1,5 +1,7 @@
 <?php
-$user = $_SESSION['user'];
+include_once 'createDatabases\dbconnect.php';
+//$user = $_SESSION['user'];
+$user = "469521";
 
 $query = "SELECT * FROM gegevens WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
@@ -20,4 +22,17 @@ $userRol = $row['Rol'];
 $huisstijl1 = $row['Stijl1'];
 $huisstijl2 = $row['Stijl2'];
 $huisstijl3 = $row['Stijl3'];
+
+echo $userEmail;
+echo $userNaam;
+echo $userAchterNaam;
+echo $userStudentNummer;
+echo $userMobielNummer;
+echo $userAdres;
+echo $userHuisNummer;
+echo $userPostcode;
+echo $userWoonplaats;
+echo $userGeslacht;
+echo $userRol;
+
 ?>
