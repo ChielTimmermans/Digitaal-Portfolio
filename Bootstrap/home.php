@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-require_once 'loginsystem/dbconnect.php';
+require_once '..\createDatabases/dbconnect.php';
 
 if (!isset($_SESSION['user'])) {
     header("Location: index.php");
@@ -27,6 +27,9 @@ $row =  mysqli_fetch_array($result,MYSQLI_ASSOC);
     </head>
     <body>
         <p>Hi' <?php echo $row ['userEmail']; ?></p>
+        <a href="..\displayUploads.php">upload bestanden</a>
+        <br>
         <a href="logout.php?logout">&nbsp;Sign Out</a>
+        <br>
     </body>
 </html>

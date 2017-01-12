@@ -1,8 +1,7 @@
 <?php
-if(isset($_SESSION['user']) != ""){
-    session_start();
-} 
-
+//if(isset($_SESSION['user']) != ""){
+session_start();
+//}
 //if (isset($_SESSION['user']) != "") {
 //    header("Location: home.php");
 //    exit;
@@ -15,7 +14,8 @@ require_once 'dbconnect.php';
 
 $error = false;
 
-if (isset($_POST['btn-login'])) {
+if (isset($_POST['btn-login']))
+{
 
     // prevent sql injections/ clear user invalid inputs
     $name = trim($_POST['name']);
@@ -27,18 +27,21 @@ if (isset($_POST['btn-login'])) {
     $pass = htmlspecialchars($pass);
     // prevent sql injections / clear user invalid inputs
 
-    if (empty($name)) {
+    if (empty($name))
+    {
         $error = true;
         $emailError = "Please enter your email address.";
     }
 
-    if (empty($pass)) {
+    if (empty($pass))
+    {
         $error = true;
         $passError = "Please enter your password.";
     }
 
     // if there's no error, continue to login
-    if (!$error) {
+    if (!$error)
+    {
 
         $password = hash('sha256', $pass); // password hashing using SHA256
 
@@ -46,11 +49,13 @@ if (isset($_POST['btn-login'])) {
         $row = mysqli_fetch_array($res);
         $count = mysqli_num_rows($res); // if uname/pass correct it returns must be 1 row
 
-        if ($count == 1 && $row['userPass'] == $password) {
+        if ($count == 1 && $row['userPass'] == $password)
+        {
             $_SESSION['user'] = $row['Studentnummer'];
             echo "gelukt";
             header("Location: home.php");
-        } else {
+        } else
+        {
             $errMSG = "Incorrect Credentials, Try again...";
             echo $errMSG;
         }
