@@ -1,6 +1,9 @@
 <?php
+ob_start();
+session_start();
 
 include '..\createdatabases\dbconnect.php';
+$error = false;
 if (isset($_POST['submit'])) {
     $stnummer = trim($_POST['studentnummer']);
     $stnummer = strip_tags($stnummer);
@@ -52,7 +55,7 @@ if (isset($_POST['submit'])) {
     $pass2 = strip_tags($pass2);
     $pass2 = htmlspecialchars($pass2);
 
-    }
+
     if (empty($stnummer)) {
         $error = true;
         $nameError = "Vul uw studentnummer in.";
@@ -174,14 +177,28 @@ if (isset($_POST['submit'])) {
         $error = true;
         $passError2 = "password do not match.";
     }
-
-    // password encrypt using SHA256();
+//     password encrypt using SHA256();
     $password = hash('sha256', $pass);
+    if (!$error) {
 
-$DBConnect = mysqli_connect("$ipadress", "root", "$ww");
-$query = "INSERT INTO gegevens "
-        . "(userID, Studentnummer, Voornaam, Achternaam, Email, Mobielnummer, Geboortedatum, Adres, Huisnummer, Postcode, Woonplaats, Geslacht, Rol) VALUES "
-        . "(NULL, '$stnummer', '$fname', '$lname', '$email', '$telnum', '$bday', '$adr', '$hnum', '$postc', '$plaats', '$rol')"
+        $query = "INSERT INTO gegevens"
+                . "(userID, Studentnummer, Voornaam, Achternaam, Email, Mobielnummer, Geboortedatum, Adres, Huisnummer, Postcode, Woonplaats, Geslacht, Rol) VALUES "
+                . "(NULL, '$stnummer', '$fname', '$lname', '$email', '$telnum', '$bday', '$adr', '$hnum', '$postc', '$plaats', '$rol')";
+        $res = mysqli_query($conn, $query);
+        $query2 = "INSERT INTO users"
+                . "(userID, userEmail, userPass) VALUES (NULL, '$email', '$pass')";
+        $res2 = mysqli_query($conn, $query2);
+        
+        if($res){
+            $errTyp ="success";
+            $errMSG ="Successfully registered, you may login now";
+        }else{
+            $errTyp="danger";
+            $errMSG = "Something went wrong, try again later..";
+            
+        }
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -194,9 +211,11 @@ $query = "INSERT INTO gegevens "
             Studentnummer:<br>
             <input type="number" name="studentnummer" maxlength="8" placeholder="Studentnummer">
             <span><?php echo $stnummerError; ?></span><br><br>
+            Wachtwoord:<br>
             <input type="password" name="pass" placeholder="Enter Password" maxlength="15" />   
             <span><?php echo $passError, $passError2; ?></span>
             <br><br>
+            Wachtwoord herhalen:<br>
             <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" />
             <br><br>
             Voornaam:<br>
