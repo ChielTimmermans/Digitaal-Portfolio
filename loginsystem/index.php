@@ -14,8 +14,9 @@ $error = false;
 if (isset($_POST['guest-login']))
 {
     $_SESSION['user'] = "guest";
+    echo $_SESSION['user'];
     echo "gelukt";
-    header("Location: gast.php");
+    header("Location: ..\gast.php");
 }
 
 if (isset($_POST['btn-login']))

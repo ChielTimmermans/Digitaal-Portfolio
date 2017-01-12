@@ -1,6 +1,9 @@
 <?php
-include '..\createdatabases\dbconnect.php';
+session_start();
+ob_start();
 
+
+include '..\createdatabases\dbconnect.php';
 $error = false;
 
 if (isset($_POST['submit']))
@@ -55,6 +58,13 @@ if (isset($_POST['submit']))
     $pass2 = strip_tags($pass2);
     $pass2 = htmlspecialchars($pass2);
 
+    $gender = trim($_POST['gender']);
+    $gender = strip_tags($gender);
+    $gender = htmlspecialchars($gender);
+
+
+
+
     if (empty($stnummer))
     {
         $error = true;
@@ -104,7 +114,7 @@ if (isset($_POST['submit']))
         $emailError = "Vul een email adres in.";
     } else
     {
-        // check email exist or not
+// check email exist or not
         $query = "SELECT Email FROM gegevens WHERE Email='$email'";
         $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
@@ -193,7 +203,7 @@ if (isset($_POST['submit']))
         $rolError = "Vul een geldige rol in.";
     }
 
-    // password validation
+// password validation
     if (empty($pass))
     {
         $error = true;
@@ -207,14 +217,36 @@ if (isset($_POST['submit']))
         $error = true;
         $passError2 = "password do not match.";
     }
-
-    // password encrypt using SHA256();
+//     password encrypt using SHA256();
     $password = hash('sha256', $pass);
+    if (!$error)
+    {
 
-    $DBConnect = mysqli_connect("$ipadress", "root", "$ww");
-    $query = "INSERT INTO gegevens "
-    . "(userID, Studentnummer, Voornaam, Achternaam, Email, Mobielnummer, Geboortedatum, Adres, Huisnummer, Postcode, Woonplaats, Geslacht, Rol) VALUES "
-    . "(NULL, '$stnummer', '$fname', '$lname', '$email', '$telnum', '$bday', '$adr', '$hnum', '$postc', '$plaats', '$rol')";
+
+        $query = "INSERT INTO gegevens (Studentnummer,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol) VALUES ('$stnummer','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol')";
+        $res = mysqli_query($conn, $query);
+        $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
+        $res2 = mysqli_query($conn, $query2);
+
+        if ($res)
+        {
+            $errTyp = "success";
+            $errMSG = "Successfully registered, you may login now";
+        } else
+        {
+            $errTyp = "danger";
+            $errMSG = "Something went wrong, try again later..";
+        }
+        if ($res2)
+        {
+            $errTyp = "success";
+            $errMSG = "Successfully registered, you may login now";
+        } else
+        {
+            $errTyp = "danger";
+            $errMSG = "Something went wrong, try again later..";
+        }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -232,6 +264,7 @@ if (isset($_POST['submit']))
             <input type="password" name="pass" placeholder="Enter Password" maxlength="15" />   
             <span><?php echo $passError, $passError2; ?></span>
             <br><br>
+            Wachtwoord herhalen:<br>
             <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" />
             <br><br>
             Voornaam:<br>

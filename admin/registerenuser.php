@@ -81,7 +81,7 @@ if (isset($_POST['btn-signup']))
             $error = true;
             $passError2 = "password do not match.";
         }
-
+ 
         // password encrypt using SHA256();
         $password = hash('sha256', $pass  );
 
