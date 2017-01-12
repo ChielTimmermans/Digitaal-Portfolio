@@ -12,7 +12,7 @@ require_once 'dbconnect.php';
 $error = false;
 if (isset($_POST['guest-login']))
 {
-    $_SESSION['user'] = "guest";-
+    $_SESSION['user'] = "guest";
     echo "gelukt";
     header("Location: gast.php");
 }
