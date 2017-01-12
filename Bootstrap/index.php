@@ -37,7 +37,6 @@
     </head>
 
     <body>
-
         <div class="container">
             <div class="jumbotron2">
                 <?php
@@ -59,8 +58,8 @@
                 </form>
                 <form class="form-signin">
                     <h2 class="form-signin-heading text-muted">Login als gast</h2>
-                    
-                    <button class='btn btn-lg btn-warning btn-block' type='submit' name="quest-login">Login als gast</button>
+
+                    <button class='btn btn-lg btn-warning btn-block' type='submit' name="guest-login">Login als gast</button>
 
                 </form>
 
