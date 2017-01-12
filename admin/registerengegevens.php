@@ -52,8 +52,6 @@ if (isset($_POST['submit'])) {
     $pass2 = strip_tags($pass2);
     $pass2 = htmlspecialchars($pass2);
 
-    if ($stnummer){
-        echo "FOUT";
     }
     if (empty($stnummer)) {
         $error = true;
@@ -95,7 +93,7 @@ if (isset($_POST['submit'])) {
     } else {
         // check email exist or not
         $query = "SELECT Email FROM gegevens WHERE Email='$email'";
-        $result = mysqli_query($query);
+        $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
         if ($count != 0) {
             $error = true;
@@ -125,7 +123,7 @@ if (isset($_POST['submit'])) {
     } else if (strlen($adr) < 2) {
         $error = true;
         $adrError = "Vul uw adres juist in.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/\s", $adr)) {
+    } else if (!preg_match("/^[a-zA-Z ]+$/s", $adr)) {
         $error = true;
         $lnameError = "Straatnaam bevat alleen alfabetische tekens.";
     }
@@ -152,16 +150,15 @@ if (isset($_POST['submit'])) {
     } else if (strlen($plaats) < 2) {
         $error = true;
         $plaatsError = "Vul een geldige woonplaats in.";
-    } else if (!preg_match("/^[a-zA-Z]+$/\s", $plaats)) {
+    } else if (!preg_match("/^[a-zA-Z ]+$/s", $plaats)) {
         $error = true;
-        $plaatsError = "Woonplaats bevat alleen alfabetische tekens.";
+        $lnameError = "Straatnaam bevat alleen alfabetische tekens.";
     }
-
 
     if (empty($rol)) {
         $error = true;
         $rolError = "Vul uw rol in.";
-    } else if (rol(value > 3)) {
+    } else if ($rol > 3) {
         $error = true;
         $rolError = "Vul een geldige rol in.";
     }
@@ -180,7 +177,7 @@ if (isset($_POST['submit'])) {
 
     // password encrypt using SHA256();
     $password = hash('sha256', $pass);
-}
+
 $DBConnect = mysqli_connect("$ipadress", "root", "$ww");
 $query = "INSERT INTO gegevens "
         . "(userID, Studentnummer, Voornaam, Achternaam, Email, Mobielnummer, Geboortedatum, Adres, Huisnummer, Postcode, Woonplaats, Geslacht, Rol) VALUES "
