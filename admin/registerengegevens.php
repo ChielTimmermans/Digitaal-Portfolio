@@ -1,7 +1,10 @@
 <?php
-
 include '..\createdatabases\dbconnect.php';
-if (isset($_POST['submit'])) {
+
+$error = false;
+
+if (isset($_POST['submit']))
+{
     $stnummer = trim($_POST['studentnummer']);
     $stnummer = strip_tags($stnummer);
     $stnummer = htmlspecialchars($stnummer);
@@ -52,125 +55,155 @@ if (isset($_POST['submit'])) {
     $pass2 = strip_tags($pass2);
     $pass2 = htmlspecialchars($pass2);
 
-    }
-    if (empty($stnummer)) {
+    if (empty($stnummer))
+    {
         $error = true;
         $nameError = "Vul uw studentnummer in.";
-    } else if (strlen($stnummer) < 6) {
+    } else if (strlen($stnummer) < 6)
+    {
         $error = true;
         $stnummerError = "Studentnummer heeft minimaal 6 karakters.";
     }
 
-    if (empty($fname)) {
+    if (empty($fname))
+    {
         $error = true;
         $fnameError = "Vul uw voornaam in.";
-    } else if (strlen($fname) < 2) {
+    } else if (strlen($fname) < 2)
+    {
         $error = true;
         $fnameError = "Voornaam heeft minimaal 2 karakters.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/", $fname)) {
+    } else if (!preg_match("/^[a-zA-Z ]+$/", $fname))
+    {
         $error = true;
         $fnameError = "Voornaam bevat alleen alfabet en geen spaties.";
     }
 
-    if (empty($lname)) {
+    if (empty($lname))
+    {
         $error = true;
         $lnameError = "Vul uw achternaam in.";
-    } else if (strlen($lname) < 3) {
+    } else if (strlen($lname) < 3)
+    {
         $error = true;
         $lnameError = "Achternaam heeft minimaal 3 karakters.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/", $lname)) {
+    } else if (!preg_match("/^[a-zA-Z ]+$/", $lname))
+    {
         $error = true;
         $lnameError = "Achternaam bevat alleen alfabetische tekens en geen spaties";
     }
 
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+    {
         $error = true;
         $emailError = "Vul een geldig email adres in.";
-    } else if (empty($email)) {
+    } else if (empty($email))
+    {
         $error = true;
         $emailError = "Vul een email adres in.";
-    } else {
+    } else
+    {
         // check email exist or not
         $query = "SELECT Email FROM gegevens WHERE Email='$email'";
         $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
-        if ($count != 0) {
+        if ($count != 0)
+        {
             $error = true;
             $emailError = "Provided Email is already in use.";
         }
     }
 
-    if (empty($telnum)) {
+    if (empty($telnum))
+    {
         $error = true;
         $telError = "Vul uw telefoonnummer in.";
-    } else if (strlen($telnum) < 8) {
+    } else if (strlen($telnum) < 8)
+    {
         $error = true;
         $telError = "Telefoonnummer heeft minimaal 6 karakters.";
     }
 
-    if (empty($bday)) {
+    if (empty($bday))
+    {
         $error = true;
         $bdayError = "Vul uw geboorte datum in.";
-    } else if (strlen($bday) != 10) {
+    } else if (strlen($bday) != 10)
+    {
         $error = true;
         $bdayError = "Vul uw geboorte datum juist in.";
     }
 
-    if (empty($adr)) {
+    if (empty($adr))
+    {
         $error = true;
         $adrError = "Vul uw adres in.";
-    } else if (strlen($adr) < 2) {
+    } else if (strlen($adr) < 2)
+    {
         $error = true;
         $adrError = "Vul uw adres juist in.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/s", $adr)) {
+    } else if (!preg_match("/^[a-zA-Z ]+$/s", $adr))
+    {
         $error = true;
         $lnameError = "Straatnaam bevat alleen alfabetische tekens.";
     }
 
-    if (empty($hnum)) {
+    if (empty($hnum))
+    {
         $error = true;
         $hnumError = "Vul uw huisnummer in.";
     }
 
-    if (empty($postc)) {
+    if (empty($postc))
+    {
         $error = true;
         $postcError = "Vul uw postcode in.";
-    } else if (strlen($postc) != 6) {
+    } else if (strlen($postc) != 6)
+    {
         $error = true;
         $postcError = "Vul een geldig postcode in.";
-    } else if (!preg_match("/^[a-zA-Z0-9]+$/", $postc)) {
+    } else if (!preg_match("/^[a-zA-Z0-9]+$/", $postc))
+    {
         $error = true;
         $lnameError = "Postcode bevat alleen alfabetische tekens, cijfers en geen spaties";
     }
 
-    if (empty($plaats)) {
+    if (empty($plaats))
+    {
         $error = true;
         $plaatsError = "Vul uw woonplaats in.";
-    } else if (strlen($plaats) < 2) {
+    } else if (strlen($plaats) < 2)
+    {
         $error = true;
         $plaatsError = "Vul een geldige woonplaats in.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/s", $plaats)) {
+    } else if (!preg_match("/^[a-zA-Z ]+$/s", $plaats))
+    {
         $error = true;
         $lnameError = "Straatnaam bevat alleen alfabetische tekens.";
     }
 
-    if (empty($rol)) {
+    if (empty($rol))
+    {
         $error = true;
         $rolError = "Vul uw rol in.";
-    } else if ($rol > 3) {
+    } else if ($rol > 3)
+    {
         $error = true;
         $rolError = "Vul een geldige rol in.";
     }
 
     // password validation
-    if (empty($pass)) {
+    if (empty($pass))
+    {
         $error = true;
         $passError = "Please enter password.";
-    } else if (strlen($pass) < 6) {
+    } else if (strlen($pass) < 6)
+    {
         $error = true;
         $passError = "Password must have atleast 6 characters.";
-    } if ($pass !== $pass2) {
+    } if ($pass !== $pass2)
+    {
         $error = true;
         $passError2 = "password do not match.";
     }
@@ -178,10 +211,11 @@ if (isset($_POST['submit'])) {
     // password encrypt using SHA256();
     $password = hash('sha256', $pass);
 
-$DBConnect = mysqli_connect("$ipadress", "root", "$ww");
-$query = "INSERT INTO gegevens "
-        . "(userID, Studentnummer, Voornaam, Achternaam, Email, Mobielnummer, Geboortedatum, Adres, Huisnummer, Postcode, Woonplaats, Geslacht, Rol) VALUES "
-        . "(NULL, '$stnummer', '$fname', '$lname', '$email', '$telnum', '$bday', '$adr', '$hnum', '$postc', '$plaats', '$rol')"
+    $DBConnect = mysqli_connect("$ipadress", "root", "$ww");
+    $query = "INSERT INTO gegevens "
+    . "(userID, Studentnummer, Voornaam, Achternaam, Email, Mobielnummer, Geboortedatum, Adres, Huisnummer, Postcode, Woonplaats, Geslacht, Rol) VALUES "
+    . "(NULL, '$stnummer', '$fname', '$lname', '$email', '$telnum', '$bday', '$adr', '$hnum', '$postc', '$plaats', '$rol')";
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -194,6 +228,7 @@ $query = "INSERT INTO gegevens "
             Studentnummer:<br>
             <input type="number" name="studentnummer" maxlength="8" placeholder="Studentnummer">
             <span><?php echo $stnummerError; ?></span><br><br>
+            Wachtwoord:<br>
             <input type="password" name="pass" placeholder="Enter Password" maxlength="15" />   
             <span><?php echo $passError, $passError2; ?></span>
             <br><br>
