@@ -9,10 +9,14 @@ session_start();
 
 require_once 'dbconnect.php';
 
-// it will never let you open index(login) page if session is set
-
 
 $error = false;
+if (isset($_POST['guest-login']))
+{
+    $_SESSION['user'] = "guest";
+    echo "gelukt";
+    header("Location: gast.php");
+}
 
 if (isset($_POST['btn-login']))
 {
@@ -25,7 +29,9 @@ if (isset($_POST['btn-login']))
     $pass = trim($_POST['pass']);
     $pass = strip_tags($pass);
     $pass = htmlspecialchars($pass);
-    // prevent sql injections / clear user invalid inputs
+
+
+    // prevent sql injections / $gast user invalid inputs
 
     if (empty($name))
     {
