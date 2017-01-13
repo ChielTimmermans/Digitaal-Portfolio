@@ -11,6 +11,10 @@ if (isset($_POST['submit']))
     $stnummer = trim($_POST['studentnummer']);
     $stnummer = strip_tags($stnummer);
     $stnummer = htmlspecialchars($stnummer);
+    
+    $klas = trim($_POST['Klas']);
+    $klas = strip_tags($klas);
+    $klas = htmlspecialchars($klas);
 
     $fname = trim($_POST['voornaam']);
     $fname = strip_tags($fname);
@@ -75,6 +79,12 @@ if (isset($_POST['submit']))
         $stnummerError = "Studentnummer heeft minimaal 6 karakters.";
     }
 
+    if (empty($klas))
+    {
+        $error = true;
+        $klasError = "Vul uw klas in.";
+    }
+    
     if (empty($fname))
     {
         $error = true;
@@ -223,7 +233,7 @@ if (isset($_POST['submit']))
     {
 
 
-        $query = "INSERT INTO gegevens (Studentnummer,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol) VALUES ('$stnummer','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol')";
+        $query = "INSERT INTO gegevens (Studentnummer,Klas,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol) VALUES ('$stnummer','$klas','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol')";
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
@@ -260,6 +270,9 @@ if (isset($_POST['submit']))
             Studentnummer:<br>
             <input type="number" name="studentnummer" maxlength="8" placeholder="Studentnummer">
             <span><?php echo $stnummerError; ?></span><br><br>
+            Klas:<br>
+            <input type="text" name="Klas" maxlength="10" placeholder="Klas">
+            <span><?php echo $klasError; ?></span><br><br>
             Wachtwoord:<br>
             <input type="password" name="pass" placeholder="Enter Password" maxlength="15" />   
             <span><?php echo $passError, $passError2; ?></span>
