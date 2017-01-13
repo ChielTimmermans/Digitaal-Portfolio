@@ -30,14 +30,12 @@
                         echo "<p>The filled in surveys</p>"; 
                         echo "<table width='100%' border='1'>"; 
                         echo "<tr><th>message_date</th> "
-                        . "<th>message_time</th>"
                         . "<th>name</th>"
                         . "<th>message</th>";
                         while($Row = mysqli_fetch_assoc($QueryResult)) 
                         { 
                             if ($Row['public_message'] == 'Y'){
-                                echo "<tr><td>{$Row['message_date']}</td>"; 
-                                echo "<td>{$Row['message_time']}</td>";
+                                echo "<tr><td>{$Row['message_date']}</td>";
                                 echo "<td>{$Row['name']}</td>";
                                 echo "<td>{$Row['message']}</td>"; 
                             }

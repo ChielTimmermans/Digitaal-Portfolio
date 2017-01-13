@@ -42,7 +42,6 @@
                         $SQLstring = "CREATE TABLE $TableName (countID"
                                 . "SMALL INT AUTO_INCREMENT PRIMARY KEY, "
                                 . "message_date DATE, "
-                                . "message_time TIME, "
                                 . "name VARCHAR(40),"
                                 . "message VARCHAR(250),"
                                 . "public_message ENUM('Y', 'N')"
@@ -59,15 +58,14 @@
                     }
                     $name = stripslashes($_POST['name']);
                     $message = stripslashes($_POST['message']);
-                    $date = date("ymd");
-                    $time = date("his");
+                    $date = date("ymdhis");
                     $public_message = 'n';
                     if(isset($_POST['public'])){
                         if ($_POST['public'] == 'yes'){
                             $public_message = 'y';
                         }
                     }
-                    $SQLstring2 = "INSERT INTO $TableName VALUES(NULL, $date, $time, "
+                    $SQLstring2 = "INSERT INTO $TableName VALUES(NULL, $date, "
                             . "'$name', '$message', '$public_message')";
                     $QueryResult2 = mysqli_query($DBConnect, $SQLstring2);
                     if($QueryResult2 === FALSE)
