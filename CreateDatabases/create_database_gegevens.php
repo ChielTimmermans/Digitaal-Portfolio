@@ -28,7 +28,6 @@ if ($DBConnect === FALSE) {
         $SQLstring = "CREATE TABLE $TableName(
                     userID          SMALLINT    NOT NULL        AUTO_INCREMENT  UNIQUE KEY,
                     Studentnummer   INT(8)      UNIQUE KEY,
-                    Klas            Varchar(10),
                     Voornaam        Varchar(30),
                     Achternaam      Varchar(60),
                     Email           Varchar(50) UNIQUE KEY,
