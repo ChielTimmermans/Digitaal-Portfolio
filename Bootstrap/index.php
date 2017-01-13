@@ -56,7 +56,7 @@
                     <br><button class='btn btn-lg btn-primary btn-block' type='submit' name="btn-login">Log in</button>
 
                 </form>
-                <form class="form-signin">
+                <form class="form-signin" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
                     <h2 class="form-signin-heading text-muted">Login als gast</h2>
 
                     <button class='btn btn-lg btn-warning btn-block' type='submit' name="guest-login">Login als gast</button>

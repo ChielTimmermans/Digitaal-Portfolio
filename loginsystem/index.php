@@ -10,12 +10,7 @@ session_start();
 require_once 'dbconnect.php';
 
 $error = false;
-if (isset($_POST['guest-login']))
-{
-    $_SESSION['user'] = "guest";
-    echo "gelukt";
-    header("Location: gast.php");
-}
+
 
 if (isset($_POST['btn-login']))
 {
@@ -63,5 +58,12 @@ if (isset($_POST['btn-login']))
             echo $errMSG;
         }
     }
+}
+
+if (isset($_POST['guest-login']))
+{
+    $_SESSION['user'] = "guest";
+    echo "gelukt";
+    header("Location: gast.php");
 }
 ?>
