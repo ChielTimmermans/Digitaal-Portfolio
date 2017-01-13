@@ -1,5 +1,7 @@
 <?php
-$user = $_SESSION['user'];
+include_once 'createDatabases\dbconnect.php';
+//$user = $_SESSION['user'];
+$user = "469521";
 
 $query = "SELECT * FROM gegevens WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
