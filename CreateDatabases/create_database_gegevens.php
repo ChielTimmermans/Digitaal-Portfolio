@@ -26,11 +26,11 @@ if ($DBConnect === FALSE) {
     $QueryResult = mysqli_query($DBConnect, $SQLstring);
     if (mysqli_num_rows($QueryResult) == 0) {
         $SQLstring = "CREATE TABLE $TableName(
-                    userID          SMALLINT,
-                    Studentnummer   INT(8),
+                    userID          SMALLINT    NOT NULL        AUTO_INCREMENT  UNIQUE KEY,
+                    Studentnummer   INT(8)      UNIQUE KEY,
                     Voornaam        Varchar(30),
                     Achternaam      Varchar(60),
-                    Email           Varchar(50),
+                    Email           Varchar(50) UNIQUE KEY,
                     Mobielnummer    Int(15),
                     Geboortedatum   Date,
                     Adres           Varchar(30),
