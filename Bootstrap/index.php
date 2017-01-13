@@ -37,6 +37,7 @@
     </head>
 
     <body>
+
         <div class="container">
             <div class="jumbotron2">
                 <?php
@@ -58,8 +59,9 @@
                 </form>
                 <form class="form-signin" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
                     <h2 class="form-signin-heading text-muted">Login als gast</h2>
-
-                    <button class='btn btn-lg btn-warning btn-block' type='submit' name="guest-login">Login als gast</button>
+                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>	<br>
+                    <a href='logingast.html'><button class='btn btn-lg btn-warning btn-block' type='submit'>Login als gast</button></a>
 
                 </form>
 

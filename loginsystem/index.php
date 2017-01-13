@@ -9,11 +9,15 @@ session_start();
 
 require_once 'dbconnect.php';
 
+// it will never let you open index(login) page if session is set
+
+
 $error = false;
 
 
 if (isset($_POST['btn-login']))
 {
+
     // prevent sql injections/ clear user invalid inputs
     $name = trim($_POST['name']);
     $name = strip_tags($name);
@@ -22,8 +26,7 @@ if (isset($_POST['btn-login']))
     $pass = trim($_POST['pass']);
     $pass = strip_tags($pass);
     $pass = htmlspecialchars($pass);
-
-    // prevent sql injections / $gast user invalid inputs
+    // prevent sql injections / clear user invalid inputs
 
     if (empty($name))
     {
@@ -67,3 +70,25 @@ if (isset($_POST['guest-login']))
     header("Location: gast.php");
 }
 ?>
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta Charset="utf-8" />
+        <title>Inloggen Stenden Twitter</title>
+    </head>
+    <body>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
+            <p>Sign In.<p>
+            <hr />
+            <input type="text" name="name" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
+            <p><?php echo $emailError; ?></p>
+            <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
+            <p><?php echo $passError; ?></p>
+            <p><?php echo $error; ?></p>
+            <hr />
+            <button type="submit" class="btn btn-block btn-primary" name="btn-login">Sign In</button>
+            <hr />
+        </form>
+    </body>
+</html>
