@@ -1,22 +1,28 @@
 <?php
+
 $ipadress = "localhost";
 $ww = "";
 $DBConnect = mysqli_connect("$ipadress", "root", "$ww");
-if ($DBConnect === FALSE) {
+if ($DBConnect === FALSE)
+{
     echo "<p>Unable to connect to the database server.</p>"
     . "<p>Error code " . mysqli_errno() . ": "
     . mysqli_error() . "</p>";
-} else {
+} else
+{
     $DBName = "Portfolio";
-    if (!mysqli_select_db($DBConnect, $DBName)) {
+    if (!mysqli_select_db($DBConnect, $DBName))
+    {
         $SQLstring = "CREATE DATABASE $DBName";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
-        if ($QueryResult === FALSE) {
+        if ($QueryResult === FALSE)
+        {
             echo "<p>Unable to execute the query.</p>"
             . "<p>Error code "
             . mysqli_errno($DBConnect)
             . ": " . mysqli_error($DBConnect) . "</p>";
-        } else {
+        } else
+        {
             echo "<p>You are the first visitor!</p>";
         }
     }
@@ -24,10 +30,12 @@ if ($DBConnect === FALSE) {
     $TableName = "gegevens";
     $SQLstring = "SHOW TABLES LIKE '$TableName'";
     $QueryResult = mysqli_query($DBConnect, $SQLstring);
-    if (mysqli_num_rows($QueryResult) == 0) {
+    if (mysqli_num_rows($QueryResult) == 0)
+    {
         $SQLstring = "CREATE TABLE $TableName(
                     userID          SMALLINT    NOT NULL        AUTO_INCREMENT  UNIQUE KEY,
                     Studentnummer   INT(8)      UNIQUE KEY,
+                    Klas            Varchar(10),
                     Voornaam        Varchar(30),
                     Achternaam      Varchar(60),
                     Email           Varchar(50) UNIQUE KEY,
@@ -43,7 +51,8 @@ if ($DBConnect === FALSE) {
                     Stijl2          int,
                     Stijl3          int)";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
-        if ($QueryResult === FALSE) {
+        if ($QueryResult === FALSE)
+        {
             echo "<p>Unable to create the table.</p>"
             . "<p>Error code "
             . mysqli_errno($DBConnect)
