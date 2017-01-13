@@ -1,4 +1,6 @@
-
+<?php
+include'..\functions\common.php'
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,8 +45,8 @@
                 include '..\loginsystem\index.php';
                 ?>
                 <form class="form-signin" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
-                    <h2 class="form-signin-heading text-muted">Login</h2>
-                    <label for="inputEmail" class="sr-only">Email address</label>
+                    <h2 class="form-signin-heading text-muted"><?php echo $lang['login']; ?></h2>
+                    <label for="inputEmail" class="sr-only"><?php echo $lang['email']; ?></label>
                     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="name" required autofocus>
                     <span><p><?php echo $emailError; ?></p></span>
                     <label for="inputPassword" class="sr-only" >Password</label>
@@ -57,7 +59,7 @@
 
                 </form>
                 <form class="form-signin" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
-                    <h2 class="form-signin-heading text-muted">Login als gast</h2>
+                    <h2 class="form-signin-heading text-muted"><?php echo $lang['gastlogin']; ?></h2>
 
                     <button class='btn btn-lg btn-warning btn-block' type='submit' name="guest-login">Login als gast</button>
 

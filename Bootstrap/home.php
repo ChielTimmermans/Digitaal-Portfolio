@@ -2,6 +2,7 @@
 
 session_start();
 require_once '..\createDatabases/dbconnect.php';
+include 'Functions\common.php';
 
 if (!isset($_SESSION['user'])) {
     header("Location: index.php");
@@ -29,6 +30,8 @@ $row =  mysqli_fetch_array($result,MYSQLI_ASSOC);
         <p>Hi' <?php echo $row ['userEmail']; ?></p>
         <a href="..\displayUploads.php">upload bestanden</a>
         <br>
+        <a href = "?lang=nl">Nederlands</a>
+        <a href = "?lang=en">Engels</a>
         <a href="logout.php?logout">&nbsp;Sign Out</a>
         <br>
     </body>
