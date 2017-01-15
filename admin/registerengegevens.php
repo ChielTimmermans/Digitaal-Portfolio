@@ -306,7 +306,10 @@ if (isset($_POST['submit']))
             <input type="radio" name="gender" value="m" checked>Man
             <input type="radio" name="gender" value="f">Vrouw<br><br>
             Rol:<br>
-            <input type="text" name="rol" maxlength="1" placeholder="rol"><br><br>
+            <input type="text" name="rol" maxlength="1" placeholder="rol"><br>
+            1: Student<br>
+            2: Docent<br>
+            3: SLB'er<br><br>
             <button type="submit" name="submit">Submit</button>
             <input type="reset">
             <span><?php echo $rolError; ?></span>
