@@ -39,5 +39,5 @@ switch ($lang)
         $lang_file = 'lang.en.php';
 }
 
-include_once 'languages/' . $lang_file;
+include_once '..\languages/' . $lang_file;
 ?>

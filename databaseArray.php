@@ -22,17 +22,4 @@ $userRol = $row['Rol'];
 $huisstijl1 = $row['Stijl1'];
 $huisstijl2 = $row['Stijl2'];
 $huisstijl3 = $row['Stijl3'];
-
-echo $userEmail;
-echo $userNaam;
-echo $userAchterNaam;
-echo $userStudentNummer;
-echo $userMobielNummer;
-echo $userAdres;
-echo $userHuisNummer;
-echo $userPostcode;
-echo $userWoonplaats;
-echo $userGeslacht;
-echo $userRol;
-
 ?>
