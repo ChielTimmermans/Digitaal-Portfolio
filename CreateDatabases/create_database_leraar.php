@@ -27,7 +27,6 @@ if ($DBConnect === FALSE) {
     if (mysqli_num_rows($QueryResult) == 0) {
         $SQLstring = "CREATE TABLE $TableName(
                     userID          SMALLINT    NOT NULL        AUTO_INCREMENT  UNIQUE KEY,
-                    vak             Varchar(30),
                     Voornaam        Varchar(30),
                     Achternaam      Varchar(60),
                     Email           Varchar(50) UNIQUE KEY,
@@ -38,7 +37,10 @@ if ($DBConnect === FALSE) {
                     Postcode        varchar(6),
                     Woonplaats      varchar(30),
                     Geslacht        ENUM('M','F'),
-                    Rol             int)";
+                    Rol             int,
+                    vak             Varchar(30),
+                    vak2            Varchar(30),
+                    vak3            Varchar(30))";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
         if ($QueryResult === FALSE) {
             echo "<p>Unable to create the table.</p>"
