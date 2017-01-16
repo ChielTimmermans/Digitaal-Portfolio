@@ -21,7 +21,7 @@ $lang['email'] = 'Email-address';
 $lang['login'] = 'Login';
  
 //algemeen
-$lang['Taal'] = 'Nederland';
+$lang['Taal'] = 'Nederlands';
 $lang['TaalLink'] = '?lang=nl';
 $lang['Contact'] = 'Contact';
 $lang['Instellingen'] = 'Settings';
@@ -29,6 +29,8 @@ $lang['Mijnportfolio'] = 'My Portfolio';
 $lang['MijnProjecten'] = 'My Projects';
 $lang['MijnCijferlijst'] = 'My Grading list';
 $lang['Gastenboek'] = 'Guestbook';
+$lang['naam'] = 'name';
+$lang['date'] = 'date';
 
 //portfolio
 $lang['Diplomas'] = 'Degrees';
@@ -48,5 +50,27 @@ $lang['Nummer'] = 'Phonenumber';
 
 /* menu */
 
+/* gastregistreren */
+$lang['error1'] = 'please enter your email address.';
+$lang['error2'] = 'Provided Email is already in use.';
 
+//berichten
+$lang['berichten'] = 'messages';
+$lang['bericht'] = 'message';
+
+//cijfers
+$lang['cijfers'] = 'grades';
+$lang['studieonderdelen'] = 'courses';
+
+//cijfersaanpassen
+$lang['cijfersaanpassen'] = 'edit grades';
+
+//gastenboek
+$lang['bekijkberichten'] = 'view messages';
+
+//home
+$lang['upload'] = 'upload files';
+
+//index
+$lang['gastlogin'] = 'login as guest';
 ?>

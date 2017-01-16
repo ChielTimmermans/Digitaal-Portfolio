@@ -50,9 +50,9 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html">Instellingen</a></li>
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen'] ?></a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">English</a></li>
+                        <li><a href="#"><?php $lang['Taal'] ?></a></li>
                     </ul>
         </div>
       </div>
@@ -63,14 +63,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-						<li><a href="portfolio.html">Mijn Portfolio</a></li>
-                        <li><a href="projecten.html">Mijn Projecten</a></li>
-						<li class="active"><a href="cijfers.html">Mijn Cijferlijst <span class="sr-only">(current)</span></a></li>
-						<li><a href="gastenboek.html">Gastenboek</a></li>
+			<li><a href="portfolio.html"><?php echo $lang['Taal'] ?></a></li>
+                        <li><a href="projecten.html"><?php echo $lang['MijnProjecten'] ?></a></li>
+			<li class="active"><a href="cijfers.html"><?php echo $lang['MijnCijferlijst'] ?><span class="sr-only">(current)</span></a></li>
+			<li><a href="gastenboek.html"><?php echo $lang['Gastenboek'] ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfers</h1>
+                    <h1 class="page-header"><?php echo $lang['cijfers'] ?></h1>
                 </div>
             </div></div>  
 
@@ -85,8 +85,8 @@
                             <thead>
                                 <tr>
                                     <th>Code</th>
-                                    <th>Studieonderdelen</th>
-                                    <th>Cijfers</th>
+                                    <th><?php echo $lang['studieonderdelen'] ?></th>
+                                    <th><?php echo $Lang['cijfers'] ?></th>
                                 </tr>
                             </thead>
                             <tbody>

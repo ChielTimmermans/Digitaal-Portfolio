@@ -61,7 +61,7 @@ include'..\functions\common.php'
                 <form class="form-signin" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
                     <h2 class="form-signin-heading text-muted"><?php echo $lang['gastlogin']; ?></h2>
 
-                    <button class='btn btn-lg btn-warning btn-block' type='submit' name="guest-login">Login als gast</button>
+                    <button class='btn btn-lg btn-warning btn-block' type='submit' name="guest-login"><?php echo $lang['gastlogin'] ?></button>
 
                 </form>
                 <a href = "?lang=nl">Nederlands</a>
