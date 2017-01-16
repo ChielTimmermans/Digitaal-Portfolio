@@ -7,9 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+    <link rel="icon" href="dist/css/images/favicon.ico">
 
-    <title>Login</title>
+        <title>Portfolio | Stenden Hogeschool</title>
 
     <!-- Bootstrap core CSS -->
     <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -39,26 +39,10 @@
     <div class="container">
 	<div class="jumbotron2">
       <form class="form-signin">
-        <h2 class="form-signin-heading text-muted">Login</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-		
-		
- 
-  <br><button class='btn btn-lg btn-primary btn-block' type='submit'>Log in</button>
-      </form>
-	   <form class="form-signin">
-        <h2 class="form-signin-heading text-muted">Login als gast</h2>
-        <label for="inputguest" class="sr-only">Gebruikersnaam</label>
-        <input type="text" id="inputguest" class="form-control" placeholder="Gebruikersnaam" required>	<br>
-		<button class='btn btn-lg btn-warning btn-block' type='submit'>Login als gast</button>
-
-      </form>
-
-    </div></div> <!-- /container -->
-
+        <h2 class="form-signin-heading text-muted">U bent succesvol uitgelogd!</h2>
+  
+		<a href="index.html">Terug naar de website</a>
+    </div>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="assets/js/ie10-viewport-bug-workaround.js"></script>

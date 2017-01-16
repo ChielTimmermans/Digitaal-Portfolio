@@ -64,7 +64,8 @@ include'..\functions\common.php'
                     <button class='btn btn-lg btn-warning btn-block' type='submit' name="guest-login">Login als gast</button>
 
                 </form>
-
+                <a href = "?lang=nl">Nederlands</a>
+                <a href = "?lang=en">Engels</a>
             </div></div> <!-- /container -->
 
 

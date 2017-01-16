@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $query)
   or die("Error: ".mysqli_error($conn));
 $row =  mysqli_fetch_array($result,MYSQLI_ASSOC);
 
-$userEmail = $row['userEmail'];
+$userEmail = $row['Email'];
 $userNaam = $row['Voornaam'];
 $userAchterNaam = $row['Achternaam'];
 $userStudentNummer = $row['Studentnummer'];

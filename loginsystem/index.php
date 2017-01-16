@@ -1,12 +1,24 @@
 <?php
-if(isset($_SESSION['user']) != ""){
-session_start();
-}
-if (isset($_SESSION['user']) != "") {
-    header("Location: home.php");
+//if(isset($_SESSION['user']) != ""){
+//session_start();
+//}
+if (isset($_SESSION['user']) === "0") {
+    header("Location: admin.php");
     exit;
 }
-
+elseif (isset($_SESSION['user'])=== "1"){
+    header("Location: leraar.php");
+}
+elseif (isset($_SESSION['user'])=== "2"){
+    header("Location: leerling.php");
+}
+elseif (isset($_SESSION['user'])=== "3"){
+    unset($_SESSION['user']);
+    session_unset();
+    session_destroy();
+    header("Location: index.php");
+    exit;
+}
 require_once 'dbconnect.php';
 
 // it will never let you open index(login) page if session is set
@@ -54,7 +66,7 @@ if (isset($_POST['btn-login']))
         {
             $_SESSION['user'] = $row['Studentnummer'];
             echo "gelukt";
-            header("Location: home.php");
+            header("Location: portfolio.php");
         } else
         {
             $errMSG = "Incorrect Credentials, Try again...";
@@ -65,30 +77,8 @@ if (isset($_POST['btn-login']))
 
 if (isset($_POST['guest-login']))
 {
-    $_SESSION['user'] = "guest";
+    $_SESSION['user'] = "3";
     echo "gelukt";
     header("Location: gast.php");
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta Charset="utf-8" />
-        <title>Inloggen Stenden Twitter</title>
-    </head>
-    <body>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
-            <p>Sign In.<p>
-            <hr />
-            <input type="text" name="name" class="form-control" placeholder="Your Email" value="<?php echo $email; ?>" maxlength="40" />
-            <p><?php echo $emailError; ?></p>
-            <input type="password" name="pass" class="form-control" placeholder="Your Password" maxlength="15" />
-            <p><?php echo $passError; ?></p>
-            <p><?php echo $error; ?></p>
-            <hr />
-            <button type="submit" class="btn btn-block btn-primary" name="btn-login">Sign In</button>
-            <hr />
-        </form>
-    </body>
-</html>
