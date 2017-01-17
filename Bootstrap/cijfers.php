@@ -79,7 +79,7 @@
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
 				<div class="bs-callout bs-callout-danger">
-                  <P>
+                  
 						<div class="form-area">
                         <table class="table table-striped table-responsive ">
                             <thead>
@@ -103,7 +103,7 @@
                             </tbody>
                         </table>
 						</div>
-					</p> 
+					 
 					</div>
                    
             </div>
