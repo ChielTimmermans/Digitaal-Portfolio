@@ -27,6 +27,7 @@ if ($DBConnect === FALSE) {
     if (mysqli_num_rows($QueryResult) == 0) {
         $SQLstring = "CREATE TABLE $TableName(
                     userID          SMALLINT    NOT NULL        AUTO_INCREMENT  UNIQUE KEY,
+                    Lerarennummer   Int(15),
                     Voornaam        Varchar(30),
                     Achternaam      Varchar(60),
                     Email           Varchar(50) UNIQUE KEY,

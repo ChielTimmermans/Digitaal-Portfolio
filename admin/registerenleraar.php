@@ -6,12 +6,11 @@ ob_start();
 include '..\createdatabases\dbconnect.php';
 $error = false;
 
-if (isset($_POST['submit']))
-{
+if (isset($_POST['submit'])) {
     $stnummer = trim($_POST['leraarnummer']);
     $stnummer = strip_tags($stnummer);
     $stnummer = htmlspecialchars($stnummer);
-    
+
     $Voornaam = trim($_POST['voornaam']);
     $Voornaam = strip_tags($Voornaam);
     $Voornaam = htmlspecialchars($Voornaam);
@@ -49,7 +48,7 @@ if (isset($_POST['submit']))
     $gender = trim($_POST['Geslacht']);
     $gender = strip_tags($gender);
     $gender = htmlspecialchars($gender);
-    
+
     $rol = trim($_POST['Role']);
     $rol = strip_tags($rol);
     $rol = htmlspecialchars($rol);
@@ -62,199 +61,154 @@ if (isset($_POST['submit']))
     $pass2 = strip_tags($pass2);
     $pass2 = htmlspecialchars($pass2);
 
-    $vak = trim($_POST['vak']);
-    $vak = strip_tags($vak);
-    $vak = htmlspecialchars($vak);
-    
-    $vak2 = trim($_POST['vak2']);
-    $vak2 = strip_tags($vak2);
-    $vak2 = htmlspecialchars($vak2);
-    
-    $vak3 = trim($_POST['vak3']);
-    $vak3 = strip_tags($vak3);
-    $vak3 = htmlspecialchars($vak3);
-
-    if (empty($stnummer))
-    {
+    if (empty($stnummer)) {
         $error = true;
         $nameError = "Vul uw leraarnummer in.";
-    } else if (strlen($stnummer) < 6)
-    {
+    } else if (strlen($stnummer) < 6) {
         $error = true;
         $stnummerError = "leraarnummer heeft minimaal 6 karakters.";
     }
-    
-    if (empty($Voornaam))
-    {
+
+    if (empty($Voornaam)) {
         $error = true;
         $fnameError = "Vul uw voornaam in.";
-    } else if (strlen($Voornaam) < 2)
-    {
+    } else if (strlen($Voornaam) < 2) {
         $error = true;
         $fnameError = "Voornaam heeft minimaal 2 karakters.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/", $Voornaam))
-    {
+    } else if (!preg_match("/^[a-zA-Z ]+$/", $Voornaam)) {
         $error = true;
         $fnameError = "Voornaam bevat alleen alfabet en geen spaties.";
     }
 
-    if (empty($Achternaam))
-    {
+    if (empty($Achternaam)) {
         $error = true;
         $lnameError = "Vul uw achternaam in.";
-    } else if (strlen($Achternaam) < 3)
-    {
+    } else if (strlen($Achternaam) < 3) {
         $error = true;
         $lnameError = "Achternaam heeft minimaal 3 karakters.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/", $Achternaam))
-    {
+    } else if (!preg_match("/^[a-zA-Z ]+$/", $Achternaam)) {
         $error = true;
         $lnameError = "Achternaam bevat alleen alfabetische tekens en geen spaties";
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL))
-    {
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = true;
         $emailError = "Vul een geldig email adres in.";
-    } else if (empty($email))
-    {
+    } else if (empty($email)) {
         $error = true;
         $emailError = "Vul een email adres in.";
-    } else{
+    } else {
         $query = "SELECT Email FROM gegevens WHERE Email='$email'";
         $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
-        if ($count != 0)
-        {
+        if ($count != 0) {
             $error = true;
             $emailError = "Provided Email is already in use.";
         }
     }
 
-    if (empty($telnum))
-    {
+    if (empty($telnum)) {
         $error = true;
         $telError = "Vul uw telefoonnummer in.";
-    } else if (strlen($telnum) < 8)
-    {
+    } else if (strlen($telnum) < 8) {
         $error = true;
         $telError = "Telefoonnummer heeft minimaal 6 karakters.";
     }
 
-    if (empty($bday))
-    {
+    if (empty($bday)) {
         $error = true;
         $bdayError = "Vul uw geboorte datum in.";
-    } else if (strlen($bday) != 10)
-    {
+    } else if (strlen($bday) != 10) {
         $error = true;
         $bdayError = "Vul uw geboorte datum juist in.";
     }
 
-    if (empty($adr))
-    {
+    if (empty($adr)) {
         $error = true;
         $adrError = "Vul uw adres in.";
-    } else if (strlen($adr) < 2)
-    {
+    } else if (strlen($adr) < 2) {
         $error = true;
         $adrError = "Vul uw adres juist in.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/s", $adr))
-    {
+    } else if (!preg_match("/^[a-zA-Z ]+$/s", $adr)) {
         $error = true;
         $lnameError = "Straatnaam bevat alleen alfabetische tekens.";
     }
 
-    if (empty($hnum))
-    {
+    if (empty($hnum)) {
         $error = true;
         $hnumError = "Vul uw huisnummer in.";
     }
 
-    if (empty($postc))
-    {
+    if (empty($postc)) {
         $error = true;
         $postcError = "Vul uw postcode in.";
-    } else if (strlen($postc) != 6)
-    {
+    } else if (strlen($postc) != 6) {
         $error = true;
         $postcError = "Vul een geldig postcode in.";
-    } else if (!preg_match("/^[a-zA-Z0-9]+$/", $postc))
-    {
+    } else if (!preg_match("/^[a-zA-Z0-9]+$/", $postc)) {
         $error = true;
         $lnameError = "Postcode bevat alleen alfabetische tekens, cijfers en geen spaties";
     }
 
-    if (empty($plaats))
-    {
+    if (empty($plaats)) {
         $error = true;
         $plaatsError = "Vul uw woonplaats in.";
-    } else if (strlen($plaats) < 2)
-    {
+    } else if (strlen($plaats) < 2) {
         $error = true;
         $plaatsError = "Vul een geldige woonplaats in.";
-    } else if (!preg_match("/^[a-zA-Z ]+$/s", $plaats))
-    {
+    } else if (!preg_match("/^[a-zA-Z ]+$/s", $plaats)) {
         $error = true;
         $lnameError = "Straatnaam bevat alleen alfabetische tekens.";
     }
 
-    if (empty($rol))
-    {
-        $error = true;
-        $rolError = "Vul uw rol in.";
-    } else if ($rol > 3)
-    {
-        $error = true;
-        $rolError = "Vul een geldige rol in.";
-    }
-
 // password validation
-    if (empty($pass))
-    {
+    if (empty($pass)) {
         $error = true;
         $passError = "Please enter password.";
-    } else if (strlen($pass) < 6)
-    {
+    } else if (strlen($pass) < 6) {
         $error = true;
         $passError = "Password must have atleast 6 characters.";
-    } if ($pass !== $pass2)
-    {
+    } if ($pass !== $pass2) {
         $error = true;
         $passError2 = "password do not match.";
     }
-    
-    
-    
-    
-    
-    
-    
+
+
+ 
+
+
+
+
 //     password encrypt using SHA256();
     $password = hash('sha256', $pass);
-    if (!$error)
-    {
+    if (!$error) {
 
-        $query = "INSERT INTO leraren (Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,vak,vak2,vak3) VALUES ('$Voornaam','$Achternaam','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol','$vak','$vak2','$vak3')";
+        $query = "INSERT INTO leraren (Lerarennummer,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol) VALUES ('$stnummer','$Voornaam','$Achternaam','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol')";
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
-
-        if ($res)
-        {
+        
+        if(1 === 1){
+        $leraarnummer = $stnummer;
+        $_SESSION['leraar'] = $leraarnummer;
+        header("location: registerenleraarvak.php");
+        echo "goed";
+        echo $_SESSION['leraar'];
+        }else{
+            echo "error";
+        }
+        
+        if ($res) {
             $errTyp = "success";
             $errMSG = "Successfully registered, you may login now";
-        } else
-        {
+        } else {
             $errTyp = "danger";
             $errMSG = "Something went wrong, try again later..";
         }
-        if ($res2)
-        {
+        if ($res2) {
             $errTyp = "success";
             $errMSG = "Successfully registered, you may login now";
-        } else
-        {
+        } else {
             $errTyp = "danger";
             $errMSG = "Something went wrong, try again later..";
         }
@@ -270,7 +224,7 @@ if (isset($_POST['submit']))
     <body>
         <form action="registerenleraar.php" method="post">
             Leraarnummer:<br>
-            <input type="number" name="leraarnummer" maxlength="8" placeholder="Studentnummer">
+            <input type="number" name="leraarnummer" maxlength="8" placeholder="Leraarnummer" value="<?php echo $stnummer; ?>">
             <span><?php echo $stnummerError; ?></span><br><br>
             Wachtwoord:<br>
             <input type="password" name="pass" placeholder="Enter Password" maxlength="15" />   
@@ -280,30 +234,31 @@ if (isset($_POST['submit']))
             <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" />
             <br><br>
             Voornaam:<br>
-            <input type="text" name="voornaam" maxlength="30" placeholder="voornaam">
+            <input type="text" name="voornaam" maxlength="30" placeholder="voornaam" value="<?php echo $Voornaam; ?>">
             <span><?php echo $fnameError; ?></span><br><br>
             Achternaam:<br>
-            <input type="text" name="achternaam" maxlength="60" placeholder="achternaam">
+            <input type="text" name="achternaam" maxlength="60" placeholder="achternaam" value="<?php echo $Achternaam; ?>">
             <span><?php echo $lnameError; ?></span><br><br>
             Email adres:<br>
-            <input type="email" name="Email" maxlength="50" placeholder="Emailadres">
+            <input type="email" name="Email" maxlength="50" placeholder="Emailadres" value="<?php echo $email; ?>">
             <span><?php echo $emailError; ?></span><br><br>
             Telefoonnummer:<br>
-            <input type="number" name="Mobielnummer" maxlength="15" placeholder="Telefoonnummer">
+            <input type="number" name="Mobielnummer" maxlength="15" placeholder="Telefoonnummer" value="<?php echo $telnum; ?>">
             <span><?php echo $telError; ?></span><br><br>
             Geboortedatum:<br>
-            <input type="date" name="Geboortedatum" maxlenth="10" placeholder="Geboortedatum">
+            <input type="date" name="Geboortedatum" placeholder="Geboortedatum" value="<?php echo $bday; ?>">
             <span><?php echo $bdayError; ?></span><br><br>
             Straatnaam:<br>
-            <input type="text" name="adres" maxlength="30" placeholder="Straatnaam">
+            <input type="text" name="adres" maxlength="30" placeholder="Straatnaam" value="<?php echo $adr; ?>">
             <span><?php echo $adrError; ?></span><br><br>
             Huisnummer:<br>
-            <input type="number" name="Huisnummer" maxlength="5" placeholder="Huisnummer"><span><?php echo $hnumError; ?></span><br><br>
+            <input type="number" name="Huisnummer" maxlength="5" placeholder="Huisnummer" value="<?php echo $hnum; ?>">
+            <span><?php echo $hnumError; ?></span><br><br>
             Postcode:<br>
-            <input type="text" name="Postcode" maxlength="6" placeholder="postcode">
+            <input type="text" name="Postcode" maxlength="6" placeholder="postcode" value="<?php echo $postc; ?>">
             <span><?php echo $postcError; ?></span><br><br>
             Woonplaats:<br>
-            <input type="text" name="Woonplaats" maxlength="30" placeholder="woonplaats">
+            <input type="text" name="Woonplaats" maxlength="30" placeholder="woonplaats" value="<?php echo $plaats; ?>">
             <span><?php echo $plaatsError; ?></span><br><br>
             <input type="radio" name="Gender" value="m" checked>Man
             <input type="radio" name="Gender" value="f">Vrouw<br><br>
@@ -313,9 +268,8 @@ if (isset($_POST['submit']))
                 <option value ="2">Docent</option>
                 <option value ="3">SlB'er</option>
                 <option value ="4">Admin</option>
-                
-            </select>
-            
+            </select><br><br>
+
             <button type="submit" name="submit">Submit</button>
             <input type="reset">
             <span><?php echo $rolError; ?></span>
