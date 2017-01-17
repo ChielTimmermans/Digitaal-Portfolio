@@ -7,7 +7,7 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-		<link rel="icon" href="dist/css/images/favicon.ico">
+        <link rel="icon" href="dist/css/images/favicon.ico">
 
         <title>Portfolio | Stenden Hogeschool</title>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -44,15 +44,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    < <a class="navbar-brand" href="https://stenden.com">
+                    <a class="navbar-brand" href="https://stenden.com">
                     <img src="images/stenden_logo1.png" alt="Stenden Logo">
                 </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen'] ?></a></li>
+                        <li><a href="backend/student/home.html">Instellingen</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#"><?php echo $lang['Taal'] ?></a></li>
+                        <li><a href="#">English</a></li>
+						<li><a href="uitlogscherm.html">Uitloggen</a></li>
                     </ul>
         </div>
       </div>
@@ -63,14 +64,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="portfolio.html"><?php echo $lang['Mijnportfolio'] ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="projecten.html"><?php echo $lang['MijnProjecten'] ?></a></li>
-			<li><a href="cijfers.html"><?php echo $lang['MijnCijferlijst'] ?></a></li>
-                        <li><a href="gastenboek.html"><?php echo $lang['Gastenboek'] ?></a></li>
+						<li><a href="portfolio.html">Mijn Portfolio</a></li>
+                        <li><a href="projecten.html">Mijn Projecten</a></li>
+						<li><a href="cijfers.html">Mijn Cijferlijst</a></li>
+						<li class="active"><a href="gastenboek.html">Gastenboek <span class="sr-only">(current)</span></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['Mijnportfolio'] ?></h1>
+                    <h1 class="page-header">Berichten</h1>
                 </div>
             </div></div>  
 
@@ -78,80 +79,42 @@
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
-                    
                     <div class="bs-callout bs-callout-danger">
-                        <h4>$lang['cijfersaanpassen']</h4>
-							<p>SLB:</p>
-							<div class="btn-group" role="group">
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								  Klas
-								  <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-								  <li><a href="#">INF1A</a></li>
-								  <li><a href="#">INF1B</a></li>
-								</ul>
-							</div></br>
-						
-							<div class="btn-group" role="group">
-							<p>Informatiemanagement:</p>
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								  Klas
-								  <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-								  <li><a href="#">Henk Henk</a></li>
-								  <li><a href="#">Harry Harry</a></li>
-								</ul>
-							</div></br>
-						
-							<div class="btn-group" role="group">
-							<p>Test:</p>
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								  Klas
-								  <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-								  <li><a href="#">Henk Henk</a></li>
-								  <li><a href="#">Harry Harry</a></li>
-								</ul>
-							</div></br></br></br>
-							
-							<div class="btn-group" role="group">
-							<p>Test:</p>
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								  Klas
-								  <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-								  <li><a href="#">Henk Henk</a></li>
-								  <li><a href="#">Harry Harry</a></li>
-								</ul>
-							</div>
-							
-							<div class="btn-group" role="group">
-							<p>Test:</p>
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								  Klas
-								  <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-								  <li><a href="#">Henk Henk</a></li>
-								  <li><a href="#">Harry Harry</a></li>
-								</ul>
-							</div>
-							
-							<div class="btn-group" role="group">
-							<p>Test:</p>
-								<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								  Klas
-								  <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-								  <li><a href="#">Henk Henk</a></li>
-								  <li><a href="#">Harry Harry</a></li>
-								</ul>
-							</div></br>
+                        <p>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th>Datum</th>
+                        <th>Naam</th>
+                        <th>Bericht</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>12:21 13-1-2017</td>
+                        <td>Dennis Kramer</td>
+                        <td>Test1</td>
+                    </tr>
+                    <tr>
+                        <td>12:22 13-1-2017</td>
+                        <td>Dennis Kramer</td>
+                        <td>Test2</td>
+                    </tr>
+                    <tr>
+                        <td>12:23 13-1-2017</td>
+                        <td>Dennis Kramer</td>
+                        <td>Test3</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+<script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
+                        </p>
+                    </div>
                     
             </div>
         </div>

@@ -48,8 +48,32 @@ body {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
+.form-signin input[type="guest"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+
+
+/*overzicht*/
+.panel-default{
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+    text-align:center;
+}
+.panel-default > .panel-footer {
+    color: #fff;
+    background-color: #47c8ed;    
+    display:none;
+    text-shadow: 1px 1px 1px rgba(150, 150, 150, 1);
+}
+.panel-default i{
+    font-size: 5em;
+    }
