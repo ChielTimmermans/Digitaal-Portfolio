@@ -12,7 +12,7 @@ if (isset($_POST['quest-login']))
     
     if(empty($gast)){
         $error = true;
-        $emailError = "please enter your email address.";
+        $emailError = $lang['error1'];
     }
     
     if(!$error)
@@ -23,7 +23,7 @@ if (isset($_POST['quest-login']))
             if ($count != 0)
             {
                 $error = true;
-                $emailError = "Provided Email is already in use.";
+                $emailError = $lang['error2'];
             }else{
                 $_SESSION['user'] = $gast;
                 header("Location: ..\gast.php");

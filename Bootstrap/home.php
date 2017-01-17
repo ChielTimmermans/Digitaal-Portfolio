@@ -28,7 +28,7 @@ $row =  mysqli_fetch_array($result,MYSQLI_ASSOC);
     </head>
     <body>
         <p>Hi' <?php echo $row ['userEmail']; ?></p>
-        <a href="..\displayUploads.php">upload bestanden</a>
+        <a href="..\displayUploads.php"><?php echo $lang['upload'] ?></a>
         <br>
         <a href = "?lang=nl">Nederlands</a>
         <a href = "?lang=en">Engels</a>

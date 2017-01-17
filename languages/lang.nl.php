@@ -30,6 +30,8 @@ $lang['MijnProjecten'] = 'Mijn Projecten';
 $lang['MijnCijferlijst'] = 'Mijn Cijferlijst';
 $lang['Gastenboek'] = 'Gastenboek';
 $lang['School'] = 'naam';
+$lang['naam'] = 'naam';
+$lang['date'] = 'datum';
 
 //
 
@@ -56,5 +58,27 @@ $lang['naam'] = 'naam';
 
 /* menu */
 
+/* gastregistreren */
+$lang['error1'] = 'Vul uw email adres in alstublieft.';
+$lang['error2'] = 'Dit email adres is al in gebruik.';
 
+//berichten
+$lang['berichten'] = 'berichten';
+$lang['bericht'] = 'bericht';
+
+//cijfers
+$lang['cijfers'] = 'cijfers';
+$lang['studieonderdelen'] = 'studieonderdelen';
+
+//cijfersaanpassen
+$lang['cijfersaanpassen'] = 'cijfersaanpassen';
+
+//gastenboek
+$lang['bekijkberichten'] = 'bekijk berichten';
+
+//home
+$lang['upload'] = 'upload bestanden';
+
+//index
+$lang['gastlogin'] = 'login als gast';
 ?>
