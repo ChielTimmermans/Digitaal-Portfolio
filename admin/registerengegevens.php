@@ -66,9 +66,6 @@ if (isset($_POST['submit']))
     $gender = strip_tags($gender);
     $gender = htmlspecialchars($gender);
 
-
-
-
     if (empty($stnummer))
     {
         $error = true;

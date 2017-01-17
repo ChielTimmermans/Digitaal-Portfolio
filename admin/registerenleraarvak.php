@@ -1,34 +1,64 @@
-<?php 
-    session_start();
-    ob_start();
+<?php
+session_start();
+ob_start();
+
+//if (!isset($_SESSION['user'])) {
+//    header("Location: index.php");
+//    exit;
+//}
+//if(isset($_SESSION['user'])){
+//    
+//    
+//}
+
+if (!isset($_SESSION['leraar'])){
+    header("Location: registerenleraar.php");
+    exit;    
+}
 
 
-    include '..\createdatabases\dbconnect.php';
-    $error = false;
-    if (isset($_POST['submit'])) {
-        $vak = trim($_POST['vak']);
+
+include '..\createdatabases\dbconnect.php';
+$error = false;
+$leraarnummer = $_SESSION['leraar'];
+echo $leraarnummer;
+if ($leraarnummer === "")
+{
+    echo "wrong";
+}
+
+
+
+if (isset($_POST['submit']))
+{       $vak = trim($_POST['vak']);
         $vak = strip_tags($vak);
         $vak = htmlspecialchars($vak);
-        
+   
         $vak2 = trim($_POST['vak2']);
         $vak2 = strip_tags($vak2);
         $vak2 = htmlspecialchars($vak2);
-    
+   
         $vak3 = trim($_POST['vak3']);
         $vak3 = strip_tags($vak3);
         $vak3 = htmlspecialchars($vak3);
-    }
     
+
+
     $leraarnummer = $_SESSION['leraar'];
     echo $leraarnummer;
-    if ($leraarnummer === ""){
+    if ($leraarnummer === "")
+    {
+        $error = true;
         echo "wrong";
     }
-    
-    if(!$error){
-        $query = "INSERT INTO leraren Where Lerarennummer = $leraarnummer (vak,vak2,vak3) VALUES ('$vak','$vak2','$vak3')";
+
+    if (!$error)
+    {
+        $query = "INSERT INTO leraren Where Lerarennummer = $leraarnummer (vak) VALUES ('$vak')";
         $res = mysqli_query($conn, $query);
     }
+}
+
 
 
 
@@ -54,9 +84,7 @@
 //    $errMSG = "Something went wrong, try again later..";
 //}
 
-$vak = "";
-$vak2 = "";
-$vak3 = "";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -67,14 +95,7 @@ $vak3 = "";
     <body>
         <form action="registerenleraarvak.php" method="post">
             Vak: <br>
-            <select 
-        <?php if (!$vak){
-            echo 'name="vak"';
-        }elseif (!$vak2){
-            echo 'name="vak2"';
-        }elseif (!$vak3){
-            echo 'name="vak3"';
-        }?> >
+            <select name="vak"
                 <option value ="1">Informatiemanagement1</option>
                 <option value ="2">Inleiding Programmeren in PHP</option>
                 <option value ="3">HTML en CSS</option>
