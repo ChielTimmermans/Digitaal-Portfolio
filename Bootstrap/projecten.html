@@ -44,15 +44,16 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="https://stenden.com">
+                    < <a class="navbar-brand" href="https://stenden.com">
                     <img src="images/stenden_logo1.png" alt="Stenden Logo">
                 </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen'] ?></a></li>
+                        <li><a href="backend/student/home.html">Instellingen</a></li>
                         <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#"><?php echo $lang['Taal'] ?></a></li>
+                        <li><a href="#">English</a></li>
+						<li><a href="uitlogscherm.html">Uitloggen</a></li>
                     </ul>
         </div>
       </div>
@@ -63,14 +64,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="portfolio.html"><?php echo $lang['Mijnportfolio'] ?></a></li>
-                        <li><a href="projecten.html"><?php echo $lang['MijnProjecten'] ?></a></li>
-			<li><a href="cijfers.html"><?php echo $lang['MijnCijferlijst'] ?></a></li>
-			<li class="active"><a href="gastenboek.html"> <?php echo $lang['Gastenboek'] ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="portfolio.html">Mijn Portfolio</a></li>
+						<li class="active"><a href="projecten.html">Mijn Projecten <span class="sr-only">(current)</span></a></li>
+						<li><a href="cijfers.html">Mijn Cijferlijst</a></li>
+                        <li><a href="gastenboek.html">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['Gastenboek'] ?></h1>
+                    <h1 class="page-header">Mijn Projecten</h1>
                 </div>
             </div></div>  
 
@@ -80,22 +81,39 @@
                 <div class="panel panel-default">
                     
                     <div class="bs-callout bs-callout-danger">
-                        <p>
-                        <div class="form-area">  
-        <form role="form">
-    				<div class="form-group">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Naam" required>
-					</div>
-                    <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="message" placeholder="Vul hier je bericht in" maxlength="140" rows="7"></textarea>				
-                    </div>
-					<div class="form-group">
-					<p><button type="button" id="submit" name="submit" class="btn btn-primary pull-middle">Submit</button></p>
-					</div>
-        </form>
-    </div>
-	<a href="berichten.html"><?php echo $lang['bekijkberichten'] ?></a>
-                        </p>
+                        <h4>Projecten</h4>
+                        <ul class="list-group">
+                            <a class="list-group-item inactive-link" href="#">
+                                <h4 class="list-group-item-heading">
+                                    Professionele Website 
+                                </h4>
+                                <p class="list-group-item-text">
+                                    Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
+                                    te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                </p>
+                            </a>
+                            <a class="list-group-item inactive-link" href="#">
+                                <h4 class="list-group-item-heading">Professionele Portfolio</h4>
+                                <p class="list-group-item-text">
+                                    Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
+                                    Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                                    nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                </p>
+                                <ul>
+                                    <li>
+                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
+                                        Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                                        nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                    </li>
+                                    <li>
+                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
+                                        Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                                        nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                    </li>
+                                </ul>
+                                <p></p>
+                            </a>
+                        </ul>
                     </div>
                     
             </div>

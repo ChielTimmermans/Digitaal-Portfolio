@@ -7,24 +7,22 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="dist/css/images/favicon.ico">
+        <link rel="icon" href="../../dist/css/images/favicon.ico">
 
         <title>Portfolio | Stenden Hogeschool</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+        <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="dist/css/dashboard.css" rel="stylesheet">
+        <link href="../../dist/css/dashboard.css" rel="stylesheet">
 
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="assets/js/ie-emulation-modes-warning.js"></script>
+        <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -45,32 +43,32 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="https://stenden.com">
-                    <img src="images/stenden_logo1.png" alt="Stenden Logo">
-                </a>
+						<img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
+					</a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen'] ?></a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#"><?php $lang['Taal'] ?></a></li>
+                        <li><a href="#">Instellingen</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Engels</a></li>
+						<li><a href="../../uitlogscherm.html">Uitloggen</a></li>
                     </ul>
-        </div>
-      </div>
-    </nav>
-
+                </div>
+            </div>
+        </nav>
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-			<li><a href="portfolio.html"><?php echo $lang['Taal'] ?></a></li>
-                        <li><a href="projecten.html"><?php echo $lang['MijnProjecten'] ?></a></li>
-			<li class="active"><a href="cijfers.html"><?php echo $lang['MijnCijferlijst'] ?><span class="sr-only">(current)</span></a></li>
-			<li><a href="gastenboek.html"><?php echo $lang['Gastenboek'] ?></a></li>
+                        <li class="active"><a href="#">Mijn Portfolio <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Mijn Projecten</a></li>
+                        <li><a href="#">Mijn Opdrachten</a></li>
+                        <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['cijfers'] ?></h1>
+                    <h1 class="page-header">Welkom [NAAM]</h1>
                 </div>
             </div></div>  
 
@@ -78,34 +76,27 @@
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
-				<div class="bs-callout bs-callout-danger">
-                  
-						<div class="form-area">
-                        <table class="table table-striped table-responsive ">
-                            <thead>
-                                <tr>
-                                    <th>Code</th>
-                                    <th><?php echo $lang['studieonderdelen'] ?></th>
-                                    <th><?php echo $Lang['cijfers'] ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>OIIM</td>
-                                    <td>Informatiemanagement</td>
-                                    <td> 3.7</td>
-                                </tr>
-                                <tr>
-                                    <td>OIDGD1</td>
-                                    <td>Digital Graphic Design 1</td>
-                                    <td> 10 </td>
-                                </tr>
-                            </tbody>
-                        </table>
-						</div>
-					 
-					</div>
-                   
+                    
+                    <div class="bs-callout bs-callout-danger">
+                        <h4>Wat wil je aanpassen?</h4>
+                        <p>
+                                <ul>
+                                    <li>
+                                        <a href="portfolio.html"> Portfolio </a>
+                                    </li>
+									<li>
+                                        <a href="projecten.html"> Projecten </a>
+                                    </li>
+									<li>
+                                        <a href="gastenboek.html"> Gastenboek </a>
+                                    </li>
+									<li>
+                                        <a href="thema.html"> Thema </a>
+                                    </li>
+                                </ul>
+                        </p>
+                    </div>
+                    
             </div>
         </div>
     </div>
