@@ -91,6 +91,36 @@ body {
   background-size:100% 100%;
 }
 
+.header-bg1 {
+  width:100%;
+  background-image: url("images/header_bg_basic.png");
+  background-size:100% 100%;
+}
+
+.header-bg2 {
+  width:100%;
+  background-image: url("images/header_bg_basic.png");
+  background-size:100% 100%;
+}
+
+.header-bg3 {
+  width:100%;
+  background-image: url("images/header_bg_basic.png");
+  background-size:100% 100%;
+}
+
+.header-bg4 {
+  width:100%;
+  background-image: url("images/header_bg_basic.png");
+  background-size:100% 100%;
+}
+
+.header-bg5 {
+  width:100%;
+  background-image: url("images/header_bg_basic.png");
+  background-size:100% 100%;
+}
+
 /*
  * Placeholder dashboard ideas
  */
@@ -566,6 +596,45 @@ opacity:0.9;
     color: #4b2b86;
 }
 
+.bs-callout-danger1 {
+    border-left-color: #ff00ee;
+}
+
+.bs-callout-danger1 h4{
+    color: #ff00ee;
+}
+
+.bs-callout-danger2 {
+    border-left-color: #ff0000;
+}
+
+.bs-callout-danger2 h4{
+    color: #ff0000;
+}
+
+.bs-callout-danger3 {
+    border-left-color: #ffff00;
+}
+
+.bs-callout-danger3 h4{
+    color: #ffff00;
+}
+
+.bs-callout-danger4 {
+    border-left-color: #00ff00;
+}
+
+.bs-callout-danger4 h4{
+    color: #00ff00;
+}
+
+.bs-callout-danger5 {
+    border-left-color: #00ffff;
+}
+
+.bs-callout-danger5 h4{
+    color: #00ffff;
+}
 .resume .list-group-item:first-child, .resume .list-group-item:last-child{
   border-radius:0;
 }

@@ -59,25 +59,27 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <body>
 
 
-        <nav class="navbar navbar-inverse navbar-fixed-top <?php switch($huisstijl1) {
-                                                                    case "1": 
-                                                                        echo "header-bg";
-                                                                        break;
-                                                                    case "2":
-                                                                        echo "header-bg1";
-                                                                        break;
-                                                                    case "3":
-                                                                        echo "header-bg2";
-                                                                        break;
-                                                                    case "4":
-                                                                        echo "header-bg3";
-                                                                        break;
-                                                                    case "5":
-                                                                        echo "header-bg4";
-                                                                        break;
-                                                                    case "6";
-                                                                        echo "header-bg5";
-                                                                        break;
+        <nav class="navbar navbar-inverse navbar-fixed-top <?php
+        switch ($huisstijl1)
+        {
+            case "1":
+                echo "header-bg";
+                break;
+            case "2":
+                echo "header-bg1";
+                break;
+            case "3":
+                echo "header-bg2";
+                break;
+            case "4":
+                echo "header-bg3";
+                break;
+            case "5":
+                echo "header-bg4";
+                break;
+            case "6";
+                echo "header-bg5";
+                break;
         }
         ?>">
             <div class="container-fluid">
@@ -148,9 +150,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam ";
-echo $userAchterNaam;
-?></li>
+                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php
+                                            echo "$userNaam ";
+                                            echo $userAchterNaam;
+                                            ?></li>
                                         <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?></li>
                                         <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?></li>
                                         <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?></li>
@@ -163,7 +166,7 @@ echo $userAchterNaam;
                     </div>
 
 
-                    <div class="bs-callout bs-callout-danger">
+                    <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4><?php echo $lang['Overmij']; ?></h4>
                         <p>
                             Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
@@ -174,7 +177,7 @@ echo $userAchterNaam;
                             Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
                         </p>
                     </div>
-                    <div class="bs-callout bs-callout-danger">
+                    <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4><?php echo $lang['Diplomas']; ?></h4>
                         <table class="table table-striped table-responsive ">
                             <thead>
@@ -198,7 +201,7 @@ echo $userAchterNaam;
                             </tbody>
                         </table>
                     </div>
-                    <div class="bs-callout bs-callout-danger">
+                    <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4>Hobby's en interesses</h4>
                         <p>
                             Software Engineering, Machine Learning, Image Processing,
@@ -206,7 +209,7 @@ echo $userAchterNaam;
                             Evolutionary Algorithms.
                         </p>
                     </div>
-                    <div class="bs-callout bs-callout-danger">
+                    <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4>Werk ervaring</h4>
                         <ul class="list-group">
                             <a class="list-group-item inactive-link" href="#">
