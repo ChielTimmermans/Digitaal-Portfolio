@@ -19,6 +19,7 @@ $lang['Kies'] = '<p>Kies een bestand</p>';
 $lang['gastlogin'] = 'login als gast';
 $lang['email'] = 'Emailadres';
 $lang['login'] = 'Login';
+$lang['Uitloggen'] = 'Uitloggen';
 
 //algemeen
 $lang['Taal'] = 'English';

@@ -70,7 +70,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
                         <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-						<li><a href="uitlogscherm.html">Uitloggen</a></li>
+						<li><a href="logout.php"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
         </div>
       </div>

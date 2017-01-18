@@ -19,7 +19,8 @@ $lang['Upload error'] = 'The following extensions are allowed: ';
 $lang['gastlogin'] = 'login as guest';
 $lang['email'] = 'Email-address';
 $lang['login'] = 'Login';
- 
+$lang['Uitloggen'] = 'Log off';
+
 //algemeen
 $lang['Taal'] = 'Nederlands';
 $lang['TaalLink'] = '?lang=nl';
