@@ -22,7 +22,6 @@ $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -78,7 +77,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
                         <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                        <li><a href="uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -238,3 +237,27 @@ echo $userAchterNaam; ?></li>
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+
+require_once '..\createDatabases/dbconnect.php';
+include '..\Functions\common.php';
+include '..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
