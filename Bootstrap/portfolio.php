@@ -1,16 +1,22 @@
 <?php
 session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
-
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']))
+{
     header("Location: index.php");
     exit;
 }
-
 $user = $_SESSION['user'];
-
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
@@ -70,8 +76,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
-                        <li><a href = "<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="uitlogscherm.html">Uitloggen</a></li>
                     </ul>
                 </div>
             </div>
@@ -82,10 +89,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="portfolio.php"><?php echo $lang['Mijnportfolio']; ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="projecten.php"><?php echo $lang['MijnProjecten']; ?></a></li>
-                        <li><a href="cijfers.php"><?php echo $lang['MijnCijferlijst']; ?></a></li>
-                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li class="active"><a href="portfolio.html"><?php echo $lang['Mijnportfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="projecten.html"><?php echo $lang['MijnProjecten']; ?></a></li>
+                        <li><a href="cijfers.html"><?php echo $lang['MijnCijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.html"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -122,12 +129,14 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam "; echo $userAchterNaam;?></li>
-                                        <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?>: Student informatica</li>
-                                        <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?>: Stenden Hogeschool </li>
-                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats;?> </li>
-                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer" ;?></li>
-                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail ;?></li>
+                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam ";
+echo $userAchterNaam;
+?></li>
+                                        <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?></li>
+                                        <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?></li>
+                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail; ?></li>
                                     </ul>
                                 </div>
                             </div>

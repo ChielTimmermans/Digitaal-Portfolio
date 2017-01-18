@@ -268,7 +268,7 @@ if (isset($_POST['submit'])) {
                 <option value ="2">Docent</option>
                 <option value ="3">SlB'er</option>
                 <option value ="4">Admin</option>
-            </select><br><br>
+            </select><br><br> 
 
             <button type="submit" name="submit">Submit</button>
             <input type="reset">
