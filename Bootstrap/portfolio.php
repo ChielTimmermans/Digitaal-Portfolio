@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_GET) || empty($_GET))
+if (!isset($_GET['Studentnummer']) || empty($_GET))
 {
     $portnummer = $_SESSION['user'];
 } else
