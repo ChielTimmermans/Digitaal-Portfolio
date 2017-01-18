@@ -130,7 +130,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 <div class="col-xs-12 col-sm-8">
                                     <ul class="list-group">
                                         <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam ";
-echo $userAchterNaam; ?></li>
+echo $userAchterNaam;
+?></li>
                                         <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?></li>
                                         <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?></li>
                                         <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?></li>
