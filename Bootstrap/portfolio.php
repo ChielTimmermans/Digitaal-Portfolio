@@ -60,7 +60,27 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <body>
 
 
-        <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
+        <nav class="navbar navbar-inverse navbar-fixed-top <?php switch($huisstijl1) {
+                                                                    case "1": 
+                                                                        echo "header-b";
+                                                                        break;
+                                                                    case "2":
+                                                                        echo "header-b1";
+                                                                        break;
+                                                                    case "3":
+                                                                        echo "header-b2";
+                                                                        break;
+                                                                    case "4":
+                                                                        echo "header-b3";
+                                                                        break;
+                                                                    case "5":
+                                                                        echo "header-b4";
+                                                                        break;
+                                                                    case "6";
+                                                                        echo "header-b5";
+                                                                        break;
+        }
+        ?>">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
