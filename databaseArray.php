@@ -3,7 +3,7 @@
 include_once 'createDatabases\dbconnect.php';
 //$user = $_SESSION['user'];
 
-$portnummer = $_GET['Studentnummer'];
+//$portnummer = $_GET['Studentnummer'];
 
 $query = "SELECT * FROM gegevens WHERE studentnummer = '$portnummer'";
 $result = mysqli_query($conn, $query)
