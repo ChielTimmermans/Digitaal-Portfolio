@@ -67,34 +67,48 @@
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header">Welkom [NAAM]</h1>
                 </div>
-            </div></div>
+            </div></div>  
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
+
                     <div class="bs-callout bs-callout-danger">
-                        <h4>Projecten beoordelen </h4>
-                        <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Professionele website</h4>
-                            <p class="list-group-item-text">
-                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                            </p>    
-                        </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info">Bekijk bijlagen</button></a></p>
-                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success">Beoordeel dit project</button></a></p>
-                       
-					   <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Portfolio</h4>
-                            <p class="list-group-item-text">
-                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                            </p>    
-                        </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info">Bekijk bijlagen</button></a></p>
-                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success">Beoordeel dit project</button></a></p>
-						
+                        <p>
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <legend>Project beoordelen</legend>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Code</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="code" type="text" placeholder="Code" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Naam van project</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="project" type="text" placeholder="Naam van project" class="form-control input-md">
+                                    </div>
+                                </div>
+								<div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Aantal EC</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="ec" type="number" placeholder="Aantal EC" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Cijfer</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="cijfer" type="number"  step="0.01" min="0" placeholder="Cijfer" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <button id="button1id" name="submit" class="btn btn-success">Toevoegen</button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        </p>
                     </div>
                 </div>
             </div>
