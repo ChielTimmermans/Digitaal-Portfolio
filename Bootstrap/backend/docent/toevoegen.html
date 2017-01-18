@@ -58,14 +58,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="#">Mijn Portfolio <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Mijn Portfolio</a></li>
                         <li><a href="#">Mijn Projecten</a></li>
-                        <li><a href="#">Mijn Opdrachten</a></li>
+                        <li class="active"><a href="#">Mijn Cijferlijst <span class="sr-only">(current)</span></a></li>
                         <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Welkom [NAAM]</h1>
+                    <h1 class="page-header">Cijfer toevoegen</h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -76,33 +76,37 @@
                         <p>
                         <form class="form-horizontal">
                             <fieldset>
-                                <legend>Cijfer toevoegen</legend>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Code</label>  
+                                    <label class="col-md-4 control-label" for="textinput">Code en Studieonderdeel</label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="code" type="text" placeholder="code" class="form-control input-md">
+                                        <input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Volledige naam van het vak</label>  
+                                    <label class="col-md-4 control-label" for="textinput">Datum</label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="vak" type="text" placeholder="vak" class="form-control input-md">
+                                        <input id="textinput" name="datum" type="date" class="form-control input-md">
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Aantal EC</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Cijfer</label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="cijfer" type="number" step="0.01" min="0" placeholder="cijfer" class="form-control input-md">
+                                        <input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8">
-                                        <button id="button1id" name="submit" class="btn btn-success">Toevoegen</button>
+                                        <button id="button1id" name="submit" class="btn btn-success pull-right">Toevoegen</button>
                                     </div>
                                 </div>
                             </fieldset>
                         </form>
-                        </p>
                     </div>
                 </div>
             </div>
