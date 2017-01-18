@@ -2,18 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/portfolio/languages/lang.en.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/Bootstrap/home.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/loginsystem/index.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/Bootstrap/portfolio.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/languages/lang.nl.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/CreateDatabases/create_database_leraar.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/admin/registerengegevens.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/CreateDatabases/create_database_gegevens.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/admin/registerenleraar.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/admin/registerenleraarvak.php</file>
-            <file>file:/C:/xampp/htdocs/portfolio/Bootstrap/index.php</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

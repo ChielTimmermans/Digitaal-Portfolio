@@ -10,8 +10,8 @@
         <link rel="icon" href="dist/css/images/favicon.ico">
 
         <title>Portfolio | Stenden Hogeschool</title>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
         <!-- Bootstrap core CSS -->
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
@@ -45,33 +45,33 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="https://stenden.com">
-                    <img src="images/stenden_logo1.png" alt="Stenden Logo">
-                </a>
+                        <img src="images/stenden_logo1.png" alt="Stenden Logo">
+                    </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="backend/student/home.html">Instellingen</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li><a href="#">English</a></li>
-						<li><a href="uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="uitlogscherm.html">Uitloggen</a></li>
                     </ul>
-        </div>
-      </div>
-    </nav>
+                </div>
+            </div>
+        </nav>
 
 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-						<li><a href="portfolio.html">Mijn Portfolio</a></li>
+                        <li><a href="portfolio.html">Mijn Portfolio</a></li>
                         <li><a href="projecten.html">Mijn Projecten</a></li>
-						<li class="active"><a href="cijfers.html">Mijn Cijferlijst <span class="sr-only">(current)</span></a></li>
-						<li><a href="gastenboek.html">Gastenboek</a></li>
+                        <li class="active"><a href="cijfers.html">Mijn Cijferlijst <span class="sr-only">(current)</span></a></li>
+                        <li><a href="gastenboek.html">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfers</h1>
+                    <h1 class="page-header">Mijn Cijferlijst</h1>
                 </div>
             </div></div>  
 
@@ -79,47 +79,46 @@
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
-				<div class="bs-callout bs-callout-danger">
-                  <P>
-						<div class="form-area">
-                        <table class="table table-striped table-responsive ">
-                            <thead>
-                                <tr>
-                                    <th>Code</th>
-                                    <th>Studieonderdelen</th>
-                                    <th>Cijfers</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>OIIM</td>
-                                    <td>Informatiemanagement</td>
-                                    <td> 3.7</td>
-                                </tr>
-                                <tr>
-                                    <td>OIDGD1</td>
-                                    <td>Digital Graphic Design 1</td>
-                                    <td> 10 </td>
-                                </tr>
-                            </tbody>
-                        </table>
-						</div>
-					</p> 
-					</div>
-                   
+                    <div class="bs-callout bs-callout-danger">
+                            <table class="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th>Code en Studieonderdeel</th>
+                                        <th>Datum</th>
+                                        <th>Aantal EC</th>
+                                        <th>Cijfer</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>OIPHP1 Inleiding Programmeren in PHP</td>
+                                        <td>09-11-2016</td>
+                                        <td>3</td>
+                                        <td>6.2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>OIXH (X)HTML en CSS</td>
+                                        <td>09-11-2016</td>
+                                        <td>3</td>
+                                        <td>7.2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>

@@ -227,7 +227,7 @@ if (isset($_POST['submit']))
     if (!$error)
     {
 
-        $query = "INSERT INTO gegevens (Studentnummer,Klas,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol) VALUES ('$stnummer','$klas','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol')";
+        $query = "INSERT INTO gegevens (Studentnummer,Klas,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,Stijl1,Stijl2,Stijl3) VALUES ('$stnummer','$klas','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol',1,1,1)";
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
@@ -251,6 +251,25 @@ if (isset($_POST['submit']))
             $errMSG = "Something went wrong, try again later..";
         }
     }
+    // create table voor de user
+    $SQLstring3 = "CREATE TABLE $user (userID AUTO_INCREMENT PRIMARY KEY, "
+            . "studentNummer INT(10) NOT NULL, "
+            . "klas VARCHAR(6) NOT NULL, "
+            . "voornaam VARCHAR(25) NOT NULL, "
+            . "achternaam VARCHAR(25) NOT NULL, "
+            . "email VARCHAR(100) NOT NULL, "
+            . "telnummer INT(15) NOT NULL, "
+            . "geboortedatum DATE() NOT NULL, "
+            . "adres VARCHAR(30) NOT NULL, "
+            . "huisnummer INT(4) NOT NULL, "
+            . "postcode VARCHAR(6) NOT NULL, "
+            . "woonplaats VARCHAR(25) NOT NULL, "
+            . "gender VARCHAR(1) NOT NULL, "
+            . "vakCode VARCHAR(10) NOT NULL, "
+            . "studieonderdelen VARCHAR(30) NOT NULL, "
+            . "vakcijfer INT(3) NOT NULL, "
+            . "ec INT(1) NOT NULL)";
+    
 }
 ?>
 <!DOCTYPE html>

@@ -1,27 +1,23 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
-    $portnummer = $_SESSION['user'];
-} else
-{
-    $portnummer = $_GET['Studentnummer'];
-}
-
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
+
+if (!isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
+
 $user = $_SESSION['user'];
+
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -59,27 +55,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <body>
 
 
-        <nav class="navbar navbar-inverse navbar-fixed-top <?php switch($huisstijl1) {
-                                                                    case "1": 
-                                                                        echo "header-b";
-                                                                        break;
-                                                                    case "2":
-                                                                        echo "header-b1";
-                                                                        break;
-                                                                    case "3":
-                                                                        echo "header-b2";
-                                                                        break;
-                                                                    case "4":
-                                                                        echo "header-b3";
-                                                                        break;
-                                                                    case "5":
-                                                                        echo "header-b4";
-                                                                        break;
-                                                                    case "6";
-                                                                        echo "header-b5";
-                                                                        break;
-        }
-        ?>">
+        <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -95,9 +71,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
-                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href = "<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -108,10 +83,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="portfolio.html"><?php echo $lang['Mijnportfolio']; ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="projecten.html"><?php echo $lang['MijnProjecten']; ?></a></li>
-                        <li><a href="cijfers.html"><?php echo $lang['MijnCijferlijst']; ?></a></li>
-                        <li><a href="gastenboek.html"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li class="active"><a href="portfolio.php"><?php echo $lang['Mijnportfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['MijnProjecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['MijnCijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -148,14 +123,12 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam ";
-echo $userAchterNaam;
-?></li>
-                                        <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?></li>
-                                        <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?></li>
-                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?></li>
-                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
-                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail; ?></li>
+                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam "; echo $userAchterNaam;?></li>
+                                        <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?>: Student informatica</li>
+                                        <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?>: Stenden Hogeschool </li>
+                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats;?> </li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer" ;?></li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail ;?></li>
                                     </ul>
                                 </div>
                             </div>
@@ -166,7 +139,8 @@ echo $userAchterNaam;
                     <div class="bs-callout bs-callout-danger">
                         <h4><?php echo $lang['Overmij']; ?></h4>
                         <p>
-                            Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
+                            Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
+                            Quis verear mel ne. Munere vituperata vis cu, 
                             te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                         </p>
                         <p>
@@ -258,27 +232,3 @@ echo $userAchterNaam;
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
-<?php
-session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
-    $portnummer = $_SESSION['user'];
-} else
-{
-    $portnummer = $_GET['Studentnummer'];
-}
-
-require_once '..\createDatabases/dbconnect.php';
-include '..\Functions\common.php';
-include '..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
-    header("Location: index.php");
-    exit;
-}
-$user = $_SESSION['user'];
-$query = "SELECT * FROM users WHERE studentnummer = '$user'";
-$result = mysqli_query($conn, $query)
-        or die("Error: " . mysqli_error($conn));
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-?>
