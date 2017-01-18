@@ -1,9 +1,3 @@
-<!DOCTYPE>
-<html>
-    <head>
-        <title>inloggen</title>
-    </head>
-    <body>
         <?php
         $ipadress = "localhost";
         $ww = "";
@@ -49,5 +43,3 @@
             }
         
         ?>
-    </body>
-</html>

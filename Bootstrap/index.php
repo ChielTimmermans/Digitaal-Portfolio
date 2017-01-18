@@ -1,6 +1,12 @@
 <?php
-include'..\functions\common.php'
+include'..\functions\common.php';
+
+if (isset($_SESSION['user']) ){
+    header("Location: portfolio.php");
+    exit;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
