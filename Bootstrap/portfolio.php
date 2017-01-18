@@ -62,22 +62,22 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         <nav class="navbar navbar-inverse navbar-fixed-top <?php switch($huisstijl1) {
                                                                     case "1": 
-                                                                        echo "header-b";
+                                                                        echo "header-bg";
                                                                         break;
                                                                     case "2":
-                                                                        echo "header-b1";
+                                                                        echo "header-bg1";
                                                                         break;
                                                                     case "3":
-                                                                        echo "header-b2";
+                                                                        echo "header-bg2";
                                                                         break;
                                                                     case "4":
-                                                                        echo "header-b3";
+                                                                        echo "header-bg3";
                                                                         break;
                                                                     case "5":
-                                                                        echo "header-b4";
+                                                                        echo "header-bg4";
                                                                         break;
                                                                     case "6";
-                                                                        echo "header-b5";
+                                                                        echo "header-bg5";
                                                                         break;
         }
         ?>">
