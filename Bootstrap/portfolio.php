@@ -1,5 +1,6 @@
 <?php
 session_start();
+$portnummer = $_GET['Studentnummer'];
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
