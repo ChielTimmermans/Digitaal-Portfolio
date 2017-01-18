@@ -79,9 +79,26 @@
                 <div class="panel panel-default">
                     
                     <div class="bs-callout bs-callout-danger">
-                        <h4>Projecten beoordelen</h4>
+                        <h4>Cijfers bewerken</h4>
                         <p>
-
+                            <table class="table table-striped table-responsive ">
+							                                <thead>
+                                    <tr>
+                                        <th>Code</th>
+                                        <th>Studieonderdeel</th>
+                                        <th>Cijfers</th>
+                                        <th>Toepassen</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><input id="code" name="code" type="text" placeholder="OIIM" class="form-control input-md"></td>
+                                        <td><input id="vak" name="vak" type="text" placeholder="Informatiemanagement" class="form-control input-md"></td>
+                                        <td> <input id="cijfer" name="cijfer" type="number" step="0.01" min="0" placeholder="3.7" class="form-control input-md"></td>
+                                        <td> <a href="#"><button id="button1id" name="submit" class="btn btn-success">Toepassen</button></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </p>
                     </div>
                     
