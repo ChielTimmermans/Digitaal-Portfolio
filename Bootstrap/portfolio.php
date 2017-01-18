@@ -22,7 +22,6 @@ $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -62,22 +61,22 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         <nav class="navbar navbar-inverse navbar-fixed-top <?php switch($huisstijl1) {
                                                                     case "1": 
-                                                                        echo "header-b";
+                                                                        echo "header-bg";
                                                                         break;
                                                                     case "2":
-                                                                        echo "header-b1";
+                                                                        echo "header-bg1";
                                                                         break;
                                                                     case "3":
-                                                                        echo "header-b2";
+                                                                        echo "header-bg2";
                                                                         break;
                                                                     case "4":
-                                                                        echo "header-b3";
+                                                                        echo "header-bg3";
                                                                         break;
                                                                     case "5":
-                                                                        echo "header-b4";
+                                                                        echo "header-bg4";
                                                                         break;
                                                                     case "6";
-                                                                        echo "header-b5";
+                                                                        echo "header-bg5";
                                                                         break;
         }
         ?>">
@@ -98,7 +97,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
                         <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                        <li><a href="uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -259,3 +258,27 @@ echo $userAchterNaam;
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+
+require_once '..\createDatabases/dbconnect.php';
+include '..\Functions\common.php';
+include '..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>

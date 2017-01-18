@@ -61,7 +61,7 @@ if (isset($_GET['logout']))
                 <form class="form-signin">
                     <h2 class="form-signin-heading text-muted">U bent succesvol uitgelogd!</h2>
 
-                    <a href="index.html">Terug naar de website</a>
+                    <a href="index.php">Terug naar de website</a>
             </div>
         </div>
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
