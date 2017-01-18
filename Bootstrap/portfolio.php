@@ -1,10 +1,18 @@
 <?php
 session_start();
-$portnummer = $_GET['Studentnummer'];
+if (!isset($_GET) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']))
+{
     header("Location: index.php");
     exit;
 }
@@ -27,8 +35,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         <link rel="icon" href="dist/css/images/favicon.ico">
 
         <title>Portfolio | Stenden Hogeschool</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         <!-- Bootstrap core CSS -->
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -52,29 +60,29 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <body>
 
 
-    <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
-      <div class="container-fluid">
-        <div class="navbar-header">
-           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                      <a class="navbar-brand" href="https://stenden.com">
-                    <img src="images/stenden_logo1.png" alt="Stenden Logo">
-                </a>
+                    <a class="navbar-brand" href="https://stenden.com">
+                        <img src="images/stenden_logo1.png" alt="Stenden Logo">
+                    </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
                         <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-						<li><a href="logout.php"><?php echo $lang['Uitloggen']; ?></a></li>
+                        <li><a href="uitlogscherm.html">Uitloggen</a></li>
                     </ul>
-        </div>
-      </div>
-    </nav>
+                </div>
+            </div>
+        </nav>
 
 
         <div class="container-fluid">
@@ -83,7 +91,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <ul class="nav nav-sidebar">
                         <li class="active"><a href="portfolio.html"><?php echo $lang['Mijnportfolio']; ?><span class="sr-only">(current)</span></a></li>
                         <li><a href="projecten.html"><?php echo $lang['MijnProjecten']; ?></a></li>
-						<li><a href="cijfers.html"><?php echo $lang['MijnCijferlijst']; ?></a></li>
+                        <li><a href="cijfers.html"><?php echo $lang['MijnCijferlijst']; ?></a></li>
                         <li><a href="gastenboek.html"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
@@ -121,18 +129,19 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam "; echo $userAchterNaam;?></li>
+                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam ";
+echo $userAchterNaam; ?></li>
                                         <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?></li>
                                         <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?></li>
-										<li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats;?></li>
-                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer" ;?></li>
-                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail ;?></li>
+                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail; ?></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-					
+
 
                     <div class="bs-callout bs-callout-danger">
                         <h4><?php echo $lang['Overmij']; ?></h4>
@@ -145,7 +154,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
                         </p>
                     </div>
-										                    <div class="bs-callout bs-callout-danger">
+                    <div class="bs-callout bs-callout-danger">
                         <h4><?php echo $lang['Diplomas']; ?></h4>
                         <table class="table table-striped table-responsive ">
                             <thead>
