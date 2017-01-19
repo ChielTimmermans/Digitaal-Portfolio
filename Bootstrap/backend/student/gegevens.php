@@ -68,7 +68,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Portfolio aanpassen</h1>
+                    <h1 class="page-header">Persoonlijke gegevens aanpassen</h1>
 
                 </div>
             </div></div>  
@@ -79,18 +79,8 @@
                 <div class="panel panel-default">
                     
                     <div class="bs-callout bs-callout-danger">
-                        <h4>Wat wil je aanpassen?</h4>
-                        <p>      <ul>
-                                    <li>
-                                        <a href="cv.html"> Nieuwe CV uploaden  </a>
-                                    </li>
-									<li>
-                                        <a href="gegevens.html"> Persoonlijke gegevens </a>
-                                    </li>
-									<li>
-                                        <a href="intro.html">  Intro tekst </a>
-                                    </li>
-                               </ul> </p>
+                        <h4>KANKER</h4>
+                        <p>     </p>
                    
                     </div>
                     
