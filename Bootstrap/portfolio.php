@@ -109,9 +109,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="portfolio.html"><?php echo $lang['Mijnportfolio']; ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="projecten.html"><?php echo $lang['MijnProjecten']; ?></a></li>
-                        <li><a href="cijfers.html"><?php echo $lang['MijnCijferlijst']; ?></a></li>
+                        <li class="active"><a href="portfolio.html"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="projecten.html"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.html"><?php echo $lang['Cijferlijst']; ?></a></li>
                         <li><a href="gastenboek.html"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>

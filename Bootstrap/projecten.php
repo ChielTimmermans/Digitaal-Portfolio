@@ -85,9 +85,9 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="portfolio.html">Mijn Portfolio</a></li>
-                        <li class="active"><a href="projecten.html">Mijn Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="cijfers.html">Mijn Cijferlijst</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li class="active"><a href="projecten.html">Projecten <span class="sr-only">(current)</span></a></li>
+                        <li><a href="cijfers.html">Cijferlijst</a></li>
                         <li><a href="gastenboek.html">Gastenboek</a></li>
                     </ul>
                 </div>
