@@ -12,8 +12,6 @@ $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-$user = 111111;
 $query2 = "SELECT * FROM projecten WHERE studentnummer = '$user'";
 $result2 = mysqli_query($conn, $query2)
         or die("Error: " . mysqli_error($conn));
@@ -105,7 +103,10 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
 
                         <ul class="list-group">
                             <?php
-                            if (!empty($row2['Projecttitel1'])){
+                            $item = 1;
+                            $project =3;
+                            for($item = 1; $item <= $project; $item++){
+                            if (!empty($row2['Projecttitel'.$item.''])){
                                 echo'  <div class="list-group-item inactive-link">
                                             <h4 class="list-group-item-heading">'.
                                                 $row2['Projecttitel1']
@@ -114,42 +115,15 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                                                 $row2['Projectcontent1']
                                             .'</p>
                                         </div>';
-                            }else{
+                            }
+                            }
+                            if($project === 0){
                                 echo '  <div class="list-group-item inactive-link">
                                             <p class="list-group-item-text">'.
                                                 "Er zijn geen projecten."
                                             .'</p>
                                         </div>';
-                            }
-                            if(!empty($row2['Projecttitel2'])){
-                                echo '  <div class="list-group-item inactive-link">
-                                            <h4 class="list-group-item-heading">'.
-                                                $row2["Projecttitel2"]
-                                            .'</h4>
-                                            <p class="list-group-item-text">'.
-                                                $row2["Projectcontent2"].'
-                                            </p>
-                                        </div>';
-                            }
-                            if(!empty($row2['Projecttitel3'])){
-                                echo '  <div class="list-group-item inactive-link">
-                                            <h4 class="list-group-item-heading">'.
-                                                $row2["Projecttitel3"]
-                                            .'</h4>
-                                            <p class="list-group-item-text">'.
-                                                $row2["Projectcontent3"].'
-                                            </p>
-                                        </div>';
-                            }
-                            if(!empty($row2['Projecttitel4'])){
-                                echo '  <div class="list-group-item inactive-link">
-                                            <h4 class="list-group-item-heading">'.
-                                                $row2["Projecttitel4"]
-                                            .'</h4>
-                                            <p class="list-group-item-text">'.
-                                                $row2["Projectcontent4"].'
-                                            </p>
-                                        </div>';
+                            
                             }
                             ?>                          
                         </ul>
