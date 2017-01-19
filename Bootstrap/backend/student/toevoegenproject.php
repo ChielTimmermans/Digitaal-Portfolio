@@ -65,7 +65,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Bewerk project</h1>
+                    <h1 class="page-header">Project toevoegen</h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -85,7 +85,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textarea">Beschrijving van het project</label>  
                                     <div class="col-md-4">
-                                        <textarea name="beschrijving" placeholder="Vul hier de beschrijving in van het project" required rows="10" cols="32"></textarea>
+                                        <textarea name="beschrijving" placeholder="Beschrijving project" required rows="10" cols="32"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -94,6 +94,7 @@
                                     </div>
                                 </div>
                         </form>
+                        <a href="projecten.html">&#8592;</a>
                     </div>
                 </div>
             </div>
