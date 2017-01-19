@@ -48,7 +48,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Instellingen</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">English</a></li>
+                        <li><a href="#">Engels</a></li>
                         <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
                     </ul>
                 </div>
@@ -58,14 +58,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Cijferlijst</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Beoordeling project</h1>
+                    <h1 class="page-header"><?php echo $lang['beoordeelproject']; ?></h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -76,38 +76,38 @@
                         <form class="form-horizontal">
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Code en Projectnaam</label>  
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codeproject']; ?></label>  
                                 <div class="col-md-4">
                                     <input id="textinput" name="code" type="text" placeholder="IIPR1 Project Professionele Website" class="form-control input-md">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Datum</label>  
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['date']; ?></label>  
                                 <div class="col-md-4">
                                     <input id="textinput" name="project" type="date" class="form-control input-md">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Aantal EC</label>  
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['aantalec']; ?></label>  
                                 <div class="col-md-4">
                                     <input id="textinput" name="ec" type="number" placeholder="0-60" min="0" max="60" step="1" class="form-control input-md">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Cijfer</label>  
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['cijfer']; ?></label>  
                                 <div class="col-md-4">
                                     <input id="textinput" name="cijfer" type="number"  step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textarea">Opmerkingen</label>  
+                                <label class="col-md-4 control-label" for="textarea"><?php echo $lang['opmerkingen']; ?></label>  
                                 <div class="col-md-4">
                                     <textarea name="comment" required rows="10" cols="32"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8">
-                                    <button id="button1id" name="submit" class="btn btn-success pull-right">Toevoegen</button>
+                                    <button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['toevoegen']; ?></button>
                                 </div>
                             </div>
                         </form>

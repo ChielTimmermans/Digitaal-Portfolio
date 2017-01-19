@@ -58,55 +58,36 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Projecten</a></li>
-                        <li class="active"><a href="#">Cijferlijst <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfers van [NAAM]</h1>
+                    <h1 class="page-header"><?php echo $lang['bijlagen']; ?></h1>
                 </div>
-            </div></div>  
+            </div></div>
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
-                        <div class="form-area">
-                            <table class="table table-striped table-responsive ">
-                                <thead>
-                                    <tr>
-                                        <th>Code en Studieonderdeel</th>
-                                        <th>Datum</th>
-                                        <th>Aantal EC</th>
-                                        <th>Cijfer</th>
-                                        <th>Wijzig</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>OIPHP1 Inleiding Programmeren in PHP</td>
-                                        <td>09-11-2016</td>
-                                        <td>3</td>
-                                        <td>6.2</td>
-                                        <td> <a href="aanpassen.html">Wijzig</a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>OIXH (X)HTML en CSS</td>
-                                        <td>09-11-2016</td>
-                                        <td>3</td>
-                                        <td>7.2</td>
-                                        <td> <a href="aanpassen.html">Wijzig</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <p> <a href="toevoegen.html"> Klik hier om een cijfer toe te voegen  </a> </p>
-                        <a href="overzichtcijfers.html">&#8592;</a>
+
+                        <ul>
+                            <li>
+                                <a href='#'> Bijlage1 </a>
+                            </li>
+                            <li>
+                                <a href='#'> Bijlage2 </a>
+                            </li>
+                        </ul>
+                        <a href="projecten.html">&#8592;</a>	
                     </div>
                 </div>
             </div>
         </div>
+
+
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->

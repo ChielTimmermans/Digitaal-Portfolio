@@ -57,63 +57,56 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Projecten</a></li>
-                        <li class="active"><a href="#">Cijferlijst <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                   <ul class="nav nav-sidebar">
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Cijferlijst']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfer toevoegen</h1>
+                    <h1 class="page-header"><?php echo $lang['cijfersvan']; ?>[NAAM]</h1>
                 </div>
             </div></div>  
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
-
                     <div class="bs-callout bs-callout-danger">
-                        <p>
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Code en Studieonderdeel</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Datum</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="datum" type="date" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Aantal EC</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Cijfer</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-8">
-                                        <button id="button1id" name="submit" class="btn btn-success pull-right">Toevoegen</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                        <a href="invoercijfers.html">&#8592;</a>	
+                        <div class="form-area">
+                            <table class="table table-striped table-responsive ">
+                                <thead>
+                                    <tr>
+                                        <th><?php echo $lang['codestudie']; ?></th>
+                                        <th><?php echo $lang['date']; ?></th>
+                                        <th><?php echo $lang['aantalec']; ?></th>
+                                        <th><?php echo $lang['cijfer']; ?></th>
+                                        <th><?php echo $lang['wijzig']; ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>OIPHP1 Inleiding Programmeren in PHP</td>
+                                        <td>09-11-2016</td>
+                                        <td>3</td>
+                                        <td>6.2</td>
+                                        <td> <a href="aanpassen.html"><?php echo $lang['wijzig']; ?></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>OIXH (X)HTML en CSS</td>
+                                        <td>09-11-2016</td>
+                                        <td>3</td>
+                                        <td>7.2</td>
+                                        <td> <a href="aanpassen.html"><?php echo $lang['wijzig']; ?></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <p> <a href="toevoegen.html"> <?php echo $lang['cijfertoevoegen']; ?>  </a> </p>
+                        <a href="overzichtcijfers.html">&#8592;</a>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
