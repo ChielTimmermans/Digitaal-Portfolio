@@ -64,14 +64,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="portfolio.html">Mijn Portfolio</a></li>
-                        <li><a href="projecten.html">Mijn Projecten</a></li>
-                        <li class="active"><a href="cijfers.html">Mijn Cijferlijst <span class="sr-only">(current)</span></a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="projecten.html">Projecten</a></li>
+                        <li class="active"><a href="cijfers.html">Cijferlijst <span class="sr-only">(current)</span></a></li>
                         <li><a href="gastenboek.html">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Mijn Cijferlijst</h1>
+                    <h1 class="page-header">Cijferlijst</h1>
                 </div>
             </div></div>  
 

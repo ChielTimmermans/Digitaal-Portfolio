@@ -13,7 +13,6 @@
 
         <!-- Bootstrap core CSS -->
         <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-		
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -31,9 +30,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-
     <body>
-
         <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -44,85 +41,75 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="https://stenden.com">
-						<img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
-					</a>
+                        <img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
+                    </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Instellingen</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">English</a></li>
-			<li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="#">Mijn Portfolio <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Mijn Projecten</a></li>
-                        <li><a href="#">Mijn Opdrachten</a></li>
+                        <li><a href="#">Mijn Portfolio</a></li>
+                        <li class="active"><a href="#">Mijn Projecten <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Mijn Cijferlijst</a></li>
                         <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Welkom [NAAM]</h1>
+                    <h1 class="page-header">Project toevoegen</h1>
                 </div>
             </div></div>  
-
-
-
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
-                    
-                    <div class="bs-callout bs-callout-danger">
-                        <h4>Cijfers toevoegen en/of aanpassen</h4>
-                        <p>
-							<div class="panel panel-default">
-        <div class="panel-heading">1ste jaars</div>
-        <div class="panel-body">
-            <!-- TREEVIEW CODE -->
-            <ul class="treeview">
-                <li><a href="#">Cijfers</a>
-                	<ul>
-            			<li><a href="#">inf1i</a>
-            				<ul>
-            					<li><a href="invoercijfers.html">Dennis Kramer</a></li>
-            					<li><a href="invoercijfers.html">Chiel Timmermans</a></li>
-            					<li><a href="invoercijfers.html">Tom Verra</a></li>
-								<li><a href="invoercijfers.html">Siem Schippers</a></li>
-								<li><a href="invoercijfers.html">Tom Verra</a></li>
-								<li><a href="invoercijfers.html">Randy Rijkshoorn</a></li>
-								<li><a href="invoercijfers.html">Jefrey Meijer</a></li>
-								<li><a href="invoercijfers.html">Fekke Fekkes</a></li>
 
-							</ul>
-            				
-        </div>
-    </div>
-	</div>
-    
-                        </p>
+                    <div class="bs-callout bs-callout-danger">
+                        <form class="form-horizontal">
+                            
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Naam van project</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="project" type="text" placeholder="Naam van project" class="form-control input-md" required>
+                                    </div>
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textarea">Beschrijving van het project</label>  
+                                    <div class="col-md-4">
+                                        <textarea name="beschrijving" placeholder="Beschrijving project" required rows="10" cols="32"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <button id="button1id" name="submit" class="btn btn-success pull-right">Toevoegen</button>
+                                    </div>
+                                </div>
+                        </form>
+                        <a href="projecten.html">&#8592;</a>
                     </div>
-                    
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>

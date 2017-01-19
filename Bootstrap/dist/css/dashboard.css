@@ -588,6 +588,16 @@ opacity:0.9;
     margin-top: 0;
 }
 
+/*
+ *huisstijl veranderen
+ *paars
+ *roze
+ *rood
+ *oranje
+ *groen
+ *
+ */
+
 .bs-callout-danger {
     border-left-color: #4b2b86;
 }
@@ -597,43 +607,43 @@ opacity:0.9;
 }
 
 .bs-callout-danger1 {
-    border-left-color: #ff00ee;
+    border-left-color: #C47631;
 }
 
 .bs-callout-danger1 h4{
-    color: #ff00ee;
+    color: #C47631;
 }
 
 .bs-callout-danger2 {
-    border-left-color: #ff0000;
+    border-left-color: D82900;
 }
 
 .bs-callout-danger2 h4{
-    color: #ff0000;
+    color: D82900;
 }
 
 .bs-callout-danger3 {
-    border-left-color: #ffff00;
+    border-left-color: #C4B231;
 }
 
 .bs-callout-danger3 h4{
-    color: #ffff00;
+    color: #C4B231;
 }
 
 .bs-callout-danger4 {
-    border-left-color: #00ff00;
+    border-left-color: 00B047;
 }
 
 .bs-callout-danger4 h4{
-    color: #00ff00;
+    color: 00B047;
 }
 
 .bs-callout-danger5 {
-    border-left-color: #00ffff;
+    border-left-color: #20bcbc;
 }
 
 .bs-callout-danger5 h4{
-    color: #00ffff;
+    color: #20bcbc;
 }
 .resume .list-group-item:first-child, .resume .list-group-item:last-child{
   border-radius:0;
