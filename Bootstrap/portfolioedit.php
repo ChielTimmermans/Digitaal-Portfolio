@@ -16,6 +16,12 @@ $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
+require_once 'dbconnect.php';
+
+if (isset($_POST[submit]))
+{
+    
+}
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +141,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         </div>
                     </div>
 
-
+                    <form method="post" action="portfolioedit.php">
                     <div class="bs-callout bs-callout-danger">
                         <h4><?php echo $lang['Overmij']; ?></h4>
                         <p>
@@ -215,6 +221,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             </a>
                         </ul>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
