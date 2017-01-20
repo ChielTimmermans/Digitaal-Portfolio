@@ -18,16 +18,17 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 
 $getovermij = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
-    $oldovermij = mysqli_query($conn, $getovermij);
-if (isset($_POST[submit]))
-{
+$oldovermij = mysqli_query($conn, $getovermij);
+
+$getdiplomas = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
+$olddiplomas = mysqli_query($conn, $getdiplomas);
+if (isset($_POST[submit])) {
     $gettext = ('SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext');
     $oldtext = mysqli_query($conn, $gettext);
-    
-    if (empty($oldtext)){
+
+    if (empty($oldtext)) {
         $insertnew = "INSERT INTO portfoliotext(userID, overmij, diplomas, hobbies, werkervaring) VALUES ('$user, '$overmij', '$diplomas', '$hobbies', '$werkervaring')";
-    }
- else {
+    } else {
         $alternew = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE userID = '$user'";
     }
 }
@@ -138,12 +139,13 @@ if (isset($_POST[submit]))
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam "; echo $userAchterNaam;?></li>
+                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam ";
+                                        echo $userAchterNaam; ?></li>
                                         <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?>: Student informatica</li>
                                         <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?>: Stenden Hogeschool </li>
-                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats;?> </li>
-                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer" ;?></li>
-                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail ;?></li>
+                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?> </li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail; ?></li>
                                     </ul>
                                 </div>
                             </div>
@@ -151,77 +153,57 @@ if (isset($_POST[submit]))
                     </div>
 
                     <form method="post" action="portfolioedit.php">
-                    <div class="bs-callout bs-callout-danger">
-                        <h4><?php echo $lang['Overmij']; ?></h4>
-                        <textarea class="overmij" name="overmij" value="<?php $oldovermij?>"></textarea>
-                    </div>
-                    <div class="bs-callout bs-callout-danger">
-                        <h4><?php echo $lang['Diplomas']; ?></h4>
-                        <table class="table table-striped table-responsive ">
-                            <thead>
-                                <tr>
-                                    <th><?php echo $lang['Studie']; ?></th>
-                                    <th><?php echo $lang['School']; ?></th>
-                                    <th><?php echo $lang['Afstudeerjaar']; ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Netwerkbeheer N4</td>
-                                    <td>Drenthe College</td>
-                                    <td> 2016 </td>
-                                </tr>
-                                <tr>
-                                    <td>Medewerker beheer-ICT</td>
-                                    <td>Drenthe College</td>
-                                    <td> 2014 </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="bs-callout bs-callout-danger">
-                        <h4>Hobby's en interesses</h4>
-                        <p>
-                            Software Engineering, Machine Learning, Image Processing,
-                            Computer Vision, Artificial Neural Networks, Data Science,
-                            Evolutionary Algorithms.
-                        </p>
-                    </div>
-                    <div class="bs-callout bs-callout-danger">
-                        <h4>Werk ervaring</h4>
-                        <ul class="list-group">
-                            <a class="list-group-item inactive-link" href="#">
-                                <h4 class="list-group-item-heading">
-                                    Medewerker servicedesk
-                                </h4>
-                                <p class="list-group-item-text">
-                                    Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
-                                    te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                                </p>
-                            </a>
-                            <a class="list-group-item inactive-link" href="#">
-                                <h4 class="list-group-item-heading">Medewerker verkoopklaar</h4>
-                                <p class="list-group-item-text">
-                                    Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                    Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                    nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                                </p>
-                                <ul>
-                                    <li>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4><?php echo $lang['Overmij']; ?></h4>
+                            <textarea class="overmij" name="overmij" value="<?php $oldovermij ?>"></textarea>
+                        </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4><?php echo $lang['Diplomas']; ?></h4>
+                            <textarea name="Diplomas" value="<?php echo $olddiplomas ?>"></textarea>
+                        </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4>Hobby's en interesses</h4>
+                            <p>
+                                Software Engineering, Machine Learning, Image Processing,
+                                Computer Vision, Artificial Neural Networks, Data Science,
+                                Evolutionary Algorithms.
+                            </p>
+                        </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4>Werk ervaring</h4>
+                            <ul class="list-group">
+                                <a class="list-group-item inactive-link" href="#">
+                                    <h4 class="list-group-item-heading">
+                                        Medewerker servicedesk
+                                    </h4>
+                                    <p class="list-group-item-text">
+                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
+                                        te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                    </p>
+                                </a>
+                                <a class="list-group-item inactive-link" href="#">
+                                    <h4 class="list-group-item-heading">Medewerker verkoopklaar</h4>
+                                    <p class="list-group-item-text">
                                         Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
                                         Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
                                         nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                                    </li>
-                                    <li>
-                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                        Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                        nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                                    </li>
-                                </ul>
-                                <p></p>
-                            </a>
-                        </ul>
-                    </div>
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
+                                            Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                                            nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                        </li>
+                                        <li>
+                                            Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
+                                            Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                                            nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                        </li>
+                                    </ul>
+                                    <p></p>
+                                </a>
+                            </ul>
+                        </div>
                     </form>
                 </div>
             </div>
