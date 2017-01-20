@@ -60,6 +60,13 @@ if (isset($_POST['submit'])) {
     $pass2 = trim($_POST['pass2']);
     $pass2 = strip_tags($pass2);
     $pass2 = htmlspecialchars($pass2);
+    
+    $slb = 'n';
+        if(isset($_POST['slb'])){
+            if ($_POST['slb'] == 'yes'){
+                $slb = 'y';
+            }
+        }
 
     if (empty($stnummer)) {
         $error = true;
@@ -183,7 +190,7 @@ if (isset($_POST['submit'])) {
     $password = hash('sha256', $pass);
     if (!$error) {
 
-        $query = "INSERT INTO leraren (Lerarennummer,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol) VALUES ('$stnummer','$Voornaam','$Achternaam','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol')";
+        $query = "INSERT INTO leraren (Lerarennummer,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,slb) VALUES ('$stnummer','$Voornaam','$Achternaam','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol','$slb')";
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
@@ -268,7 +275,8 @@ if (isset($_POST['submit'])) {
                 <option value ="2">Docent</option>
                 <option value ="3">SlB'er</option>
                 <option value ="4">Admin</option>
-            </select><br><br> 
+            </select><br>
+            <p>slb <input type="checkbox" name="slb" value="yes"/></p><br> 
 
             <button type="submit" name="submit">Submit</button>
             <input type="reset">
