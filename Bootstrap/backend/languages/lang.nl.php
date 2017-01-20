@@ -87,7 +87,7 @@ $lang['gastlogin'] = 'login als gast';
 //home
 $lang['keuze'] = 'Maak een keuze';
 $lang['portfoliobekijken'] ="Bekijk portfolio's";
-$lang['veranderdcijfers'] = 'Cijfers toevoegen/aanpassen';
+$lang['verandercijfers'] = 'Cijfers toevoegen/aanpassen';
 $lang['projectenbeoordelen'] = 'Projecten bekijken/beoordelen.';
 
 //Overzichtcijfers en overzichtprojecten

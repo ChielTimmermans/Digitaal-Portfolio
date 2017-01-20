@@ -1,3 +1,26 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\..\..\createDatabases\dbconnect.php';
+include '..\functions\common.php';
+include '..\..\..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: ..\..\index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,8 +71,8 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
@@ -80,13 +103,13 @@
                     <div class="bs-callout bs-callout-danger">
                         <ul>
                             <li>
-                                <a href="../../overzicht.html"><?php echo $lang['portfoliobekijken']; ?></a>
+                                <a href="../../overzicht.php"><?php echo $lang['portfoliobekijken']; ?></a>
                             </li>
                             <li>
-                                <a href="overzichtcijfers.html"><?php echo $lang['verandercijfers']; ?></a>
+                                <a href="overzichtcijfers.php"><?php echo $lang['verandercijfers']; ?></a>
                             </li>
                             <li>
-                                <a href="overzichtprojecten.html"><?php echo $lang['projectenbeoordelen']; ?></a>
+                                <a href="overzichtprojecten.php"><?php echo $lang['projectenbeoordelen']; ?></a>
                             </li>
                         </ul>
                     </div>
