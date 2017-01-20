@@ -46,10 +46,17 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+<<<<<<< HEAD:Bootstrap/backend/docent/invoercijfers.html
                         <li><a href="#">Instellingen</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">English</a></li>
                         <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+=======
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+>>>>>>> caa43660c28b38ac0ee28ad25a06c10b8f1e6c4a:Bootstrap/backend/docent/invoercijfers.php
                     </ul>
                 </div>
             </div>
@@ -57,15 +64,15 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Projecten</a></li>
-                        <li class="active"><a href="#">Cijferlijst <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                   <ul class="nav nav-sidebar">
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Cijferlijst']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfers van [NAAM]</h1>
+                    <h1 class="page-header"><?php echo $lang['cijfersvan']; ?>[NAAM]</h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -76,11 +83,11 @@
                             <table class="table table-striped table-responsive ">
                                 <thead>
                                     <tr>
-                                        <th>Code en Studieonderdeel</th>
-                                        <th>Datum</th>
-                                        <th>Aantal EC</th>
-                                        <th>Cijfer</th>
-                                        <th>Wijzig</th>
+                                        <th><?php echo $lang['codestudie']; ?></th>
+                                        <th><?php echo $lang['date']; ?></th>
+                                        <th><?php echo $lang['aantalec']; ?></th>
+                                        <th><?php echo $lang['cijfer']; ?></th>
+                                        <th><?php echo $lang['wijzig']; ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,19 +96,19 @@
                                         <td>09-11-2016</td>
                                         <td>3</td>
                                         <td>6.2</td>
-                                        <td> <a href="aanpassen.html">Wijzig</a></td>
+                                        <td> <a href="aanpassen.html"><?php echo $lang['wijzig']; ?></a></td>
                                     </tr>
                                     <tr>
                                         <td>OIXH (X)HTML en CSS</td>
                                         <td>09-11-2016</td>
                                         <td>3</td>
                                         <td>7.2</td>
-                                        <td> <a href="aanpassen.html">Wijzig</a></td>
+                                        <td> <a href="aanpassen.html"><?php echo $lang['wijzig']; ?></a></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p> <a href="toevoegen.html"> Klik hier om een cijfer toe te voegen  </a> </p>
+                        <p> <a href="toevoegen.html"> <?php echo $lang['cijfertoevoegen']; ?>  </a> </p>
                         <a href="overzichtcijfers.html">&#8592;</a>
                     </div>
                 </div>

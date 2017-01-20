@@ -46,10 +46,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Engels</a></li>
-                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -58,30 +58,42 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Cijferlijst</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Bijlage(s)</h1>
+                    <h1 class="page-header"><?php echo $lang['projectenvan']; ?> [NAAM]</h1>
                 </div>
             </div></div>
-        <div class="container"> 
+        <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
+                        <a class="list-group-item inactive-link" href="#">
+                            <h4 class="list-group-item-heading">Professionele website</h4>
+                            <p class="list-group-item-text">
+                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
+                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                            </p>    
+                        </a>
+                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
+                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeeproject']; ?></button></a></p>
 
-                        <ul>
-                            <li>
-                                <a href='#'> Bijlage1 </a>
-                            </li>
-                            <li>
-                                <a href='#'> Bijlage2 </a>
-                            </li>
-                        </ul>
-                        <a href="projecten.html">&#8592;</a>	
+                        <a class="list-group-item inactive-link" href="#">
+                            <h4 class="list-group-item-heading">Portfolio</h4>
+                            <p class="list-group-item-text">
+                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
+                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
+                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                            </p>    
+                        </a>
+                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
+                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeeproject']; ?></button></a></p>
+                        <a href="overzichtprojecten.html">&#8592;</a>		
                     </div>
                 </div>
             </div>

@@ -48,10 +48,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">English</a></li>
-                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -61,17 +61,16 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Projecten</a></li>
-                        <li class="active"><a href="#">Cijferlijst <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfer wijzigen</h1>
+                    <h1 class="page-header"><?php echo $lang['keuze']; ?></h1>
                 </div>
             </div></div>  
-
 
 
         <div class="container">
@@ -79,32 +78,22 @@
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <table class="table table-striped table-responsive ">
-                            <thead>
-                                <tr>
-                                    <th>Code en Studieonderdeel</th>
-                                    <th>Datum</th>
-                                    <th>Aantal EC</th>
-                                    <th>Cijfer</th>
-                                    <th>Wijzigen</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="datum" type="date" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
-                                    <td><a href="invoercijfers.html"><button id="button1id" name="submit" class="btn btn-success pull-right">Wijzig</button></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="invoercijfers.html">&#8592;</a>	
+                        <ul>
+                            <li>
+                                <a href="../../overzicht.html"><?php echo $lang['portfoliobekijken']; ?></a>
+                            </li>
+                            <li>
+                                <a href="overzichtcijfers.html"><?php echo $lang['verandercijfers']; ?></a>
+                            </li>
+                            <li>
+                                <a href="overzichtprojecten.html"><?php echo $lang['projectenbeoordelen']; ?></a>
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
             </div>
         </div>
-
 
         <!-- Bootstrap core JavaScript
         ================================================== -->

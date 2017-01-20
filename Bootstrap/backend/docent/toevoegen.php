@@ -46,10 +46,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Engels</a></li>
-                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -58,42 +58,56 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Cijferlijst</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Cijferlijst']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Projecten van [NAAM]</h1>
+                    <h1 class="page-header">Cijfer toevoegen</h1>
                 </div>
-            </div></div>
+            </div></div>  
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
-                    <div class="bs-callout bs-callout-danger">
-                        <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Professionele website</h4>
-                            <p class="list-group-item-text">
-                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                            </p>    
-                        </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info">Bekijk bijlagen</button></a></p>
-                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success">Beoordeel dit project</button></a></p>
 
-                        <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Portfolio</h4>
-                            <p class="list-group-item-text">
-                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                            </p>    
-                        </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info">Bekijk bijlagen</button></a></p>
-                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success">Beoordeel dit project</button></a></p>
-                        <a href="overzichtprojecten.html">&#8592;</a>		
+                    <div class="bs-callout bs-callout-danger">
+                        <p>
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codestudie']; ?></label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['date']; ?></label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="datum" type="date" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['aantalec']; ?></label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['cijfer']; ?></label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['toevoegen']; ?></button>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <a href="invoercijfers.html">&#8592;</a>	
                     </div>
                 </div>
             </div>
