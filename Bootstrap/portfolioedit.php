@@ -18,9 +18,19 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 require_once 'dbconnect.php';
 
+$getovermij = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
+    $oldovermij = mysqli_query($conn, $getovermij);
 if (isset($_POST[submit]))
 {
+    $gettext = ('SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext');
+    $oldtext = mysqli_query($conn, $gettext);
     
+    if (empty($oldtext)){
+        $insertnew = "INSERT INTO portfoliotext(userID, overmij, diplomas, hobbies, werkervaring) VALUES ('$user, '$overmij', '$diplomas', '$hobbies', '$werkervaring')";
+    }
+ else {
+        $alternew = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE userID = '$user'";
+    }
 }
 ?>
 
@@ -144,15 +154,7 @@ if (isset($_POST[submit]))
                     <form method="post" action="portfolioedit.php">
                     <div class="bs-callout bs-callout-danger">
                         <h4><?php echo $lang['Overmij']; ?></h4>
-                        <p>
-                            Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                            Quis verear mel ne. Munere vituperata vis cu, 
-                            te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                        </p>
-                        <p>
-                            Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis. 
-                            Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
-                        </p>
+                        <textarea name="overmij" value="<?php $oldovermij?>"></textarea>
                     </div>
                     <div class="bs-callout bs-callout-danger">
                         <h4><?php echo $lang['Diplomas']; ?></h4>
