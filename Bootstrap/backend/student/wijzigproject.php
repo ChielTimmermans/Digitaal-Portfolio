@@ -58,14 +58,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Mijn Portfolio</a></li>
-                        <li class="active"><a href="#">Mijn Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Mijn Cijferlijst</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Cijferlijst</a></li>
                         <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Project toevoegen</h1>
+                    <h1 class="page-header">Project wijzigen</h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -76,21 +76,21 @@
                         <form class="form-horizontal">
                             
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Naam van project</label>  
+                                    <label class="col-md-4 control-label" for="textinput">Naam project</label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="project" type="text" placeholder="Naam van project" class="form-control input-md" required>
+                                        <input id="textinput" name="project" type="text" placeholder="Professionele Website" class="form-control input-md" required>
                                     </div>
                                 </div>
                             
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textarea">Beschrijving van het project</label>  
+                                    <label class="col-md-4 control-label" for="textarea">Beschrijving project</label>  
                                     <div class="col-md-4">
                                         <textarea name="beschrijving" placeholder="Beschrijving project" required rows="10" cols="32"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-8">
-                                        <button id="button1id" name="submit" class="btn btn-success pull-right">Toevoegen</button>
+                                        <button id="button1id" name="submit" class="btn btn-success pull-right">Bewerk</button>
                                     </div>
                                 </div>
                         </form>

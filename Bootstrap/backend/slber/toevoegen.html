@@ -48,7 +48,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#">Instellingen</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">English</a></li>
+                        <li><a href="#">Engels</a></li>
                         <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
                     </ul>
                 </div>
@@ -59,13 +59,13 @@
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li><a href="#">Mijn Portfolio</a></li>
-                        <li class="active"><a href="#">Mijn Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Mijn Cijferlijst</a></li>
+                        <li><a href="#">Mijn Projecten</a></li>
+                        <li class="active"><a href="#">Mijn Cijferlijst <span class="sr-only">(current)</span></a></li>
                         <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Project toevoegen</h1>
+                    <h1 class="page-header">Cijfer toevoegen</h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -73,19 +73,31 @@
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
+                        <p>
                         <form class="form-horizontal">
-                            
+                            <fieldset>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Naam van project</label>  
+                                    <label class="col-md-4 control-label" for="textinput">Code en Studieonderdeel</label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="project" type="text" placeholder="Naam van project" class="form-control input-md" required>
+                                        <input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md">
                                     </div>
                                 </div>
-                            
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textarea">Beschrijving van het project</label>  
+                                    <label class="col-md-4 control-label" for="textinput">Datum</label>  
                                     <div class="col-md-4">
-                                        <textarea name="beschrijving" placeholder="Beschrijving project" required rows="10" cols="32"></textarea>
+                                        <input id="textinput" name="datum" type="date" class="form-control input-md">
+                                    </div>
+                                </div>
+                                 <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Aantal EC</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Cijfer</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -93,8 +105,8 @@
                                         <button id="button1id" name="submit" class="btn btn-success pull-right">Toevoegen</button>
                                     </div>
                                 </div>
+                            </fieldset>
                         </form>
-                        <a href="projecten.html">&#8592;</a>
                     </div>
                 </div>
             </div>
