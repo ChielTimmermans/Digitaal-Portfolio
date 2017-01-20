@@ -58,9 +58,9 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Mijn Portfolio</a></li>
-                        <li class="active"><a href="#">Mijn Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Mijn Cijferlijst</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Cijferlijst</a></li>
                         <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>
