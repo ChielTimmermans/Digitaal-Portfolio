@@ -157,7 +157,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?></li>
                                         <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?></li>
                                         <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
-                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['email']; ?>: <?php echo $userEmail; ?></li>
                                     </ul>
                                 </div>
                             </div>

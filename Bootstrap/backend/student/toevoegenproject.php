@@ -51,6 +51,12 @@
                         <li><a href="#">English</a></li>
                         <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
                     </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                       <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -58,9 +64,9 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Mijn Portfolio</a></li>
-                        <li class="active"><a href="#">Mijn Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Mijn Cijferlijst</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Cijferlijst</a></li>
                         <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>

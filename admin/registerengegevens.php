@@ -49,11 +49,7 @@ if (isset($_POST['submit']))
     $plaats = trim($_POST['woonplaats']);
     $plaats = strip_tags($plaats);
     $plaats = htmlspecialchars($plaats);
-
-    $rol = trim($_POST['rol']);
-    $rol = strip_tags($rol);
-    $rol = htmlspecialchars($rol);
-
+    
     $pass = trim($_POST['pass']);
     $pass = strip_tags($pass);
     $pass = htmlspecialchars($pass);
@@ -198,11 +194,6 @@ if (isset($_POST['submit']))
         $lnameError = "Straatnaam bevat alleen alfabetische tekens.";
     }
 
-    if (empty($rol))
-    {
-        $error = true;
-        $rolError = "Vul uw rol in.";
-    } else if ($rol > 3)
     {
         $error = true;
         $rolError = "Vul een geldige rol in.";
@@ -227,12 +218,13 @@ if (isset($_POST['submit']))
     if (!$error)
     {
 
-        $query = "INSERT INTO gegevens (Studentnummer,Klas,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,Stijl1,Stijl2,Stijl3) VALUES ('$stnummer','$klas','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol',1,1,1)";
+        $query = "INSERT INTO gegevens (Studentnummer,Klas,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,Stijl1,Stijl2,Stijl3) VALUES ('$stnummer','$klas','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','1',1,1,1)";
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
-        $query2 = "INSERT INTO projecten (Studentnummer,Projecttitel1,Projectcontent1,Projecttitel2,Projectcontent2,Projecttitel3,Projectcontent3,Projecttitel4,Projectcontent4) VALUES ('$stnummer','0','0','0','0','0','0','0','0')";
-        $res2 = mysqli_query($conn, $query2);
+        $query3 = "INSERT INTO projecten (Studentnummer,Projecttitel1,Projectcontent1,Projecttitel2,Projectcontent2,Projecttitel3,Projectcontent3,Projecttitel4,Projectcontent4) VALUES ('$stnummer','0','0','0','0','0','0','0','0')";
+        $res3 = mysqli_query($conn, $query3);
+
 
         if ($res)
         {
@@ -254,25 +246,55 @@ if (isset($_POST['submit']))
         }
     }
     // create table voor de user
-    $SQLstring3 = "CREATE TABLE $user (userID AUTO_INCREMENT PRIMARY KEY, "
-            . "studentNummer INT(10) NOT NULL, "
-            . "klas VARCHAR(6) NOT NULL, "
-            . "voornaam VARCHAR(25) NOT NULL, "
-            . "achternaam VARCHAR(25) NOT NULL, "
-            . "email VARCHAR(100) NOT NULL, "
-            . "telnummer INT(15) NOT NULL, "
-            . "geboortedatum DATE() NOT NULL, "
-            . "adres VARCHAR(30) NOT NULL, "
-            . "huisnummer INT(4) NOT NULL, "
-            . "postcode VARCHAR(6) NOT NULL, "
-            . "woonplaats VARCHAR(25) NOT NULL, "
-            . "gender VARCHAR(1) NOT NULL, "
-            . "vakCode VARCHAR(10) NOT NULL, "
-            . "studieonderdelen VARCHAR(30) NOT NULL, "
-            . "vakcijfer INT(3) NOT NULL, "
-            . "ec INT(1) NOT NULL)";
-    
+//    $SQLstring3 = "CREATE TABLE $user (userID AUTO_INCREMENT PRIMARY KEY, "
+//            . "studentNummer INT(10) NOT NULL, "
+//            . "klas VARCHAR(6) NOT NULL, "
+//            . "voornaam VARCHAR(25) NOT NULL, "
+//            . "achternaam VARCHAR(25) NOT NULL, "
+//            . "email VARCHAR(100) NOT NULL, "
+//            . "telnummer INT(15) NOT NULL, "
+//            . "geboortedatum DATE() NOT NULL, "
+//            . "adres VARCHAR(30) NOT NULL, "
+//            . "huisnummer INT(4) NOT NULL, "
+//            . "postcode VARCHAR(6) NOT NULL, "
+//            . "woonplaats VARCHAR(25) NOT NULL, "
+//            . "gender VARCHAR(1) NOT NULL, "
+//            . "vakCode VARCHAR(10) NOT NULL, "
+//            . "studieonderdelen VARCHAR(30) NOT NULL, "
+//            . "vakcijfer INT(3) NOT NULL, "
+//            . "ec INT(1) NOT NULL)";
+//    
+
+    // create table met naam van studentnumemr
+    // veritcaal vakken
+    // aarachter cijfers
+   $DBConnect = mysqli_connect('localhost', 'root', '');
+   $DBName = 'portfolio';
+   mysqli_select_db($DBConnect, $DBName);
+    $TableName = "s" . $stnummer;
+    $SQLstring = "SHOW TABLES LIKE '$TableName'";
+    $QueryResult = mysqli_query($DBConnect, $SQLstring);
+    if (mysqli_num_rows($QueryResult) == 0)
+    {
+        $SQLstring = "CREATE TABLE $TableName(
+            vakCode VARCHAR(10) PRIMARY KEY,
+            vakNaam VARCHAR(50),
+            cijfer INT(3),
+            EC INT(2),
+            vakDocent VARCHAR(30))";
+        echo $SQLstring;
+        $QueryResult = mysqli_query($DBConnect, $SQLstring);
+        if ($QueryResult === FALSE)
+        {
+            echo "<p>Unable to create the table.</p>"
+            . "<p>Error code "
+            . mysqli_errno($DBConnect)
+            . ": " . mysqli_error($DBConnect) . "</p>";
+        }
+    }
+            
 }
+    
 ?>
 <!DOCTYPE html>
 <html>
@@ -323,11 +345,6 @@ if (isset($_POST['submit']))
             <span><?php echo $plaatsError; ?></span><br><br>
             <input type="radio" name="gender" value="m" checked>Man
             <input type="radio" name="gender" value="f">Vrouw<br><br>
-            Rol:<br>
-            <input type="text" name="rol" maxlength="1" placeholder="rol"><br>
-            1: Student<br>
-            2: Docent<br>
-            3: SLB'er<br><br>
             <button type="submit" name="submit">Submit</button>
             <input type="reset">
             <span><?php echo $rolError; ?></span>

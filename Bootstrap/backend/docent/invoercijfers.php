@@ -46,10 +46,17 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
+<<<<<<< HEAD:Bootstrap/backend/docent/invoercijfers.html
                         <li><a href="#">Instellingen</a></li>
                         <li><a href="#">Contact</a></li>
-                        <li><a href="#">Engels</a></li>
+                        <li><a href="#">English</a></li>
                         <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+=======
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+>>>>>>> caa43660c28b38ac0ee28ad25a06c10b8f1e6c4a:Bootstrap/backend/docent/invoercijfers.php
                     </ul>
                 </div>
             </div>

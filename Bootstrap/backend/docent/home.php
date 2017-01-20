@@ -48,10 +48,10 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Contact']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                        <li><a href="../../uitlogscherm.html"><?php echo $lang['Uitloggen']; ?></a></li>
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                 </div>
             </div>
