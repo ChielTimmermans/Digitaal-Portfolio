@@ -222,9 +222,6 @@ if (isset($_POST['submit']))
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
-        $query3 = "INSERT INTO projecten (Studentnummer,Projecttitel1,Projectcontent1,Projecttitel2,Projectcontent2,Projecttitel3,Projectcontent3,Projecttitel4,Projectcontent4) VALUES ('$stnummer','0','0','0','0','0','0','0','0')";
-        $res3 = mysqli_query($conn, $query3);
-
 
         if ($res)
         {
@@ -279,8 +276,8 @@ if (isset($_POST['submit']))
         $SQLstring = "CREATE TABLE $TableName(
             vakCode VARCHAR(10) PRIMARY KEY,
             vakNaam VARCHAR(50),
-            cijfer INT(3),
-            EC INT(2),
+            cijfer VARCHAR(4),
+            EC VARCHAR(4),
             vakDocent VARCHAR(30))";
         echo $SQLstring;
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
@@ -292,8 +289,49 @@ if (isset($_POST['submit']))
             . ": " . mysqli_error($DBConnect) . "</p>";
         }
     }
-            
-}
+        $array = array(
+        array('vakCode', 'vakNaam', 'EC' ),
+        array('OIIM', 'Informatiemanagemnt', '3.0'),
+        array('OIPHP1', 'PHP', '3.0'),
+        array('OIDGD1', 'Digital Graphic Design 1', '3.0'),
+        array('IIPR1', 'Project Professionele Website', '3.0'),
+        array('GMOCO1', 'Mondelinge communicatie 1', '3.0'),
+        array('OIDB1', 'Databases 1', '3.0'),
+        array('OIPHP2', 'Unleash your Potential in PHP', '3.0'),
+        array('GSLB1A', 'Studieloopbaanbegeleiding 1A', '3.0'),
+        array('IIPR2', 'Project Digitale Portfolio', '3.0'),
+        array('GSCOT1', 'Schriftelijke Communicatie', '3.0'),
+        array('OIJV1', 'Java 1', '3.0'),
+        array('OICN1', 'Computernetwerken 1', '3.0'),
+        array('OIWIS', 'Inleiding Wiskunde', '3.0'),
+        array('IIPR3', 'Project Solar Bot', '3.0'),
+        array('GSLB1B', 'Studieloopbaanbegeleiding 1B', '3.0'),
+        array('OIC#1', 'C# 1', '3.0'),
+        array('OIMM', 'Multimedia Productie', '3.0'),
+        array('IIPR4B', 'Project Stenden Creative - Realization', '3.0')
+         );
+
+        $fields = implode(',', array_shift($array)); // take the field names off the start of the array
+
+        $data = array();
+        foreach($array as $row) {
+            $vakCode = mysql_real_escape_string($row[0]);
+            $vakNaam = mysql_real_escape_string($row[1]);
+            $vakDocent = mysql_real_escape_string($row[2]);
+            $data[] = "('$vakCode', '$vakNaam', '$vakDocent')";
+        }
+        $values = implode(',', $data);
+
+        $sql = "INSERT INTO $TableName ($fields) VALUES $values";
+        $sqlres = mysqli_query($DBConnect, $sql);
+        if ($sqlres === FALSE) {
+            echo "<p>Unable to execute the query.</p>"
+            . "<p>Error code " . mysqli_errno($DBConnect)
+            . ": " . mysqli_error($DBConnect) . "</p>";
+        } else {
+            echo "Gelukt";
+        }
+    }
     
 ?>
 <!DOCTYPE html>
