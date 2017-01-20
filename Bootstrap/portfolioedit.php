@@ -89,14 +89,14 @@ if (isset($_POST[submit]))
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="portfolio.php"><?php echo $lang['Mijnportfolio']; ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="projecten.php"><?php echo $lang['MijnProjecten']; ?></a></li>
-                        <li><a href="cijfers.php"><?php echo $lang['MijnCijferlijst']; ?></a></li>
+                        <li class="active"><a href="portfolio.php"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
                         <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['Mijnportfolio']; ?></h1>
+                    <h1 class="page-header"><?php echo $lang['Portfolio']; ?></h1>
                 </div>
             </div></div>  
 

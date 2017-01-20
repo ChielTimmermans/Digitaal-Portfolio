@@ -30,7 +30,9 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
+
     <body>
+
         <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -46,46 +48,52 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Engels</a></li>
-                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="#"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="../../uitlogscherm.html"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="#">Mijn Portfolio <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Mijn Projecten</a></li>
-                        <li><a href="#">Mijn Opdrachten</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Welkom [NAAM]</h1>
+                    <h1 class="page-header"><?php echo $lang['keuze']; ?></h1>
                 </div>
-            </div></div>
+            </div></div>  
+
+
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
+
                     <div class="bs-callout bs-callout-danger">
-						<h4>Bijlagen voor het project: [PROJECT NAAM]</h4>
-						                                <ul>
-                                    <li>
-                                        <a href='#'> Bijlage1 </a>
-                                    </li>
-                                    <li>
-                                       <a href='#'> Bijlage2 </a>
-                                    </li>
-                                </ul>
+                        <ul>
+                            <li>
+                                <a href="../../overzicht.html"><?php echo $lang['portfoliobekijken']; ?></a>
+                            </li>
+                            <li>
+                                <a href="overzichtcijfers.html"><?php echo $lang['verandercijfers']; ?></a>
+                            </li>
+                            <li>
+                                <a href="overzichtprojecten.html"><?php echo $lang['projectenbeoordelen']; ?></a>
+                            </li>
+                        </ul>
                     </div>
+
                 </div>
             </div>
         </div>
-
 
         <!-- Bootstrap core JavaScript
         ================================================== -->

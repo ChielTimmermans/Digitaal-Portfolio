@@ -7,7 +7,6 @@ if (!isset($_GET['Studentnummer']) || empty($_GET))
 {
     $portnummer = $_GET['Studentnummer'];
 }
-
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
@@ -110,9 +109,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="portfolio.html"><?php echo $lang['Mijnportfolio']; ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="projecten.html"><?php echo $lang['MijnProjecten']; ?></a></li>
-                        <li><a href="cijfers.html"><?php echo $lang['MijnCijferlijst']; ?></a></li>
+                        <li class="active"><a href="portfolio.html"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="projecten.html"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.html"><?php echo $lang['Cijferlijst']; ?></a></li>
                         <li><a href="gastenboek.html"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
@@ -261,27 +260,3 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>
-<?php
-session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
-    $portnummer = $_SESSION['user'];
-} else
-{
-    $portnummer = $_GET['Studentnummer'];
-}
-
-require_once '..\createDatabases/dbconnect.php';
-include '..\Functions\common.php';
-include '..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
-    header("Location: index.php");
-    exit;
-}
-$user = $_SESSION['user'];
-$query = "SELECT * FROM users WHERE studentnummer = '$user'";
-$result = mysqli_query($conn, $query)
-        or die("Error: " . mysqli_error($conn));
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-?>

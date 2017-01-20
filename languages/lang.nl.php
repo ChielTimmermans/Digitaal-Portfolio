@@ -26,9 +26,9 @@ $lang['Taal'] = 'English';
 $lang['TaalLink'] = '?lang=en';
 $lang['Contact'] = 'Contact';
 $lang['Instellingen'] = 'Instellingen';
-$lang['Mijnportfolio'] = 'Mijn Portfolio';
-$lang['MijnProjecten'] = 'Mijn Projecten';
-$lang['MijnCijferlijst'] = 'Mijn Cijferlijst';
+$lang['Portfolio'] = 'Portfolio';
+$lang['Projecten'] = 'Projecten';
+$lang['Cijferlijst'] = 'Cijferlijst';
 $lang['Gastenboek'] = 'Gastenboek';
 $lang['School'] = 'naam';
 $lang['naam'] = 'naam';
@@ -82,4 +82,39 @@ $lang['upload'] = 'upload bestanden';
 
 //index
 $lang['gastlogin'] = 'login als gast';
+
+/*BACKEND STUDENT*/
+//home
+$lang['keuze'] = 'Maak een keuze';
+$lang['portfoliobekijken'] ="Bekijk portfolio's";
+$lang['veranderdcijfers'] = 'Cijfers toevoegen/aanpassen';
+$lang['projectenbeoordelen'] = 'Projecten bekijken/beoordelen.';
+
+//Overzichtcijfers en overzichtprojecten
+$lang['leerlingen'] = 'Leerlingen';
+$lang['jaar1'] ="Jaar 1";
+$lang['klas'] = 'klas';
+
+//invoercijfers, toevoegen, aanpassen en beoordeel
+$lang['cijfersvan'] = 'Cijfers van';
+$lang['codestudie'] ="Code en Studieonderdeel";
+$lang['aantalec'] = 'Aantal EC';
+$lang['cijfer'] ="Cijfer";
+$lang['wijzig'] = 'Wijzig';
+$lang['cijfertoevoegen'] ="Klik hier om een cijfer toe te voegen";
+$lang['toevoegen'] ="Toevoegen";
+$lang['codeproject'] = 'Code en projectnaam';
+$lang['opmerkingen'] ="Opmerkingen";
+$lang['cijferwijzigen'] ="Cijfer Wijzigen";
+
+
+//projecten
+$lang['projectenvan'] = 'Projecten van';
+$lang['bekijkbijlagen'] ="Bekijk bijlagen";
+$lang['beoordeelproject'] = 'Beoordeel project';
+
+//bijlage
+$lang['bijlagen'] = 'Bijlagen';
+
+
 ?>

@@ -1,22 +1,3 @@
-<?php
-require_once '..\createDatabases/dbconnect.php';
-include '..\Functions\common.php';
-include '..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
-    header("Location: index.php");
-    exit;
-}
-$user = $_SESSION['user'];
-$query = "SELECT * FROM users WHERE studentnummer = '$user'";
-$result = mysqli_query($conn, $query)
-        or die("Error: " . mysqli_error($conn));
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-$query2 = "SELECT * FROM projecten WHERE studentnummer = '$user'";
-$result2 = mysqli_query($conn, $query2)
-        or die("Error: " . mysqli_error($conn));
-$row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -26,24 +7,22 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="dist/css/images/favicon.ico">
+        <link rel="icon" href="../../dist/css/images/favicon.ico">
 
         <title>Portfolio | Stenden Hogeschool</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+        <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="dist/css/dashboard.css" rel="stylesheet">
+        <link href="../../dist/css/dashboard.css" rel="stylesheet">
 
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="assets/js/ie-emulation-modes-warning.js"></script>
+        <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -64,35 +43,35 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="https://stenden.com">
-                        <img src="images/stenden_logo1.png" alt="Stenden Logo">
+                        <img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html">Instellingen</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Instellingen</a></li>
+                        <li><a href="#">Contact</a></li>
                         <li><a href="#">English</a></li>
-                        <li><a href="uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
                     </ul>
                 </div>
             </div>
         </nav>
 
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li class="active"><a href="projecten.html">Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="cijfers.html">Cijferlijst</a></li>
-                        <li><a href="gastenboek.html">Gastenboek</a></li>
+                   <ul class="nav nav-sidebar">
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Cijferlijst']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Mijn Projecten</h1>
+                    <h1 class="page-header"><?php echo $lang['cijferwijzigen']; ?></h1>
                 </div>
             </div></div>  
+
 
 
         <div class="container">
@@ -100,38 +79,32 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-
-                        <ul class="list-group">
-                            <?php
-                            $item = 1;
-                            $project =4;
-                            for($item = 1; $item <= $project; $item++){
-                            if (!empty($row2['Projecttitel'.$item.''])){
-                                echo'  <div class="list-group-item inactive-link">
-                                            <h4 class="list-group-item-heading">'.
-                                                $row2['Projecttitel'.$item.'']
-                                            .'</h4>
-                                            <p class="list-group-item-text">'.
-                                                $row2['Projectcontent'.$item.'']
-                                            .'</p>
-                                        </div>';
-                            }
-                            }
-                            if($project === 0){
-                                echo '  <div class="list-group-item inactive-link">
-                                            <p class="list-group-item-text">'.
-                                                "Er zijn geen projecten."
-                                            .'</p>
-                                        </div>';
-                            
-                            }
-                            ?>                          
-                        </ul>
+                        <table class="table table-striped table-responsive ">
+                            <thead>
+                                <tr>
+                                    <th><?php echo $lang['codestudie']; ?></th>
+                                    <th><?php echo $lang['date']; ?></th>
+                                    <th><?php echo $lang['aantalec']; ?></th>
+                                    <th><?php echo $lang['cijfer']; ?></th>
+                                    <th><?php echo $lang['wijzig']; ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md"></td>
+                                    <td><input id="textinput" name="datum" type="date" class="form-control input-md"></td>
+                                    <td><input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md"></td>
+                                    <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
+                                    <td><a href="invoercijfers.html"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzigen']; ?></button></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="invoercijfers.html">&#8592;</a>	
                     </div>
-
                 </div>
             </div>
         </div>
+
 
         <!-- Bootstrap core JavaScript
         ================================================== -->
