@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '..\createDatabases/dbconnect.php';
+require_once '..\CreateDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
 
@@ -16,7 +16,6 @@ $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-require_once 'dbconnect.php';
 
 $getovermij = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
     $oldovermij = mysqli_query($conn, $getovermij);
