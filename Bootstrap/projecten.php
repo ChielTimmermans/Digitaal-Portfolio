@@ -104,15 +104,15 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                         <ul class="list-group">
                             <?php
                             $item = 1;
-                            $project =3;
+                            $project =4;
                             for($item = 1; $item <= $project; $item++){
                             if (!empty($row2['Projecttitel'.$item.''])){
                                 echo'  <div class="list-group-item inactive-link">
                                             <h4 class="list-group-item-heading">'.
-                                                $row2['Projecttitel1']
+                                                $row2['Projecttitel'.$item.'']
                                             .'</h4>
                                             <p class="list-group-item-text">'.
-                                                $row2['Projectcontent1']
+                                                $row2['Projectcontent'.$item.'']
                                             .'</p>
                                         </div>';
                             }

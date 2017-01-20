@@ -13,10 +13,9 @@ include_once '..\createdatabases/dbconnect.php';
 
 $error = false;
 
-if (isset($_POST['btn-signup']))
-{
+if (isset($_POST['btn-signup'])) {
 
-    $studentnummer = 123456;
+    $studentnummer = 469521;
 //    $studentnummer = trim($_POST['studentnummer']);
     $studentnummer = strip_tags($studentnummer);
     $studentnummer = htmlspecialchars($studentnummer);
@@ -29,45 +28,37 @@ if (isset($_POST['btn-signup']))
     $content = strip_tags($content);
     $content = htmlspecialchars($content);
 
-    $item = 100;
-    for ($x = 1; $x < $item; $x++)
-    {
-        $projecttitel = "Projecttitel$x";
-        $myquery = "SELECT $projecttitel from projecten where studentnummer = 123456";
-        echo "$myquery<br>";
-        $res2 = mysqli_query($conn, $myquery);
-        $userRow = mysqli_fetch_array($res2);
-        $count = mysqli_num_rows($res2);
-        $title = ($userRow[$projecttitel]);
-        echo $title;
-        if ($title == "0")
-        {
-            $item = $x;
-        } else
-        {
-            echo"vol";
+    $item = 6;
+    for ($x = 1; $x < $item; $x++) {
+        if ($x < 5) {
+            $projecttitel = "Projecttitel$x";
+            $myquery = "SELECT $projecttitel from projecten where studentnummer = 469521";
+            $res2 = mysqli_query($conn, $myquery);
+            $userRow = mysqli_fetch_array($res2);
+            $title = ($userRow[$projecttitel]);
+            if ($title == "0") {
+                $item = $x;
+            }
         }
     }
+
     $x = $x - 1;
-    echo $x;
-    if (!projecttitel){
-        $query = "ALTER TABLE projecten add projecttitel$x VARCHAR(50)"
+
+    if (!projecttitel5) {
+        $query = "ALTER TABLE projecten add projecttitel$x VARCHAR(50)";
     }
-    if (!$error)
-    {
+    if (!$error) {
         $item = $x;
-        $query = "UPDATE projecten SET projecttitel$item='$titel',Projectcontent$item='$content' WHERE studentnummer = 123456";
+        $query = "UPDATE projecten SET projecttitel$item='$titel',Projectcontent$item='$content' WHERE studentnummer = 469521";
         $res = mysqli_query($conn, $query);
 
-        if ($res)
-        {
+        if ($res) {
             $errTyp = "success";
             $errMSG = "Successfully registered, you may login now";
             unset($name);
             unset($email);
             unset($pass);
-        } else
-        {
+        } else {
             $errTyp = "danger";
             $errMSG = "Something went wrong, try again later...";
         }
@@ -77,17 +68,19 @@ if (isset($_POST['btn-signup']))
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+        <script>tinymce.init({selector: 'textarea'});</script>
         <meta charset="utf-8" />
         <title>Coding Cage - Login & Registration System</title>
     </head>
     <body>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
             <hr />
-            <input type="text" name="titel" placeholder="Enter the title of your project" maxlength="8" value="<?php echo $titel1 ?>"/>
+            <input type="text" name="titel" placeholder="Enter the title of your project"  value="<?php echo $titel1 ?>"/>
             <span><?php echo $nummerError ?></span>
             <br><br>
-            <textarea rows="4" cols="50" name="content" placeholder="Enter the content of your porject"><?php echo $content1; ?></textarea>
-
+                <textarea name="content" placeholder="Enter the content of your project"></textarea>
+                
             <br><br>
             <button type="submit" name="btn-signup">enter project</button>
             <span><?php echo $errMSG; ?></span>
