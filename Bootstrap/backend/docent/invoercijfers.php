@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\..\..\createDatabases\dbconnect.php';
+include '..\functions\common.php';
+include '..\..\..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: ..\..\index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -46,17 +69,15 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-<<<<<<< HEAD:Bootstrap/backend/docent/invoercijfers.html
                         <li><a href="#">Instellingen</a></li>
                         <li><a href="#">Contact</a></li>
                         <li><a href="#">English</a></li>
-                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
-=======
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="../../uitlogscherm.php">Uitloggen</a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
->>>>>>> caa43660c28b38ac0ee28ad25a06c10b8f1e6c4a:Bootstrap/backend/docent/invoercijfers.php
+
                     </ul>
                 </div>
             </div>
@@ -96,20 +117,20 @@
                                         <td>09-11-2016</td>
                                         <td>3</td>
                                         <td>6.2</td>
-                                        <td> <a href="aanpassen.html"><?php echo $lang['wijzig']; ?></a></td>
+                                        <td> <a href="aanpassen.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
                                     </tr>
                                     <tr>
                                         <td>OIXH (X)HTML en CSS</td>
                                         <td>09-11-2016</td>
                                         <td>3</td>
                                         <td>7.2</td>
-                                        <td> <a href="aanpassen.html"><?php echo $lang['wijzig']; ?></a></td>
+                                        <td> <a href="aanpassen.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p> <a href="toevoegen.html"> <?php echo $lang['cijfertoevoegen']; ?>  </a> </p>
-                        <a href="overzichtcijfers.html">&#8592;</a>
+                        <p> <a href="toevoegen.php"> <?php echo $lang['cijfertoevoegen']; ?>  </a> </p>
+                        <a href="overzichtcijfers.php">&#8592;</a>
                     </div>
                 </div>
             </div>

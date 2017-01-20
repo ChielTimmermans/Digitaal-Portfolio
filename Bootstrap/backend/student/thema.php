@@ -48,13 +48,13 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">English</a></li>
-                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                       <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
@@ -67,14 +67,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
                         <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Keuzemenu</h1>
+                    <h1 class="page-header">Thema aanpassen</h1>
                 </div>
             </div></div>  
 
@@ -84,17 +84,10 @@
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <ul>
-                            <li>
-                                <a href="portfolio.html"> Inhoud portfolio pagina aanpassen </a>
-                            </li>
-                            <li>
-                                <a href="projecten.html"> Projecten wijzigen/toevoegen</a>
-                            </li>
-                            <li>
-                                <a href="thema.html"> Thema wijzigen</a>
-                            </li>
-                        </ul>
+                        <p>
+                            PLAATS HIER ALLE INHOUD VAN DAT PHP BESTANDJE 
+                        </p>
+                        <a href="home.html">&#8592;</a>
                     </div>
 
                 </div>

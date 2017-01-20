@@ -1,3 +1,26 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\..\..\createDatabases\dbconnect.php';
+include '..\functions\common.php';
+include '..\..\..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -46,8 +69,8 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
@@ -80,8 +103,8 @@
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                             </p>    
                         </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
-                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeeproject']; ?></button></a></p>
+                        <p><a href="bijlage.php"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
+                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeelproject']; ?></button></a></p>
 
                         <a class="list-group-item inactive-link" href="#">
                             <h4 class="list-group-item-heading">Portfolio</h4>
@@ -91,9 +114,9 @@
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                             </p>    
                         </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
-                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeeproject']; ?></button></a></p>
-                        <a href="overzichtprojecten.html">&#8592;</a>		
+                        <p><a href="bijlage.php"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
+                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeelproject']; ?></button></a></p>
+                        <a href="overzichtprojecten.php">&#8592;</a>		
                     </div>
                 </div>
             </div>

@@ -1,3 +1,26 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\..\..\createDatabases\dbconnect.php';
+include '..\functions\common.php';
+include '..\..\..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: ..\..\index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -49,8 +72,8 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
@@ -88,19 +111,19 @@
                                         <ul>
                                             <li><a href="#">INF1I</a>
                                                 <ul>
-                                                    <li><a href="invoercijfers.html">Dennis Kramer</a></li>
-                                                    <li><a href="invoercijfers.html">Chiel Timmermans</a></li>
-                                                    <li><a href="invoercijfers.html">Tom Verra</a></li>
-                                                    <li><a href="invoercijfers.html">Siem Schippers</a></li>
-                                                    <li><a href="invoercijfers.html">Randy Rijkshoorn</a></li>
-                                                    <li><a href="invoercijfers.html">Jefrey Meijer</a></li>
-                                                    <li><a href="invoercijfers.html">Fekke Fekkes</a></li>
+                                                    <li><a href="invoercijfers.php">Dennis Kramer</a></li>
+                                                    <li><a href="invoercijfers.php">Chiel Timmermans</a></li>
+                                                    <li><a href="invoercijfers.php">Tom Verra</a></li>
+                                                    <li><a href="invoercijfers.php">Siem Schippers</a></li>
+                                                    <li><a href="invoercijfers.php">Randy Rijkshoorn</a></li>
+                                                    <li><a href="invoercijfers.php">Jefrey Meijer</a></li>
+                                                    <li><a href="invoercijfers.php">Fekke Fekkes</a></li>
 
                                                 </ul>
 
                                                 </div>
                                                 </div>
-                                                <a href="home.html">&#8592;</a>
+                                                <a href="home.php">&#8592;</a>
                                                 </div>
 
                                                 </div>
