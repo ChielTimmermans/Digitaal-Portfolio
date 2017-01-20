@@ -153,7 +153,7 @@ if (isset($_POST[submit]))
                     <form method="post" action="portfolioedit.php">
                     <div class="bs-callout bs-callout-danger">
                         <h4><?php echo $lang['Overmij']; ?></h4>
-                        <textarea name="overmij" value="<?php $oldovermij?>"></textarea>
+                        <textarea class="overmij" name="overmij" value="<?php $oldovermij?>"></textarea>
                     </div>
                     <div class="bs-callout bs-callout-danger">
                         <h4><?php echo $lang['Diplomas']; ?></h4>

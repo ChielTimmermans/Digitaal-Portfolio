@@ -645,6 +645,11 @@ opacity:0.9;
 .bs-callout-danger5 h4{
     color: #20bcbc;
 }
+
+.overmij {
+    width: 100%;
+    min-height: 100px;
+}
 .resume .list-group-item:first-child, .resume .list-group-item:last-child{
   border-radius:0;
 }
