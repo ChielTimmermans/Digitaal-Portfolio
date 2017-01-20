@@ -43,18 +43,18 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="https://stenden.com">
-						<img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
-					</a>
+                        <img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
+                    </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">English</a></li>
-						<li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                       <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
@@ -67,14 +67,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li class="active"><a href="#">Projecten<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Cijferlijst</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Gastenboek']; ?><span class="sr-only">(current)</span></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Projecten wijzigen/toevoegen</h1>
+                    <h1 class="page-header">Gastenboek wijzigen</h1>
                 </div>
             </div></div>  
 
@@ -82,44 +82,27 @@
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
-                    
+
                     <div class="bs-callout bs-callout-danger">
-                        <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Professionele website</h4>
-                            <p class="list-group-item-text">
-                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                            </p>    
-                        </a>
-                        <p><a href="wijzigproject.php"><button id="button1id" name="bewerk" class="btn btn-info">Wijzig dit project</button></a></p>
-                       
-					   <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Portfolio</h4>
-                            <p class="list-group-item-text">
-                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                            </p>    
-                        </a>
-                        <p><a href="wijzigproject.php"><button id="button1id" name="bewerk" class="btn btn-info">Wijzig dit project</button></a></p>
-			<p><a href="toevoegenproject.php"><button id="button1id" name="toevoegen" class="btn btn-success">Nieuw project toevoegen</button></a></p>
-                        <a href="home.html">&#8592;</a>	
+
+                        <p>
+                            PLAATS HIER ALLE INHOUD VAN DAT PHP BESTANDJE 
+                        </p>
+                        <a href="home.html">&#8592;</a>
                     </div>
-                    
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>

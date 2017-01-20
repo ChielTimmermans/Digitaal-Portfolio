@@ -43,18 +43,18 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="https://stenden.com">
-						<img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
-					</a>
+                        <img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
+                    </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">English</a></li>
-						<li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                       <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
                         <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
@@ -67,14 +67,15 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="#">Portfolio<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Projecten</a></li>
-                        <li><a href="#">Cijferlijst</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Thema aanpassen</h1>
+                    <h1 class="page-header">Portfolio inhoud wijzigen</h1>
+
                 </div>
             </div></div>  
 
@@ -82,27 +83,25 @@
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
-                    
+
                     <div class="bs-callout bs-callout-danger">
-                        <p>
-                            PLAATS HIER ALLE INHOUD VAN DAT PHP BESTANDJE 
-                        </p>
+                        <p>PHP</p>
                         <a href="home.html">&#8592;</a>
                     </div>
-                    
+
+                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>
