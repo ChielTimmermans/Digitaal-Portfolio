@@ -30,9 +30,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-
     <body>
-
         <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -56,50 +54,47 @@
                 </div>
             </div>
         </nav>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Projecten</a></li>
-                        <li class="active"><a href="#">Cijferlijst <span class="sr-only">(current)</span></a></li>
+                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Cijferlijst</a></li>
                         <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfer wijzigen</h1>
+                    <h1 class="page-header">Project wijzigen</h1>
                 </div>
             </div></div>  
-
-
-
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <table class="table table-striped table-responsive ">
-                            <thead>
-                                <tr>
-                                    <th>Code en Studieonderdeel</th>
-                                    <th>Datum</th>
-                                    <th>Aantal EC</th>
-                                    <th>Cijfer</th>
-                                    <th>Wijzigen</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="datum" type="date" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
-                                    <td><a href="invoercijfers.html"><button id="button1id" name="submit" class="btn btn-success pull-right">Wijzig</button></a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <a href="invoercijfers.html">&#8592;</a>	
+                        <form class="form-horizontal">
+                            
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Naam project</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="project" type="text" placeholder="Professionele Website" class="form-control input-md" required>
+                                    </div>
+                                </div>
+                            
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textarea">Beschrijving project</label>  
+                                    <div class="col-md-4">
+                                        <textarea name="beschrijving" placeholder="Beschrijving project" required rows="10" cols="32"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-8">
+                                        <button id="button1id" name="submit" class="btn btn-success pull-right">Bewerk</button>
+                                    </div>
+                                </div>
+                        </form>
+                        <a href="projecten.html">&#8592;</a>
                     </div>
                 </div>
             </div>

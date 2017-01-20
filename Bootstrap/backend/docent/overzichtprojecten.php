@@ -62,10 +62,10 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Cijferlijst</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -81,10 +81,10 @@
 
                     <div class="bs-callout bs-callout-danger">
                         <div class="panel panel-default">
-                            <div class="panel-heading">Jaar 1</div>
+                            <div class="panel-heading"><?php echo $lang['jaar1']; ?></div>
                             <div class="panel-body">
                                 <ul class="treeview">
-                                    <li><a href="#">Klas</a>
+                                    <li><a href="#"><?php echo $lang['klas']; ?></a>
                                         <ul>
                                             <li><a href="#">INF1I</a>
                                                 <ul>

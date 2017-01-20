@@ -58,14 +58,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Portfolio</a></li>
-                        <li class="active"><a href="#">Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Cijferlijst</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Projecten van [NAAM]</h1>
+                    <h1 class="page-header"><?php echo $lang['projectenvan']; ?> [NAAM]</h1>
                 </div>
             </div></div>
         <div class="container">
@@ -80,8 +80,8 @@
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                             </p>    
                         </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info">Bekijk bijlagen</button></a></p>
-                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success">Beoordeel dit project</button></a></p>
+                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
+                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeeproject']; ?></button></a></p>
 
                         <a class="list-group-item inactive-link" href="#">
                             <h4 class="list-group-item-heading">Portfolio</h4>
@@ -91,8 +91,8 @@
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                             </p>    
                         </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info">Bekijk bijlagen</button></a></p>
-                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success">Beoordeel dit project</button></a></p>
+                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
+                        <p><a href="beoordeel.html"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeeproject']; ?></button></a></p>
                         <a href="overzichtprojecten.html">&#8592;</a>		
                     </div>
                 </div>
