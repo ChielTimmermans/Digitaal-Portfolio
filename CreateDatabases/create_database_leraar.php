@@ -41,7 +41,8 @@ if ($DBConnect === FALSE) {
                     Rol             int,
                     vak             Varchar(30),
                     vak2            Varchar(30),
-                    vak3            Varchar(30))";
+                    vak3            Varchar(30),
+                    slb             ENUM('Y', 'N'))";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
         if ($QueryResult === FALSE) {
             echo "<p>Unable to create the table.</p>"

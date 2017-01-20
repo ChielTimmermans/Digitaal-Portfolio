@@ -194,10 +194,7 @@ if (isset($_POST['submit']))
         $lnameError = "Straatnaam bevat alleen alfabetische tekens.";
     }
 
-    {
-        $error = true;
-        $rolError = "Vul een geldige rol in.";
-    }
+
 
 // password validation
     if (empty($pass))
@@ -385,7 +382,6 @@ if (isset($_POST['submit']))
             <input type="radio" name="gender" value="f">Vrouw<br><br>
             <button type="submit" name="submit">Submit</button>
             <input type="reset">
-            <span><?php echo $rolError; ?></span>
         </form>
     </body>
 </html>
