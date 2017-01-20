@@ -6,7 +6,7 @@ if ($DBConnect === FALSE) {
     . "<p>Error code " . mysqli_errno() . ": "
     . mysqli_error() . "</p>";
 } else {
-    $DBName = "cijfer";
+    $DBName = "portfolio";
     if (!mysqli_select_db($DBConnect, $DBName)) {
         $SQLstring = "CREATE DATABASE $DBName";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
