@@ -73,8 +73,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
@@ -129,7 +129,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         </a>
                         <p><a href="wijzigproject.php"><button id="button1id" name="bewerk" class="btn btn-info">Wijzig dit project</button></a></p>
                         <p><a href="toevoegenproject.php"><button id="button1id" name="toevoegen" class="btn btn-info">Nieuw project toevoegen</button></a></p>
-                        <a href="home.html">&#8592;</a>	
+                        <a href="home.php">&#8592;</a>	
                     </div>
 
                 </div>
