@@ -35,7 +35,29 @@ if (isset($_POST['submit'])) {
     $hobbies = $_POST['hobbies'];
     $werkervaring = $_POST['werkervaring'];
     
-    
+    if ($gettext === TRUE){
+            $updateText = "UPDATE `portfoliotext` SET `overmij`='$overmij', `diplomas`='$diplomas', `hobbies`='$hobbies', `werkervaring`='$werkervaring' WHERE `portfoliotext` . `userID` = $user";
+            $resUpdateText = mysqli_query($conn, $updateText);
+            if ($updateText === FALSE) {
+                echo "<p>Unable to execute the query.</p>"
+                . "<p>Error code " . mysqli_errno($DBConnect)
+                . ": " . mysqli_error($DBConnect) . "</p>";
+            } else {
+                echo "Gelukt";
+            }
+        
+        }else{
+            
+            $insertText = "INSERT INTO portfoliotext (`userID`, `overmij`, `diplomas`, `hobbies`, `werkervaring`) VALUES ($user, '$overmij', '$diplomas', '$hobbies', '$werkervaring')";
+            $resInsertText = mysqli_query($conn, $insertText);
+            if ($insertText === FALSE){
+                echo "<p>Unable to execute the query.</p>"
+                . "<p>Error code " . mysqli_errno($DBConnect)
+                . ": " . mysqli_error($DBConnect) . "</p>";
+            } else {
+                echo "Gelukt2";
+            }
+    }
 }
 ?>
 
@@ -161,6 +183,13 @@ if (isset($_POST['submit'])) {
                         <div class="bs-callout <?php include 'stijl2.php'; ?>">
                             <h4><?php echo $lang['Overmij']; ?></h4>
                             <textarea class="overmij" name="overmij" value="<?php $oldovermij ?>"></textarea>
+                        </div>
+                        <div>
+                            <?php
+                            echo $updateText;
+                            echo $insertText;
+                            echo $user;
+                            ?>
                         </div>
                         <div class="bs-callout <?php include 'stijl2.php'; ?>">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
