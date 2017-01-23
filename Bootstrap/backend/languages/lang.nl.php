@@ -116,5 +116,13 @@ $lang['beoordeelproject'] = 'Beoordeel project';
 //bijlage
 $lang['bijlagen'] = 'Bijlagen';
 
+//STUDENT
+//home
+$lang['portfolioaanpassen'] = 'Inhoud portfolio pagina aanpassen';
+$lang['projectenwijzigentoevoegen'] = 'Projecten wijzigen/toevoegen';
+$lang['Themawijzigen'] = 'Thema wijzigen';
 
+//project
+$lang['wijzigproject'] = 'Wijzig dit project';
+$lang['nieuwprojecttoevoegen'] = 'Nieuw project toevoegen';
 ?>
