@@ -96,7 +96,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Project wijzigen</h1>
+                    <h1 class="page-header"><?php echo $lang['projectwijzigen']; ?></h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -107,21 +107,21 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <form class="form-horizontal">
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput">Naam project</label>  
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['naamproject']; ?></label>  
                                 <div class="col-md-4">
                                     <input id="textinput" name="project" type="text" placeholder="Professionele Website" class="form-control input-md" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textarea">Beschrijving project</label>  
+                                <label class="col-md-4 control-label" for="textarea"><?php echo $lang['beschrijvingproject']; ?></label>  
                                 <div class="col-md-4">
                                     <textarea name="beschrijving" placeholder="Beschrijving project" required rows="10" cols="32"></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8">
-                                    <button id="button1id" name="submit" class="btn btn-info pull-right">Bewerk</button>
+                                    <button id="button1id" name="submit" class="btn btn-info pull-right"><?php echo $lang['wijzig']; ?></button>
                                 </div>
                             </div>
                         </form>

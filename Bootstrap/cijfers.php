@@ -1,3 +1,26 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\createDatabases/dbconnect.php';
+include '..\Functions\common.php';
+include '..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -77,7 +100,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijferlijst</h1>
+                    <h1 class="page-header"><?php echo $lang['Cijferlijst']; ?></h1>
                 </div>
             </div></div>  
 
@@ -89,10 +112,10 @@
                         <table class="table table-responsive">
                             <thead>
                                 <tr>
-                                    <th>Code en Studieonderdeel</th>
-                                    <th>Datum</th>
-                                    <th>Aantal EC</th>
-                                    <th>Cijfer</th>
+                                    <th><?php echo $lang['codestudie']; ?></th>
+                                    <th><?php echo $lang['date']; ?></th>
+                                    <th><?php echo $lang['aantalec']; ?></th>
+                                    <th><?php echo $lang['cijfer']; ?></th>
                                 </tr>
                             </thead>
                             <tbody>
