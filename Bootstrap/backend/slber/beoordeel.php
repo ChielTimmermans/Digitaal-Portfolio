@@ -48,7 +48,7 @@ if (isset($_POST['submit'])){
     if (empty($code))
     {
         $error = true;
-        $codeError = "Vul deze in.";
+        $codeerror = "Vul deze in.";
     }
     
     if (empty($project)){
@@ -158,31 +158,36 @@ if (isset($_POST['submit'])){
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codeproject']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="code" type="text" placeholder="IIPR1 Project Professionele Website" class="form-control input-md">
+                                    <input id="textinput" name="code" type="text" placeholder="IIPR1 Project Professionele Website" class="form-control input-md" value="<?php echo $code; ?>"/>
+                                    <span><?php echo $codeerror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['date']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="project" type="date" class="form-control input-md">
+                                    <input id="textinput" name="project" type="date" class="form-control input-md" value="<?php echo $project; ?>"/>
+                                    <span><?php echo $projecterror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['aantalec']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="ec" type="number" placeholder="0-60" min="0" max="60" step="1" class="form-control input-md">
+                                    <input id="textinput" name="ec" type="number" placeholder="0-60" min="0" max="60" step="1" class="form-control input-md" value="<?php echo $ec; ?>"/>
+                                    <span><?php echo $ecerror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['cijfer']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="cijfer" type="number"  step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
+                                    <input id="textinput" name="cijfer" type="number"  step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md" value="<?php echo $cijfer; ?>"/>
+                                    <span><?php echo $cijfererror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textarea"><?php echo $lang['opmerkingen']; ?></label>  
                                 <div class="col-md-4">
-                                    <textarea name="comment" required rows="10" cols="32"></textarea>
+                                    <textarea name="comment" required rows="10" cols="32"><?php echo $comment; ?></textarea>
+                                    <span><?php echo $commenterror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
