@@ -13,7 +13,8 @@ include_once '..\createdatabases/dbconnect.php';
 
 $error = false;
 
-if (isset($_POST['btn-signup'])) {
+if (isset($_POST['btn-signup']))
+{
 
     $studentnummer = 469521;
 //    $studentnummer = trim($_POST['studentnummer']);
@@ -29,14 +30,17 @@ if (isset($_POST['btn-signup'])) {
     $content = htmlspecialchars($content);
 
     $item = 6;
-    for ($x = 1; $x < $item; $x++) {
-        if ($x < 5) {
+    for ($x = 1; $x < $item; $x++)
+    {
+        if ($x < 5)
+        {
             $projecttitel = "Projecttitel$x";
             $myquery = "SELECT $projecttitel from projecten where studentnummer = 469521";
             $res2 = mysqli_query($conn, $myquery);
             $userRow = mysqli_fetch_array($res2);
             $title = ($userRow[$projecttitel]);
-            if ($title == "0") {
+            if ($title == "0")
+            {
                 $item = $x;
             }
         }
@@ -44,21 +48,25 @@ if (isset($_POST['btn-signup'])) {
 
     $x = $x - 1;
 
-    if (!projecttitel5) {
+    if (!projecttitel5)
+    {
         $query = "ALTER TABLE projecten add projecttitel$x VARCHAR(50)";
     }
-    if (!$error) {
+    if (!$error)
+    {
         $item = $x;
         $query = "UPDATE projecten SET projecttitel$item='$titel',Projectcontent$item='$content' WHERE studentnummer = 469521";
         $res = mysqli_query($conn, $query);
 
-        if ($res) {
+        if ($res)
+        {
             $errTyp = "success";
             $errMSG = "Successfully registered, you may login now";
             unset($name);
             unset($email);
             unset($pass);
-        } else {
+        } else
+        {
             $errTyp = "danger";
             $errMSG = "Something went wrong, try again later...";
         }
@@ -79,8 +87,8 @@ if (isset($_POST['btn-signup'])) {
             <input type="text" name="titel" placeholder="Enter the title of your project"  value="<?php echo $titel1 ?>"/>
             <span><?php echo $nummerError ?></span>
             <br><br>
-                <textarea name="content" placeholder="Enter the content of your project"></textarea>
-                
+            <textarea name="content" placeholder="Enter the content of your project"></textarea>
+
             <br><br>
             <button type="submit" name="btn-signup">enter project</button>
             <span><?php echo $errMSG; ?></span>

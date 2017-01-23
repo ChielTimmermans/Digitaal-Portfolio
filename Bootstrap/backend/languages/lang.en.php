@@ -110,7 +110,15 @@ $lang['beoordeelproject'] = 'Rate project';
 //bijlage
 $lang['bijlagen'] = 'Attachments';
 
+//STUDENT
+//home, portfolio
+$lang['portfolioaanpassen'] = 'Customize portoflio content';
+$lang['projectenwijzigentoevoegen'] = 'Change or add projects';
+$lang['Themawijzigen'] = 'Change personal theme';
 
 
+//project
+$lang['wijzigproject'] = 'Change this project';
+$lang['nieuwprojecttoevoegen'] = 'Add a new project';
 
 ?>

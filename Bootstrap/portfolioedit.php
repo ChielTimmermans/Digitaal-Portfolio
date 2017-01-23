@@ -4,7 +4,8 @@ require_once '..\CreateDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
 
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']))
+{
     header("Location: index.php");
     exit;
 }
@@ -30,14 +31,17 @@ $oldhobbies = mysqli_query($conn, $gethobbies);
 $getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE userID = '$user'";
 $oldwerkervaring = mysqli_query($conn, $getwerkervaring);
 
-if (isset($_POST[submit])) {
+if (isset($_POST[submit]))
+{
     $gettext = ('SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext');
     $oldtext = mysqli_query($conn, $gettext);
-    
 
-    if (empty($oldtext)) {
+
+    if (empty($oldtext))
+    {
         $insertnew = "INSERT INTO portfoliotext(userID, overmij, diplomas, hobbies, werkervaring) VALUES ('$user, '$overmij', '$diplomas', '$hobbies', '$werkervaring')";
-    } else {
+    } else
+    {
         $alternew = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE userID = '$user'";
     }
 }
@@ -95,9 +99,16 @@ if (isset($_POST[submit])) {
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
                         <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
-                        <li><a href = "<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -148,8 +159,10 @@ if (isset($_POST[submit])) {
                                 </div>
                                 <div class="col-xs-12 col-sm-8">
                                     <ul class="list-group">
-                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php echo "$userNaam ";
-                                        echo $userAchterNaam; ?></li>
+                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php
+                                            echo "$userNaam ";
+                                            echo $userAchterNaam;
+                                            ?></li>
                                         <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?>: Student informatica</li>
                                         <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?>: Stenden Hogeschool </li>
                                         <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?> </li>
@@ -177,10 +190,10 @@ if (isset($_POST[submit])) {
                         <div class="bs-callout bs-callout-danger">
                             <h4>Werk ervaring</h4>
                             <ul class="list-group">
-                               <textarea name="werkervaring" value="<?php echo $oldwerkervaring ?>"></textarea>
+                                <textarea name="werkervaring" value="<?php echo $oldwerkervaring ?>"></textarea>
                             </ul>
                         </div>
-                    <button type="submit" name="submit">Opslaan</button>
+                        <button type="submit" name="submit">Opslaan</button>
                     </form>
                 </div>
             </div>

@@ -1,28 +1,3 @@
-<?php
-session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
-    $portnummer = $_SESSION['user'];
-} else
-{
-    $portnummer = $_GET['Studentnummer'];
-}
-require_once '..\..\..\createDatabases\dbconnect.php';
-include '..\functions\common.php';
-include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
-    header("Location: ..\..\index.php");
-    exit;
-}
-$user = $_SESSION['user'];
-$query = "SELECT * FROM users WHERE studentnummer = '$user'";
-$result = mysqli_query($conn, $query)
-        or die("Error: " . mysqli_error($conn));
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -38,6 +13,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
         <!-- Bootstrap core CSS -->
         <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
         <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
@@ -73,16 +49,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
-                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="#">Instellingen</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Engels</a></li>
+                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
                     </ul>
                 </div>
             </div>
@@ -92,17 +62,18 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="#"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="overzichtprojecten.html">Projecten</a></li>
+                        <li class="active"><a href="cijfers.html">Cijferlijst <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Gastenboek</a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['portfolioaanpassen']; ?></h1>
-
+                    <h1 class="page-header">Welkom [NAAM]</h1>
                 </div>
-            </div></div>  
+            </div>
+        </div>  
+
 
 
         <div class="container">
@@ -110,13 +81,37 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <p>PHP</p>
-                        <a href="home.php">&#8592;</a>
-                    </div>
+                        <h4>Cijfers toevoegen en/of aanpassen</h4>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">1ste jaars</div>
+                            <div class="panel-body">
+                                <!-- TREEVIEW CODE -->
+                                <ul class="treeview">
+                                    <li><a href="#">Cijfers</a>
+                                        <ul>
+                                            <li><a href="#">inf1i</a>
+                                                <ul>
+                                                    <li><a href="invoercijfers.html">Dennis Kramer</a></li>
+                                                    <li><a href="invoercijfers.html">Chiel Timmermans</a></li>
+                                                    <li><a href="invoercijfers.html">Tom Verra</a></li>
+                                                    <li><a href="invoercijfers.html">Siem Schippers</a></li>
+                                                    <li><a href="invoercijfers.html">Tom Verra</a></li>
+                                                    <li><a href="invoercijfers.html">Randy Rijkshoorn</a></li>
+                                                    <li><a href="invoercijfers.html">Jefrey Meijer</a></li>
+                                                    <li><a href="invoercijfers.html">Fekke Fekkes</a></li>
 
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
 
         <!-- Bootstrap core JavaScript
         ================================================== -->

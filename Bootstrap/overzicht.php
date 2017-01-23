@@ -44,7 +44,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">                    
                                 <img class="img-circle img-responsive" alt="Dennis" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.html"> Dennis Kramer </a></p>
+                                <p><a href="portfolio.php"> Dennis Kramer </a></p>
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">                    
                                 <img class="img-circle img-responsive" alt="Jefrey" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.html"> Jefrey Meijer </a></p>
+                                <p><a href="portfolio.php"> Jefrey Meijer </a></p>
                             </div>
                         </div>
                     </div>
@@ -63,7 +63,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">                    
                                 <img class="img-circle img-responsive" alt="Leon" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.html"> Leon Hans </a></p>
+                                <p><a href="portfolio.php"> Leon Hans </a></p>
                             </div>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">                    
                                 <img class="img-circle img-responsive" alt="Siem" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.html"> Siem Schippers </a></p>
+                                <p><a href="portfolio.php"> Siem Schippers </a></p>
                             </div>
                         </div>
                     </div>
@@ -81,7 +81,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">                    
                                 <img class="img-circle img-responsive" alt="Tom" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.html"> Tom Verra </a></p>
+                                <p><a href="portfolio.php"> Tom Verra </a></p>
                             </div>
                         </div>
                     </div>	
@@ -90,7 +90,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">                    
                                 <img class="img-circle img-responsive" alt="Randy" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.html"> Randy Dijkshoorn </a></p>
+                                <p><a href="portfolio.php"> Randy Dijkshoorn </a></p>
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">                    
                                 <img class="img-circle img-responsive" alt="Fekke" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.html"> Fekke Fekkes </a></p>
+                                <p><a href="portfolio.php"> Fekke Fekkes </a></p>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                         <div class="panel panel-default">
                             <div class="panel-body">                    
                                 <img class="img-circle img-responsive" alt="Chiel" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.html"> Chiel Timmermans </a></p>
+                                <p><a href="portfolio.php"> Chiel Timmermans </a></p>
                             </div>
                         </div>
                     </div>

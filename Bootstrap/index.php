@@ -1,7 +1,8 @@
 <?php
 include'..\functions\common.php';
 
-if (isset($_SESSION['user']) ){
+if (isset($_SESSION['user']))
+{
     header("Location: portfolio.php");
     exit;
 }
@@ -54,13 +55,13 @@ if (isset($_SESSION['user']) ){
                     <h2 class="form-signin-heading text-muted"><?php echo $lang['login']; ?></h2>
                     <label for="inputEmail" class="sr-only"><?php echo $lang['email']; ?></label>
                     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="name" value="
-                        <?php 
-                        if (isset($_POST['btn-login']))
-                        {
-                           echo $name;
-                        }
-                        ?>
-                        "required autofocus>
+                    <?php
+                    if (isset($_POST['btn-login']))
+                    {
+                        echo $name;
+                    }
+                    ?>
+                           "required autofocus>
                     <span><p><?php echo $emailError; ?></p></span>
                     <label for="inputPassword" class="sr-only" >Password</label>
                     <input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Password" required>

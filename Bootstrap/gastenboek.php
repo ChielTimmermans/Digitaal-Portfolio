@@ -12,6 +12,7 @@
         <title>Portfolio | Stenden Hogeschool</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
         <!-- Bootstrap core CSS -->
         <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -49,10 +50,16 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html">Instellingen</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">English</a></li>
-                        <li><a href="uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -63,58 +70,38 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="projecten.html">Projecten</a></li>
-                        <li><a href="cijfers.html">Cijferlijst</a></li>
-                        <li><a href="gastenboek.html">Gastenboek</a></li>
+                        <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li class="active"><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?><span class="sr-only">(current)</span></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Contact</h1>
+                    <h1 class="page-header">Gastenboek</h1>
                 </div>
             </div></div>  
 
 
         <div class="container">
-            <div class="col-sm-9 col-lg-12 col-sm-offset-3 col-md-12 col-md-offset-2 main">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-
-                        <div class="container">
-
-                        </div>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div class="well">
-                                        <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i> Adres:</h3>               
-                                        <p style="margin-top:6%;line-height:35%">Van Schaikweg 94, Emmen</p>
-                                        <br />
-                                        <br />
-                                        <h3 style="line-height:20%;"><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#339966"></i> E-Mail:</h3>
-                                        <p style="margin-top:6%;line-height:35%">emmen@stenden.com</p>
-                                        <br />
-                                        <br />
-                                        <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i> Telefoonnummer:</h3>
-                                        <p style="margin-top:6%;line-height:35%">0591 853 100</p>
-                                        <br />
-                                        <br />
-                                        <h3 style="line-height:20%;"><i class="fa fa-yelp fa-1x" style="line-height:6%;color:#339966"></i> Website:</h3>
-                                        <p style="margin-top:6%;line-height:35%"><a href="www.stenden.com/emmen">www.stenden.com/emmen</a></p>
-                                    </div>
+                        <p>
+                        <div class="form-area">  
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Naam" required>
                                 </div>
-                                <div class="col-md-6 hidden-sm">
-                                    <div class="iframe-container">
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.1084113422903!2d6.909820880133019!3d52.777943025057844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b7e61f3ec72443%3A0xbe9d297b3e4fbcc7!2sStenden+hogeschool+Emmen!5e0!3m2!1snl!2snl!4v1484216373026" width="565" height="430" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                    </div>
-
+                                <div class="form-group">
+                                    <textarea class="form-control" id="message" placeholder="Vul hier je bericht in" maxlength="140" rows="7"></textarea>				
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <p><button type="button" id="submit" name="submit" class="btn btn-primary pull-middle">Submit</button></p>
+                                </div>
+                            </form>
                         </div>
-
-
-
+                        <a href="berichten.html">Bekijk berichten</a>
                     </div>
 
                 </div>
