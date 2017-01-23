@@ -72,8 +72,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
@@ -110,13 +110,13 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="bs-callout bs-callout-danger">
                         <ul>
                             <li>
-                                <a href="portfolio.html"> Inhoud portfolio pagina aanpassen </a>
+                                <a href="portfolio.php"> Inhoud portfolio pagina aanpassen </a>
                             </li>
                             <li>
-                                <a href="projecten.html"> Projecten wijzigen/toevoegen</a>
+                                <a href="projecten.php"> Projecten wijzigen/toevoegen</a>
                             </li>
                             <li>
-                                <a href="thema.html"> Thema wijzigen</a>
+                                <a href="thema.php"> Thema wijzigen</a>
                             </li>
                         </ul>
                     </div>
