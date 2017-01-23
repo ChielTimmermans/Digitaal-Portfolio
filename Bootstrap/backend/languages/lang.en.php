@@ -49,6 +49,9 @@ $lang['School/bedrijf'] = 'School/Company';
 $lang['Woonplaats'] = 'City';
 $lang['Nummer'] = 'Phonenumber';
 
+//portfolio projecten.php
+$lang['mijnprojecten'] = 'My projects';
+
 /* menu */
 
 /* gastregistreren */
@@ -120,5 +123,10 @@ $lang['Themawijzigen'] = 'Change personal theme';
 //project
 $lang['wijzigproject'] = 'Change this project';
 $lang['nieuwprojecttoevoegen'] = 'Add a new project';
+
+//projectwijzigen,toevoegen
+$lang['projectwijzigen'] = 'Change project';
+$lang['naamproject'] = 'Project name';
+$lang['beschrijvingproject'] = 'Project description';
 
 ?>

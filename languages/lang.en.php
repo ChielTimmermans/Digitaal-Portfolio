@@ -49,6 +49,18 @@ $lang['School/bedrijf'] = 'School/Company';
 $lang['Woonplaats'] = 'City';
 $lang['Nummer'] = 'Phonenumber';
 
+//portfolio projecten.php
+$lang['mijnprojecten'] = 'My projects';
+
+//portfolio cijfers
+$lang['codestudie'] ="Code and course";
+$lang['aantalec'] = 'Number of points';
+$lang['cijfer'] ="Grade";
+
+//Gastenboek
+$lang['bekijkberichten'] ="Check messages";
+$lang['verstuur'] ="Send";
+
 /* menu */
 
 /* gastregistreren */
@@ -77,38 +89,6 @@ $lang['gastlogin'] = 'login as guest';
 
 
 
-
-/*BACKEND STUDENT*/
-//home
-$lang['keuze'] = 'Choose an option';
-$lang['portfoliobekijken'] = 'Portfolio summary page';
-$lang['verandercijfers'] = 'Change or add grades';
-$lang['projectenbeoordelen'] = 'Review projects';
-
-//Overzichtcijfers
-$lang['leerlingen'] = 'Students';
-$lang['jaar1'] ="Year 1";
-$lang['klas'] = 'Class';
-
-//invoercijfers, toevoegen en beoordeel
-$lang['cijfersvan'] = 'Grades |';
-$lang['codestudie'] ="Code and course";
-$lang['aantalec'] = 'Number of points';
-$lang['cijfer'] ="Grade";
-$lang['wijzig'] = 'Change';
-$lang['cijfertoevoegen'] ="Click here to add a new grade";
-$lang['toevoegen'] ="Add";
-$lang['codeproject'] = 'Code and projectname';
-$lang['opmerkingen'] ="Comments";
-$lang['cijferwijzigen'] ="Adjust grade";
-
-//projecten
-$lang['projectenvan'] = 'Projects |';
-$lang['bekijkbijlagen'] ="Attachments";
-$lang['beoordeelproject'] = 'Rate project';
-
-//bijlage
-$lang['bijlagen'] = 'Attachments';
 
 
 

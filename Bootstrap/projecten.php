@@ -1,4 +1,12 @@
 <?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
@@ -12,10 +20,6 @@ $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-$query2 = "SELECT * FROM projecten WHERE studentnummer = '$user'";
-$result2 = mysqli_query($conn, $query2)
-        or die("Error: " . mysqli_error($conn));
-$row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -89,14 +93,14 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="portfolio.html"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li class="active"><a href="projecten.html"><?php echo $lang['Projecten']; ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="cijfers.html"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="gastenboek.html"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="projecten.php"><?php echo $lang['Projecten']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Mijn Projecten</h1>
+                    <h1 class="page-header"><?php echo $lang['mijnprojecten']; ?></h1>
                 </div>
             </div></div>  
 

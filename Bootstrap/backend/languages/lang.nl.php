@@ -57,6 +57,9 @@ $lang['naam'] = 'naam';
 $lang['naam'] = 'naam';
 $lang['naam'] = 'naam';
 
+
+
+
 /* menu */
 
 /* gastregistreren */
@@ -125,4 +128,11 @@ $lang['Themawijzigen'] = 'Thema wijzigen';
 //project
 $lang['wijzigproject'] = 'Wijzig dit project';
 $lang['nieuwprojecttoevoegen'] = 'Nieuw project toevoegen';
+
+//projectwijzigen
+$lang['projectwijzigen'] = 'Project wijzigen';
+$lang['naamproject'] = 'Project naam';
+$lang['beschrijvingproject'] = 'Beschrijving van het project';
+
+
 ?>
