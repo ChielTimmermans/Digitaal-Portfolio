@@ -34,6 +34,15 @@ if (isset($_POST['submit'])) {
     $diplomas = $_POST['diplomas'];
     $hobbies = $_POST['hobbies'];
     $werkervaring = $_POST['werkervaring'];
+
+    if ($oldtext = !error){
+        $updatedata = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ('$overmij', '$diplomas', '$hobbies', '$werkervaring'";
+        $updateinto = mysqli_query($conn, $updatedata);
+    }
+ else {
+    $insertdata = "INSERT INTO porfoliotest(userID, overmij, diplomas, hobbies, werkervaring) VALUES ('$user', '$overmij', '$diplomas', '$hobbies', '$werkervaring')";
+    $insertinto = mysqli_query($conn, $insertdata);
+    }
     
     
 }
