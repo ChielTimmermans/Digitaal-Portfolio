@@ -108,6 +108,22 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
                                 Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                <?php
+                                    $SQLslb = "SELECT * FROM slbcijfer";
+                                    $Queryslb = mysqli_query($conn, $SQLslb);
+                                    if (mysqli_num_row($Queryslb) > 0){
+                                        echo "<table>"
+                                        . "<tr><th>vakcode</th>"
+                                        . "<th>project</th>"
+                                        . "<th>cijfer</th>"
+                                        . "<th>ec</th>"
+                                        . "<th>comment</th></tr>";
+                                        while ($Row = mysqli_fetch_assoc($Queryslb)){
+                                            echo "<tr><td>";
+                                        }
+                                        echo "</table>";
+                                    }
+                                ?>
                             </p>    
                         </a>
                         <p><a href="bijlage.php"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
