@@ -20,6 +20,57 @@ $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+
+if (isset($_POST['submit'])){
+    
+    $code = trim($_POST['code']);
+    $code = strip_tags($code);
+    $code = htmlspecialchars($code);
+    
+    $project = trim($_POST['project']);
+    $project = strip_tags($project);
+    $project = htmlspecialchars($project);
+    
+    $ec = trim($_POST['ec']);
+    $ec = strip_tags($ec);
+    $ec = htmlspecialchars($ec);
+    
+    $cijfer = trim($_POST['cijfer']);
+    $cijfer = strip_tags($cijfer);
+    $cijfer = htmlspecialchars($cijfer);
+    
+    $comment = trim($_POST['comment']);
+    $comment = strip_tags($comment);
+    $comment = htmlspecialchars($comment);
+    
+    $error = false;
+    if (empty($code))
+    {
+        $error = true;
+        $codeError = "Vul deze in.";
+    }
+    
+    if (empty($project)){
+        $error = true;
+        $projecterror = "Vul deze in.";
+    }
+    
+    if (empty($ec)){
+        $error = true;
+        $ecerror = "Vul deze in.";
+    }
+    
+    if (empty($cijfer)){
+        $error = true;
+        $cijfererror = "Vul deze in.";
+    }
+    
+    if (empty($comment)){
+        $error = true;
+        $commenterror = "Vul deze in.";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,7 +153,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <form class="form-horizontal">
+                        <form action="beoordeel.php" method="POST" class="form-horizontal">
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codeproject']; ?></label>  
@@ -136,7 +187,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8">
-                                    <button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['toevoegen']; ?></button>
+                                    <input type="submit" id="button1id" name="submit" class="btn btn-success pull-right" value="<?php echo $lang['toevoegen']; ?>"/>
                                 </div>
                             </div>
                         </form>

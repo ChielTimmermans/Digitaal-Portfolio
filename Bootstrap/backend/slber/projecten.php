@@ -96,7 +96,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header"><?php echo $lang['projectenvan']; ?> [NAAM]</h1>
                 </div>
-            </div></div>
+            </div>
+        </div>
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
