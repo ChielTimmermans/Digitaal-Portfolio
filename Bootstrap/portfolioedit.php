@@ -20,11 +20,20 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $getovermij = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
 $oldovermij = mysqli_query($conn, $getovermij);
 
-$getdiplomas = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
+$getdiplomas = "SELECT diplomas FROM portfoliotext WHERE userID = '$user'";
 $olddiplomas = mysqli_query($conn, $getdiplomas);
+
+$gethobbies = "SELECT hobbies FROM portfoliotext WHERE userID = '$user'";
+$oldhobbies = mysqli_query($conn, $gethobbies);
+
+
+$getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE userID = '$user'";
+$oldwerkervaring = mysqli_query($conn, $getwerkervaring);
+
 if (isset($_POST[submit])) {
     $gettext = ('SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext');
     $oldtext = mysqli_query($conn, $gettext);
+    
 
     if (empty($oldtext)) {
         $insertnew = "INSERT INTO portfoliotext(userID, overmij, diplomas, hobbies, werkervaring) VALUES ('$user, '$overmij', '$diplomas', '$hobbies', '$werkervaring')";
@@ -163,47 +172,15 @@ if (isset($_POST[submit])) {
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Hobby's en interesses</h4>
-                            <p>
-                                Software Engineering, Machine Learning, Image Processing,
-                                Computer Vision, Artificial Neural Networks, Data Science,
-                                Evolutionary Algorithms.
-                            </p>
+                            <textarea name="hobbies" value="<?php echo $oldhobbies ?>"></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Werk ervaring</h4>
                             <ul class="list-group">
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">
-                                        Medewerker servicedesk
-                                    </h4>
-                                    <p class="list-group-item-text">
-                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
-                                        te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                                    </p>
-                                </a>
-                                <a class="list-group-item inactive-link" href="#">
-                                    <h4 class="list-group-item-heading">Medewerker verkoopklaar</h4>
-                                    <p class="list-group-item-text">
-                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                        Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                        nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                            Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                            nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                                        </li>
-                                        <li>
-                                            Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                            Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                            nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                                        </li>
-                                    </ul>
-                                    <p></p>
-                                </a>
+                               <textarea name="werkervaring" value="<?php echo $oldwerkervaring ?>"></textarea>
                             </ul>
                         </div>
+                    <button type="submit" name="submit">Opslaan</button>
                     </form>
                 </div>
             </div>
