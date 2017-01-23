@@ -19,7 +19,7 @@ $lang['Upload error'] = 'The following extensions are allowed: ';
 $lang['gastlogin'] = 'login as guest';
 $lang['email'] = 'Email';
 $lang['login'] = 'Login';
-$lang['Uitloggen'] = 'Log off';
+$lang['Uitloggen'] = 'Logout';
 
 //algemeen
 $lang['Taal'] = 'Nederlands';
@@ -120,5 +120,8 @@ $lang['Themawijzigen'] = 'Change personal theme';
 //project
 $lang['wijzigproject'] = 'Change this project';
 $lang['nieuwprojecttoevoegen'] = 'Add a new project';
+
+//linkermenu geen toegang
+$lang['nbeschikbaar'] = "Not available";
 
 ?>

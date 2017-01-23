@@ -125,4 +125,7 @@ $lang['Themawijzigen'] = 'Thema wijzigen';
 //project
 $lang['wijzigproject'] = 'Wijzig dit project';
 $lang['nieuwprojecttoevoegen'] = 'Nieuw project toevoegen';
+
+//linkermenu geen toegang
+$lang['nbeschikbaar'] = "Niet beschikbaar";
 ?>

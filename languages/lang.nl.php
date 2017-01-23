@@ -115,6 +115,4 @@ $lang['beoordeelproject'] = 'Beoordeel project';
 
 //bijlage
 $lang['bijlagen'] = 'Bijlagen';
-
-
 ?>
