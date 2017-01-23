@@ -328,6 +328,9 @@ if (isset($_POST['submit']))
         } else {
             echo "Gelukt";
         }
+        $insertdata = "INSERT INTO porfoliotest(userID, overmij, diplomas, hobbies, werkervaring) "
+                . "VALUES ('$stnummer', 'Voer text in', 'Voer text in', 'Voer text in', 'Voer text in')";
+        $resinsert = mysqli_query($conn, $insertdata);
     }
     
 ?>
