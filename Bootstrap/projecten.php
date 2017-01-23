@@ -69,10 +69,16 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html">Instellingen</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">English</a></li>
-                        <li><a href="uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -83,10 +89,10 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="portfolio.html">Portfolio</a></li>
-                        <li class="active"><a href="projecten.html">Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="cijfers.html">Cijferlijst</a></li>
-                        <li><a href="gastenboek.html">Gastenboek</a></li>
+                        <li><a href="portfolio.html"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="projecten.html"><?php echo $lang['Projecten']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="cijfers.html"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.html"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -104,26 +110,28 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                         <ul class="list-group">
                             <?php
                             $item = 1;
-                            $project =4;
-                            for($item = 1; $item <= $project; $item++){
-                            if (!empty($row2['Projecttitel'.$item.''])){
-                                echo'  <div class="list-group-item inactive-link">
-                                            <h4 class="list-group-item-heading">'.
-                                                $row2['Projecttitel'.$item.'']
-                                            .'</h4>
-                                            <p class="list-group-item-text">'.
-                                                $row2['Projectcontent'.$item.'']
-                                            .'</p>
+                            $project = 4;
+                            for ($item = 1; $item <= $project; $item++)
+                            {
+                                if (!empty($row2['Projecttitel' . $item . '']))
+                                {
+                                    echo'  <div class="list-group-item inactive-link">
+                                            <h4 class="list-group-item-heading">' .
+                                    $row2['Projecttitel' . $item . '']
+                                    . '</h4>
+                                            <p class="list-group-item-text">' .
+                                    $row2['Projectcontent' . $item . '']
+                                    . '</p>
                                         </div>';
+                                }
                             }
-                            }
-                            if($project === 0){
+                            if ($project === 0)
+                            {
                                 echo '  <div class="list-group-item inactive-link">
-                                            <p class="list-group-item-text">'.
-                                                "Er zijn geen projecten."
-                                            .'</p>
+                                            <p class="list-group-item-text">' .
+                                "Er zijn geen projecten."
+                                . '</p>
                                         </div>';
-                            
                             }
                             ?>                          
                         </ul>
