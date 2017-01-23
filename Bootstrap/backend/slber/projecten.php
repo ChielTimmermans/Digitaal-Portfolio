@@ -1,3 +1,26 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\..\..\createDatabases\dbconnect.php';
+include '..\functions\common.php';
+include '..\..\..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,9 +53,7 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-
     <body>
-
         <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -43,41 +64,43 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="https://stenden.com">
-						<img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
-					</a>
+                        <img src="../../dist/css/images/stenden_logo1.png" alt="Stenden Logo">
+                    </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Engels</a></li>
-						<li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
         </nav>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="home.html">Mijn Portfolio</a></li>
-                        <li class="active"><a href="projecten.html">Mijn Projecten <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Mijn Opdrachten</a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Projecten</h1>
+                    <h1 class="page-header"><?php echo $lang['projectenvan']; ?> [NAAM]</h1>
                 </div>
-            </div></div>  
-
-
+            </div></div>
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
-                        <h4>Projecten beoordelen </h4>
                         <a class="list-group-item inactive-link" href="#">
                             <h4 class="list-group-item-heading">Professionele website</h4>
                             <p class="list-group-item-text">
@@ -86,10 +109,10 @@
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                             </p>    
                         </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info">Bekijk bijlagen</button></a></p>
-                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success">Beoordeel dit project</button></a></p>
-                       
-					   <a class="list-group-item inactive-link" href="#">
+                        <p><a href="bijlage.php"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
+                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeelproject']; ?></button></a></p>
+
+                        <a class="list-group-item inactive-link" href="#">
                             <h4 class="list-group-item-heading">Portfolio</h4>
                             <p class="list-group-item-text">
                                 Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
@@ -97,23 +120,24 @@
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                             </p>    
                         </a>
-                        <p><a href="bijlage.html"><button id="button1id" name="bijlagen" class="btn btn-info">Bekijk bijlagen</button></a></p>
-                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success">Beoordeel dit project</button></a></p>
-						
+                        <p><a href="bijlage.php"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
+                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeelproject']; ?></button></a></p>
+                        <a href="overzichtprojecten.php">&#8592;</a>		
                     </div>
                 </div>
             </div>
         </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>

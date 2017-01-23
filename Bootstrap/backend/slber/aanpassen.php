@@ -1,3 +1,26 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\..\..\createDatabases\dbconnect.php';
+include '..\functions\common.php';
+include '..\..\..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: ..\..\index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -30,7 +53,9 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
+
     <body>
+
         <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -46,67 +71,64 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Engels</a></li>
-                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
         </nav>
+
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Mijn Portfolio</a></li>
-                        <li><a href="#">Mijn Projecten</a></li>
-                        <li class="active"><a href="#">Mijn Cijferlijst <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Cijferlijst']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfer toevoegen</h1>
+                    <h1 class="page-header"><?php echo $lang['cijferwijzigen']; ?></h1>
                 </div>
             </div></div>  
+
+
+
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <p>
-                        <form class="form-horizontal">
-                            <fieldset>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Code en Studieonderdeel</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Datum</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="datum" type="date" class="form-control input-md">
-                                    </div>
-                                </div>
-                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Aantal EC</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Cijfer</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-8">
-                                        <button id="button1id" name="submit" class="btn btn-success pull-right">Toevoegen</button>
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
+                        <table class="table table-striped table-responsive ">
+                            <thead>
+                                <tr>
+                                    <th><?php echo $lang['codestudie']; ?></th>
+                                    <th><?php echo $lang['date']; ?></th>
+                                    <th><?php echo $lang['aantalec']; ?></th>
+                                    <th><?php echo $lang['cijfer']; ?></th>
+                                    <th><?php echo $lang['wijzig']; ?></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md"></td>
+                                    <td><input id="textinput" name="datum" type="date" class="form-control input-md"></td>
+                                    <td><input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md"></td>
+                                    <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
+                                    <td><a href="invoercijfers.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <a href="invoercijfers.php">&#8592;</a>	
                     </div>
                 </div>
             </div>

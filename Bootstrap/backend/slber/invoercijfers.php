@@ -1,4 +1,27 @@
-<!DOCTYPE html>
+
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\..\..\createDatabases\dbconnect.php';
+include '..\functions\common.php';
+include '..\..\..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: ..\..\index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?><!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -46,10 +69,16 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Instellingen</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Engels</a></li>
-                        <li><a href="../../uitlogscherm.html">Uitloggen</a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -58,14 +87,14 @@
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#">Mijn Portfolio</a></li>
-                        <li><a href="#">Mijn Projecten</a></li>
-                        <li class="active"><a href="#">Mijn Cijferlijst <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Gastenboek</a></li>
+                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
+                        <li class="active"><a href="#"><?php echo $lang['Cijferlijst']; ?> <span class="sr-only">(current)</span></a></li>
+                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Cijfers toevoegen/wijzigen</h1>
+                    <h1 class="page-header"><?php echo $lang['cijfersvan']; ?>[NAAM]</h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -76,11 +105,11 @@
                             <table class="table table-striped table-responsive ">
                                 <thead>
                                     <tr>
-                                        <th>Code en Studieonderdeel</th>
-                                        <th>Datum</th>
-                                        <th>Aantal EC</th>
-                                        <th>Cijfer</th>
-                                        <th>Wijzig</th>
+                                        <th><?php echo $lang['codestudie']; ?></th>
+                                        <th><?php echo $lang['date']; ?></th>
+                                        <th><?php echo $lang['aantalec']; ?></th>
+                                        <th><?php echo $lang['cijfer']; ?></th>
+                                        <th><?php echo $lang['wijzig']; ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -89,19 +118,20 @@
                                         <td>09-11-2016</td>
                                         <td>3</td>
                                         <td>6.2</td>
-                                        <td> <a href="aanpassen.html">Wijzig</a></td>
+                                        <td> <a href="aanpassen.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
                                     </tr>
                                     <tr>
                                         <td>OIXH (X)HTML en CSS</td>
                                         <td>09-11-2016</td>
                                         <td>3</td>
                                         <td>7.2</td>
-                                        <td> <a href="aanpassen.html">Wijzig</a></td>
+                                        <td> <a href="aanpassen.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p> <a href="toevoegen.html"> Klik hier om een cijfer toe te voegen  </a> </p>
+                        <p> <a href="toevoegen.php"> <?php echo $lang['cijfertoevoegen']; ?>  </a> </p>
+                        <a href="overzichtcijfers.php">&#8592;</a>
                     </div>
                 </div>
             </div>
