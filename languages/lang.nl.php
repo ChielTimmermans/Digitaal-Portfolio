@@ -30,9 +30,9 @@ $lang['Portfolio'] = 'Portfolio';
 $lang['Projecten'] = 'Projecten';
 $lang['Cijferlijst'] = 'Cijferlijst';
 $lang['Gastenboek'] = 'Gastenboek';
-$lang['School'] = 'naam';
-$lang['naam'] = 'naam';
-$lang['date'] = 'datum';
+$lang['School'] = 'School';
+$lang['naam'] = 'Naam';
+$lang['date'] = 'Datum';
 
 //
 
@@ -45,17 +45,13 @@ $lang['Afstudeerjaar'] = 'Afstudeer jaar';
 //$lang['Studie'] = 'naam';
 //
 //portfolio main page
-$lang['naam'] = 'naam';
+$lang['naam'] = 'Naam';
 $lang['Studie/Functie'] = 'Studie/Functie';
 $lang['School/bedrijf'] = 'School/bedrijf';
 $lang['Woonplaats'] = 'Woonplaats';
 $lang['Nummer'] = 'Telefoonnummer';
 
-$lang['naam'] = 'naam';
-$lang['naam'] = 'naam';
-$lang['naam'] = 'naam';
-$lang['naam'] = 'naam';
-$lang['naam'] = 'naam';
+
 
 //portfolio projecten.php
 $lang['mijnprojecten'] = 'Mijn projecten';
@@ -69,6 +65,10 @@ $lang['cijfer'] ="Cijfer";
 $lang['bekijkberichten'] ="Bekijk berichten";
 $lang['verstuur'] ="verstuur";
 
+//Berichten
+$lang['berichten'] ="Berichten";
+$lang['tijddatum'] ="Tijd en datum";
+
 
 
 /* menu */
@@ -78,8 +78,7 @@ $lang['error1'] = 'Vul uw email adres in alstublieft.';
 $lang['error2'] = 'Dit email adres is al in gebruik.';
 
 //berichten
-$lang['berichten'] = 'berichten';
-$lang['bericht'] = 'bericht';
+$lang['berichten'] = 'Berichten';
 
 //cijfers
 $lang['cijfers'] = 'cijfers';
@@ -89,7 +88,7 @@ $lang['studieonderdelen'] = 'studieonderdelen';
 $lang['cijfersaanpassen'] = 'cijfersaanpassen';
 
 //gastenboek
-$lang['bekijkberichten'] = 'bekijk berichten';
+$lang['bekijkberichten'] = 'Bekijk berichten';
 
 //home
 $lang['upload'] = 'upload bestanden';

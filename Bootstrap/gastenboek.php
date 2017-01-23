@@ -125,7 +125,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 </div>
                             </form>
                         </div>
-                        <a href="berichten.html"><?php echo $lang['Cijferlijst']; ?></a>
+                        <a href="berichten.php"><?php echo $lang['bekijkberichten']; ?></a>
                     </div>
 
                 </div>
