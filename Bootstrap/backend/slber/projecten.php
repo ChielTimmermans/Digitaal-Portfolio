@@ -119,9 +119,15 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         . "<th>ec</th>"
                                         . "<th>comment</th></tr>";
                                         while ($Row = mysqli_fetch_assoc($Queryslb)){
-                                            echo "<tr><td>";
+                                            echo "<tr><td>{$Row['vakcode']}</td>"
+                                            . "<td>{$Row['project']}</td>"
+                                            . "<td>{$Row['cijfer']}</td>"
+                                            . "<td>{$Row['ec']}</td>"
+                                            . "<td>{$Row['comment']}</td></tr>";
+                                            
                                         }
                                         echo "</table>";
+                                        mysqli_free_result($Queryslb);
                                     }
                                 ?>
                             </p>    
