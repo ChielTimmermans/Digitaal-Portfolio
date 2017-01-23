@@ -28,7 +28,7 @@ if (isset($_POST['btn-signup']))
         <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
             <select name="klas">
                 <?php
-                include 'databaseArray.php';
+                include '..\databaseArray.php';
 
                 $query = "SELECT Klas FROM klas";
                 $result = mysqli_query($conn, $query);
@@ -40,13 +40,16 @@ if (isset($_POST['btn-signup']))
                     $column[] = $row[Klas];
                 }
                 foreach($column as $res){
-                    echo $res;
+
                     echo "<option value='$res'>$res</option>";
                 }
                 ?>
             </select>
-            <select name="leerling">
+            <button type='submit' name='submit'>get students</button>
+            
                 <?php
+                if (isset($_POST['submit'])){ 
+                echo "<select name='leerling'>";
                 $query ="SELECT Voornaam, Achternaam From gegevens where klas =$res";
                                 $result = mysqli_query($conn, $query);
 
@@ -60,9 +63,11 @@ if (isset($_POST['btn-signup']))
                     echo $res;
                     echo "<option value='$res'>$res</option>";
                 }
-                ?>
-            </select
-            
+                echo "</select>";
+                echo "bier";
+                }
+                
+                ?>            
         </form>
     </body>
 </html>
