@@ -220,7 +220,8 @@ if (isset($_POST['submit']))
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
-
+        $query3 = "INSERT INTO cijfer (studentnummer,Informatiemanagement,PHP,Digital_Graphic_Design_1,Project_Professionele_Website,Mondelinge_communicatie_1,Databases_1,Unleash_your_Potential_in_PHP,Studieloopbaanbegeleiding_1A,Project_Digitale_Portfolio,Schriftelijke_Communicatie,Java_1,Computernetwerken_1,Inleiding_Wiskunde,Project_Solar_Bot,Studieloopbaanbegeleiding_1B,Csharp_1,Multimedia_Productie,Project_Stenden_Creative_Realization) VALUES ('$stnummer','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-')";
+        $res3 = mysqli_query($conn, $query3);
         if ($res)
         {
             $errTyp = "success";
@@ -242,17 +243,31 @@ if (isset($_POST['submit']))
         $DBConnect = mysqli_connect('localhost', 'root', '');
         $DBName = 'portfolio';
         mysqli_select_db($DBConnect, $DBName);
-        $TableName = "s" . $stnummer;
+        $TableName = "cijfer";
         $SQLstring = "SHOW TABLES LIKE '$TableName'";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
         if (mysqli_num_rows($QueryResult) == 0)
         {
             $SQLstring = "CREATE TABLE $TableName(
-            vakCode VARCHAR(10) PRIMARY KEY,
-            vakNaam VARCHAR(50),
-            cijfer VARCHAR(4),
-            EC VARCHAR(4),
-            vakDocent VARCHAR(30))";
+            studentnummer INT(10),
+            Informatiemanagement VARCHAR(4),
+            PHP VARCHAR(4),
+            Digital_Graphic_Design_1 VARCHAR(4),
+            Project_Professionele_Website VARCHAR(4),
+            Mondelinge_communicatie_1 VARCHAR(4),
+            Databases_1 VARCHAR(4),
+            Unleash_your_Potential_in_PHP VARCHAR(4),
+            Studieloopbaanbegeleiding_1A VARCHAR(4),
+            Project_Digitale_Portfolio VARCHAR(4),
+            Schriftelijke_Communicatie VARCHAR(4),
+            Java_1 VARCHAR(4),
+            Computernetwerken_1 VARCHAR(4),
+            Inleiding_Wiskunde VARCHAR(4),
+            Project_Solar_Bot VARCHAR(4),
+            Studieloopbaanbegeleiding_1B VARCHAR(4),
+            Csharp_1 VARCHAR(4),
+            Multimedia_Productie VARCHAR(4),
+            Project_Stenden_Creative_Realization VARCHAR(4))";
             echo $SQLstring;
             $QueryResult = mysqli_query($DBConnect, $SQLstring);
             if ($QueryResult === FALSE)
@@ -262,51 +277,6 @@ if (isset($_POST['submit']))
                 . mysqli_errno($DBConnect)
                 . ": " . mysqli_error($DBConnect) . "</p>";
             }
-        }
-        $array = array(
-            array('vakCode', 'vakNaam', 'EC'),
-            array('OIIM', 'Informatiemanagemnt', '3.0'),
-            array('OIPHP1', 'PHP', '3.0'),
-            array('OIDGD1', 'Digital Graphic Design 1', '3.0'),
-            array('IIPR1', 'Project Professionele Website', '3.0'),
-            array('GMOCO1', 'Mondelinge communicatie 1', '3.0'),
-            array('OIDB1', 'Databases 1', '3.0'),
-            array('OIPHP2', 'Unleash your Potential in PHP', '3.0'),
-            array('GSLB1A', 'Studieloopbaanbegeleiding 1A', '3.0'),
-            array('IIPR2', 'Project Digitale Portfolio', '3.0'),
-            array('GSCOT1', 'Schriftelijke Communicatie', '3.0'),
-            array('OIJV1', 'Java 1', '3.0'),
-            array('OICN1', 'Computernetwerken 1', '3.0'),
-            array('OIWIS', 'Inleiding Wiskunde', '3.0'),
-            array('IIPR3', 'Project Solar Bot', '3.0'),
-            array('GSLB1B', 'Studieloopbaanbegeleiding 1B', '3.0'),
-            array('OIC#1', 'C# 1', '3.0'),
-            array('OIMM', 'Multimedia Productie', '3.0'),
-            array('IIPR4B', 'Project Stenden Creative - Realization', '3.0')
-        );
-
-        $fields = implode(',', array_shift($array)); // take the field names off the start of the array
-
-        $data = array();
-        foreach ($array as $row)
-        {
-            $vakCode = mysql_real_escape_string($row[0]);
-            $vakNaam = mysql_real_escape_string($row[1]);
-            $vakDocent = mysql_real_escape_string($row[2]);
-            $data[] = "('$vakCode', '$vakNaam', '$vakDocent')";
-        }
-        $values = implode(',', $data);
-
-        $sql = "INSERT INTO $TableName ($fields) VALUES $values";
-        $sqlres = mysqli_query($DBConnect, $sql);
-        if ($sqlres === FALSE)
-        {
-            echo "<p>Unable to execute the query.</p>"
-            . "<p>Error code " . mysqli_errno($DBConnect)
-            . ": " . mysqli_error($DBConnect) . "</p>";
-        } else
-        {
-            echo "Gelukt";
         }
     }
 }
