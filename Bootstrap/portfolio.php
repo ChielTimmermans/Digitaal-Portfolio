@@ -95,10 +95,16 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.html"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.html"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -109,10 +115,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li class="active"><a href="portfolio.html"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
-                        <li><a href="projecten.html"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="cijfers.html"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="gastenboek.html"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li class="active"><a href="portfolio.php"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -167,12 +173,12 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
                     <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4><?php echo $lang['Overmij']; ?></h4>
-                        
-                            <?php
-                            $getovermij = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
-                            echo "<p>" . $getovermij . "</p>";
-                            ?>
-                        
+
+                        <?php
+                        $getovermij = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
+                        echo "<p>" . $getovermij . "</p>";
+                        ?>
+
                     </div>
                     <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4><?php echo $lang['Diplomas']; ?></h4>
@@ -200,19 +206,19 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </div>
                     <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4>Hobby's en interesses</h4>
-                        
-                            <?php
-                            $gethobbies = "SELECT hobbies FROM portfoliotext WHERE userID = '$user'";
-                            echo "<p>" . $gethobbies . "</p>";
-                            ?>
-                        
+
+                        <?php
+                        $gethobbies = "SELECT hobbies FROM portfoliotext WHERE userID = '$user'";
+                        echo "<p>" . $gethobbies . "</p>";
+                        ?>
+
                     </div>
                     <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4>Werk ervaring</h4>
-                            <?php
-                            $getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE userID = '$user'";
-                            echo "<p>" . $getwerkervaring . "</p>";
-                            ?>
+                        <?php
+                        $getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE userID = '$user'";
+                        echo "<p>" . $getwerkervaring . "</p>";
+                        ?>
                     </div>
                 </div>
             </div>
