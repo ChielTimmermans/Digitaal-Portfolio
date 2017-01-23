@@ -340,43 +340,44 @@ if (isset($_POST['submit']))
     <body>
         <form action="registerengegevens.php" method="post">
             Studentnummer:<br>
-            <input type="number" name="studentnummer" maxlength="8" placeholder="Studentnummer">
+            <input type="number" name="studentnummer" maxlength="8" placeholder="Studentnummer" value="<?php echo $stnummer; ?>"/>
             <span><?php echo $stnummerError; ?></span><br><br>
             Klas:<br>
-            <input type="text" name="Klas" maxlength="10" placeholder="Klas">
+            <input type="text" name="Klas" maxlength="10" placeholder="Klas" value="<?php echo $klas; ?>"/>
             <span><?php echo $klasError; ?></span><br><br>
             Wachtwoord:<br>
-            <input type="password" name="pass" placeholder="Enter Password" maxlength="15" />   
+            <input type="password" name="pass" placeholder="Enter Password" maxlength="15"/>   
             <span><?php echo $passError, $passError2; ?></span>
             <br><br>
             Wachtwoord herhalen:<br>
-            <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" />
+            <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15"/>
             <br><br>
             Voornaam:<br>
-            <input type="text" name="voornaam" maxlength="30" placeholder="voornaam">
+            <input type="text" name="voornaam" maxlength="30" placeholder="voornaam"  value="<?php echo $fname; ?>"/>
             <span><?php echo $fnameError; ?></span><br><br>
             Achternaam:<br>
-            <input type="text" name="achternaam" maxlength="60" placeholder="achternaam">
+            <input type="text" name="achternaam" maxlength="60" placeholder="achternaam" value="<?php echo $lname; ?>"/>
             <span><?php echo $lnameError; ?></span><br><br>
             Email adres:<br>
-            <input type="email" name="email" maxlength="50" placeholder="Emailadres">
+            <input type="email" name="email" maxlength="50" placeholder="Emailadres" value="<?php echo $email; ?>"/>
             <span><?php echo $emailError; ?></span><br><br>
             Telefoonnummer:<br>
-            <input type="number" name="telnummer" maxlength="15" placeholder="Telefoonnummer">
+            <input type="number" name="telnummer" maxlength="15" placeholder="Telefoonnummer" value="<?php echo $telnum; ?>"/>
             <span><?php echo $telError; ?></span><br><br>
             Geboortedatum:<br>
-            <input type="date" name="geboortedatum" maxlenth="10" placeholder="Geboortedatum">
+            <input type="date" name="geboortedatum" maxlenth="10" placeholder="Geboortedatum"  value="<?php echo $bday; ?>"/>
             <span><?php echo $bdayError; ?></span><br><br>
             Straatnaam:<br>
-            <input type="text" name="adres" maxlength="30" placeholder="Straatnaam">
+            <input type="text" name="adres" maxlength="30" placeholder="Straatnaam"  value="<?php echo $adr; ?>"/>
             <span><?php echo $adrError; ?></span><br><br>
             Huisnummer:<br>
-            <input type="number" name="huisnummer" maxlength="5" placeholder="Huisnummer"><span><?php echo $hnumError; ?></span><br><br>
+            <input type="number" name="huisnummer" maxlength="5" placeholder="Huisnummer" value="<?php echo $hnum; ?>"/>
+            <span><?php echo $hnumError; ?></span><br><br>
             Postcode:<br>
-            <input type="text" name="postcode" maxlength="6" placeholder="postcode">
+            <input type="text" name="postcode" maxlength="6" placeholder="postcode" value="<?php echo $postc; ?>"/>
             <span><?php echo $postcError; ?></span><br><br>
             Woonplaats:<br>
-            <input type="text" name="woonplaats" maxlength="30" placeholder="woonplaats">
+            <input type="text" name="woonplaats" maxlength="30" placeholder="woonplaats" value="<?php echo $plaats; ?>"/>
             <span><?php echo $plaatsError; ?></span><br><br>
             <input type="radio" name="gender" value="m" checked>Man
             <input type="radio" name="gender" value="f">Vrouw<br><br>
