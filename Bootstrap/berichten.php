@@ -1,3 +1,26 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\createDatabases/dbconnect.php';
+include '..\Functions\common.php';
+include '..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -92,9 +115,9 @@
                                 <table class="table" id="table">
                                     <thead>
                                         <tr>
-                                            <th>Datum</th>
-                                            <th>Naam</th>
-                                            <th>Bericht</th>
+                                            <th><?php echo $lang['tijddatum']; ?></th>
+                                            <th><?php echo $lang['naam']; ?></th>
+                                            <th><?php echo $lang['berichten']; ?></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,6 +139,7 @@
                                     </tbody>
                                 </table>
                                 <hr>
+                                <a href="gastenboek.php">&#8592;</a>
                             </div>
                         </div>
                         <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>

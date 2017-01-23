@@ -20,6 +20,57 @@ $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+
+if (isset($_POST['submit'])){
+    
+    $code = trim($_POST['code']);
+    $code = strip_tags($code);
+    $code = htmlspecialchars($code);
+    
+    $project = trim($_POST['project']);
+    $project = strip_tags($project);
+    $project = htmlspecialchars($project);
+    
+    $ec = trim($_POST['ec']);
+    $ec = strip_tags($ec);
+    $ec = htmlspecialchars($ec);
+    
+    $cijfer = trim($_POST['cijfer']);
+    $cijfer = strip_tags($cijfer);
+    $cijfer = htmlspecialchars($cijfer);
+    
+    $comment = trim($_POST['comment']);
+    $comment = strip_tags($comment);
+    $comment = htmlspecialchars($comment);
+    
+    $error = false;
+    if (empty($code))
+    {
+        $error = true;
+        $codeerror = "Vul deze in.";
+    }
+    
+    if (empty($project)){
+        $error = true;
+        $projecterror = "Vul deze in.";
+    }
+    
+    if (empty($ec)){
+        $error = true;
+        $ecerror = "Vul deze in.";
+    }
+    
+    if (empty($cijfer)){
+        $error = true;
+        $cijfererror = "Vul deze in.";
+    }
+    
+    if (empty($comment)){
+        $error = true;
+        $commenterror = "Vul deze in.";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,41 +153,46 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <form class="form-horizontal">
+                        <form action="beoordeel.php" method="POST" class="form-horizontal">
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codeproject']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="code" type="text" placeholder="IIPR1 Project Professionele Website" class="form-control input-md">
+                                    <input id="textinput" name="code" type="text" placeholder="IIPR1 Project Professionele Website" class="form-control input-md" value="<?php echo $code; ?>"/>
+                                    <span><?php echo $codeerror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['date']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="project" type="date" class="form-control input-md">
+                                    <input id="textinput" name="project" type="date" class="form-control input-md" value="<?php echo $project; ?>"/>
+                                    <span><?php echo $projecterror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['aantalec']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="ec" type="number" placeholder="0-60" min="0" max="60" step="1" class="form-control input-md">
+                                    <input id="textinput" name="ec" type="number" placeholder="0-60" min="0" max="60" step="1" class="form-control input-md" value="<?php echo $ec; ?>"/>
+                                    <span><?php echo $ecerror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['cijfer']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="cijfer" type="number"  step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
+                                    <input id="textinput" name="cijfer" type="number"  step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md" value="<?php echo $cijfer; ?>"/>
+                                    <span><?php echo $cijfererror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textarea"><?php echo $lang['opmerkingen']; ?></label>  
                                 <div class="col-md-4">
-                                    <textarea name="comment" required rows="10" cols="32"></textarea>
+                                    <textarea name="comment" required rows="10" cols="32"><?php echo $comment; ?></textarea>
+                                    <span><?php echo $commenterror; ?></span>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8">
-                                    <button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['toevoegen']; ?></button>
+                                    <input type="submit" id="button1id" name="submit" class="btn btn-success pull-right" value="<?php echo $lang['toevoegen']; ?>"/>
                                 </div>
                             </div>
                         </form>

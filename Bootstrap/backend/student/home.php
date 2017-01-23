@@ -98,7 +98,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Keuzemenu</h1>
+                    <h1 class="page-header"><?php echo $lang['keuze']; ?></h1>
                 </div>
             </div></div>  
 
@@ -110,13 +110,13 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="bs-callout bs-callout-danger">
                         <ul>
                             <li>
-                                <a href="portfolio.php"> Inhoud portfolio pagina aanpassen </a>
+                                <a href="portfolio.php"> <?php echo $lang['portfolioaanpassen']; ?> </a>
                             </li>
                             <li>
-                                <a href="projecten.php"> Projecten wijzigen/toevoegen</a>
+                                <a href="projecten.php"> <?php echo $lang['projectenwijzigentoevoegen']; ?></a>
                             </li>
                             <li>
-                                <a href="thema.php"> Thema wijzigen</a>
+                                <a href="thema.php"> <?php echo $lang['Themawijzigen']; ?></a>
                             </li>
                         </ul>
                     </div>

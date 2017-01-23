@@ -99,7 +99,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Projecten wijzigen/toevoegen</h1>
+                    <h1 class="page-header"><?php echo $lang['projectenwijzigentoevoegen']; ?></h1>
                 </div>
             </div></div>  
 
@@ -117,7 +117,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                             </p>    
                         </a>
-                        <p><a href="wijzigproject.php"><button id="button1id" name="bewerk" class="btn btn-info">Wijzig dit project</button></a></p>
+                        <p><a href="wijzigproject.php"><button id="button1id" name="bewerk" class="btn btn-info"><?php echo $lang['wijzigproject']; ?></button></a></p>
 
                         <a class="list-group-item inactive-link" href="#">
                             <h4 class="list-group-item-heading">Portfolio</h4>
@@ -127,8 +127,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                             </p>    
                         </a>
-                        <p><a href="wijzigproject.php"><button id="button1id" name="bewerk" class="btn btn-info">Wijzig dit project</button></a></p>
-                        <p><a href="toevoegenproject.php"><button id="button1id" name="toevoegen" class="btn btn-info">Nieuw project toevoegen</button></a></p>
+                        <p><a href="wijzigproject.php"><button id="button1id" name="bewerk" class="btn btn-info"><?php echo $lang['wijzigproject']; ?></button></a></p>
+                        <p><a href="toevoegenproject.php"><button id="button1id" name="toevoegen" class="btn btn-info"><?php echo $lang['nieuwprojecttoevoegen']; ?></button></a></p>
                         <a href="home.php">&#8592;</a>	
                     </div>
 

@@ -1,3 +1,27 @@
+
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
+    $portnummer = $_SESSION['user'];
+} else
+{
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\createDatabases/dbconnect.php';
+include '..\Functions\common.php';
+include '..\databaseArray.php';
+if (!isset($_SESSION['user']))
+{
+    header("Location: index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -77,7 +101,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Gastenboek</h1>
+                    <h1 class="page-header"><?php echo $lang['Gastenboek']; ?></h1>
                 </div>
             </div></div>  
 
@@ -97,11 +121,11 @@
                                     <textarea class="form-control" id="message" placeholder="Vul hier je bericht in" maxlength="140" rows="7"></textarea>				
                                 </div>
                                 <div class="form-group">
-                                    <p><button type="button" id="submit" name="submit" class="btn btn-primary pull-middle">Submit</button></p>
+                                    <p><button type="button" id="submit" name="submit" class="btn btn-primary pull-middle"><?php echo $lang['verstuur']; ?></button></p>
                                 </div>
                             </form>
                         </div>
-                        <a href="berichten.html">Bekijk berichten</a>
+                        <a href="berichten.php"><?php echo $lang['bekijkberichten']; ?></a>
                     </div>
 
                 </div>
