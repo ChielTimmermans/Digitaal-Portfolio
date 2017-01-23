@@ -219,6 +219,9 @@ if (isset($_POST['submit']))
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
+        $insertdata = "INSERT INTO portfoliotext(`userID`, `overmij`, `diplomas`, `hobbies`, `werkervaring`) "
+                        . "VALUES ($stnummer, 'Voer text in', 'Voer text in', 'Voer text in', 'Voer text in')";
+        $resinsert = mysqli_query($conn, $insertdata);
 
         if ($res)
         {
@@ -328,9 +331,7 @@ if (isset($_POST['submit']))
         } else {
             echo "Gelukt";
         }
-        $insertdata = "INSERT INTO porfoliotest(userID, overmij, diplomas, hobbies, werkervaring) "
-                . "VALUES ('$stnummer', 'Voer text in', 'Voer text in', 'Voer text in', 'Voer text in')";
-        $resinsert = mysqli_query($conn, $insertdata);
+
     }
     
 ?>
