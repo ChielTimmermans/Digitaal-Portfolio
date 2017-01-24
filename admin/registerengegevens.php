@@ -220,7 +220,11 @@ if (isset($_POST['submit']))
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
-
+        $query3 = "INSERT INTO portfoliotext (Studentnummer,overmij,diplomas,hobbies,werkervaring) VALUES 
+                ('$stnummer', 'Voer text in', 'Voer op de volgende manier de text in: komt nog', 'Voer hier text in')";    
+        echo $query3;
+        $res3 = mysqli_query($conn, $query3);
+        
         if ($res)
         {
             $errTyp = "success";
