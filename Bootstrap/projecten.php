@@ -20,6 +20,10 @@ $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$query2 = "SELECT * FROM projecten WHERE studentnummer = '$user'";
+$result2 = mysqli_query($conn, $query2)
+        or die("Error: " . mysqli_error($conn));
+$row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,7 +133,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         </div>';
                                 }
                             }
-                            if ($project === 0)
+                            if ($item === 1)
                             {
                                 echo '  <div class="list-group-item inactive-link">
                                             <p class="list-group-item-text">' .

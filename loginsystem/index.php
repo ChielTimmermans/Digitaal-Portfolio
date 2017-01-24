@@ -2,23 +2,7 @@
 //if(isset($_SESSION['user']) != ""){
 //session_start();
 //}
-if (isset($_SESSION['user']) === "0") {
-    header("Location: admin.php");
-    exit;
-}
-elseif (isset($_SESSION['user'])=== "1"){
-    header("Location: leraar.php");
-}
-elseif (isset($_SESSION['user'])=== "2"){
-    header("Location: leerling.php");
-}
-elseif (isset($_SESSION['user'])=== "3"){
-    unset($_SESSION['user']);
-    session_unset();
-    session_destroy();
-    header("Location: index.php");
-    exit;
-}
+
 require_once 'dbconnect.php';
 
 // it will never let you open index(login) page if session is set
@@ -57,16 +41,18 @@ if (isset($_POST['btn-login']))
     {
 
         $password = hash('sha256', $pass); // password hashing using SHA256
-
-        $res = mysqli_query($conn, "SELECT Studentnummer, userEmail, userPass FROM users WHERE userEmail='$name'");
+        $query = "SELECT Studentnummer, userEmail, userPass FROM users WHERE userEmail='$name'";
+        $query2 = "SELECT Rol FROM gegevens WHERE Email='$name'";
+        $res = mysqli_query($conn, $query);
+        $res2 = mysqli_query($conn, $query2);
         $row = mysqli_fetch_array($res);
+        $row2 = mysqli_fetch_array($res2);
         $count = mysqli_num_rows($res); // if uname/pass correct it returns must be 1 row
-
         if ($count == 1 && $row['userPass'] == $password)
         {
             $_SESSION['user'] = $row['Studentnummer'];
-            echo "gelukt";
-            header("Location: portfolio.php");
+            $_SESSION['Rol']=$row2['Rol'];
+            header("Location: redirected.php");
         } else
         {
             $errMSG = "Incorrect Credentials, Try again...";
