@@ -79,6 +79,7 @@ if (isset($_POST['submit'])){
         if (mysqli_num_rows($Queryslb2) == 0){
             $SQLstringslb = "CREATE TABLE slbcijfers("
                     . "slbcijferID      SMALLINT        NOT NULL    AUTO_INCREMENT  PRIMARY KEY, "
+                    . "studentnummer    int(6)          NOT NULL, "
                     . "vakcode          VARCHAR(10)     NOT NULL, "
                     . "date             VARCHAR(25)     NOT NULL, "
                     . "cijfer           int(3)          NOT NULL, "
@@ -92,7 +93,7 @@ if (isset($_POST['submit'])){
                 . ": " . mysqli_error($conn) . "</p>";
             }
         }
-        $Queryslb3 = "INSERT INTO slbcijfers (vakcode, date, cijfer, ec, comment) VALUES ('$code', '$project', '$cijfer', '$ec', '$comment')";
+        $Queryslb3 = "INSERT INTO slbcijfers (studentnummer, vakcode, date, cijfer, ec, comment) VALUES ('$portnummer', '$code', '$project', '$cijfer', '$ec', '$comment')";
         $resslb = mysqli_query($conn, $Queryslb3);
     }
 }

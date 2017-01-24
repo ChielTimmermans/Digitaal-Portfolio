@@ -109,7 +109,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                                 <?php
-                                    $SQLslb = "SELECT * FROM slbcijfers";
+                                    $SQLslb = "SELECT * FROM slbcijfers WHERE Studentnummer $user";
                                     $Queryslb = mysqli_query($conn, $SQLslb);
                                     if (mysqli_num_rows($Queryslb) > 0){
                                         echo "<table>"
