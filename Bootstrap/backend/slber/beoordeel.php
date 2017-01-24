@@ -93,7 +93,8 @@ if (isset($_POST['submit'])){
                 . ": " . mysqli_error($conn) . "</p>";
             }
         }
-        $Queryslb3 = "INSERT INTO slbcijfers (studentnummer, vakcode, date, cijfer, ec, comment) VALUES ('$portnummer', '$code', '$project', '$cijfer', '$ec', '$comment')";
+        $student = $_GET['Studentnummer'];
+        $Queryslb3 = "INSERT INTO slbcijfers (studentnummer, vakcode, date, cijfer, ec, comment) VALUES ('$student', '$code', '$project', '$cijfer', '$ec', '$comment')";
         $resslb = mysqli_query($conn, $Queryslb3);
     }
 }
