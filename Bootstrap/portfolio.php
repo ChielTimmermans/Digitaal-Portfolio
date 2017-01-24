@@ -170,7 +170,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         
                             <?php
                             $getovermij = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
-                            echo "<p>" . $getovermij . "</p>";
+                            $echoovermij = mysqli_query($conn, $getovermij);
+                            echo $getovermij;
                             ?>
                         
                     </div>

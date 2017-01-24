@@ -26,14 +26,12 @@ if ($DBConnect === FALSE) {
     $QueryResult = mysqli_query($DBConnect, $SQLstring);
     if (mysqli_num_rows($QueryResult) == 0) {
         $SQLstring = "CREATE TABLE $TableName(
-                userID          SMALLINT        UNIQUE KEY,
+                Studentnummer   SMALLINT        UNIQUE KEY,
                 overmij         VARCHAR(1000),
                 diplomas        VARCHAR(150),
                 hobbies         VARCHAR(1000),
                 werkervaring    VARCHAR(1000)
                     )";
-                    $insertdata = "INSERT INTO porfoliotest(userID, overmij, diplomas, hobbies, werkervaring) VALUES"
-                            . " ('Voer text in', 'Voer text in', 'Voer text in', 'Voer text in', 'Voer text in')";
 ;
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
         if ($QueryResult === FALSE) {

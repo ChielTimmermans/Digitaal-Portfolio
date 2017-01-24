@@ -215,13 +215,13 @@ if (isset($_POST['submit']))
     if (!$error)
     {
 
-        $query = "INSERT INTO gegevens (Studentnummer,Klas,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,Stijl1,Stijl2,Stijl3) VALUES ('$stnummer','$klas','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','1',1,1,1)";
-        $res = mysqli_query($conn, $query);
-        $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
-        $res2 = mysqli_query($conn, $query2);
-        $insertdata = "INSERT INTO portfoliotext(`userID`, `overmij`, `diplomas`, `hobbies`, `werkervaring`) "
-                        . "VALUES ($stnummer, 'Voer text in', 'Voer text in', 'Voer text in', 'Voer text in')";
-        $resinsert = mysqli_query($conn, $insertdata);
+        $query      = "INSERT INTO gegevens (Studentnummer,Klas,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,Stijl1,Stijl2,Stijl3) VALUES ('$stnummer','$klas','$fname','$lname','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','1',1,1,1)";
+        $res        = mysqli_query($conn, $query);
+        $query2     = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
+        $res2       = mysqli_query($conn, $query2);
+        $insertdata = "INSERT INTO portfoliotext(Studentnummer,overmij,diplomas,hobbies,werkervaring) "
+                        . "VALUES ($stnummer,'Voer text in','Voer text in','Voer text in','Voer text in')";
+        $resinsert  = mysqli_query($conn, $insertdata);
 
         if ($res)
         {
