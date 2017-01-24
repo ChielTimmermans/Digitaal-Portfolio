@@ -4,8 +4,7 @@ require_once '..\CreateDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
 
-if (!isset($_SESSION['user']))
-{
+if (!isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
@@ -31,14 +30,17 @@ $oldhobbies = mysqli_query($conn, $gethobbies);
 $getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE userID = '$user'";
 $oldwerkervaring = mysqli_query($conn, $getwerkervaring);
 
-if (isset($_POST[submit]))
-{
+if (isset($_POST[submit])) {
     $gettext = ('SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext');
     $oldtext = mysqli_query($conn, $gettext);
 
 
-    $updatetext = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE Studentnummer = '$user'";
-    $resupdate = mysqli_query($conn, $updatetext);
+    if (empty($oldtext)) {
+        $insertnew = "INSERT INTO portfoliotext(userID, overmij, diplomas, hobbies, werkervaring) VALUES ('$user, '$overmij', '$diplomas', '$hobbies', '$werkervaring')";
+    } else {
+        $alternew = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE userID = '$user'";
+        $updatetext = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE Studentnummer = '$user'";
+    }
 }
 ?>
 
