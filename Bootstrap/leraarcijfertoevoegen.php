@@ -24,8 +24,8 @@ if (isset($_POST['btn-signup'])) {
         <title>Coding Cage - Login & Registration System</title>
     </head>
     <body>
-        <form method="post" action="#">
-            <select name="klas[]" >
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off">
+            <select name="klas">
                 <?php
                 include '..\databaseArray.php';
 
@@ -34,25 +34,31 @@ if (isset($_POST['btn-signup'])) {
 
                 //Column 'Klas' omgezet naar een array.
                 $column = array();
-                while ($row = mysqli_fetch_array($result)) {
+                while ($row = mysqli_fetch_array($result))
+                {
                     $column[] = $row[Klas];
                 }
-                foreach ($column as $res) {
+                foreach($column as $res){
 
                     echo "<option value='$res'>$res</option>";
                 }
                 ?>
             </select>
-            <input type='submit' name='submitklas' value="Get students"/>
-        </form>
-        <form method="post" action="#">
+            <button type='submit' name='submit'>get students</button>
+            
+                <?php
+                if (isset($_POST['submit'])){ 
+                echo "<select name='leerling'>";
+                $query ="SELECT Voornaam, Achternaam From gegevens where klas =$res";
+                                $result = mysqli_query($conn, $query);
 
-            <?php
-            if (isset($_POST['submitklas'])) {
-                // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
-                foreach ($_POST['klas'] as $select) {
-                    $select;
+                //Column 'Klas' omgezet naar een array.
+                $column = array();
+                while ($row = mysqli_fetch_array($result))
+                {
+                    $column[] = $row[Klas];
                 }
+<<<<<<< HEAD
             }
             if (isset($_POST['submitklas'])){
             $a = 0;
@@ -109,6 +115,18 @@ if (isset($_POST['btn-signup'])) {
         ?>
             
         <p>hallo <?php echo $select2; ?></p>
+=======
+                foreach($column as $res){
+                    echo $res;
+                    echo "<option value='$res'>$res</option>";
+                }
+                echo "</select>";
+                echo "bier";
+                }
+                
+                ?>            
+        </form>
+>>>>>>> 4c4258f105e5a064a3a74710ef0dace9697b7f71
     </body>
 </html>
 <?php ob_end_flush(); ?>

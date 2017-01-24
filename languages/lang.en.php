@@ -30,8 +30,8 @@ $lang['Portfolio'] = 'Portfolio';
 $lang['Projecten'] = 'Projects';
 $lang['Cijferlijst'] = 'Grading list';
 $lang['Gastenboek'] = 'Guestbook';
-$lang['naam'] = 'Name';
-$lang['date'] = 'Date';
+$lang['naam'] = 'name';
+$lang['date'] = 'date';
 
 //portfolio
 $lang['Diplomas'] = 'Degrees';
@@ -43,7 +43,7 @@ $lang['Afstudeerjaar'] = 'Graduation Year';
 
 
 //portfolio main page
-$lang['naam'] = 'Name';
+$lang['naam'] = 'name';
 $lang['Studie/Functie'] = 'Study/Function';
 $lang['School/bedrijf'] = 'School/Company';
 $lang['Woonplaats'] = 'City';
@@ -61,9 +61,6 @@ $lang['cijfer'] ="Grade";
 $lang['bekijkberichten'] ="Check messages";
 $lang['verstuur'] ="Send";
 
-//Berichten
-$lang['berichten'] ="Messages";
-$lang['tijddatum'] ="Time and date";
 /* menu */
 
 /* gastregistreren */
@@ -71,7 +68,8 @@ $lang['error1'] = 'please enter your email address.';
 $lang['error2'] = 'Provided Email is already in use.';
 
 //berichten
-$lang['berichten'] = 'Messages';
+$lang['berichten'] = 'messages';
+$lang['bericht'] = 'message';
 
 //cijfers
 $lang['cijfers'] = 'grades';
@@ -80,6 +78,8 @@ $lang['studieonderdelen'] = 'courses';
 //cijfersaanpassen
 $lang['cijfersaanpassen'] = 'edit grades';
 
+//gastenboek
+$lang['bekijkberichten'] = 'view messages';
 
 //home
 $lang['upload'] = 'upload files';
