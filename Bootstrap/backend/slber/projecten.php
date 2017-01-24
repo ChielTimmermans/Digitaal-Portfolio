@@ -109,9 +109,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
                                 nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                                 <?php
-                                    $SQLslb = "SELECT * FROM slbcijfer";
+                                    $SQLslb = "SELECT * FROM slbcijfers";
                                     $Queryslb = mysqli_query($conn, $SQLslb);
-                                    if (mysqli_num_row($Queryslb) > 0){
+                                    if (mysqli_num_rows($Queryslb) > 0){
                                         echo "<table>"
                                         . "<tr><th>vakcode</th>"
                                         . "<th>project</th>"
