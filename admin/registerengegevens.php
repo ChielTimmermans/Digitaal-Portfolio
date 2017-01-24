@@ -220,11 +220,15 @@ if (isset($_POST['submit']))
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
-        $query3 = "INSERT INTO portfoliotext (Studentnummer,overmij,diplomas,hobbies,werkervaring) VALUES 
-                ('$stnummer', 'Voer text in', 'Voer op de volgende manier de text in: komt nog', 'Voer hier text in')";    
-        echo $query3;
+        $query3 = "INSERT INTO portfoliotext (Studentnummer,overmij,diplomas,hobbies,werkervaring) VALUES ('$stnummer', 'Voer text in', 'Voer op de volgende manier de text in: komt nog', 'Voer hier text in')";
         $res3 = mysqli_query($conn, $query3);
+        $query4 = "INSERT INTO cijfer (studentnummer,Informatiemanagement,PHP,HTML_en_CSS,Digital_Graphic_Design_1,Project_Professionele_Website,Mondelinge_communicatie_1,Databases_1,Unleash_your_Potential_in_PHP,Studieloopbaanbegeleiding_1A,Project_Digitale_Portfolio,Schriftelijke_Communicatie,Java_1,Computernetwerken_1,Inleiding_Wiskunde,Project_Solar_Bot,Studieloopbaanbegeleiding_1B,Csharp_1,Multimedia_Productie,Project_Stenden_Creative_Realization) VALUES ('$stnummer','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-')";
+        $res4 = mysqli_query($conn, $query4);
+        $query5 = "INSERT INTO projecten (Studentnummer,Projecttitel1,Projectcontent1,Projecttitel2,Projectcontent2,Projecttitel3,Projectcontent3,Projecttitel4,Projectcontent4) VALUES ('$stnummer','0','0','0','0','0','0','0','0')";
+        $res5 = mysqli_query($conn, $query5);
+        echo $query5;
         
+
         if ($res)
         {
             $errTyp = "success";
@@ -243,126 +247,57 @@ if (isset($_POST['submit']))
             $errTyp = "danger";
             $errMSG = "Something went wrong, try again later..";
         }
-        $DBConnect = mysqli_connect('localhost', 'root', '');
-        $DBName = 'portfolio';
-        mysqli_select_db($DBConnect, $DBName);
-        $TableName = "s" . $stnummer;
-        $SQLstring = "SHOW TABLES LIKE '$TableName'";
-        $QueryResult = mysqli_query($DBConnect, $SQLstring);
-        if (mysqli_num_rows($QueryResult) == 0)
-        {
-            $SQLstring = "CREATE TABLE $TableName(
-            vakCode VARCHAR(10) PRIMARY KEY,
-            vakNaam VARCHAR(50),
-            cijfer VARCHAR(4),
-            EC VARCHAR(4),
-            vakDocent VARCHAR(30))";
-            echo $SQLstring;
-            $QueryResult = mysqli_query($DBConnect, $SQLstring);
-            if ($QueryResult === FALSE)
-            {
-                echo "<p>Unable to create the table.</p>"
-                . "<p>Error code "
-                . mysqli_errno($DBConnect)
-                . ": " . mysqli_error($DBConnect) . "</p>";
-            }
-        }
-        $array = array(
-            array('vakCode', 'vakNaam', 'EC'),
-            array('OIIM', 'Informatiemanagemnt', '3.0'),
-            array('OIPHP1', 'PHP', '3.0'),
-            array('OIDGD1', 'Digital Graphic Design 1', '3.0'),
-            array('IIPR1', 'Project Professionele Website', '3.0'),
-            array('GMOCO1', 'Mondelinge communicatie 1', '3.0'),
-            array('OIDB1', 'Databases 1', '3.0'),
-            array('OIPHP2', 'Unleash your Potential in PHP', '3.0'),
-            array('GSLB1A', 'Studieloopbaanbegeleiding 1A', '3.0'),
-            array('IIPR2', 'Project Digitale Portfolio', '3.0'),
-            array('GSCOT1', 'Schriftelijke Communicatie', '3.0'),
-            array('OIJV1', 'Java 1', '3.0'),
-            array('OICN1', 'Computernetwerken 1', '3.0'),
-            array('OIWIS', 'Inleiding Wiskunde', '3.0'),
-            array('IIPR3', 'Project Solar Bot', '3.0'),
-            array('GSLB1B', 'Studieloopbaanbegeleiding 1B', '3.0'),
-            array('OIC#1', 'C# 1', '3.0'),
-            array('OIMM', 'Multimedia Productie', '3.0'),
-            array('IIPR4B', 'Project Stenden Creative - Realization', '3.0')
-        );
-
-        $fields = implode(',', array_shift($array)); // take the field names off the start of the array
-
-        $data = array();
-        foreach ($array as $row)
-        {
-            $vakCode = mysql_real_escape_string($row[0]);
-            $vakNaam = mysql_real_escape_string($row[1]);
-            $vakDocent = mysql_real_escape_string($row[2]);
-            $data[] = "('$vakCode', '$vakNaam', '$vakDocent')";
-        }
-        $values = implode(',', $data);
-
-        $sql = "INSERT INTO $TableName ($fields) VALUES $values";
-        $sqlres = mysqli_query($DBConnect, $sql);
-        if ($sqlres === FALSE)
-        {
-            echo "<p>Unable to execute the query.</p>"
-            . "<p>Error code " . mysqli_errno($DBConnect)
-            . ": " . mysqli_error($DBConnect) . "</p>";
-        } else
-        {
-            echo "Gelukt";
-        }
     }
 }
-?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Coding Cage - Login & Registration System</title>
-    </head>
-    <body>
-        <form action="registerengegevens.php" method="post">
-            Studentnummer:<br>
-            <input type="number" name="studentnummer" maxlength="8" placeholder="Studentnummer" value="<?php echo $stnummer; ?>"/>
-            <span><?php echo $stnummerError; ?></span><br><br>
-            Klas:<br>
-            <input type="text" name="Klas" maxlength="10" placeholder="Klas" value="<?php echo $klas; ?>"/>
-            <span><?php echo $klasError; ?></span><br><br>
-            Wachtwoord:<br>
-            <input type="password" name="pass" placeholder="Enter Password" maxlength="15"/>   
-            <span><?php echo $passError, $passError2; ?></span>
-            <br><br>
-            Wachtwoord herhalen:<br>
-            <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15"/>
-            <br><br>
-            Voornaam:<br>
-            <input type="text" name="voornaam" maxlength="30" placeholder="voornaam"  value="<?php echo $fname; ?>"/>
-            <span><?php echo $fnameError; ?></span><br><br>
-            Achternaam:<br>
-            <input type="text" name="achternaam" maxlength="60" placeholder="achternaam" value="<?php echo $lname; ?>"/>
-            <span><?php echo $lnameError; ?></span><br><br>
-            Email adres:<br>
-            <input type="email" name="email" maxlength="50" placeholder="Emailadres" value="<?php echo $email; ?>"/>
-            <span><?php echo $emailError; ?></span><br><br>
-            Telefoonnummer:<br>
-            <input type="number" name="telnummer" maxlength="15" placeholder="Telefoonnummer" value="<?php echo $telnum; ?>"/>
-            <span><?php echo $telError; ?></span><br><br>
-            Geboortedatum:<br>
-            <input type="date" name="geboortedatum" maxlenth="10" placeholder="Geboortedatum"  value="<?php echo $bday; ?>"/>
-            <span><?php echo $bdayError; ?></span><br><br>
-            Straatnaam:<br>
-            <input type="text" name="adres" maxlength="30" placeholder="Straatnaam"  value="<?php echo $adr; ?>"/>
-            <span><?php echo $adrError; ?></span><br><br>
-            Huisnummer:<br>
-            <input type="number" name="huisnummer" maxlength="5" placeholder="Huisnummer" value="<?php echo $hnum; ?>"/>
-            <span><?php echo $hnumError; ?></span><br><br>
-            Postcode:<br>
-            <input type="text" name="postcode" maxlength="6" placeholder="postcode" value="<?php echo $postc; ?>"/>
-            <span><?php echo $postcError; ?></span><br><br>
-            Woonplaats:<br>
-            <input type="text" name="woonplaats" maxlength="30" placeholder="woonplaats" value="<?php echo $plaats; ?>"/>
-            <span><?php echo $plaatsError; ?></span><br><br>
+    ?>
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>Coding Cage - Login & Registration System</title>
+        </head>
+        <body>
+            <form action="registerengegevens.php" method="post">
+                Studentnummer:<br>
+                <input type="number" name="studentnummer" maxlength="8" placeholder="Studentnummer" value="<?php echo $stnummer; ?>"/>
+                <span><?php echo $stnummerError; ?></span><br><br>
+                Klas:<br>
+                <input type="text" name="Klas" maxlength="10" placeholder="Klas" value="<?php echo $klas; ?>"/>
+                <span><?php echo $klasError; ?></span><br><br>
+                Wachtwoord:<br>
+                <input type="password" name="pass" placeholder="Enter Password" maxlength="15"/>   
+                <span><?php echo $passError, $passError2; ?></span>
+                <br><br>
+                Wachtwoord herhalen:<br>
+                <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15"/>
+                <br><br>
+                Voornaam:<br>
+                <input type="text" name="voornaam" maxlength="30" placeholder="voornaam"  value="<?php echo $fname; ?>"/>
+                <span><?php echo $fnameError; ?></span><br><br>
+                Achternaam:<br>
+                <input type="text" name="achternaam" maxlength="60" placeholder="achternaam" value="<?php echo $lname; ?>"/>
+                <span><?php echo $lnameError; ?></span><br><br>
+                Email adres:<br>
+                <input type="email" name="email" maxlength="50" placeholder="Emailadres" value="<?php echo $email; ?>"/>
+                <span><?php echo $emailError; ?></span><br><br>
+                Telefoonnummer:<br>
+                <input type="number" name="telnummer" maxlength="15" placeholder="Telefoonnummer" value="<?php echo $telnum; ?>"/>
+                <span><?php echo $telError; ?></span><br><br>
+                Geboortedatum:<br>
+                <input type="date" name="geboortedatum" maxlenth="10" placeholder="Geboortedatum"  value="<?php echo $bday; ?>"/>
+                <span><?php echo $bdayError; ?></span><br><br>
+                Straatnaam:<br>
+                <input type="text" name="adres" maxlength="30" placeholder="Straatnaam"  value="<?php echo $adr; ?>"/>
+                <span><?php echo $adrError; ?></span><br><br>
+                Huisnummer:<br>
+                <input type="number" name="huisnummer" maxlength="5" placeholder="Huisnummer" value="<?php echo $hnum; ?>"/>
+                <span><?php echo $hnumError; ?></span><br><br>
+                Postcode:<br>
+                <input type="text" name="postcode" maxlength="6" placeholder="postcode" value="<?php echo $postc; ?>"/>
+                <span><?php echo $postcError; ?></span><br><br>
+                Woonplaats:<br>
+                <input type="text" name="woonplaats" maxlength="30" placeholder="woonplaats" value="<?php echo $plaats; ?>"/>
+                <span><?php echo $plaatsError; ?></span><br><br>
             <input type="radio" name="gender" value="m" checked>Man
             <input type="radio" name="gender" value="f">Vrouw<br><br>
             <button type="submit" name="submit">Submit</button>
