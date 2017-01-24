@@ -114,7 +114,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
-                    <ul class="nav nav-sidebar">
+                    <ul class="nav <?php include "stijl3.php";?>">
                         <li class="active"><a href="portfolio.php"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
                         <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
                         <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
@@ -208,8 +208,12 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <h4>Hobby's en interesses</h4>
 
                         <?php
-                        $getHobbies = "SELECT hobbies FROM portfoliotext WHERE userID = '$user'";
-                        $res = mysqli_query(($conn), $getHobbies)
+                        $getHobbies = "SELECT `hobbies` FROM `portfoliotext` WHERE `userID` = '$user'";
+                        $res = mysqli_query($conn, $getHobbies);
+                        $hobby = mysqli_fetch_array($res);
+                        echo $hobby['hobbies'];
+                        
+
                         ?>
 
                     </div>
