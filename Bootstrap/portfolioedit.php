@@ -34,12 +34,28 @@ if (isset($_POST[submit])) {
     $gettext = ('SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext');
     $oldtext = mysqli_query($conn, $gettext);
 
+    $updatetext = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE Studentnummer = '$user'";
+    $resupdate = mysqli_query($conn, $updatetext);
 
-    if (empty($oldtext)) {
-        $insertnew = "INSERT INTO portfoliotext(userID, overmij, diplomas, hobbies, werkervaring) VALUES ('$user, '$overmij', '$diplomas', '$hobbies', '$werkervaring')";
+
+    if ((($_FILES["file"]["type"] == "gif") || ($_FILES["file"]["type"] == "jpeg") || ($_FILES["file"]["type"] == "pjpeg") || ($_FILES["file"]["type"] == "png")) && ($_FILES["file"]["size"] < 20000)) {
+        if ($_FILES["file"]["error"] > 0) {
+            echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
+        } else {
+            echo "Upload: " . $_FILES["file"]["name"] . "<br />";
+            echo "Type: " . $_FILES["file"]["type"] . "<br />";
+            echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
+            echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+
+            if (file_exists("images/avatars/" . $_FILES["file"]["name"])) {
+                unlink("images/avatars/" . $_FILES["file"]["name"]);
+                move_uploaded_file($_FILES["file"]["tmp_name"], "images/avatars/" . $_FILES["file"]["name"]);
+            } else {
+                move_uploaded_file($_FILES["file"]["tmp_name"], "images/avatars/" . $_FILES["file"]["name"]);
+            }
+        }
     } else {
-        $alternew = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE userID = '$user'";
-        $updatetext = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE Studentnummer = '$user'";
+        echo "Invalid file";
     }
 }
 ?>
@@ -185,7 +201,7 @@ if (isset($_POST[submit])) {
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
-                            <textarea name="Diplomas" value="<?php $olddiplomas ?>"></textarea>
+                            <textarea name="diplomas" value="<?php $olddiplomas ?>"></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Hobby's en interesses</h4>
@@ -197,6 +213,7 @@ if (isset($_POST[submit])) {
                                 <textarea name="werkervaring" value="<?php $oldwerkervaring ?>"></textarea>
                             </ul>
                         </div>
+                        <input type="file" name="file" id="file"><br><br>
                         <button type="submit" name="submit">Opslaan</button>
                     </form>
                 </div>

@@ -70,31 +70,6 @@ if (isset($_POST['submit'])){
         $error = true;
         $commenterror = "Vul deze in.";
     }
-    
-    if (!$error)
-    {
-        $SQLslb = "SHOW TABLES LIKE 'slbcijfers'";
-        echo $SQLslb;
-        $Queryslb2 = mysqli_query($conn, $SQLslb);
-        if (mysqli_num_rows($Queryslb2) == 0){
-            $SQLstringslb = "CREATE TABLE slbcijfers("
-                    . "slbcijferID      SMALLINT        NOT NULL    AUTO_INCREMENT  PRIMARY KEY, "
-                    . "vakcode          VARCHAR(10)     NOT NULL, "
-                    . "date             VARCHAR(25)     NOT NULL, "
-                    . "cijfer           int(3)          NOT NULL, "
-                    . "ec               int(2)          NOT NULL, "
-                    . "comment          VARCHAR(250)    NOT NULL)";
-            $QueryResultslb = mysqli_query($conn, $SQLstringslb);
-            if ($QueryResultslb === FALSE) {
-                echo "<p>Unable to create the table</p>"
-                . "<p>Error code "
-                . mysqli_errno($conn)
-                . ": " . mysqli_error($conn) . "</p>";
-            }
-        }
-        $Queryslb3 = "INSERT INTO slbcijfers (vakcode, date, cijfer, ec, comment) VALUES ('$code', '$project', '$cijfer', '$ec', '$comment')";
-        $resslb = mysqli_query($conn, $Queryslb3);
-    }
 }
 ?>
 <!DOCTYPE html>
