@@ -74,13 +74,13 @@ body {
 .nav-sidebar1 > li > a {
   padding-right: 20px;
   padding-left: 20px;
-  color: red;
+  color: #C47631;   
 }
 .nav-sidebar1 > .active > a,
 .nav-sidebar1 > .active > a:hover,
 .nav-sidebar1 > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #C47631;
 }
 
 .nav-sidebar2 {
@@ -91,12 +91,13 @@ body {
 .nav-sidebar2 > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  color: #D82900;
 }
 .nav-sidebar2 > .active > a,
 .nav-sidebar2 > .active > a:hover,
 .nav-sidebar2 > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #D82900;;
 }
 
 .nav-sidebar3 {
@@ -107,12 +108,13 @@ body {
 .nav-sidebar3 > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  color: #C4B231;
 }
 .nav-sidebar3 > .active > a,
 .nav-sidebar3 > .active > a:hover,
 .nav-sidebar3 > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #C4B231;
 }
 
 .nav-sidebar4 {
@@ -123,12 +125,13 @@ body {
 .nav-sidebar4 > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  color: #00B047;
 }
 .nav-sidebar4 > .active > a,
 .nav-sidebar4 > .active > a:hover,
 .nav-sidebar4 > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #00B047;;
 }
 
 .nav-sidebar5 {
@@ -139,13 +142,16 @@ body {
 .nav-sidebar5 > li > a {
   padding-right: 20px;
   padding-left: 20px;
+  color: #20bcbc;
 }
 .nav-sidebar5 > .active > a,
 .nav-sidebar5 > .active > a:hover,
 .nav-sidebar5 > .active > a:focus {
   color: #fff;
-  background-color: #428bca;
+  background-color: #20bcbc;
 }
+/*
+
 
 /*
  * Main content
