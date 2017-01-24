@@ -135,4 +135,7 @@ $lang['naamproject'] = 'Project naam';
 $lang['beschrijvingproject'] = 'Beschrijving van het project';
 
 
+//LINKERMENU Docent/SLBer
+$lang['nbeschikbaar'] = 'Niet beschikbaar';
+
 ?>
