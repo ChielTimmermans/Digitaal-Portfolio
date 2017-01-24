@@ -179,18 +179,25 @@ if (isset($_POST[submit]))
                             <h4><?php echo $lang['Overmij']; ?></h4>
                             <textarea class="overmij" name="overmij" value="<?php $oldovermij ?>"></textarea>
                         </div>
+                        <div>
+                            <?php
+                            echo $alternew;
+                            echo $insertnew;
+                            echo $user;
+                            ?>
+                        </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
-                            <textarea name="Diplomas" value="<?php echo $olddiplomas ?>"></textarea>
+                            <textarea name="Diplomas" value="<?php $olddiplomas ?>"></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Hobby's en interesses</h4>
-                            <textarea name="hobbies" value="<?php echo $oldhobbies ?>"></textarea>
+                            <textarea name="hobbies" value="<?php $oldhobbies ?>"></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Werk ervaring</h4>
                             <ul class="list-group">
-                                <textarea name="werkervaring" value="<?php echo $oldwerkervaring ?>"></textarea>
+                                <textarea name="werkervaring" value="<?php $oldwerkervaring ?>"></textarea>
                             </ul>
                         </div>
                         <button type="submit" name="submit">Opslaan</button>

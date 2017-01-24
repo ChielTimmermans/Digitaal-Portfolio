@@ -208,8 +208,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <h4>Hobby's en interesses</h4>
 
                         <?php
-                        $gethobbies = "SELECT hobbies FROM portfoliotext WHERE userID = '$user'";
-                        echo "<p>" . $gethobbies . "</p>";
+                        $getHobbies = "SELECT hobbies FROM portfoliotext WHERE userID = '$user'";
+                        $res = mysqli_query(($conn), $getHobbies)
                         ?>
 
                     </div>
