@@ -58,56 +58,56 @@ if (isset($_POST['btn-signup'])) {
             $a = 0;
             
             echo "<select name='leerling[]'>";
-            $query2 = "SELECT Voornaam, Achternaam From gegevens where klas = '$select'";
+            $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas = '$select'";
             $result2 = mysqli_query($conn, $query2);
             
             $column2[] = array();
             while ($row2 = mysqli_fetch_array($result2)) {
-                $voornaam = $row2[Voornaam];
-                $achternaam = $row2[Achternaam];
-                $column2[$a] = "$voornaam $achternaam";
+                $Voornaam = $row2[Voornaam];
+                $Achternaam = $row2[Achternaam];
+                $Studentnummer = $row2[Studentnummer];
+                $column2[$a] = "$Voornaam $Achternaam $Studentnummer";
                 $a++;
             }
             foreach ($column2 as $res2) {
                 echo "<option value='$res2'>$res2</option>";
             }
             echo "</select>";
-            echo "<input type='submit' name='submitstudent' value='Get students'/>";
+            echo "<input type='submit' name='submitstudent' value='Get students'/>
+            </form>";
             }
             echo $klas;
-            ?> 
             
-            </form>
-        <?php
+            
+            echo "<form method='post' action='#'>";
+            
+            
             if (isset($_POST['submitstudent'])) {
                 // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
                 foreach ($_POST['leerling'] as $select2) {
                     $select2;
                 }
-            }
-            $query = "SELECT Studentnummer FROM gegevens Where Voornaam = ";
-            
-                    
-            $query2 = "select vakNaam, cijfer From '$cijfer'";
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+            echo "<form method='post' action='#'>
+                <input type='text' name='cijfer' placeholder='vul cijfer in'>
+                <button type='submit' name='submit'>verzend cijfer</button>
+                </form>";
+                
+                
+                }
+            echo $select2;
+            $studentnummer = substr($select2, -6);
+            $_SESSION['studentnummer'] = $studentnummer;
+            echo $_SESSION['studentnummer'];
+            echo $newstring;
+            $cijfer = $_POST['cijfer'];
+            $vak = "Computernetwerken_1";
+            $Studentnummer = $_SESSION['studentnummer'];
+            $query2 = "UPDATE cijfer SET $vak='$cijfer' WHERE studentnummer = $Studentnummer";
+            echo $query2;
+            $res2 = mysqli_query($conn, $query2);
             
         ?>
+            
         <p>hallo <?php echo $select2; ?></p>
     </body>
 </html>

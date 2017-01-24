@@ -15,11 +15,38 @@ if (!isset($_SESSION['user']))
     header("Location: index.php");
     exit;
 }
-$user = $_SESSION['user'];
-$query = "SELECT * FROM users WHERE studentnummer = '$user'";
-$result = mysqli_query($conn, $query)
+        $user = $_SESSION['user'];
+        $query = "SELECT * FROM users WHERE studentnummer = '$user'";
+        $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+            $Studentnummer = $user;
+            $cijfer = "cijfer";
+            $query3 = "select * From $cijfer where studentnummer = $Studentnummer";
+            $result3 = mysqli_query($conn, $query3);
+            foreach ($result3 as $res3) {
+                $studentnummer = $res3['studentnummer'];
+                $Informatiemanagement = $res3['Informatiemanagement'];
+                $PHP = $res3['PHP'];
+                $HTMLCSS = $res3['HTML_en_CSS'];
+                $Digital_Graphic_Design_1 = $res3['Digital_Graphic_Design_1'];
+                $Project_Professionele_Website = $res3['Project_Professionele_Website'];
+                $Mondelinge_communicatie_1 = $res3['Mondelinge_communicatie_1'];
+                $Databases_1 = $res3['Databases_1'];
+                $Unleash_your_Potential_in_PHP = $res3['Unleash_your_Potential_in_PHP'];
+                $Studieloopbaanbegeleiding_1A = $res3['Studieloopbaanbegeleiding_1A'];
+                $Project_Digitale_Portfolio = $res3['Project_Digitale_Portfolio'];
+                $Schriftelijke_Communicatie = $res3['Schriftelijke_Communicatie'];
+                $Java_1 = $res3['Java_1'];
+                $Computernetwerken_1 = $res3['Computernetwerken_1'];
+                $Inleiding_Wiskunde = $res3['Inleiding_Wiskunde'];
+                $Project_Solar_Bot = $res3['Project_Solar_Bot'];
+                $Studieloopbaanbegeleiding_1B = $res3['Studieloopbaanbegeleiding_1B'];
+                $Csharp_1 = $res3['Csharp_1'];
+                $Multimedia_Productie = $res3['Multimedia_Productie'];
+                $Project_Stenden_Creative_Realization = $res3['Project_Stenden_Creative_Realization '];
+                $studentnummer = $res3['studentnummer'];
+            }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,23 +140,106 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             <thead>
                                 <tr>
                                     <th><?php echo $lang['codestudie']; ?></th>
-                                    <th><?php echo $lang['date']; ?></th>
                                     <th><?php echo $lang['aantalec']; ?></th>
                                     <th><?php echo $lang['cijfer']; ?></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>OIPHP1 Inleiding Programmeren in PHP</td>
-                                    <td>09-11-2016</td>
+                                    <td>Informatiemanagement</td>
                                     <td>3</td>
-                                    <td>6.2</td>
+                                    <td><?php echo $Informatiemanagement?></td>
                                 </tr>
                                 <tr>
-                                    <td>OIXH (X)HTML en CSS</td>
-                                    <td>09-11-2016</td>
+                                    <td>Inleiding Programmeren in PHP</td>
                                     <td>3</td>
-                                    <td>7.2</td>
+                                    <td><?php echo $PHP?></td>
+                                </tr>
+                                
+                                <tr>
+                                    <td>(X)HTML en CSS</td>
+                                    <td>3</td>
+                                    <td><?php echo $HTMLCSS?></td>
+                                </tr>
+                                <tr>
+                                    <td>Digital Graphic Design 1</td>
+                                    <td>3</td>
+                                    <td><?php echo $Digital_Graphic_Design_1?></td>
+                                </tr>
+                                <tr>
+                                    <td>Project Professionele Website</td>
+                                    <td>3</td>
+                                    <td><?php echo $Project_Professionele_Website?></td>
+                                </tr>
+                                <tr>
+                                    <td>Mondelinge communicatie 1</td>
+                                    <td>3</td>
+                                    <td><?php echo $Mondelinge_communicatie_1?></td>
+                                </tr>
+                                <tr>
+                                    <td>Databases 1</td>
+                                    <td>3</td>
+                                    <td><?php echo $Databases_1?></td>
+                                </tr>
+                                <tr>
+                                    <td>Unleash your Potential in PHP</td>
+                                    <td>3</td>
+                                    <td><?php echo $Unleash_your_Potential_in_PHP?></td>
+                                </tr>
+                                <tr>
+                                    <td>Studieloopbaanbegeleiding 1a</td>
+                                    <td>3</td>
+                                    <td><?php echo $Studieloopbaanbegeleiding_1A?></td>
+                                </tr>
+                                <tr>
+                                    <td>Project Digitale Portfolio</td>
+                                    <td>3</td>
+                                    <td><?php echo $Project_Digitale_Portfolio?></td>
+                                </tr>
+                                <tr>
+                                    <td>Schriftelijke Communicatie 1</td>
+                                    <td>3</td>
+                                    <td><?php echo $Schriftelijke_Communicatie?></td>
+                                </tr>
+                                <tr>
+                                    <td>Java 1</td>
+                                    <td>3</td>
+                                    <td><?php echo $Java_1?></td>
+                                </tr>
+                                <tr>
+                                    <td>Computernetwerken 1</td>
+                                    <td>3</td>
+                                    <td><?php echo $Computernetwerken_1?></td>
+                                </tr>
+                                <tr>
+                                    <td>Inleiding Wiskunde</td>
+                                    <td>3</td>
+                                    <td><?php echo $Inleiding_Wiskunde?></td>
+                                </tr>
+                                <tr>
+                                    <td>Project Solar Bot</td>
+                                    <td>3</td>
+                                    <td><?php echo $Project_Solar_Bot?></td>
+                                </tr>
+                                <tr>
+                                    <td>Studieloopbaanbegeleiding 1b</td>
+                                    <td>3</td>
+                                    <td><?php echo $Studieloopbaanbegeleiding_1B?></td>
+                                </tr>
+                                <tr>
+                                    <td>C# 1</td>
+                                    <td>3</td>
+                                    <td><?php echo $Csharp_1?></td>
+                                </tr>
+                                <tr>
+                                    <td>Multimedia Productie</td>
+                                    <td>3</td>
+                                    <td><?php echo $Multimedia_Productie?></td>
+                                </tr>
+                                <tr>
+                                    <td>Project Stenden Creative - Realization</td>
+                                    <td>6</td>
+                                    <td><?php echo $Project_Stenden_Creative_Realization?></td>
                                 </tr>
                             </tbody>
                         </table>

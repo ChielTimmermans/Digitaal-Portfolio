@@ -3,18 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/invoercijfers.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/overzichtprojecten.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/home.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/aanpassen.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/languages/lang.en.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/toevoegen.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/overzicht.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/beoordeel.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/languages/lang.nl.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/projecten.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/bijlage.php</file>
-            <file>file:/C:/xampp/htdocs/PORTFOLIO/Bootstrap/backend/docent/overzichtcijfers.php</file>
+            <file>file:/C:/xampp/htdocs/projectportfolio/Bootstrap/leraarcijfertoevoegen.php</file>
+            <file>file:/C:/xampp/htdocs/projectportfolio/Bootstrap/cijfers.php</file>
+            <file>file:/C:/xampp/htdocs/projectportfolio/admin/registerengegevens.php</file>
+            <file>file:/C:/xampp/htdocs/projectportfolio/loginsystem/index.php</file>
         </group>
     </open-files>
 </project-private>
