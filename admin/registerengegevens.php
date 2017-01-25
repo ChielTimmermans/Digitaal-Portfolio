@@ -226,9 +226,7 @@ if (isset($_POST['submit']))
         $res4 = mysqli_query($conn, $query4);
         $query5 = "INSERT INTO projecten (Studentnummer,Projecttitel1,Projectcontent1,Projecttitel2,Projectcontent2,Projecttitel3,Projectcontent3,Projecttitel4,Projectcontent4) VALUES ('$stnummer','0','0','0','0','0','0','0','0')";
         $res5 = mysqli_query($conn, $query5);
-        echo $query5;
-        
-
+               
         if ($res)
         {
             $errTyp = "success";
