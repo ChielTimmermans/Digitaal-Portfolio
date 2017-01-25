@@ -11,23 +11,24 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-$query = "SELECT * FROM users WHERE Studentnummer = '$user'";
+$query = "SELECT * FROM users WHERE Studentnummer = $user";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 
-$getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = '$user'";
-$oldovermij = mysqli_query($conn, $getovermij);
+$getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = $user";
+$overmijresult = mysqli_query($conn, $getovermij);
+$oldovermij = $overmijresult->fetch_object()->memTotal;
 
-$getdiplomas = "SELECT diplomas FROM portfoliotext WHERE Studentnummer = '$user'";
+$getdiplomas = "SELECT diplomas FROM portfoliotext WHERE Studentnummer = $user";
 $olddiplomas = mysqli_query($conn, $getdiplomas);
 
-$gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = '$user'";
+$gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = $user";
 $oldhobbies = mysqli_query($conn, $gethobbies);
 
 
-$getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE Studentnummer = '$user'";
+$getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE Studentnummer = $user";
 $oldwerkervaring = mysqli_query($conn, $getwerkervaring);
 
 $error = false;
@@ -64,25 +65,10 @@ if (isset($_POST[submit])) {
     }
     if (!$error) {
 
-        $gettext = ("SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext WHERE Studentnummer = '$user'");
+        $gettext = ("SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext WHERE Studentnummer = $user");
         $oldtext = mysqli_query($conn, $gettext);
 
-        $updatetext = "UPDATE
-  portfoliotext
-SET
-  (
-    overmij,
-    diplomas,
-    hobbies,
-    werkervaring
-  ) =(
-    $ overmij,
-    $ diplomas,
-    $ hobbies,
-    $ werkervaring
-  )
-WHERE
-  Studentnummer = '$user'";
+        $updatetext = "UPDATE portfoliotext SET(overmij, diplomas, hobbies, werkervaring) =($overmij, $diplomas, $hobbies, $werkervaring) WHERE Studentnummer = $user";
         $resupdate = mysqli_query($conn, $updatetext);
 
         $target_dir = "images/avatars/";
@@ -236,6 +222,9 @@ WHERE
                             <h4><?php echo $lang['Overmij']; ?></h4>
                             <textarea class="overmij" name="overmij" value="<?php $oldovermij ?>"></textarea>
                         </div>
+                        <?php
+                            echo $oldovermij;
+                        ?>
                         <div>
                         </div>
                         <div class="bs-callout bs-callout-danger">
