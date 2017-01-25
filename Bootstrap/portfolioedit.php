@@ -11,51 +11,81 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$query = "SELECT * FROM users WHERE Studentnummer = $user";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 
-$getovermij = "SELECT overmij FROM portfoliotext WHERE userID = '$user'";
-$oldovermij = mysqli_query($conn, $getovermij);
+$getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = $user";
+$overmijresult = mysqli_query($conn, $getovermij);
+$oldovermij = $overmijresult->fetch_object()->memTotal;
 
-$getdiplomas = "SELECT diplomas FROM portfoliotext WHERE userID = '$user'";
+$getdiplomas = "SELECT diplomas FROM portfoliotext WHERE Studentnummer = $user";
 $olddiplomas = mysqli_query($conn, $getdiplomas);
 
-$gethobbies = "SELECT hobbies FROM portfoliotext WHERE userID = '$user'";
+$gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = $user";
 $oldhobbies = mysqli_query($conn, $gethobbies);
 
 
-$getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE userID = '$user'";
+$getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE Studentnummer = $user";
 $oldwerkervaring = mysqli_query($conn, $getwerkervaring);
 
+$error = false;
+
 if (isset($_POST[submit])) {
-    $gettext = ('SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext');
-    $oldtext = mysqli_query($conn, $gettext);
 
-    $updatetext = "UPDATE portfoliotext SET (overmij, diplomas, hobbies, werkervaring) = ($overmij, $diplomas, $hobbies, $werkervaring) WHERE Studentnummer = '$user'";
-    $resupdate = mysqli_query($conn, $updatetext);
+    $overmij = trim($_POST['overmij']);
+    $overmij = strip_tags($overmij);
 
+    $hobbies = trim($_POST['hobbies']);
+    $hobbies = strip_tags($hobbies);
 
-    if ((($_FILES["file"]["type"] == "gif") || ($_FILES["file"]["type"] == "jpeg") || ($_FILES["file"]["type"] == "pjpeg") || ($_FILES["file"]["type"] == "png")) && ($_FILES["file"]["size"] < 20000)) {
-        if ($_FILES["file"]["error"] > 0) {
-            echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
+    $diplomas = trim($_POST['diplomas']);
+    $diplomas = strip_tags($diplomas);
+
+    $werkervaring = trim($_POST['werkervaring']);
+    $werkervaring = strip_tags($werkervaring);
+
+    if (empty($overmij)) {
+        $error = true;
+        $overmijError = "Please enter something.";
+    }
+    if (empty($hobbies)) {
+        $error = true;
+        $hobbiesError = "Please enter something.";
+    }
+    if (empty($diplomas)) {
+        $error = true;
+        $diplomasError = "Please enter something.";
+    }
+    if (empty($werkervaring)) {
+        $error = true;
+        $werkervaringError = "Please enter something.";
+    }
+    if (!$error) {
+
+        $gettext = ("SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext WHERE Studentnummer = $user");
+        $oldtext = mysqli_query($conn, $gettext);
+
+        $updatetext = "UPDATE portfoliotext SET(overmij, diplomas, hobbies, werkervaring) =($overmij, $diplomas, $hobbies, $werkervaring) WHERE Studentnummer = $user";
+        $resupdate = mysqli_query($conn, $updatetext);
+
+        $target_dir = "images/avatars/";
+        $imageFileType = "." . pathinfo(basename($_FILES["avatar"]["name"]), PATHINFO_EXTENSION);
+        $target_file = $target_dir . $username . $imageFileType;
+        if ($imageFileType != ".jpg" && $imageFileType != ".png" && $imageFileType != ".jpeg" && $imageFileType != ".gif") {
+            echo "only JPG, PNG, JPEG en GIF files.";
         } else {
-            echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-            echo "Type: " . $_FILES["file"]["type"] . "<br />";
-            echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-            echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
-
-            if (file_exists("images/avatars/" . $_FILES["file"]["name"])) {
-                unlink("images/avatars/" . $_FILES["file"]["name"]);
-                move_uploaded_file($_FILES["file"]["tmp_name"], "images/avatars/" . $_FILES["file"]["name"]);
+            $queryInsert = "UPDATE portfoliotext SET avatar = '$target_file')";
+            mysqli_query($DBConnect, $queryInsert);
+            if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
+                echo "There was an error uploading the file, please try again!";
             } else {
-                move_uploaded_file($_FILES["file"]["tmp_name"], "images/avatars/" . $_FILES["file"]["name"]);
+                $_SESSION['image'] = $target_file;
+                header('Location: portfolio.php');
             }
         }
-    } else {
-        echo "Invalid file";
     }
 }
 ?>
@@ -192,12 +222,10 @@ if (isset($_POST[submit])) {
                             <h4><?php echo $lang['Overmij']; ?></h4>
                             <textarea class="overmij" name="overmij" value="<?php $oldovermij ?>"></textarea>
                         </div>
+                        <?php
+                            echo $oldovermij;
+                        ?>
                         <div>
-                            <?php
-                            echo $alternew;
-                            echo $insertnew;
-                            echo $user;
-                            ?>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
@@ -213,7 +241,7 @@ if (isset($_POST[submit])) {
                                 <textarea name="werkervaring" value="<?php $oldwerkervaring ?>"></textarea>
                             </ul>
                         </div>
-                        <input type="file" name="file" id="file"><br><br>
+                        <input type="file" name="avatar" id="avatar"><br><br>
                         <button type="submit" name="submit">Opslaan</button>
                     </form>
                 </div>
