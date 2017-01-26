@@ -112,21 +112,21 @@ $leerling2 = substr($leerling, -6);
                                     <?php
                                         echo "  <form method='post' action='#' autocomplete='off'>
                                                 <select name='projectnaam[]'>";
-                                        $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
-                                        
-                                        $result2 = mysqli_query($conn, $query2)
+                                                $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
+                                                
+                                                $result2 = mysqli_query($conn, $query2)
                                                 or die("Error: " . mysqli_error($conn));
                                                 $column = array();
-                                                $item = 1;
+                                                
                                                 while ($row = mysqli_fetch_array($result2)) {
-                                                    
-                                                    $column[] = $row["Projecttitel$item"];
-                                                    $item++;
+                                                    $a++;
+                                                    $column[] = $row["Projecttitel$a"];
+                                                    $a = 2;
                                                 }
                                                 foreach ($column as $res) {
                                                     echo "<option value='$res'>$res</option>";
                                                 }
-                                                echo "  </select>";            
+                                                echo "</select>";     echo $query2;       
                                     ?>
                                 </div>
                             </div>
