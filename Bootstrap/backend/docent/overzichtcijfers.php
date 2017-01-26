@@ -113,28 +113,28 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     <li><a href="#"><?php echo $lang['klas']; ?></a>
                                         <ul>
                                             <li>
-<?php
-echo "  <form method='post' action='#' autocomplete='off'>
+                                                <?php
+                                                echo "  <form method='post' action='#' autocomplete='off'>
                                                         <select name='klas[]'>";
-$query = "SELECT Klas FROM klas";
-$result = mysqli_query($conn, $query);
+                                                $query = "SELECT Klas FROM klas";
+                                                $result = mysqli_query($conn, $query);
 
-$column = array();
-while ($row = mysqli_fetch_array($result)) {
-    $column[] = $row[Klas];
-}
-foreach ($column as $res) {
-    echo "<option value='$res'>$res</option>";
-}
-if (isset($_POST['submit'])) {
-    // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
-    foreach ($_POST['klas'] as $select) {
-        echo "You have selected :" . $select; // Displaying Selected Value
-    }
-}
-echo "  </select>
+                                                $column = array();
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $column[] = $row[Klas];
+                                                }
+                                                foreach ($column as $res) {
+                                                    echo "<option value='$res'>$res</option>";
+                                                }
+                                                if (isset($_POST['submit'])) {
+                                                    // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
+                                                    foreach ($_POST['klas'] as $select) {
+                                                        echo "You have selected :" . $select; // Displaying Selected Value
+                                                    }
+                                                }
+                                                echo "  </select>
                                                         <button type='submit' name='submit'>get students</button>";
-?>
+                                                ?>
 
                                                 <ul>
                                                 <?php
@@ -151,7 +151,7 @@ echo "  </select>
                                                 if (isset($_POST['submit']) or isset($_POST['submit2'])) {
                                                     foreach ($column2 as $res2) {
                                                         echo "<li><a href='invoercijfers.php?student=$res2' >$res2</a></li>";
-                                                        $_SESSION ['leerling'] = $res2;
+                                                        
                                                     }
                                                 }
                                                 ?>

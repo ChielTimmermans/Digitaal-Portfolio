@@ -112,8 +112,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="bs-callout bs-callout-danger">
                         <?php
                         $leerling = $_GET['student'];
-                        $leerling = substr($leerling, -6);
-                        $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling'";
+                        $leerling2 = substr($leerling, -6);
+                        $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
                         $result2 = mysqli_query($conn, $query2)
                                 or die("Error: " . mysqli_error($conn));
                         $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
@@ -130,10 +130,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 $row2['Projecttitel' . $item . '']
                                 . '</p>
                                            </a>';
-                                echo "<p><a href='bijlage.php'><button id='button1id' name='bijlagen' class='btn btn-info'>";
+                                echo "<p><a href='bijlage.php?student=$leerling$item'><button id='button1id' name='bijlagen' class='btn btn-info'>";
                                 echo $lang['bekijkbijlagen'];
                                 echo "</button></a></p>
-                                            <p><a href='beoordeel.php'><button id='button1id' name='beoordeel' class='btn btn-success'>";
+                                            <p><a href='beoordeel.php?student=$leerling'><button id='button1id' name='beoordeel' class='btn btn-success'>";
                                 echo $lang['beoordeelproject'];
                                 echo "</button></a></p>";
                                 
@@ -148,9 +148,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         </div>';
                             }
                         }
+                        echo "<a href='overzichtprojecten.php?student=$leerling'>&#8592;</a>";
                         ?>  
 
-                        <a href="overzichtprojecten.php">&#8592;</a>		
                     </div>
                 </div>
             </div>

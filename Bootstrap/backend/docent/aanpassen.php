@@ -18,8 +18,9 @@ include '..\..\..\databaseArray.php';
 $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
-or die("Error: " . mysqli_error($conn));
+        or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$leerling = $_GET['student'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +98,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['cijferwijzigen']; ?></h1>
+                    <h1 class="page-header"><?php echo $lang['cijferwijzigen'];
+echo "<br> $leerling"; ?></h1>
                 </div>
             </div></div>  
 
@@ -126,32 +128,30 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         echo "<form method='post' action='#' autocomplete='off'>";
                                         echo "<select name='Vak[]'>";
                                         foreach ($row2 as $res4) {
-                                        echo "<option value='$res4'>$res4</option>";
+                                            echo "<option value='$res4'>$res4</option>";
                                         }
                                         echo "</select>";
-                                        if(isset($_POST['submit'])){
-                                        foreach ($_POST['Vak'] as $select3)
-                                        {
-                                        
-                                        }
+                                        if (isset($_POST['submit'])) {
+                                            foreach ($_POST['Vak'] as $select3) {
+                                                
+                                            }
                                         }
                                         ?>
-                                                                              
+
                                     </td>
                                     <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
-                                    <td><a href='invoercijfers.php'><button id="button1id" type="submit" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
+                                    <td><button id="button1id" type="submit" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></td>
                                 </tr>
                                 <?php
                                 $cijfer = ($_POST['cijfer']);
                                 $vak = $select3;
-                                $naam = $_SESSION ['leerling'];
-                                $studentnummer = substr($naam, -6);
+                                $studentnummer = substr($leerling, -6);
                                 $query3 = "Update cijfer set $vak='$cijfer' where studentnummer='$studentnummer'";
                                 $res = mysqli_query($conn, $query3);
                                 ?>
                             </tbody>
                         </table>
-                        <a href="invoercijfers.php">&#8592;</a>	
+                        <a href='invoercijfers.php?student=<?php echo $leerling?>'>&#8592;</a>
                     </div>
                 </div>
             </div>

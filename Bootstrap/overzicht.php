@@ -1,3 +1,23 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
+    $portnummer = $_SESSION['user'];
+} else {
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\createDatabases\dbconnect.php';
+include '..\functions\common.php';
+include '..\databaseArray.php';
+if (!isset($_SESSION['user'])) {
+    header("Location: .index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -40,83 +60,61 @@
             <div class="jumbotron2">
 
                 <div class="row">
-                    <div class="col-md-2 col-sm-6 col-xs-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">                    
-                                <img class="img-circle img-responsive" alt="Dennis" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.php"> Dennis Kramer </a></p>
+                     <?php
+                    echo "  <form method='post' action='#' autocomplete='off'>
+                    <select name='klas[]'>";
+                    $query = "SELECT Klas FROM klas";
+                    $result = mysqli_query($conn, $query);
+
+                    $column = array();
+                    while ($row = mysqli_fetch_array($result)) {
+                        $column[] = $row[Klas];
+                    }
+                    foreach ($column as $res) {
+                        echo "<option value='$res'>$res</option>";
+                    }
+                    if (isset($_POST['submit'])) {
+                        // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
+                        foreach ($_POST['klas'] as $select) {
+                            echo "You have selected :" . $select; // Displaying Selected Value
+                        }
+                    }
+                    echo "  </select>
+                            <button type='submit' name='submit'>get students</button>";
+                    ?>
+
+                    <?php
+                    $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
+
+                    $result2 = mysqli_query($conn, $query2);
+                    $column2 = array();
+                    while ($row2 = mysqli_fetch_array($result2)) {
+                        $Voornaam = $row2[Voornaam];
+                        $Achternaam = $row2[Achternaam];
+                        $studentnummer = $row2[Studentnummer];
+                        $column2[] = "$Voornaam $Achternaam $studentnummer";
+                    }
+                    
+                        foreach ($column2 as $res2) {
+                            echo
+                            "<div class='col-md-2 col-sm-6 col-xs-6'>
+                                <div class='panel panel-default'>
+                                    <div class='panel-body'>                    
+                                        <img class='img-circle img-responsive' alt='Dennis' src='dist/css/images/profileblank.png'>
+                                        <p><a href='portfolio.php?student=" . $res2 . "'> $res2 </a></p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            ";
+                        }
+                    
+                    ?>
+                    
 
-
-                    <div class="col-md-2 col-sm-6 col-xs-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">                    
-                                <img class="img-circle img-responsive" alt="Jefrey" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.php"> Jefrey Meijer </a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-6 col-xs-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">                    
-                                <img class="img-circle img-responsive" alt="Leon" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.php"> Leon Hans </a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-6 col-xs-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">                    
-                                <img class="img-circle img-responsive" alt="Siem" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.php"> Siem Schippers </a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-6 col-xs-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">                    
-                                <img class="img-circle img-responsive" alt="Tom" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.php"> Tom Verra </a></p>
-                            </div>
-                        </div>
-                    </div>	
-
-                    <div class="col-md-2 col-sm-6 col-xs-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">                    
-                                <img class="img-circle img-responsive" alt="Randy" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.php"> Randy Dijkshoorn </a></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2 col-sm-6 col-xs-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">                    
-                                <img class="img-circle img-responsive" alt="Fekke" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.php"> Fekke Fekkes </a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-6 col-xs-6">
-                        <div class="panel panel-default">
-                            <div class="panel-body">                    
-                                <img class="img-circle img-responsive" alt="Chiel" src="dist/css/images/profileblank.png">
-                                <p><a href="portfolio.php"> Chiel Timmermans </a></p>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-
-                </div></div></div> <!-- /container -->
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
 
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

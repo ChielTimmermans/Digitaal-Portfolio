@@ -20,6 +20,8 @@ $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$leerling = $_GET['student'];
+$leerling2 = substr($leerling, -6);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +96,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['beoordeelproject']; ?></h1>
+                    <h1 class="page-header"><?php echo $lang['beoordeelproject']; echo "<br>$leerling" ?></h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -107,7 +109,25 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codeproject']; ?></label>  
                                 <div class="col-md-4">
-                                    <input id="textinput" name="code" type="text" placeholder="IIPR1 Project Professionele Website" class="form-control input-md">
+                                    <?php
+                                        echo "  <form method='post' action='#' autocomplete='off'>
+                                                <select name='projectnaam[]'>";
+                                        $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
+                                        
+                                        $result2 = mysqli_query($conn, $query2)
+                                                or die("Error: " . mysqli_error($conn));
+                                                $column = array();
+                                                $item = 1;
+                                                while ($row = mysqli_fetch_array($result2)) {
+                                                    
+                                                    $column[] = $row["Projecttitel$item"];
+                                                    $item++;
+                                                }
+                                                foreach ($column as $res) {
+                                                    echo "<option value='$res'>$res</option>";
+                                                }
+                                                echo "  </select>";            
+                                    ?>
                                 </div>
                             </div>
                             <div class="form-group">

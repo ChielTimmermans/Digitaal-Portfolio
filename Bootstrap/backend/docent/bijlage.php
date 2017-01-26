@@ -110,7 +110,11 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 <a href='#'> Bijlage2 </a>
                             </li>
                         </ul>
-                        <a href="projecten.php">&#8592;</a>	
+                        <?php
+                        $leerling = $_GET['student'];
+                        $leerling = substr($leerling, 0, -1);
+                        echo "<a href='projecten.php?student=$leerling'>&#8592;</a>";
+                        ?>
                     </div>
                 </div>
             </div>
