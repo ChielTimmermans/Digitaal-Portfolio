@@ -18,7 +18,7 @@ if (!isset($_SESSION['user']))
 $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
-        or die("Error: " . mysqli_error($conn));
+or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -112,20 +112,46 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             <thead>
                                 <tr>
                                     <th><?php echo $lang['codestudie']; ?></th>
-                                    <th><?php echo $lang['date']; ?></th>
-                                    <th><?php echo $lang['aantalec']; ?></th>
                                     <th><?php echo $lang['cijfer']; ?></th>
                                     <th><?php echo $lang['wijzig']; ?></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="datum" type="date" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md"></td>
-                                    <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
-                                    <td><a href="invoercijfers.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
+                                    <form method='post' action='#' autocomplete='off'>
+                                        <td>
+                                        
+                                        <?php
+                                        $query4 = "select Vak, Vak2, Vak3 from leraren where Lerarennummer='123456'";
+                                        $result4 = mysqli_query($conn, $query4);
+                                        $row = mysqli_fetch_array($result4, MYSQLI_ASSOC);
+                                        
+                                        echo "<select name='Vak[]'>";
+                                        foreach ($row as $res4) {
+                                        echo "<option value='$res4'>$res4</option>";
+                                        }
+                                        echo "</select>";
+                                        if(isset($_POST['submit'])){
+                                        foreach ($_POST['Vak'] as $select3)
+                                        {
+                                        
+                                        }
+                                        }
+                                        ?>
+                                                                              
+                                        </td>
+                                        <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
+                                        <td><a href='invoercijfers.php'><button id="button1id" type="submit" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
+                                    
                                 </tr>
+                                <?php
+                                $cijfer = ($_POST['cijfer']);
+                                $vak = $select3;
+                                $naam = $_SESSION ['leerling'];
+                                $studentnummer = substr($naam, -6);
+                                $query3 = "Update cijfer set $vak='$cijfer' where studentnummer='$studentnummer'";
+                                $res = mysqli_query($conn, $query3);
+                                ?>
                             </tbody>
                         </table>
                         <a href="invoercijfers.php">&#8592;</a>	

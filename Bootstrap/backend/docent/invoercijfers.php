@@ -144,7 +144,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         $row2 = mysqli_fetch_array($result2);
                                         echo"  <tr>
                                                 <td>$res</td>
-                                                <td>3</td>
+                                                <td>3.0</td>
                                                 <td>". $row2[$res] ."</td>
                                                 <td> <a href='aanpassen.php' id='button1id' name='submit' class='btn btn-success pull-right'> "; echo $lang['wijzig']; " </a></td>
                                         </tr>";
