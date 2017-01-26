@@ -94,18 +94,13 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <p>
-                        <?php
-                        
-                        include'..\krijgnaam.php';
-                        ?>
-                    </p>
+                    
                     <?php
-                    $naam = $_SESSION ['leerling'];
+                    $naam = $_GET['student'];
                     if(isset($naam)){
                     echo "<h1 class='page-header'>";     
                     echo $lang['cijfersvan']; 
-                    echo " $naam";
+                    echo "<br> $naam";
                     echo"</h1>";
                     }
                     
@@ -146,7 +141,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                                 <td>$res</td>
                                                 <td>3.0</td>
                                                 <td>". $row2[$res] ."</td>
-                                                <td> <a href='aanpassen.php' id='button1id' name='submit' class='btn btn-success pull-right'> "; echo $lang['wijzig']; " </a></td>
+                                                <td> <a href='aanpassen.php?student=$naam' id='button1id' name='submit' class='btn btn-success pull-right'> "; echo $lang['wijzig']; " </a></td>
                                         </tr>";
                                     }
                                     }

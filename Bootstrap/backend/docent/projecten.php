@@ -101,28 +101,47 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
-                        <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Professionele website</h4>
-                            <p class="list-group-item-text">
-                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                            </p>    
-                        </a>
-                        <p><a href="bijlage.php"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
-                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeelproject']; ?></button></a></p>
 
-                        <a class="list-group-item inactive-link" href="#">
-                            <h4 class="list-group-item-heading">Portfolio</h4>
-                            <p class="list-group-item-text">
-                                Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. 
-                                Quis verear mel ne. Munere vituperata vis cu, te pri duis timeam scaevola, 
-                                nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
-                            </p>    
-                        </a>
-                        <p><a href="bijlage.php"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
-                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeelproject']; ?></button></a></p>
-                        <a href="overzichtprojecten.php">&#8592;</a>		
+                        <?php
+                        $leerling = $_GET['student'];
+                        $leerling2 = substr($leerling, -6);
+                        $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
+                        $result2 = mysqli_query($conn, $query2)
+                                or die("Error: " . mysqli_error($conn));
+                        $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
+                        
+                        $item = 1;
+                        $project = 4;
+                        for ($item = 1; $item <= $project; $item++) {
+                            if (!empty($row2['Projecttitel' . $item . ''])) {
+                                echo'  <a class="list-group-item inactive-link" href="#">
+                                               <h4 class="list-group-item-heading">' .
+                                $row2['Projecttitel' . $item . '']
+                                . '</h4>
+                                               <p class="list-group-item-text">' .
+                                $row2['Projecttitel' . $item . '']
+                                . '</p>
+                                           </a>';
+                                echo "<p><a href='bijlage.php?student=$leerling$item'><button id='button1id' name='bijlagen' class='btn btn-info'>";
+                                echo $lang['bekijkbijlagen'];
+                                echo "</button></a></p>
+                                            <p><a href='beoordeel.php?student=$leerling'><button id='button1id' name='beoordeel' class='btn btn-success'>";
+                                echo $lang['beoordeelproject'];
+                                echo "</button></a></p>";
+                                
+                            }elseif($item === 1)
+                        
+                            
+                            {
+                                echo '  <div class="list-group-item inactive-link">
+                                            <p class="list-group-item-text">' .
+                                "Er zijn geen projecten."
+                                . '</p>
+                                        </div>';
+                            }
+                        }
+                        echo "<a href='overzichtprojecten.php?student=$leerling'>&#8592;</a>";
+                        ?>  
                     </div>
                 </div>
             </div>
