@@ -74,6 +74,7 @@ if (isset($_POST[submit])) {
         $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         $resupdate = mysqli_query($conn, $updatetext);
 //Warning: Illegal string offset 'name' in C:\xampp\htdocs\ProjectPortfolio\Bootstrap\portfolioedit.php on line 79
+        header("Location: portfolio.php");
         if (!empty($_POST['avatar'])) {
             $target_dir = "images/avatars/";
             $imageFileType = "." . pathinfo(basename($_POST["avatar"]["name"]), PATHINFO_EXTENSION);

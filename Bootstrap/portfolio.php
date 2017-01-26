@@ -195,24 +195,22 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     <th><?php echo $lang['Afstudeerjaar']; ?></th>
                                 </tr>
                             </thead>
-                            <?php
-                            foreach ($diplomas as $arrdiplomas) {
-                            echo
-                            "<tbody>
-                                <tr>
-                                    <td>$arrdiplomas</td>
-                                    <td>$arrdiplomas</td>
-                                    <td> $arrdiplomas </td>
-                                </tr>
-                                <tr>
-                                    <td>$arrdiplomas</td>
-                                    <td>$arrdiplomas</td>
-                                    <td> $arrdiplomas </td>
-                                </tr>
+                            <tbody>
+                                <?php
+                                foreach ($diplomas as $arrdiplomas) {
+//                                    echo
+//                                    "
+//                                <tr>
+//                                    <td>$arrdiplomas</td>
+//                                    <td>$arrdiplomas</td>
+//                                    <td>$arrdiplomas</td>
+//                                </tr>
+//                             ";
+                                    echo $arrdiplomas;
+                                }
+                                ?>
                             </tbody>
                         </table>
-                             ";}
-                            ?>
                     </div>
                     <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4>Hobby's en interesses</h4>
