@@ -57,7 +57,7 @@ session_start();
             echo "</select>";
             
             
-            echo "<button type='submit' name='submit2'>Set student</button>";
+            echo "<button type='submit' name='submit2'>Give mark</button>";
         }
         echo $_SESSION ['leerling'];
         ?>

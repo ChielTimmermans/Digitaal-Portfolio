@@ -23,14 +23,16 @@ $oldovermij = mysqli_fetch_array($overmijresult, MYSQLI_ASSOC);
 
 
 $getdiplomas = "SELECT diplomas FROM portfoliotext WHERE Studentnummer = $user";
-$olddiplomas = mysqli_query($conn, $getdiplomas);
+$diplomasresult = mysqli_query($conn, $getdiplomas);
+$olddiplomas = mysqli_fetch_array($diplomasresult, MYSQLI_ASSOC);
 
 $gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = $user";
-$oldhobbies = mysqli_query($conn, $gethobbies);
-
+$hobbiesresul = mysqli_query($conn, $gethobbies);
+$oldhobbies = mysqli_fetch_array($hobbiesresul, MYSQLI_ASSOC);
 
 $getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE Studentnummer = $user";
-$oldwerkervaring = mysqli_query($conn, $getwerkervaring);
+$werkervaringresult = mysqli_query($conn, $getwerkervaring);
+$oldwerkervaring = mysqli_fetch_array($werkervaringresult, MYSQLI_ASSOC);
 
 $error = false;
 
@@ -44,7 +46,7 @@ if (isset($_POST[submit])) {
 
     $diplomas = trim($_POST['diplomas']);
     $diplomas = strip_tags($diplomas);
-    $resdiplomas = hollo;
+
     $werkervaring = trim($_POST['werkervaring']);
     $werkervaring = strip_tags($werkervaring);
 
@@ -69,22 +71,24 @@ if (isset($_POST[submit])) {
         $gettext = ("SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext WHERE Studentnummer = $user");
         $oldtext = mysqli_query($conn, $gettext);
 
-        $updatetext = "UPDATE portfoliotext SET(overmij, diplomas, hobbies, werkervaring) =($overmij, $diplomas, $hobbies, $werkervaring) WHERE Studentnummer = $user";
+        $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         $resupdate = mysqli_query($conn, $updatetext);
 
-        $target_dir = "images/avatars/";
-        $imageFileType = "." . pathinfo(basename($_FILES["avatar"]["name"]), PATHINFO_EXTENSION);
-        $target_file = $target_dir . $username . $imageFileType;
-        if ($imageFileType != ".jpg" && $imageFileType != ".png" && $imageFileType != ".jpeg" && $imageFileType != ".gif") {
-            echo "only JPG, PNG, JPEG en GIF files.";
-        } else {
-            $queryInsert = "UPDATE portfoliotext SET avatar = '$target_file')";
-            mysqli_query($DBConnect, $queryInsert);
-            if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
-                echo "There was an error uploading the file, please try again!";
+        if (!empty($_POST['avatar'])) {
+            $target_dir = "images/avatars/";
+            $imageFileType = "." . pathinfo(basename($_FILES["avatar"]["name"]), PATHINFO_EXTENSION);
+            $target_file = $target_dir . $username . $imageFileType;
+            if ($imageFileType != ".jpg" && $imageFileType != ".png" && $imageFileType != ".jpeg" && $imageFileType != ".gif") {
+                echo "only JPG, PNG, JPEG en GIF files.";
             } else {
-                $_SESSION['image'] = $target_file;
-                header('Location: portfolio.php');
+                $queryInsert = "UPDATE portfoliotext SET avatar = '$target_file')";
+                mysqli_query($DBConnect, $queryInsert);
+                if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
+                    echo "There was an error uploading the file, please try again!";
+                } else {
+                    $_SESSION['image'] = $target_file;
+                    header('Location: portfolio.php');
+                }
             }
         }
     }
@@ -220,32 +224,39 @@ if (isset($_POST[submit])) {
 
                     <form method="post" action="portfolioedit.php">
                         <div class="bs-callout bs-callout-danger">
-                            <h4><?php echo $lang['Overmij']; ?>
-                            </h4><textarea class="overmij" name="overmij" value="
-                            <?php
-                            foreach ($oldovermij as $arrovermij) {
-                                echo $arrovermij;
-                            }
-                            ?>
-                            "></textarea>
+                            <h4><?php echo $lang['Overmij']; ?></h4>
+                            <textarea class="overmij" name="overmij"><?php
+                                foreach ($oldovermij as $arrovermij) {
+                                    echo $arrovermij;
+                                }
+                                ?></textarea>
                         </div>
                         <div>
-                            <?php
-                                                        echo $resdiplomas;
-                            ?>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
-                            <textarea name="diplomas" value="<?php echo $resdiplomas ?>"></textarea>
+                            <textarea class="overmij" name="diplomas"><?php
+                                foreach ($olddiplomas as $arrdiplomas) {
+                                    echo $arrdiplomas;
+                                }
+                                ?></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Hobby's en interesses</h4>
-                            <textarea name="hobbies" value="<?php $oldhobbies ?>"></textarea>
+                            <textarea class="overmij" name="hobbies"><?php
+                                foreach ($oldhobbies as $arrhobbies) {
+                                    echo $arrhobbies;
+                                }
+                                ?></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Werk ervaring</h4>
                             <ul class="list-group">
-                                <textarea name="werkervaring" value="<?php $oldwerkervaring ?>"></textarea>
+                                <textarea class="overmij" name="werkervaring"><?php
+                                    foreach ($oldwerkervaring as $arrwerkervaring) {
+                                        echo $arrwerkervaring;
+                                    }
+                                    ?></textarea>
                             </ul>
                         </div>
                         <input type="file" name="avatar" id="avatar"><br><br>

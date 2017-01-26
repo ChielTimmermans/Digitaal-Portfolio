@@ -94,12 +94,13 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    
                     <?php
                     $naam = $_GET['student'];
                     if(isset($naam)){
                     echo "<h1 class='page-header'>";     
                     echo $lang['cijfersvan']; 
-                    echo " $naam";
+                    echo "<br> $naam";
                     echo"</h1>";
                     }
                     
@@ -155,6 +156,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 </tbody>
                             </table>
                         </div>
+                        <p> <a href="toevoegen.php"> <?php echo $lang['cijfertoevoegen']; ?>  </a> </p>
                         <a href="overzichtcijfers.php">&#8592;</a>
                     </div>
                 </div>

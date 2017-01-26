@@ -16,7 +16,6 @@ if (!isset($_SESSION['user']))
     exit;
 }
 $user = $_SESSION['user'];
-
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
@@ -95,21 +94,14 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <?php
-                    $naam = $_GET['student'];
-                    if (isset($naam)) {
-                        echo "<h1 class='page-header'>";
-                        echo $lang['projectenvan'];
-                        echo " $naam";
-                        echo"</h1>";
-                    }
-                    ?> 
+                    <h1 class="page-header"><?php echo $lang['projectenvan']; ?> [NAAM]</h1>
                 </div>
             </div></div>
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
+
                         <?php
                         $leerling = $_GET['student'];
                         $leerling2 = substr($leerling, -6);
@@ -150,7 +142,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         }
                         echo "<a href='overzichtprojecten.php?student=$leerling'>&#8592;</a>";
                         ?>  
-
                     </div>
                 </div>
             </div>

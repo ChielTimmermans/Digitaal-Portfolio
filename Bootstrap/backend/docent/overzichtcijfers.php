@@ -115,7 +115,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                             <li>
                                                 <?php
                                                 echo "  <form method='post' action='#' autocomplete='off'>
-                                                        <select name='klas[]'>";
+                                            <select name='klas[]'>";
                                                 $query = "SELECT Klas FROM klas";
                                                 $result = mysqli_query($conn, $query);
 
@@ -133,29 +133,26 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                                     }
                                                 }
                                                 echo "  </select>
-                                                        <button type='submit' name='submit'>get students</button>";
+                                            <button type='submit' name='submit'>get students</button>";
                                                 ?>
-
                                                 <ul>
-                                                <?php
-                                                $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
+                                                    <?php
+                                                    $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
 
-                                                $result2 = mysqli_query($conn, $query2);
-                                                $column2 = array();
-                                                while ($row2 = mysqli_fetch_array($result2)) {
-                                                    $Voornaam = $row2[Voornaam];
-                                                    $Achternaam = $row2[Achternaam];
-                                                    $studentnummer = $row2[Studentnummer];
-                                                    $column2[] = "$Voornaam $Achternaam $studentnummer";
-                                                }
-                                                if (isset($_POST['submit']) or isset($_POST['submit2'])) {
-                                                    foreach ($column2 as $res2) {
-                                                        echo "<li><a href='invoercijfers.php?student=$res2' >$res2</a></li>";
-                                                        
+                                                    $result2 = mysqli_query($conn, $query2);
+                                                    $column2 = array();
+                                                    while ($row2 = mysqli_fetch_array($result2)) {
+                                                        $Voornaam = $row2[Voornaam];
+                                                        $Achternaam = $row2[Achternaam];
+                                                        $studentnummer = $row2[Studentnummer];
+                                                        $column2[] = "$Voornaam $Achternaam $studentnummer";
                                                     }
-                                                }
-                                                ?>
-
+                                                    if (isset($_POST['submit']) or isset($_POST['submit2'])) {
+                                                        foreach ($column2 as $res2) {
+                                                            echo "<li><a href='invoercijfers.php?student=$res2' >$res2</a></li>";
+                                                        }
+                                                    }
+                                                    ?>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -165,21 +162,23 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         </div>
                         <a href="home.php">&#8592;</a>
                     </div>
+
                 </div>
+
             </div>
         </div>
+    </div>
 
 
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
-        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-        <script src="../../assets/js/vendor/holder.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-    </body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
 </html>

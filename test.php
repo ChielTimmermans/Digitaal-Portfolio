@@ -1,5 +1,5 @@
 <form action="#" method="post">
-<select name="Color[]" multiple>
+<select name="Color[]" multiple> // Initializing Name With An Array
 <option value="Red">Red</option>
 <option value="Green">Green</option>
 <option value="Blue">Blue</option>
