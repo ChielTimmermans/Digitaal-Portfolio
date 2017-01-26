@@ -17,9 +17,10 @@ $result = mysqli_query($conn, $query)
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
 
-$getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = $user";
+$getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = '$user'";
 $overmijresult = mysqli_query($conn, $getovermij);
-$oldovermij = $overmijresult->fetch_object()->memTotal;
+$oldovermij = mysqli_fetch_array($overmijresult, MYSQLI_ASSOC);
+
 
 $getdiplomas = "SELECT diplomas FROM portfoliotext WHERE Studentnummer = $user";
 $olddiplomas = mysqli_query($conn, $getdiplomas);
@@ -43,7 +44,7 @@ if (isset($_POST[submit])) {
 
     $diplomas = trim($_POST['diplomas']);
     $diplomas = strip_tags($diplomas);
-
+    $resdiplomas = hollo;
     $werkervaring = trim($_POST['werkervaring']);
     $werkervaring = strip_tags($werkervaring);
 
@@ -219,17 +220,21 @@ if (isset($_POST[submit])) {
 
                     <form method="post" action="portfolioedit.php">
                         <div class="bs-callout bs-callout-danger">
-                            <h4><?php echo $lang['Overmij']; ?></h4>
-                            <textarea class="overmij" name="overmij" value="<?php $oldovermij ?>"></textarea>
+                            <h4><?php echo $lang['Overmij']; ?>
+                            </h4><textarea class="overmij" name="overmij" value="<?php
+                            foreach ($oldovermij as $arrovermij) {
+                                echo $arrovermij;
+                            }
+                            ?>"></textarea>
                         </div>
-                        <?php
-                            echo $oldovermij;
-                        ?>
                         <div>
+                            <?php
+                                                        echo $resdiplomas;
+                            ?>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
-                            <textarea name="diplomas" value="<?php $olddiplomas ?>"></textarea>
+                            <textarea name="diplomas" value="<?php echo $resdiplomas ?>"></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Hobby's en interesses</h4>
