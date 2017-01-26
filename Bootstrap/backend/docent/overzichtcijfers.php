@@ -115,16 +115,53 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 <ul class="treeview">
                                     <li><a href="#"><?php echo $lang['klas']; ?></a>
                                         <ul>
-                                            <li><a href="#">INF1I</a>
-                                                <ul>
-                                                    <li><a href="invoercijfers.php">Dennis Kramer</a></li>
-                                                    <li><a href="invoercijfers.php">Chiel Timmermans</a></li>
-                                                    <li><a href="invoercijfers.php">Tom Verra</a></li>
-                                                    <li><a href="invoercijfers.php">Siem Schippers</a></li>
-                                                    <li><a href="invoercijfers.php">Randy Rijkshoorn</a></li>
-                                                    <li><a href="invoercijfers.php">Jefrey Meijer</a></li>
-                                                    <li><a href="invoercijfers.php">Fekke Fekkes</a></li>
+                                            <li>
+                                                <?php
+                                                echo "  <form method='post' action='#' autocomplete='off'>
+                                                        <select name='klas[]'>";
+                                                $query = "SELECT Klas FROM klas";
+                                                $result = mysqli_query($conn, $query);
 
+                                                $column = array();
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    $column[] = $row[Klas];
+                                                }
+                                                foreach ($column as $res) {
+                                                    echo "<option value='$res'>$res</option>";
+                                                }
+                                                if (isset($_POST['submit'])) {
+                                                    // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
+                                                    foreach ($_POST['klas'] as $select) {
+                                                        echo "You have selected :" . $select; // Displaying Selected Value
+                                                    }
+                                                }
+                                                echo "  </select>
+                                                        <button type='submit' name='submit'>get students</button>";
+                                            
+                                                ?>
+                                                
+                                                <ul>
+                                                    <?php
+                                                    $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
+                                                    
+                                                    $result2 = mysqli_query($conn, $query2);
+                                                    $column2 = array();
+                                                    while ($row2 = mysqli_fetch_array($result2)) {
+                                                        $Voornaam = $row2[Voornaam];
+                                                        $Achternaam = $row2[Achternaam];
+                                                        $studentnummer = $row2[Studentnummer];
+                                                        $column2[] = "$Voornaam $Achternaam $studentnummer";
+                                                    }
+                                                    if (isset($_POST['submit']) or isset($_POST['submit2'])) {
+                                                    foreach ($column2 as $res2) {
+                                                        echo "<li><a href='invoercijfers.php?student=$res2' >$res2</a></li>";
+                                                        $_SESSION ['leerling'] = $res2;
+                                                    }
+                                                    
+                                                    
+                                                    }
+                                                    ?>
+                                                   
                                                 </ul>
 
                                                 </div>
