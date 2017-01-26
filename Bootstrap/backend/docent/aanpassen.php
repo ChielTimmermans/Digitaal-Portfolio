@@ -10,7 +10,7 @@ session_start();
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user']))
+//if (!isset($_SESSION['user']))
 //{
 //    header("Location: ..\..\index.php");
 //    exit;
@@ -118,16 +118,14 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             </thead>
                             <tbody>
                                 <tr>
-                                    <form method='post' action='#' autocomplete='off'>
-                                        <td>
-                                        
+                                    <td>
                                         <?php
                                         $query4 = "select Vak, Vak2, Vak3 from leraren where Lerarennummer='123456'";
                                         $result4 = mysqli_query($conn, $query4);
-                                        $row = mysqli_fetch_array($result4, MYSQLI_ASSOC);
-                                        
+                                        $row2 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
+                                        echo "<form method='post' action='#' autocomplete='off'>";
                                         echo "<select name='Vak[]'>";
-                                        foreach ($row as $res4) {
+                                        foreach ($row2 as $res4) {
                                         echo "<option value='$res4'>$res4</option>";
                                         }
                                         echo "</select>";
@@ -139,10 +137,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         }
                                         ?>
                                                                               
-                                        </td>
-                                        <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
-                                        <td><a href='invoercijfers.php'><button id="button1id" type="submit" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
-                                    
+                                    </td>
+                                    <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
+                                    <td><a href='invoercijfers.php'><button id="button1id" type="submit" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
                                 </tr>
                                 <?php
                                 $cijfer = ($_POST['cijfer']);
