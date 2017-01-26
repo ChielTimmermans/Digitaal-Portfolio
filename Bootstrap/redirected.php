@@ -12,7 +12,7 @@ if (!isset($_SESSION['user']))
         echo "portfolio";
         exit;
     }elseif ($_SESSION['Rol'] === 2){
-        header("Location: leraar.php");
+        header("Location: backend/docent/leraar.php");
         echo"leraar";
         exit;
     }elseif ($_SESSION['Rol'] === 3){

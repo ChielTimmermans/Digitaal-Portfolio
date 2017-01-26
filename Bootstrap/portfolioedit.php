@@ -221,11 +221,13 @@ if (isset($_POST[submit])) {
                     <form method="post" action="portfolioedit.php">
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Overmij']; ?>
-                            </h4><textarea class="overmij" name="overmij" value="<?php
+                            </h4><textarea class="overmij" name="overmij" value="
+                            <?php
                             foreach ($oldovermij as $arrovermij) {
                                 echo $arrovermij;
                             }
-                            ?>"></textarea>
+                            ?>
+                            "></textarea>
                         </div>
                         <div>
                             <?php
