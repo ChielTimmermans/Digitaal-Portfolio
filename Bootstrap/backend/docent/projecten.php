@@ -95,13 +95,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <p>
-                        <?php
-                        include'..\krijgnaam.php';
-                        ?>
-                    </p>
                     <?php
-                    $naam = $_SESSION ['leerling'];
+                    $naam = $_GET['student'];
                     if (isset($naam)) {
                         echo "<h1 class='page-header'>";
                         echo $lang['projectenvan'];
@@ -116,7 +111,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
                         <?php
-                        $leerling = $_SESSION ['leerling'];
+                        $leerling = $_GET['student'];
                         $leerling = substr($leerling, -6);
                         $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling'";
                         $result2 = mysqli_query($conn, $query2)
