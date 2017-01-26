@@ -1,27 +1,27 @@
-
 <?php
-session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
-    $portnummer = $_SESSION['user'];
-} else
-{
-    $portnummer = $_GET['Studentnummer'];
-}
+//session_start();
+//if (!isset($_GET['Studentnummer']) || empty($_GET))
+//{
+//    $portnummer = $_SESSION['user'];
+//} else
+//{
+//    $portnummer = $_GET['Studentnummer'];
+//}
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
-    header("Location: ..\..\index.php");
-    exit;
-}
+//if (!isset($_SESSION['user']))
+//{
+//    header("Location: ..\..\index.php");
+//    exit;
+//}
 $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-?><!DOCTYPE html>
+?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -94,7 +94,23 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['cijfersvan']; ?>[NAAM]</h1>
+                    <p>
+                        <?php
+                        
+                        include'..\krijgnaam.php';
+                        ?>
+                    </p>
+                    <?php
+                    $naam = $_SESSION ['leerling'];
+                    if(isset($naam)){
+                    echo "<h1 class='page-header'>";     
+                    echo $lang['cijfersvan']; 
+                    echo " $naam";
+                    echo"</h1>";
+                    }
+                    
+                    
+                    ?>        
                 </div>
             </div></div>  
         <div class="container">
@@ -106,27 +122,42 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 <thead>
                                     <tr>
                                         <th><?php echo $lang['codestudie']; ?></th>
-                                        <th><?php echo $lang['date']; ?></th>
                                         <th><?php echo $lang['aantalec']; ?></th>
                                         <th><?php echo $lang['cijfer']; ?></th>
                                         <th><?php echo $lang['wijzig']; ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>OIPHP1 Inleiding Programmeren in PHP</td>
-                                        <td>09-11-2016</td>
-                                        <td>3</td>
-                                        <td>6.2</td>
-                                        <td> <a href="aanpassen.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>OIXH (X)HTML en CSS</td>
-                                        <td>09-11-2016</td>
-                                        <td>3</td>
-                                        <td>7.2</td>
-                                        <td> <a href="aanpassen.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
-                                    </tr>
+                                    <?php
+                                    $studentnummer = substr($naam, -6);
+                                    $query = "select Vak, Vak2, Vak3 from leraren where Lerarennummer='123456'";
+                                    $result = mysqli_query($conn, $query);
+                                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                                                                        
+                                    foreach ($row as $res) {
+                                        if($res == ""){
+                                            
+                                        }else{
+                                        $query2 = "select $res from cijfer where studentnummer= '$studentnummer'";
+                                        
+                                        $result2 = mysqli_query($conn, $query2);
+                                        $row2 = mysqli_fetch_array($result2);
+                                        echo"  <tr>
+                                                <td>$res</td>
+                                                <td>3.0</td>
+                                                <td>". $row2[$res] ."</td>
+                                                <td> <a href='aanpassen.php' id='button1id' name='submit' class='btn btn-success pull-right'> "; echo $lang['wijzig']; " </a></td>
+                                        </tr>";
+                                    }
+                                    }
+                                    for($a = 0; $a < 3; $a++){
+                                    
+                                    };
+                                    ?>
+                                    
+                                    
+                                    
+                                    
                                 </tbody>
                             </table>
                         </div>
