@@ -12,7 +12,7 @@ include '..\Functions\common.php';
 include '..\databaseArray.php';
 if (!isset($_SESSION['user']))
 {
-    header("Location: index.php");
+    header("Location: index.php?studentnummer=$portnummer");
     exit;
 }
 $user = $_SESSION['user'];
