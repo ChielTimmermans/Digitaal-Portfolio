@@ -73,23 +73,32 @@ if (isset($_POST[submit])) {
 
         $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         $resupdate = mysqli_query($conn, $updatetext);
-//Warning: Illegal string offset 'name' in C:\xampp\htdocs\ProjectPortfolio\Bootstrap\portfolioedit.php on line 79
-        header("Location: portfolio.php");
+
         if (!empty($_POST['avatar'])) {
-            $target_dir = "images/avatars/";
-            $imageFileType = "." . pathinfo(basename($_POST["avatar"]["name"]), PATHINFO_EXTENSION);
-            $target_file = $target_dir . $username . $imageFileType;
-            if ($imageFileType != ".jpg" && $imageFileType != ".png" && $imageFileType != ".jpeg" && $imageFileType != ".gif") {
-                echo "only JPG, PNG, JPEG en GIF files.";
-            } else {
-                $queryInsert = "UPDATE portfoliotext SET avatar = '$target_file')";
-                mysqli_query($DBConnect, $queryInsert);
-                if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
-                    echo "There was an error uploading the file, please try again!";
+            $allowedExts = array("gif", "jpeg", "jpg", "png");
+            $temp = explode(".", $_FILES["avatar"]["name"]);
+            $extension = end($temp);
+            if ((($_FILES["avatar"]["type"] == "image/gif") || ($_FILES["avatar"]["type"] == "image/jpeg") || ($_FILES["avatar"]["type"] == "image/jpg") || ($_FILES["avatar"]["type"] == "image/pjpeg") || ($_FILES["avatar"]["type"] == "image/x-png") || ($_FILES["avatar"]["type"] == "image/png")) && ($_FILES["avatar"]["size"] < 100000) && in_array($extension, $allowedExts)) {
+                if ($_FILES["avatar"]["error"] > 0) {
+                    echo "Return Code: " . $_FILES["avatar"]["error"] . "<br>";
                 } else {
-                    $_SESSION['image'] = $target_file;
-                    header('Location: portfolio.php');
+
+                    $fileName = $temp[0] . "." . $temp[1];
+                    $temp[0] = $user;
+                    $fileName;
+
+                    if (file_exists("images/avatars/" . $_FILES["file"]["name"])) {
+                        echo $_FILES["avatar"]["name"] . " already exists. ";
+                    } else {
+                        $temp = explode(".", $_FILES["avatar"]["name"]);
+                        $newfilename = round(microtime(true)) . '.' . end($user);
+                        move_uploaded_file($_FILES["avatar"]["tmp_name"], "images/avatars/" . $newfilename);
+                        $queryavatar = "UPDATE portfoliotext SET  avatar = '$newfilename'";
+                        $resavatar = mysqli_query($conn, $queryavatar);
+                    }
                 }
+            } else {
+                echo "Invalid file";
             }
         }
     }
