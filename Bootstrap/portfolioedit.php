@@ -74,34 +74,37 @@ if (isset($_POST[submit])) {
         $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         $resupdate = mysqli_query($conn, $updatetext);
 
+        $filename = $_POST["avatar"];
+        $expl = explode($filename, '.');
+        $file_basename = $expl[0]; // get file name
+        $file_ext = $expl[2]; // get file extention
+        $filesize = $_FILES["avatar"]["size"];
+        $allowed_file_types = array('.doc', '.docx', '.rtf', '.pdf', '.png');
 
-            $allowedExts = array("gif", "jpeg", "jpg", "png");
-            $temp = explode(".", $_FILES["avatar"]["name"]);
-            $extension = end($temp);
-            if ((($_FILES["avatar"]["type"] == "image/gif") || ($_FILES["avatar"]["type"] == "image/jpeg") || ($_FILES["avatar"]["type"] == "image/jpg") || ($_FILES["avatar"]["type"] == "image/pjpeg") || ($_FILES["avatar"]["type"] == "image/x-png") || ($_FILES["avatar"]["type"] == "image/png")) && ($_FILES["avatar"]["size"] < 100000) && in_array($extension, $allowedExts)) {
-                if ($_FILES["avatar"]["error"] > 0) {
-                    echo "Return Code: " . $_FILES["avatar"]["error"] . "<br>";
-                } else {
-
-                    $fileName = $temp[0] . "." . $temp[1];
-                    $temp[0] = $user;
-
-                    if (file_exists("images/avatars/" . $_FILES["file"]["name"])) {
-                        echo $_FILES["avatar"]["name"] . " already exists. ";
-                    } else {
-                        $temp = explode(".", $_FILES["avatar"]["name"]);
-                        $newfilename = round(microtime(true)) . '.' . end($user);
-                        move_uploaded_file($_FILES["avatar"]["tmp_name"], "images/avatars/" . $newfilename);
-                        $queryavatar = "UPDATE portfoliotext SET  avatar = '$newfilename'";
-                        $resavatar = mysqli_query($conn, $queryavatar);
-                    }
-                }
+        if (in_array($file_ext, $allowed_file_types) && ($filesize < 200000)) {
+// Rename file
+            $newfilename = md5($file_basename) . $file_ext;
+            if (file_exists("images/avatars/" . $newfilename)) {
+// file already exists error
+                echo "You have already uploaded this file.";
             } else {
-                echo "Invalid file";
+                move_uploaded_file($_FILES["avatar"]["tmp_name"], "images/avatars/" . $newfilename);
+                echo "File uploaded successfully.";
             }
+        } elseif (empty($file_basename)) {
+// file selection error
+            echo "Please select a file to upload.";
+        } elseif ($filesize > 200000) {
+// file size error
+            echo "The file you are trying to upload is too large.";
+        } else {
+// file type error
+            echo "Only these file typs are allowed for upload: " . implode(', ', $allowed_file_types);
         }
     }
-
+} else {
+    echo "Invalid file";
+}
 ?>
 
 <!DOCTYPE html>
@@ -217,9 +220,9 @@ if (isset($_POST[submit])) {
                                 <div class="col-xs-12 col-sm-8">
                                     <ul class="list-group">
                                         <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php
-                                            echo "$userNaam ";
-                                            echo $userAchterNaam;
-                                            ?></li>
+echo "$userNaam ";
+echo $userAchterNaam;
+?></li>
                                         <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?>: Student informatica</li>
                                         <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?>: Stenden Hogeschool </li>
                                         <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?> </li>
@@ -235,21 +238,32 @@ if (isset($_POST[submit])) {
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Overmij']; ?></h4>
                             <textarea class="overmij" name="overmij"><?php
-                                foreach ($oldovermij as $arrovermij) {
-                                    echo $arrovermij;
-                                }
-                                ?></textarea>
+                                            foreach ($oldovermij as $arrovermij) {
+                                                echo $arrovermij;
+                                            }
+?></textarea>
                         </div>
                         <div>
-                            <?php echo $fileName; ?>
+                            <?php
+                            echo $_FILES['avatar']['name'];
+                            echo 'FILENAME=' . $filename . '<br>';
+                            if (empty($_POST['avatar'])) {
+                                echo 'upload veld is leeg<br>';
+                            }
+                            if (!empty($_POST['avatar'])) {
+                                echo 'upload veld is niet leeg<br>';
+                            }
+                            echo $file_basename . '<br>';
+                            echo $file_ext . '<br>';
+                            ?>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
                             <textarea class="overmij" name="diplomas"><?php
-                                foreach ($olddiplomas as $arrdiplomas) {
-                                    echo $arrdiplomas;
-                                }
-                                ?></textarea>
+                            foreach ($olddiplomas as $arrdiplomas) {
+                                echo $arrdiplomas;
+                            }
+                            ?></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Hobby's en interesses</h4>
@@ -257,19 +271,19 @@ if (isset($_POST[submit])) {
                                 foreach ($oldhobbies as $arrhobbies) {
                                     echo $arrhobbies;
                                 }
-                                ?></textarea>
+                            ?></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Werk ervaring</h4>
                             <ul class="list-group">
                                 <textarea class="overmij" name="werkervaring"><?php
-                                    foreach ($oldwerkervaring as $arrwerkervaring) {
-                                        echo $arrwerkervaring;
-                                    }
-                                    ?></textarea>
+                                foreach ($oldwerkervaring as $arrwerkervaring) {
+                                    echo $arrwerkervaring;
+                                }
+                            ?></textarea>
                             </ul>
                         </div>
-                        <input type="file" name="avatar" id="avatar"><br><br>
+                        <input type="file" name="avatar"><br><br>
                         <button type="submit" name="submit">Opslaan</button>
                     </form>
                 </div>
