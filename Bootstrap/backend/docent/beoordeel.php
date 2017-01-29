@@ -106,18 +106,17 @@ $leerling2 = substr($leerling, -6);
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <form class="form-horizontal">
+                        <form class="form-horizontal" method='post' action='#' autocomplete='off'>
 
                             <div class="form-group">
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codeproject']; ?></label>  
                                 <div class="col-md-4">
                                     <?php
                                              
-                                    $a = 0;
+                                    $a = 1;
                                     $query4 = "SELECT Projecttitel1, Projecttitel2, Projecttitel3, Projecttitel4 FROM projecten WHERE studentnummer = '$leerling2'";
                                     $result4 = mysqli_query($conn, $query4);
                                     $row2 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
-                                        echo "<form method='post' action='#' autocomplete='off'>";
                                         echo "<select name='projecten[]'>";
                                         foreach ($row2 as $res4) {
                                             if($res4 === "0"){
@@ -127,7 +126,7 @@ $leerling2 = substr($leerling, -6);
                                             $a++;   
                                             }
                                         }
-                                        echo "</select>";
+                                        
                                         if (isset($_POST['submit'])) {
                                             foreach ($_POST['projecten'] as $select3) {
                                                 
@@ -141,12 +140,25 @@ $leerling2 = substr($leerling, -6);
                                     ?>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-8">
-                                    <button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['toevoegen']; ?></button>
+                                                        <div class="form-group">
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['cijfer']; ?></label>  
+                                <div class="col-md-4">
+                                    <input id="textinput" name="cijfer" type="number"  step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
                                 </div>
                             </div>
-                        </form>
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" for="textarea"><?php echo $lang['opmerkingen']; ?></label>  
+                                <div class="col-md-4">
+                                    <textarea name="comment" required rows="10" cols="32"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-8">
+                                    <input id="button1id" type="submit" value="<?php echo $lang['toevoegen']; ?>" name="submit" class="btn btn-success pull-right"/>
+                                </div>
+                            </div>
+                        
                         <?php
                         if (isset($_POST['submit'])){
                         $project = "cijfer$select3";
@@ -154,16 +166,19 @@ $leerling2 = substr($leerling, -6);
                         $commentproject = "comment$select3";
                         $comment = ($_POST['comment']);
                         $student = $leerling;
+                        echo "gelukt";
+                        
                         $sql ="update projectcijfer SET $project='$cijfer',$commentproject='$comment' WHERE studentnummer=$user";
-                        echo $sql;
+                        $result2 = mysqli_query($conn, $sql)
+                                or die("Error: " . mysqli_error($conn));
                         }
                         ?>
-                        <a href="projecten.php">&#8592;</a>	
+                        <a href="projecten.php">&#8592;</a>
+                        </form>	
                     </div>
                 </div>
             </div>
         </div>
-
 
         <!-- Bootstrap core JavaScript
         ================================================== -->

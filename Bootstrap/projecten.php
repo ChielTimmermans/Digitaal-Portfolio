@@ -130,6 +130,11 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                                     $row2['Projectcontent' . $item . '']
                                     . '</p>
                                         </div>';
+                                    echo"<div class='form-group'>
+                                <div class='col-md-8'>
+                                    <a href='beoordelingproject.php?a=$item' id='button1id'  value='zie beoordeling' class='btn btn-success pull-right'>zie beoordeling</a>
+                                </div>
+                            </div>";
                                 }
                             }
                             if ($item === 1)
