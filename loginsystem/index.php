@@ -43,6 +43,13 @@ if (isset($_POST['btn-login']))
         $password = hash('sha256', $pass); // password hashing using SHA256
         $query = "SELECT Studentnummer, userEmail, userPass FROM users WHERE userEmail='$name'";
         $query2 = "SELECT Rol FROM gegevens WHERE Email='$name'";
+        $res2 = mysqli_query($conn, $query2);
+        $row2 = mysqli_fetch_array($res2);
+        echo $row2['Rol'];
+        if($row2['Rol'] == 0){
+        $query2 = "SELECT Rol FROM leraren WHERE Email='$name'";
+        }
+        echo $query2;
         $res = mysqli_query($conn, $query);
         $res2 = mysqli_query($conn, $query2);
         $row = mysqli_fetch_array($res);
