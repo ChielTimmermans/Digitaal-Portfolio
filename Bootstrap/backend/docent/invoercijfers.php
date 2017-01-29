@@ -125,11 +125,11 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 <tbody>
                                     <?php
                                     $studentnummer = substr($naam, -6);
-                                    $query = "select Vak, Vak2, Vak3 from leraren where Lerarennummer='123456'";
-                                    $result = mysqli_query($conn, $query);
-                                    $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+                                    $query3 = "select Vak, Vak2, Vak3 from leraren where Lerarennummer='$user'";
+                                    $result3 = mysqli_query($conn, $query3);
+                                    $row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
                                                                         
-                                    foreach ($row as $res) {
+                                    foreach ($row3 as $res) {
                                         if($res == ""){
                                             
                                         }else{

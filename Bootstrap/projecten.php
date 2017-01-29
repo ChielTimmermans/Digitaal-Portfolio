@@ -117,7 +117,6 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
 
                         <ul class="list-group">
                             <?php
-                            $item = 1;
                             $project = 4;
                             for ($item = 1; $item <= $project; $item++)
                             {

@@ -11,8 +11,8 @@ if (!isset($_SESSION['user']))
         header("Location: Portfolio.php");
         echo "portfolio";
         exit;
-    }elseif ($_SESSION['Rol'] === 2){
-        header("Location: leraar.php");
+    }elseif ($_SESSION['Rol'] == 2){
+        header("Location: backend\docent\home.php");
         echo"leraar";
         exit;
     }elseif ($_SESSION['Rol'] === 3){
@@ -25,7 +25,7 @@ if (!isset($_SESSION['user']))
         unset($_SESSION['Rol']);
         session_unset();
         session_destroy();
-        header("Location: index.php");
+        //header("Location: index.php");
         exit;
     }
     

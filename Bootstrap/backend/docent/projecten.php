@@ -20,6 +20,7 @@ $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$leerling = $_GET['student'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,7 +95,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['projectenvan']; ?> [NAAM]</h1>
+                    <h1 class="page-header"><?php echo $lang['projectenvan']; echo "<br> $leerling"; ?> </h1>
                 </div>
             </div></div>
         <div class="container">
@@ -103,7 +104,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="bs-callout bs-callout-danger">
 
                         <?php
-                        $leerling = $_GET['student'];
                         $leerling2 = substr($leerling, -6);
                         $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
                         $result2 = mysqli_query($conn, $query2)
