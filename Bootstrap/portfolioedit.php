@@ -74,7 +74,7 @@ if (isset($_POST[submit])) {
         $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         $resupdate = mysqli_query($conn, $updatetext);
 
-        if (!empty($_POST['avatar'])) {
+
             $allowedExts = array("gif", "jpeg", "jpg", "png");
             $temp = explode(".", $_FILES["avatar"]["name"]);
             $extension = end($temp);
@@ -85,7 +85,6 @@ if (isset($_POST[submit])) {
 
                     $fileName = $temp[0] . "." . $temp[1];
                     $temp[0] = $user;
-                    $fileName;
 
                     if (file_exists("images/avatars/" . $_FILES["file"]["name"])) {
                         echo $_FILES["avatar"]["name"] . " already exists. ";
@@ -102,7 +101,7 @@ if (isset($_POST[submit])) {
             }
         }
     }
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -242,6 +241,7 @@ if (isset($_POST[submit])) {
                                 ?></textarea>
                         </div>
                         <div>
+                            <?php echo $fileName; ?>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
