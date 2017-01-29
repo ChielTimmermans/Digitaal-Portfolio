@@ -122,7 +122,7 @@ echo "<br> $leerling"; ?></h1>
                                 <tr>
                                     <td>
                                         <?php
-                                        $query4 = "select Vak, Vak2, Vak3 from leraren where Lerarennummer='123456'";
+                                        $query4 = "select Vak, Vak2, Vak3 from leraren where Lerarennummer='$user'";
                                         $result4 = mysqli_query($conn, $query4);
                                         $row2 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
                                         echo "<form method='post' action='#' autocomplete='off'>";

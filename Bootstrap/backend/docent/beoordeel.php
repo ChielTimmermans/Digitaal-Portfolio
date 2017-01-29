@@ -96,7 +96,9 @@ $leerling2 = substr($leerling, -6);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['beoordeelproject']; echo "<br>$leerling" ?></h1>
+                    <h1 class="page-header"><?php echo $lang['beoordeelproject'];
+echo "<br>$leerling"
+?></h1>
                 </div>
             </div></div>  
         <div class="container">
@@ -110,36 +112,27 @@ $leerling2 = substr($leerling, -6);
                                 <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codeproject']; ?></label>  
                                 <div class="col-md-4">
                                     <?php
-                                        echo "  <form method='post' action='#' autocomplete='off'>
-                                                <select name='projectnaam[]'>";
-                                        $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
-                                        
-                                        $result2 = mysqli_query($conn, $query2)
-                                                or die("Error: " . mysqli_error($conn));
-                                                $column = array();
-                                                $item = 1;
-                                                while ($row = mysqli_fetch_array($result2)) {
-                                                    
-                                                    $column[] = $row["Projecttitel$item"];
-                                                    $item++;
-                                                }
-                                                foreach ($column as $res) {
-                                                    echo "<option value='$res'>$res</option>";
-                                                }
-                                                echo "  </select>";            
+                                    $a = 0;
+                                    $query4 = "SELECT Projecttitel1, Projecttitel2, Projecttitel3, Projecttitel4 FROM projecten WHERE studentnummer = '$leerling2'";
+                                    $result4 = mysqli_query($conn, $query4);
+                                    $row2 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
+                                        echo "<form method='post' action='#' autocomplete='off'>";
+                                        echo "<select name='projecten[]'>";
+                                        foreach ($row2 as $res4) {
+                                            echo "<option value='$a'>$res4</option>";
+                                            $a++;
+                                        }
+                                        echo "</select>";
+                                        if (isset($_POST['submit'])) {
+                                            foreach ($_POST['projecten'] as $select3) {
+                                                
+                                            }
+                                        }
+                                    
+
+                                    echo "</select>";
+                                    echo $res;
                                     ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['date']; ?></label>  
-                                <div class="col-md-4">
-                                    <input id="textinput" name="project" type="date" class="form-control input-md">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['aantalec']; ?></label>  
-                                <div class="col-md-4">
-                                    <input id="textinput" name="ec" type="number" placeholder="0-60" min="0" max="60" step="1" class="form-control input-md">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -160,6 +153,17 @@ $leerling2 = substr($leerling, -6);
                                 </div>
                             </div>
                         </form>
+                        <?php
+                        if (isset($_POST['submit'])){
+                        $project = "cijfer$select3";
+                        $cijfer = ($_POST['cijfer']);
+                        $commentproject = "comment$select3";
+                        $comment = ($_POST['comment']);
+                        $student = $leerling;
+                        $sql ="update projectcijfer SET $project='$cijfer',$commentproject='$comment' WHERE studentnummer=$user";
+                        echo $sql;
+                        }
+                        ?>
                         <a href="projecten.php">&#8592;</a>	
                     </div>
                 </div>
