@@ -315,7 +315,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="wachtwoord">Wachtwoord</label>
   <div class="col-md-4">
     <input type="password" name="pass" placeholder="Enter Password" maxlength="15" class="form-control input-md" required="">
-                    <span><?php echo $passError, $passError2; ?></span>
+                    <span><?php echo $passError, $passError2; ?></span><br><br>
   </div>
 </div>
 
@@ -323,7 +323,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="wachtwoord2">Herhaal wachtwoord</label>
   <div class="col-md-4">
     <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" class="form-control input-md" required="">
-    
+    <br><br>
   </div>
 </div>
 
@@ -412,13 +412,11 @@ if (isset($_POST['submit']))
 <div class="form-group">
   <label class="col-md-4 control-label" for="signup"></label>
   <div class="col-md-4">
-    <button id="signup" name="signup" class="btn btn-success">Registreer/Register</button>
+    <button type="submit" id="signup" name="submit" class="btn btn-success">Registreer/Register</button>
   </div>
 </div>
 
 </fieldset>
 </form>
-
-            </div> </div>
     </body>
 </html>
