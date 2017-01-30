@@ -198,15 +198,16 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             <tbody>
                                 <?php
                                 foreach ($diplomas as $arrdiplomas) {
-//                                    echo
-//                                    "
-//                                <tr>
-//                                    <td>$arrdiplomas</td>
-//                                    <td>$arrdiplomas</td>
-//                                    <td>$arrdiplomas</td>
-//                                </tr>
-//                             ";
-                                    echo $arrdiplomas;
+                                    $arrdiplomas[''];
+                                    echo
+                                    "
+                                <tr>
+                                    <td> "echo $arrdiplomas['school'];"</td>
+                                    <td> echo $arrdiplomas</td>
+                                    <td> echo $arrdiplomas</td>
+                                </tr>
+                             ";
+//                                    echo $arrdiplomas;
                                 }
                                 ?>
                             </tbody>
