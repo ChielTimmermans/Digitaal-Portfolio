@@ -287,7 +287,7 @@ if (isset($_POST['submit']))
  
                 
                 
-                <form class="form-horizontal">
+                <form action="registerengegevens.php" method="post" class="form-horizontal">
 <fieldset>
 
 <legend>Registreer een nieuwe gebruiker/ Register a new user</legend>
