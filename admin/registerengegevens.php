@@ -251,55 +251,219 @@ if (isset($_POST['submit']))
     <!DOCTYPE html>
     <html>
         <head>
-            <meta charset="utf-8" />
-            <title>Coding Cage - Login & Registration System</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="../../favicon.ico">
+
+        <title>Admin</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link href="../Bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+        <!-- Custom styles for this template -->
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="../Bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
         </head>
         <body>
-            <form action="registerengegevens.php" method="post">
-                Studentnummer:<br>
-                <input type="number" name="studentnummer" maxlength="8" placeholder="Studentnummer" value="<?php echo $stnummer; ?>"/>
-                <span><?php echo $stnummerError; ?></span><br><br>
-                Klas:<br>
-                <input type="text" name="Klas" maxlength="10" placeholder="Klas" value="<?php echo $klas; ?>"/>
-                <span><?php echo $klasError; ?></span><br><br>
-                Wachtwoord:<br>
-                <input type="password" name="pass" placeholder="Enter Password" maxlength="15"/>   
-                <span><?php echo $passError, $passError2; ?></span>
-                <br><br>
-                Wachtwoord herhalen:<br>
-                <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15"/>
-                <br><br>
-                Voornaam:<br>
-                <input type="text" name="voornaam" maxlength="30" placeholder="voornaam"  value="<?php echo $fname; ?>"/>
-                <span><?php echo $fnameError; ?></span><br><br>
-                Achternaam:<br>
-                <input type="text" name="achternaam" maxlength="60" placeholder="achternaam" value="<?php echo $lname; ?>"/>
-                <span><?php echo $lnameError; ?></span><br><br>
-                Email adres:<br>
-                <input type="email" name="email" maxlength="50" placeholder="Emailadres" value="<?php echo $email; ?>"/>
-                <span><?php echo $emailError; ?></span><br><br>
-                Telefoonnummer:<br>
-                <input type="number" name="telnummer" maxlength="15" placeholder="Telefoonnummer" value="<?php echo $telnum; ?>"/>
-                <span><?php echo $telError; ?></span><br><br>
-                Geboortedatum:<br>
-                <input type="date" name="geboortedatum" maxlenth="10" placeholder="Geboortedatum"  value="<?php echo $bday; ?>"/>
-                <span><?php echo $bdayError; ?></span><br><br>
-                Straatnaam:<br>
-                <input type="text" name="adres" maxlength="30" placeholder="Straatnaam"  value="<?php echo $adr; ?>"/>
-                <span><?php echo $adrError; ?></span><br><br>
-                Huisnummer:<br>
-                <input type="number" name="huisnummer" maxlength="5" placeholder="Huisnummer" value="<?php echo $hnum; ?>"/>
-                <span><?php echo $hnumError; ?></span><br><br>
-                Postcode:<br>
-                <input type="text" name="postcode" maxlength="6" placeholder="postcode" value="<?php echo $postc; ?>"/>
-                <span><?php echo $postcError; ?></span><br><br>
-                Woonplaats:<br>
-                <input type="text" name="woonplaats" maxlength="30" placeholder="woonplaats" value="<?php echo $plaats; ?>"/>
-                <span><?php echo $plaatsError; ?></span><br><br>
-            <input type="radio" name="gender" value="m" checked>Man
-            <input type="radio" name="gender" value="f">Vrouw<br><br>
-            <button type="submit" name="submit">Submit</button>
-            <input type="reset">
-        </form>
+ 
+                
+                
+                <form class="form-horizontal">
+<fieldset>
+
+<legend>Registreer een nieuwe gebruiker/ Register a new user</legend>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="studentnummer">Studentnummer</label>  
+  <div class="col-md-4">
+  <input id="studentnummer" class="form-control input-md" type="number" name="studentnummer" maxlength="8" placeholder="Studentnumber" value="<?php echo $stnummer; ?>" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="klas">Klas</label>  
+  <div class="col-md-4">
+  <input type="text" name="Klas" maxlength="10" placeholder="Class" value="<?php echo $klas; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="wachtwoord">Wachtwoord</label>
+  <div class="col-md-4">
+    <input type="password" name="pass" placeholder="Enter Password" maxlength="15" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="wachtwoord2">Herhaal wachtwoord</label>
+  <div class="col-md-4">
+    <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="voornaam">Voornaam</label>  
+  <div class="col-md-4">
+  <input type="text" name="voornaam" maxlength="30" placeholder="Firstname"  value="<?php echo $fname; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="achternaam">Achternaam</label>  
+  <div class="col-md-4">
+  <input type="text" name="achternaam" maxlength="60" placeholder="Surname" value="<?php echo $lname; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Email</label>  
+  <div class="col-md-4">
+  <input type="email" name="email" maxlength="50" placeholder="Email address" value="<?php echo $email; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Telefoonnumber</label>  
+  <div class="col-md-4">
+  <input type="number" name="telnummer" maxlength="15" placeholder="Phone Number" value="<?php echo $telnum; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Geboortedatum/date of birth</label>  
+  <div class="col-md-4">
+  <input type="date" name="geboortedatum" maxlenth="10" placeholder="Date of birth"  value="<?php echo $bday; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Straatnaam</label>  
+  <div class="col-md-4">
+  <input type="text" name="adres" maxlength="30" placeholder="Street name"  value="<?php echo $adr; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Huisnummer</label>  
+  <div class="col-md-4">
+  <input type="number" name="huisnummer" maxlength="5" placeholder="House number" value="<?php echo $hnum; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Postcode</label>  
+  <div class="col-md-4">
+  <input type="text" name="postcode" maxlength="6" placeholder="Postal code" value="<?php echo $postc; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="email">Postcode</label>  
+  <div class="col-md-4">
+  <input type="text" name="woonplaats" maxlength="30" placeholder="woonplaats" value="<?php echo $plaats; ?>" class="form-control input-md" required="">
+    
+  </div>
+</div>
+<!-- Select Basic -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="blood_group">Blood Group</label>
+  <div class="col-md-4">
+    <select id="blood_group" name="blood_group" class="form-control">
+      <option value="-1">Select</option>
+      <option value="1">A+</option>
+      <option value="2">B+</option>
+      <option value="3">AB+</option>
+      <option value="4">O+</option>
+      <option value="5">A-</option>
+      <option value="6">B-</option>
+      <option value="7">AB-</option>
+      <option value="8">O-</option>
+    </select>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group alert alert-warning">
+  <label class="col-md-4 control-label" for="street">Street</label>  
+  <div class="col-md-4">
+  <input id="street" name="street" type="text" placeholder="Enter your street" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="area">Area</label>  
+  <div class="col-md-4">
+  <input id="area" name="area" type="text" placeholder="Enter your area" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="city">City</label>  
+  <div class="col-md-4">
+  <input id="city" name="city" type="text" placeholder="Enter your city" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="dist">District</label>  
+  <div class="col-md-4">
+  <input id="dist" name="dist" type="text" placeholder="Enter your district" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="signup"></label>
+  <div class="col-md-4">
+    <button id="signup" name="signup" class="btn btn-success">Sign Up</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+            </div> </div>
     </body>
 </html>
