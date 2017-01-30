@@ -33,7 +33,7 @@ if ($DBConnect === FALSE)
     if (mysqli_num_rows($QueryResult) == 0)
     {
         $SQLstring = "CREATE TABLE $TableName(
-                    userID          SMALLINT    NOT NULL        AUTO_INCREMENT  UNIQUE KEY,
+                    userID          INT(6)      NOT NULL        AUTO_INCREMENT  UNIQUE KEY,
                     Studentnummer   INT(8)      UNIQUE KEY,
                     Klas            Varchar(10),
                     Voornaam        Varchar(30),

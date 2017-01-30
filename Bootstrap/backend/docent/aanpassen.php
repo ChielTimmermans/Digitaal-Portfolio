@@ -22,7 +22,7 @@ $result = mysqli_query($conn, $query)
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $leerling = $_GET['student'];
 ?>
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -99,7 +99,8 @@ $leerling = $_GET['student'];
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header"><?php echo $lang['cijferwijzigen'];
-echo "<br> $leerling"; ?></h1>
+echo "<br> $leerling";
+?></h1>
                 </div>
             </div></div>  
 
@@ -127,12 +128,15 @@ echo "<br> $leerling"; ?></h1>
                                         $row2 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
                                         echo "<form method='post' action='#' autocomplete='off'>";
                                         echo "<select name='Vak[]'>";
-                                        foreach ($row2 as $res4) {
+                                        foreach ($row2 as $res4)
+                                        {
                                             echo "<option value='$res4'>$res4</option>";
                                         }
                                         echo "</select>";
-                                        if (isset($_POST['submit'])) {
-                                            foreach ($_POST['Vak'] as $select3) {
+                                        if (isset($_POST['submit']))
+                                        {
+                                            foreach ($_POST['Vak'] as $select3)
+                                            {
                                                 
                                             }
                                         }
@@ -151,7 +155,7 @@ echo "<br> $leerling"; ?></h1>
                                 ?>
                             </tbody>
                         </table>
-                        <a href='invoercijfers.php?student=<?php echo $leerling?>'>&#8592;</a>
+                        <a href='invoercijfers.php?student=<?php echo $leerling ?>'>&#8592;</a>
                     </div>
                 </div>
             </div>

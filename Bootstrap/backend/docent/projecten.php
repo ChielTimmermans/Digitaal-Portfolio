@@ -95,7 +95,8 @@ $leerling = $_GET['student'];
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['projectenvan']; echo "<br> $leerling"; ?> </h1>
+                    <h1 class="page-header"><?php echo $lang['projectenvan'];
+echo "<br> $leerling"; ?> </h1>
                 </div>
             </div></div>
         <div class="container">
@@ -106,12 +107,15 @@ $leerling = $_GET['student'];
                         <?php
                         $leerling2 = substr($leerling, -6);
                         $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
+                        $result2 = mysqli_query($conn, $query2);
                         $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
-                        
+
                         $item = 1;
                         $project = 4;
-                        for ($item = 1; $item <= $project; $item++) {
-                            if (!empty($row2['Projecttitel' . $item . ''])) {
+                        for ($item = 1; $item <= $project; $item++)
+                        {
+                            if (!empty($row2['Projecttitel' . $item . '']))
+                            {
                                 echo'  <a class="list-group-item inactive-link" href="#">
                                                <h4 class="list-group-item-heading">' .
                                 $row2['Projecttitel' . $item . '']
@@ -126,10 +130,7 @@ $leerling = $_GET['student'];
                                             <p><a href='beoordeel.php?student=$leerling'><button id='button1id' name='beoordeel' class='btn btn-success'>";
                                 echo $lang['beoordeelproject'];
                                 echo "</button></a></p>";
-                                
-                            }elseif($item === 1)
-                        
-                            
+                            } elseif ($item === 1)
                             {
                                 echo '  <div class="list-group-item inactive-link">
                                             <p class="list-group-item-text">' .

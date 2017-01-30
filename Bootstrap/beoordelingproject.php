@@ -17,6 +17,7 @@ $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$a = $_GET['a'];
 ?>
 
 <!DOCTYPE html>
@@ -92,62 +93,49 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                         <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li class="active"><a href="projecten.php"><?php echo $lang['Projecten']; ?><span class="sr-only">(current)</span></a></li>
                         <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li class="active"><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Berichten</h1>
+                    <h1 class="page-header"><?php echo $lang['mijnprojecten']; ?></h1>
                 </div>
-            </div></div>  
-
-
+            </div>
+        </div>  
+        <?php
+        $projecttitel = "Projecttitel$a";
+        $projectcomment = "comment$a";
+        $projectcijfer = "cijfer$a";
+        $sql1 = "SELECT * FROM projecten where studentnummer = '469521'";
+        $sql2 = "SELECT * FROM projectcijfer where studentnummer = '469521'";
+        $result1 = mysqli_query($conn, $sql1)
+        or die("Error: " . mysqli_error($conn));
+        $result2 = mysqli_query($conn, $sql2)
+        or die("Error: " . mysqli_error($conn));
+        $row1 = mysqli_fetch_array($result1, MYSQL_ASSOC);
+        $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
+        
+        ?>
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
-                        <p>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <table class="table" id="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Datum</th>
-                                            <th>Naam</th>
-                                            <th>Bericht</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        require_once '..\CreateDatabases/dbconnect.php';
-                                            $TableName = "visitors"; 
-                                            $SQLstring = "SELECT * FROM $TableName ORDER BY date DESC"; 
-                                            $QueryResult = mysqli_query($conn, $SQLstring); 
-                                            if (mysqli_num_rows($QueryResult) == 0) 
-                                            { 
-                                                echo "<p>There are no entries in 
-                                                the guest 
-                                                book!</p>"; 
-                                            } else { 
-                                                while($Row = mysqli_fetch_assoc($QueryResult)) 
-                                                { 
-                                                    echo "<tr><td>{$Row['date']}</td>";
-                                                    echo "<td>{$Row['name']}</td>"; 
-                                                    echo "<td>{$Row['message']}</td></tr>"; 
-                                                }
-                                                mysqli_free_result($QueryResult); 
-                                            }  
-                                            mysqli_close($conn); 
-                                        ?>
-                                    </tbody>
-                                </table>
-                                <hr>
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <?php  echo $row1[$projecttitel]?>
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <p>Uw cijfer:
+                                    <?php  echo $row2[$projectcijfer]?>
+                                    </p>
+                                
+                                    <?php  echo $row2[$projectcomment]?>
+                                </div>
                             </div>
-                        </div>
-                        <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>
                     </div>
-
                 </div>
             </div>
         </div>

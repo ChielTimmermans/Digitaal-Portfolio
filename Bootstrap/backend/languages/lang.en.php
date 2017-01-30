@@ -71,6 +71,7 @@ $lang['cijfersaanpassen'] = 'edit grades';
 
 //gastenboek
 $lang['bekijkberichten'] = 'view messages';
+$lang['verstuur'] = 'send message';
 
 //home
 $lang['upload'] = 'upload files';

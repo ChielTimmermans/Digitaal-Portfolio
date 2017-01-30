@@ -94,7 +94,17 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['cijfersvan']; ?>[NAAM]</h1>
+                                        <?php
+                    $naam = $_GET['student'];
+                    if(isset($naam)){
+                    echo "<h1 class='page-header'>";     
+                    echo $lang['cijfersvan']; 
+                    echo "<br> $naam";
+                    echo"</h1>";
+                    }
+                    
+                    
+                    ?> 
                 </div>
             </div></div>  
         <div class="container">
@@ -106,27 +116,43 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 <thead>
                                     <tr>
                                         <th><?php echo $lang['codestudie']; ?></th>
-                                        <th><?php echo $lang['date']; ?></th>
                                         <th><?php echo $lang['aantalec']; ?></th>
                                         <th><?php echo $lang['cijfer']; ?></th>
                                         <th><?php echo $lang['wijzig']; ?></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>OIPHP1 Inleiding Programmeren in PHP</td>
-                                        <td>09-11-2016</td>
-                                        <td>3</td>
-                                        <td>6.2</td>
-                                        <td> <a href="aanpassen.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>OIXH (X)HTML en CSS</td>
-                                        <td>09-11-2016</td>
-                                        <td>3</td>
-                                        <td>7.2</td>
-                                        <td> <a href="aanpassen.php"><button id="button1id" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></a></td>
-                                    </tr>
+                                    <?php
+                                    $studentnummer = substr($naam, -6);
+                                        
+                                            $cijfer = array("Informatiemanagement","PHP","HTML_en_CSS","Digital_Graphic_Design_1",
+                                                "Project_Professionele_Website","Mondelinge_communicatie_1","Databases_1","Unleash_your_Potential_in_PHP",
+                                                "Studieloopbaanbegeleiding_1A","Project_Digitale_Portfolio","Schriftelijke_Communicatie","Java_1","Computernetwerken_1",
+                                                "Inleiding_Wiskunde","Project_Solar_Bot","Studieloopbaanbegeleiding_1B","Csharp_1","Multimedia_Productie","Project_Stenden_Creative_Realization"); 
+                                        
+                                            
+                                        $query2 = "select * from cijfer where studentnummer= '$studentnummer'";
+                                        
+                                        $result2 = mysqli_query($conn, $query2);
+                                        $row2 = mysqli_fetch_array($result2);
+                                        foreach($cijfer as $result1){
+                                        echo"   <tr>
+                                                <td>$result1</td>
+                                                <td>3.0</td>
+                                                <td>". $row2[$result1] ."</td>
+                                                <td> <a href='aanpassen.php?student=$naam' id='button1id' name='submit' class='btn btn-success pull-right'> "; echo $lang['wijzig']; " </a></td>
+                                                </tr>";
+                                        }
+                                    
+                                    for($a = 0; $a < 3; $a++){
+                                    
+                                    }
+                                    
+                                    ?>
+
+
+
+
                                 </tbody>
                             </table>
                         </div>
