@@ -75,19 +75,20 @@ if (isset($_POST[submit])) {
         $resupdate = mysqli_query($conn, $updatetext);
 
         $filename = $_POST["avatar"];
-        $expl = explode($filename, '.');
+        $expl = explode('.', $filename);
         $file_basename = $expl[0]; // get file name
-        $file_ext = $expl[2]; // get file extention
+        $file_ext = $expl[1]; // get file extention
         $filesize = $_FILES["avatar"]["size"];
-        $allowed_file_types = array('.doc', '.docx', '.rtf', '.pdf', '.png');
+        $allowed_file_types = array('gif', 'jpg', 'pjpg', 'png');
 
         if (in_array($file_ext, $allowed_file_types) && ($filesize < 200000)) {
 // Rename file
-            $newfilename = md5($file_basename) . $file_ext;
+//            $newfilename = md5($file_basename) . $file_ext;
             if (file_exists("images/avatars/" . $newfilename)) {
 // file already exists error
                 echo "You have already uploaded this file.";
-            } else {
+            }
+            else {
                 move_uploaded_file($_FILES["avatar"]["tmp_name"], "images/avatars/" . $newfilename);
                 echo "File uploaded successfully.";
             }
@@ -245,7 +246,6 @@ echo $userAchterNaam;
                         </div>
                         <div>
                             <?php
-                            echo $_FILES['avatar']['name'];
                             echo 'FILENAME=' . $filename . '<br>';
                             if (empty($_POST['avatar'])) {
                                 echo 'upload veld is leeg<br>';
@@ -255,6 +255,7 @@ echo $userAchterNaam;
                             }
                             echo $file_basename . '<br>';
                             echo $file_ext . '<br>';
+                            echo $filesize;
                             ?>
                         </div>
                         <div class="bs-callout bs-callout-danger">
