@@ -18,15 +18,16 @@
                 echo "<p>The following visitors have signed our "
                 . "guest book:</p>"; 
                 echo "<table border='1'>"; 
-                echo "<tr><th>First Name</th> "
-                . "<th>Last Name </th>"
-                . "<th>Email</th></tr>"; 
+                echo "<tr><th>date</th> "
+                . "<th>name</th>"
+                . "<th>message</th></tr>"; 
                 while($Row = mysqli_fetch_assoc($QueryResult)) 
                 { 
-                    echo "<tr><td>{$Row['first_name']}</td>"; 
-                    echo "<td>{$Row['last_name']}</td>";
-                    echo "<td>{$Row['email']}</td></tr>"; 
-                } 
+                    echo "<tr><td>{$Row['date']}</td>";
+                    echo "<td>{$Row['name']}</td>"; 
+                    echo "<td>{$Row['message']}</td></tr>"; 
+                }
+                echo "</table>";
                 mysqli_free_result($QueryResult); 
             }  
             mysqli_close($conn); 

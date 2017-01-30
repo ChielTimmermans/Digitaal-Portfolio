@@ -113,19 +113,22 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="bs-callout bs-callout-danger">
                         <p>
                         <div class="form-area">  
-                            <form>
+                            <form action="gastprocess.php" method="POST">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Naam" required>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Naam" required/>
                                 </div>
                                 <div class="form-group">
-                                    <textarea class="form-control" id="message" placeholder="Vul hier je bericht in" maxlength="140" rows="7"></textarea>				
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="example@mail.com" required/>
+                                </div>    
+                                <div class="form-group">
+                                    <textarea name="bericht" class="form-control" id="message" placeholder="Vul hier je bericht in" maxlength="140" rows="7"></textarea>				
                                 </div>
                                 <div class="form-group">
-                                    <p><button type="button" id="submit" name="submit" class="btn btn-primary pull-middle"><?php echo $lang['verstuur']; ?></button></p>
+                                    <p><input type="submit" id="submit" name="submit" class="btn btn-primary pull-middle" value="<?php echo $lang['verstuur']; ?>" /></p>
                                 </div>
                             </form>
                         </div>
-                        <a href="berichten.html"><?php echo $lang['Cijferlijst']; ?></a>
+                        <a href="berichten.php"><?php echo $lang['Cijferlijst']; ?></a>
                     </div>
 
                 </div>

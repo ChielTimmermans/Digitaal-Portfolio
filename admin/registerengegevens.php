@@ -287,7 +287,7 @@ if (isset($_POST['submit']))
  
                 
                 
-                <form class="form-horizontal">
+                <form action="registerengegevens.php" method="post" class="form-horizontal">
 <fieldset>
 
 <legend>Registreer een nieuwe gebruiker/ Register a new user</legend>
@@ -297,7 +297,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="studentnummer">Studentnummer</label>  
   <div class="col-md-4">
   <input id="studentnummer" class="form-control input-md" type="number" name="studentnummer" maxlength="8" placeholder="Studentnumber" value="<?php echo $stnummer; ?>" required="">
-    
+                    <span><?php echo $stnummerError; ?></span><br><br>
   </div>
 </div>
 
@@ -306,7 +306,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="klas">Klas</label>  
   <div class="col-md-4">
   <input type="text" name="Klas" maxlength="10" placeholder="Class" value="<?php echo $klas; ?>" class="form-control input-md" required="">
-    
+                    <span><?php echo $klasError; ?></span><br><br>
   </div>
 </div>
 
@@ -315,7 +315,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="wachtwoord">Wachtwoord</label>
   <div class="col-md-4">
     <input type="password" name="pass" placeholder="Enter Password" maxlength="15" class="form-control input-md" required="">
-    
+                    <span><?php echo $passError, $passError2; ?></span>
   </div>
 </div>
 
@@ -332,7 +332,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="voornaam">Voornaam</label>  
   <div class="col-md-4">
   <input type="text" name="voornaam" maxlength="30" placeholder="Firstname"  value="<?php echo $fname; ?>" class="form-control input-md" required="">
-    
+                    <span><?php echo $fnameError; ?></span><br><br>
   </div>
 </div>
 
@@ -340,7 +340,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="achternaam">Achternaam</label>  
   <div class="col-md-4">
   <input type="text" name="achternaam" maxlength="60" placeholder="Surname" value="<?php echo $lname; ?>" class="form-control input-md" required="">
-    
+                    <span><?php echo $lnameError; ?></span><br><br>
   </div>
 </div>
 
@@ -348,7 +348,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="email">Email</label>  
   <div class="col-md-4">
   <input type="email" name="email" maxlength="50" placeholder="Email address" value="<?php echo $email; ?>" class="form-control input-md" required="">
-    
+                    <span><?php echo $emailError; ?></span><br><br>
   </div>
 </div>
 
@@ -356,7 +356,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="email">Telefoonnumber</label>  
   <div class="col-md-4">
   <input type="number" name="telnummer" maxlength="15" placeholder="Phone Number" value="<?php echo $telnum; ?>" class="form-control input-md" required="">
-    
+              <span><?php echo $telError; ?></span><br><br>      
   </div>
 </div>
 
@@ -364,7 +364,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="email">Geboortedatum/date of birth</label>  
   <div class="col-md-4">
   <input type="date" name="geboortedatum" maxlenth="10" placeholder="Date of birth"  value="<?php echo $bday; ?>" class="form-control input-md" required="">
-    
+    <span><?php echo $bdayError; ?></span><br><br>
   </div>
 </div>
 
@@ -372,7 +372,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="email">Straatnaam</label>  
   <div class="col-md-4">
   <input type="text" name="adres" maxlength="30" placeholder="Street name"  value="<?php echo $adr; ?>" class="form-control input-md" required="">
-    
+    <span><?php echo $adrError; ?></span><br><br>
   </div>
 </div>
 
@@ -380,7 +380,7 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="email">Huisnummer</label>  
   <div class="col-md-4">
   <input type="number" name="huisnummer" maxlength="5" placeholder="House number" value="<?php echo $hnum; ?>" class="form-control input-md" required="">
-    
+                    <span><?php echo $hnumError; ?></span><br><br>
   </div>
 </div>
 
@@ -388,76 +388,31 @@ if (isset($_POST['submit']))
   <label class="col-md-4 control-label" for="email">Postcode</label>  
   <div class="col-md-4">
   <input type="text" name="postcode" maxlength="6" placeholder="Postal code" value="<?php echo $postc; ?>" class="form-control input-md" required="">
-    
+                    <span><?php echo $postcError; ?></span><br><br>
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="email">Postcode</label>  
+  <label class="col-md-4 control-label" for="email">Woonplaats</label>  
   <div class="col-md-4">
-  <input type="text" name="woonplaats" maxlength="30" placeholder="woonplaats" value="<?php echo $plaats; ?>" class="form-control input-md" required="">
-    
-  </div>
-</div>
-<!-- Select Basic -->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="blood_group">Blood Group</label>
-  <div class="col-md-4">
-    <select id="blood_group" name="blood_group" class="form-control">
-      <option value="-1">Select</option>
-      <option value="1">A+</option>
-      <option value="2">B+</option>
-      <option value="3">AB+</option>
-      <option value="4">O+</option>
-      <option value="5">A-</option>
-      <option value="6">B-</option>
-      <option value="7">AB-</option>
-      <option value="8">O-</option>
-    </select>
+  <input type="text" name="woonplaats" maxlength="30" placeholder="City" value="<?php echo $plaats; ?>" class="form-control input-md" required="">
+                    <span><?php echo $plaatsError; ?></span><br><br>
   </div>
 </div>
 
-<!-- Text input-->
-<div class="form-group alert alert-warning">
-  <label class="col-md-4 control-label" for="street">Street</label>  
-  <div class="col-md-4">
-  <input id="street" name="street" type="text" placeholder="Enter your street" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
 <div class="form-group">
-  <label class="col-md-4 control-label" for="area">Area</label>  
-  <div class="col-md-4">
-  <input id="area" name="area" type="text" placeholder="Enter your area" class="form-control input-md" required="">
-    
-  </div>
+      <label class="col-md-4 control-label" for="gender">Geslacht/Gender</label>
+        <div class="col-md-4">
+  <label><input type="radio" name="gender" value="m" checked>Man/Male</label>
+  <label><input type="radio" name="gender" value="f">Vrouw/Female</label>
 </div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="city">City</label>  
-  <div class="col-md-4">
-  <input id="city" name="city" type="text" placeholder="Enter your city" class="form-control input-md" required="">
-    
-  </div>
-</div>
-
-<!-- Text input-->
-<div class="form-group">
-  <label class="col-md-4 control-label" for="dist">District</label>  
-  <div class="col-md-4">
-  <input id="dist" name="dist" type="text" placeholder="Enter your district" class="form-control input-md" required="">
-    
-  </div>
 </div>
 
 <!-- Button -->
 <div class="form-group">
   <label class="col-md-4 control-label" for="signup"></label>
   <div class="col-md-4">
-    <button id="signup" name="signup" class="btn btn-success">Sign Up</button>
+    <button id="signup" name="signup" class="btn btn-success">Registreer/Register</button>
   </div>
 </div>
 
