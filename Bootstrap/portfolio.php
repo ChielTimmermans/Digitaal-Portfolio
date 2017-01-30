@@ -76,6 +76,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 echo "header-bg5";
                 break;
         }
+        $imgquery = SELECT 
         ?>">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -202,7 +203,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     echo
                                     "
                                 <tr>
-                                    <td> "echo $arrdiplomas['school'];"</td>
+                                    <td>"
+                                    . echo $arrdiplomas['school'];
+                                    . "</td>
                                     <td> echo $arrdiplomas</td>
                                     <td> echo $arrdiplomas</td>
                                 </tr>
