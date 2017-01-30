@@ -94,7 +94,13 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['projectenvan']; ?> [NAAM]</h1>
+                    <h1 class="page-header">
+                        <?php 
+                            $leerling = $_GET['student'];
+                            echo $lang['projectenvan']; 
+                            echo "<br>$leerling"; 
+                        ?> 
+                    </h1>
                 </div>
             </div>
         </div>
@@ -104,9 +110,12 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="bs-callout bs-callout-danger">
                         
                         <?php
+                        $leerling = $_GET['student'];
                         $leerling2 = substr($leerling, -6);
                         $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
+                        $result2 = mysqli_query($conn, $query2);
                         $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
+
                         
                         $item = 1;
                         $project = 4;
@@ -128,8 +137,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 echo "</button></a></p>";
                                 
                             }elseif($item === 1)
-                        
-                            
                             {
                                 echo '  <div class="list-group-item inactive-link">
                                             <p class="list-group-item-text">' .
@@ -140,9 +147,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         }
                         echo "<a href='overzichtprojecten.php?student=$leerling'>&#8592;</a>";
                         ?>
-                        <p><a href="bijlage.php"><button id="button1id" name="bijlagen" class="btn btn-info"><?php echo $lang['bekijkbijlagen']; ?></button></a></p>
-                        <p><a href="beoordeel.php"><button id="button1id" name="beoordeel" class="btn btn-success"><?php echo $lang['beoordeelproject']; ?></button></a></p>
-		
+                        
                     </div>
                 </div>
             </div>
