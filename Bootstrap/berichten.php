@@ -119,21 +119,27 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>12:21 13-1-2017</td>
-                                            <td>Dennis Kramer</td>
-                                            <td>Test1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>12:22 13-1-2017</td>
-                                            <td>Dennis Kramer</td>
-                                            <td>Test2</td>
-                                        </tr>
-                                        <tr>
-                                            <td>12:23 13-1-2017</td>
-                                            <td>Dennis Kramer</td>
-                                            <td>Test3</td>
-                                        </tr>
+                                        <?php
+                                        require_once '..\CreateDatabases/dbconnect.php';
+                                            $TableName = "visitors"; 
+                                            $SQLstring = "SELECT * FROM $TableName"; 
+                                            $QueryResult = mysqli_query($conn, $SQLstring); 
+                                            if (mysqli_num_rows($QueryResult) == 0) 
+                                            { 
+                                                echo "<p>There are no entries in 
+                                                the guest 
+                                                book!</p>"; 
+                                            } else { 
+                                                while($Row = mysqli_fetch_assoc($QueryResult)) 
+                                                { 
+                                                    echo "<tr><td>{$Row['date']}</td>";
+                                                    echo "<td>{$Row['name']}</td>"; 
+                                                    echo "<td>{$Row['message']}</td></tr>"; 
+                                                }
+                                                mysqli_free_result($QueryResult); 
+                                            }  
+                                            mysqli_close($conn); 
+                                        ?>
                                     </tbody>
                                 </table>
                                 <hr>
