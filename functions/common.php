@@ -39,4 +39,3 @@ switch ($lang)
 }
 
 include_once '..\languages/' . $lang_file;
-?>

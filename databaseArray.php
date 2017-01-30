@@ -24,4 +24,3 @@ $userRol = $row['Rol'];
 $huisstijl1 = $row['Stijl1'];
 $huisstijl2 = $row['Stijl2'];
 $huisstijl3 = $row['Stijl3'];
-?>
