@@ -1,14 +1,17 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET)) {
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
     $portnummer = $_SESSION['user'];
-} else {
+} else
+{
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']))
+{
     header("Location: ..\..\index.php");
     exit;
 }
@@ -112,22 +115,26 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                 <ul class="treeview">
                                     <li><a href="#"><?php echo $lang['klas']; ?></a>
                                         <ul>
-                                                <li><?php
+                                            <li><?php
                                                 echo "  <form method='post' action='#' autocomplete='off'>
                                                         <select name='klas[]'>";
                                                 $query = "SELECT Klas FROM klas";
                                                 $result = mysqli_query($conn, $query);
 
                                                 $column = array();
-                                                while ($row = mysqli_fetch_array($result)) {
+                                                while ($row = mysqli_fetch_array($result))
+                                                {
                                                     $column[] = $row[Klas];
                                                 }
-                                                foreach ($column as $res) {
+                                                foreach ($column as $res)
+                                                {
                                                     echo "<option value='$res'>$res</option>";
                                                 }
-                                                if (isset($_POST['submit'])) {
+                                                if (isset($_POST['submit']))
+                                                {
                                                     // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
-                                                    foreach ($_POST['klas'] as $select) {
+                                                    foreach ($_POST['klas'] as $select)
+                                                    {
                                                         echo "You have selected :" . $select; // Displaying Selected Value
                                                     }
                                                 }
@@ -136,24 +143,27 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                                 ?>
 
                                                 <ul>
-                                                <?php
-                                                $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
+                                                    <?php
+                                                    $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
 
-                                                $result2 = mysqli_query($conn, $query2);
-                                                $column2 = array();
-                                                while ($row2 = mysqli_fetch_array($result2)) {
-                                                    $Voornaam = $row2[Voornaam];
-                                                    $Achternaam = $row2[Achternaam];
-                                                    $studentnummer = $row2[Studentnummer];
-                                                    $column2[] = "$Voornaam $Achternaam $studentnummer";
-                                                }
-                                                if (isset($_POST['submit']) or isset($_POST['submit2'])) {
-                                                    foreach ($column2 as $res2) {
-                                                        echo "<li><a href='projecten.php?student=$res2' >$res2</a></li>";
-                                                        $_SESSION ['leerling'] = $res2;
+                                                    $result2 = mysqli_query($conn, $query2);
+                                                    $column2 = array();
+                                                    while ($row2 = mysqli_fetch_array($result2))
+                                                    {
+                                                        $Voornaam = $row2[Voornaam];
+                                                        $Achternaam = $row2[Achternaam];
+                                                        $studentnummer = $row2[Studentnummer];
+                                                        $column2[] = "$Voornaam $Achternaam $studentnummer";
                                                     }
-                                                }
-                                                ?>
+                                                    if (isset($_POST['submit']) or isset($_POST['submit2']))
+                                                    {
+                                                        foreach ($column2 as $res2)
+                                                        {
+                                                            echo "<li><a href='projecten.php?student=$res2' >$res2</a></li>";
+                                                            $_SESSION ['leerling'] = $res2;
+                                                        }
+                                                    }
+                                                    ?>
 
                                                 </ul>
                                             </li>

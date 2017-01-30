@@ -1,3 +1,24 @@
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
+    $portnummer = $_SESSION['user'];
+} else {
+    $portnummer = $_GET['Studentnummer'];
+}
+require_once '..\createDatabases/dbconnect.php';
+include '..\Functions\common.php';
+include '..\databaseArray.php';
+if (!isset($_SESSION['user'])) {
+    header("Location: index.php");
+    exit;
+}
+$user = $_SESSION['user'];
+$query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$result = mysqli_query($conn, $query)
+        or die("Error: " . mysqli_error($conn));
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
