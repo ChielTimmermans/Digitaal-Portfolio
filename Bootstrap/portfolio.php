@@ -202,9 +202,9 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     echo
                                     "
                                 <tr>
-                                    <td> "echo $arrdiplomas['school'];"</td>
-                                    <td> echo $arrdiplomas</td>
-                                    <td> echo $arrdiplomas</td>
+                                    <td>" . $arrdiplomas['school'] . "</td>
+                                    <td>" . $arrdiplomas . "</td>
+                                    <td>" . $arrdiplomas . "</td>
                                 </tr>
                              ";
 //                                    echo $arrdiplomas;

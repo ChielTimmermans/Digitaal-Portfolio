@@ -74,11 +74,12 @@ if (isset($_POST[submit])) {
         $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         $resupdate = mysqli_query($conn, $updatetext);
 
-        $filename = $_POST["avatar"];
+        $filename = stripslashes($_FILES['avatar']['name']);
+        echo $filename;
         $expl = explode('.', $filename);
         $file_basename = $user; // give new name
         $file_ext = $expl[1]; // get file extention
-        $filesize = $_FILES["avatar"]["size"];
+        $filesize = stripslashes($_FILES['avatar']['size']);
         $allowed_file_types = array('gif', 'jpg', 'pjpg', 'png');
         $target_dir = "images/avatars/";
         $newfilename = $file_basename . '.' . $file_ext;
@@ -91,6 +92,7 @@ if (isset($_POST[submit])) {
                 move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
                 if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
                     echo "There was an error uploading the file, please try again!";
+                    echo $target_file;
                 } else {
                     $avaq = "UPDATE portfoliotext SET avatar = '$newfilename'";
                     $resava = mysqli_query($conn, $avaq);
@@ -263,7 +265,7 @@ if (isset($_POST[submit])) {
                             </div>
                         </div>
 
-                        <form method="post" action="portfolioedit.php">
+                        <form method="post" action="portfolioedit.php" enctype="multipart/form-data">
                             <div class="bs-callout bs-callout-danger">
                                 <h4><?php echo $lang['Overmij']; ?></h4>
                                 <textarea class="overmij" name="overmij"><?php
@@ -285,6 +287,14 @@ if (isset($_POST[submit])) {
                                 echo $file_basename . '<br>';
                                 echo $file_ext . '<br>';
                                 echo $typeFile;
+                                
+                                
+                    echo "tempname: " .$_FILES['avatar']['tmp_name']."<br>";
+                    echo "ext: ".$file_ext."<br>";
+                    echo "allowed types: ".print_r($allow_file_types)."<br>";
+                    echo "size: ". $filesize."<br>";
+                    echo "filename: ".$filename."<br>";
+                    echo "targetdir: ".$target_dir."<br>";
                                 ?>
                             </div>
                             <div class="bs-callout bs-callout-danger">
