@@ -5,11 +5,11 @@ if (!isset($_GET['Studentnummer']) || empty($_GET)) {
 } else {
     $portnummer = $_GET['Studentnummer'];
 }
-require_once '..\createDatabases/dbconnect.php';
+require_once '..\..\..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
-include '..\databaseArray.php';
+include '..\..\..\databaseArray.php';
 if (!isset($_SESSION['user'])) {
-    header("Location: index.php");
+    header("Location: ..\..\index.php");
     exit;
 }
 $user = $_SESSION['user'];
@@ -28,24 +28,22 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="dist/css/images/favicon.ico">
+        <link rel="icon" href="../../dist/css/images/favicon.ico">
 
         <title>Portfolio | Stenden Hogeschool</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+        <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="dist/css/dashboard.css" rel="stylesheet">
+        <link href="../../dist/css/dashboard.css" rel="stylesheet">
 
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="assets/js/ie-emulation-modes-warning.js"></script>
+        <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -66,7 +64,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="https://stenden.com">
-                        <img src="images/stenden_logo1.png" alt="Stenden Logo">
+                        <img src="../../images/stenden_logo1.png" alt="Stenden Logo">
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
@@ -120,7 +118,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     </thead>
                                     <tbody>
                                         <?php
-                                        require_once '..\CreateDatabases/dbconnect.php';
                                             $TableName = "visitors"; 
                                             $SQLstring = "SELECT * FROM $TableName ORDER BY date DESC"; 
                                             $QueryResult = mysqli_query($conn, $SQLstring); 

@@ -79,6 +79,7 @@ $lang['cijfersaanpassen'] = 'cijfersaanpassen';
 
 //gastenboek
 $lang['bekijkberichten'] = 'bekijk berichten';
+$lang['verstuur'] = 'verstuur bericht';
 
 //home
 $lang['upload'] = 'upload bestanden';

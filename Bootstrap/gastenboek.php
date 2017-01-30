@@ -15,6 +15,9 @@ if (!isset($_SESSION['user']))
 {
     header("Location: index.php");
     exit;
+}elseif($_SESSION['Rol'] == 1){
+        header("Location: backend/student/gastenboek.php");
+        exit;
 }
 $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";

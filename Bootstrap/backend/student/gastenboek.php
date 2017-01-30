@@ -1,25 +1,26 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
-} else
-{
+} else {
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
+if (!isset($_SESSION['user'])) {
     header("Location: ..\..\index.php");
     exit;
 }
 $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
+$query2 = "SELECT Voornaam, Achternaam, Email FROM gegevens WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
+$result2 = mysqli_query($conn, $query2)
+        or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+$row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 ?>
 
 
@@ -79,10 +80,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="..\..\portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="..\..\projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="..\..\cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="..\..\gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -92,10 +93,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li class="active"><a href="#"><?php echo $lang['Gastenboek']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="..\..\portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="..\..\projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="..\..\cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li class="active"><a href="..\..\gastenboek.php"><?php echo $lang['Gastenboek']; ?><span class="sr-only">(current)</span></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -109,12 +110,21 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-
                         <p>
-                            PLAATS HIER ALLE INHOUD VAN DAT PHP BESTANDJE 
-                        </p>
-                        <a href="home.php">&#8592;</a>
+                        <div class="form-area">  
+                            <form action="#" method="POST">
+                                
+                                <div class="form-group">
+                                    <textarea name="bericht" class="form-control" id="message" placeholder="Vul hier je bericht in" maxlength="140" rows="7"></textarea>				
+                                </div>
+                                <div class="form-group">
+                                    <p><input type="submit" id="submit" name="submit" class="btn btn-primary pull-middle" value="<?php echo $lang['verstuur']; ?>" /></p>
+                                </div>
+                            </form>
+                        </div>
+                        <a href="berichten.php"><?php echo $lang['berichten']; ?></a>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -131,3 +141,26 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     </body>
 </html>
+<?php
+if (isset($_POST['submit'])){
+$TableName2 = "visitors";
+$date = "NOW()";
+$Voornaam = $row2['Voornaam'] ;
+$Achternaam = $row2['Achternaam'];
+$name = "$Voornaam $Achternaam";
+$bericht = stripslashes($_POST['bericht']);
+$Email = $row2['Email'];
+$SQLstring2 = "INSERT INTO $TableName2 VALUES(NULL,"
+    . "'$name', '$bericht', $date, '$Email')";
+echo $SQLstring2;
+$QueryResult2 = mysqli_query($conn, $SQLstring2);
+if($QueryResult2 === FALSE)
+{
+echo "<p>Unable to execute the query.</p>"
+. "<p>Error code " . mysqli_errno($conn)
+. ": " . mysqli_error($conn) . "</p>";
+} else {
+echo "<meta http-equiv='refresh' content='0; url=berichten.php' />";
+}
+mysqli_close($conn);
+}
