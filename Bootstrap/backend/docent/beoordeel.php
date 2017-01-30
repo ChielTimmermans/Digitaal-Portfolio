@@ -165,10 +165,10 @@ $leerling2 = substr($leerling, -6);
                         $cijfer = ($_POST['cijfer']);
                         $commentproject = "comment$select3";
                         $comment = ($_POST['comment']);
-                        $student = $leerling;
                         echo "gelukt";
                         
-                        $sql ="update projectcijfer SET $project='$cijfer',$commentproject='$comment' WHERE studentnummer=$user";
+                        $sql ="update projectcijfer SET $project='$cijfer',$commentproject='$comment' WHERE studentnummer='$leerling2'";
+                        echo $sql;
                         $result2 = mysqli_query($conn, $sql)
                                 or die("Error: " . mysqli_error($conn));
                         }
