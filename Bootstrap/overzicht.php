@@ -60,6 +60,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="jumbotron2">
 
                 <div class="row">
+                    <div class="panel panel-primary">
                      <?php
                     echo "  <form method='post' action='#' autocomplete='off'>
                     <select name='klas[]'>";
@@ -82,7 +83,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     echo "  </select>
                             <button type='submit' name='submit'>get students</button>";
                     ?>
-
+                    </div>
                     <?php
                     $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
 
@@ -96,12 +97,13 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     }
                     
                         foreach ($column2 as $res2) {
+                            $portfolio = substr($res2, -6);
                             echo
                             "<div class='col-md-2 col-sm-6 col-xs-6'>
                                 <div class='panel panel-default'>
                                     <div class='panel-body'>                    
                                         <img class='img-circle img-responsive' alt='Dennis' src='dist/css/images/profileblank.png'>
-                                        <p><a href='portfolio.php?student=" . $res2 . "'> $res2 </a></p>
+                                        <p><a href='portfolioview.php?portfolio=" . $portfolio . "'> $res2 </a></p>
                                     </div>
                                 </div>
                             </div>
