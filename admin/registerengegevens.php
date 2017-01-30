@@ -248,9 +248,6 @@ if (isset($_POST['submit'])) {
         <![endif]-->
     </head>
     <body>
-
-
-
         <form action="registerengegevens.php" method="post" class="form-horizontal">
             <fieldset>
 
@@ -379,7 +376,12 @@ if (isset($_POST['submit'])) {
                         <button type="submit" id="signup" name="submit" class="btn btn-success">Registreer/Register</button>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="signup"></label>
+                    <div class="col-md-4">
+                        <a href="adminkeuze.php" class="btn btn-success">Terug naar het keuze menu</a>
+                    </div>
+                </div>
             </fieldset>
         </form>
     </body>

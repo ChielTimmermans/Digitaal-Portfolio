@@ -105,9 +105,9 @@ if (isset($_POST['submit'])) {
         $error = true;
         $emailError = "Vul een email adres in.";
     } else {
-        $query = "SELECT Email FROM gegevens WHERE Email='$email'";
-        $result = mysqli_query($conn, $query);
-        $count = mysqli_num_rows($result);
+        $query2 = "SELECT Email FROM gegevens WHERE Email='$email'";
+        $result2 = mysqli_query($conn, $query2);
+        $count = mysqli_num_rows($result2);
         if ($count != 0) {
             $error = true;
             $emailError = "Provided Email is already in use.";
@@ -188,39 +188,50 @@ if (isset($_POST['submit'])) {
 
 //     password encrypt using SHA256();
     $password = hash('sha256', $pass);
-    if (!$error) {
 
-        $query = "INSERT INTO leraren (Lerarennummer,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,slb) VALUES ('$stnummer','$Voornaam','$Achternaam','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol','$slb')";
-        $res = mysqli_query($conn, $query);
-        $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
-        $res2 = mysqli_query($conn, $query2);
 
-        if (1 === 1) {
-            $leraarnummer = $stnummer;
-            $_SESSION['leraar'] = $leraarnummer;
+    $query = "INSERT INTO leraren (Lerarennummer,Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,slb) VALUES ('$stnummer','$Voornaam','$Achternaam','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol','$slb')";
+    echo $query;
+    $res = mysqli_query($conn, $query);
+    $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
+    $res2 = mysqli_query($conn, $query2);
+
+    if (1 === 1) {
+        $leraarnummer = $stnummer;
+        $_SESSION['leraar'] = $leraarnummer;
+        if ($rol == "2") {
             header("location: registerenleraarvak.php");
             echo "goed";
             echo $_SESSION['leraar'];
-        } else {
-            echo "error";
         }
+        if ($rol == "3") {
+            
+        }
+        if ($rol == "4") {
+            
+        }
+    } else {
+        echo "error";
+    }
 
-        if ($res) {
-            $errTyp = "success";
-            $errMSG = "Successfully registered, you may login now";
-        } else {
-            $errTyp = "danger";
-            $errMSG = "Something went wrong, try again later..";
-        }
-        if ($res2) {
-            $errTyp = "success";
-            $errMSG = "Successfully registered, you may login now";
-        } else {
-            $errTyp = "danger";
-            $errMSG = "Something went wrong, try again later..";
-        }
+    if ($res) {
+        $errTyp = "success";
+        $errMSG = "Successfully registered, you may login now";
+    } else {
+        $errTyp = "danger";
+        $errMSG = "Something went wrong, try again later..";
+    }
+    if ($res2) {
+        $errTyp = "success";
+        $errMSG = "Successfully registered, you may login now";
+    } else {
+        $errTyp = "danger";
+        $errMSG = "Something went wrong, try again later..";
     }
 }
+
+echo $query;
+echo "hallo";
 ?>
 <!DOCTYPE html>
 <html>
@@ -258,17 +269,17 @@ if (isset($_POST['submit'])) {
         <![endif]-->
     </head>
     <body>
-        <form action="registerenleraar.php" method="post" class="form-horizontal">
+        <form action="#" method="post" class="form-horizontal">
             <fieldset>
                 <legend> Registreer een nieuwe leraar/Register a new teacher </legend>
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="leraarnummer">   Leraarnummer:</label>
                     <div class="col-md-4">
-                        <input id="leraarnummer" class="form-control input-md" type="number" name="studentnummer" maxlength="8" placeholder="Employee ID" value="<?php echo $stnummer; ?>" required="">
+                        <input id="leraarnummer" class="form-control input-md" type="number" name="leraarnummer" maxlength="8" placeholder="Employee ID" value="<?php echo $stnummer; ?>" required="">
                         <span><?php echo $stnummerError; ?></span><br><br>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="wachtwoord"> Wachtwoord: </label>
                     <div class="col-md-4">
@@ -357,10 +368,10 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="gender">Geslacht/Gender</label>
+                    <label class="col-md-4 control-label" for="Geslacht">Geslacht/Gender</label>
                     <div class="col-md-4">
-                        <label><input type="radio" name="Gender" value="m" checked>Man/Male</label>
-                        <label><input type="radio" name="Gender" value="f">Vrouw/Female</label>
+                        <label><input type="radio" name="Geslacht" value="m" checked>Man/Male</label>
+                        <label><input type="radio" name="Geslacht" value="f">Vrouw/Female</label>
                     </div>
                 </div>
 
@@ -368,8 +379,7 @@ if (isset($_POST['submit'])) {
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="gebruikersrol">Gebruikers rol</label>
                     <div class="col-md-4">
-                        <select id="blood_group" name="Rol" class="form-control">
-                            <option value="1">Geen</option>
+                        <select id="blood_group" name="Role" class="form-control">
                             <option value="2">Docent</option>
                             <option value="3">SLB'er</option>
                             <option value="4">Admin</option>
@@ -377,22 +387,29 @@ if (isset($_POST['submit'])) {
                         <span><?php echo $rolError; ?></span>
                     </div>
                 </div>     
-                
-                
-                      <div class="form-group">
+
+
+                <div class="form-group">
                     <label class="col-md-4 control-label" for="slb">Selecteer voor SLB'er/Select for SLB</label>
                     <div class="col-md-4">
-               <div class="form-group">
-                <div class="checkbox">
-                    <label><input type="checkbox" name="slb" value="yes">SLB'er?</label>
-                </div>
-               </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="slb" value="yes">SLB'er?</label>
+                            </div>
+                        </div>
                     </div>
-                    
-                <div class="form-group">
-                    <label class="col-md-4 control-label" for="signup"></label>
-                    <div class="col-md-4">
-                        <button type="submit" id="signup" name="submit" class="btn btn-success">Registreer/Register</button>
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="signup"></label>
+                        <div class="col-md-4">
+                            <button type="submit" id="signup" name="submit" class="btn btn-success">Registreer/Register</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" for="signup"></label>
+                        <div class="col-md-4">
+                            <a href="adminkeuze.php" class="btn btn-success">Terug naar het keuze menu</a>
+                        </div>
                     </div>
                 </div>
             </fieldset>

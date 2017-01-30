@@ -88,13 +88,13 @@
                                 <div class="bs-calltoaction bs-calltoaction-warning">
                     <div class="row">
                         <div class="col-md-9 cta-contents">
-                            <h1 class="cta-title">Registreer een user</h1>
+                            <h1 class="cta-title">verwijder een user</h1>
                             <div class="cta-desc">
-                                <p>Registreer een default user</p>
+                                <p>verwijder een user met al zijn content</p>
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
-                            <a href="registerenuser.php" class="btn btn-lg btn-block btn-warning">Registreer user</a>
+                            <a href="verwijderuser.php" class="btn btn-lg btn-block btn-warning">Registreer user</a>
                         </div>
                      </div>
                 </div>
