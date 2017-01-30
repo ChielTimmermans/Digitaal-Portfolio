@@ -94,17 +94,16 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    
+
                     <?php
                     $naam = $_GET['student'];
-                    if(isset($naam)){
-                    echo "<h1 class='page-header'>";     
-                    echo $lang['cijfersvan']; 
-                    echo "<br> $naam";
-                    echo"</h1>";
+                    if (isset($naam))
+                    {
+                        echo "<h1 class='page-header'>";
+                        echo $lang['cijfersvan'];
+                        echo "<br> $naam";
+                        echo"</h1>";
                     }
-                    
-                    
                     ?>        
                 </div>
             </div></div>  
@@ -128,31 +127,37 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     $query3 = "select Vak, Vak2, Vak3 from leraren where Lerarennummer='$user'";
                                     $result3 = mysqli_query($conn, $query3);
                                     $row3 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
-                                                                        
-                                    foreach ($row3 as $res) {
-                                        if($res == ""){
+
+                                    foreach ($row3 as $res)
+                                    {
+                                        if ($res == "")
+                                        {
                                             
-                                        }else{
-                                        $query2 = "select $res from cijfer where studentnummer= '$studentnummer'";
-                                        
-                                        $result2 = mysqli_query($conn, $query2);
-                                        $row2 = mysqli_fetch_array($result2);
-                                        echo"  <tr>
+                                        } else
+                                        {
+                                            $query2 = "select $res from cijfer where studentnummer= '$studentnummer'";
+
+                                            $result2 = mysqli_query($conn, $query2);
+                                            $row2 = mysqli_fetch_array($result2);
+                                            echo"  <tr>
                                                 <td>$res</td>
                                                 <td>3.0</td>
-                                                <td>". $row2[$res] ."</td>
-                                                <td> <a href='aanpassen.php?student=$naam' id='button1id' name='submit' class='btn btn-success pull-right'> "; echo $lang['wijzig']; " </a></td>
+                                                <td>" . $row2[$res] . "</td>
+                                                <td> <a href='aanpassen.php?student=$naam' id='button1id' name='submit' class='btn btn-success pull-right'> ";
+                                            echo $lang['wijzig'];
+                                            " </a></td>
                                         </tr>";
+                                        }
                                     }
-                                    }
-                                    for($a = 0; $a < 3; $a++){
-                                    
+                                    for ($a = 0; $a < 3; $a++)
+                                    {
+                                        
                                     };
                                     ?>
-                                    
-                                    
-                                    
-                                    
+
+
+
+
                                 </tbody>
                             </table>
                         </div>
