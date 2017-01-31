@@ -106,25 +106,25 @@ include '..\..\..\databaseArray.php';
                         <form class="form-horizontal">
                             <fieldset>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codestudie']; ?></label>  
+                                    <label class="col-md-4 control-label"><?php echo $lang['codestudie']; ?></label>  
                                     <div class="col-md-4">
                                         <input name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['date']; ?></label>  
+                                    <label class="col-md-4 control-label"><?php echo $lang['date']; ?></label>  
                                     <div class="col-md-4">
                                         <input name="datum" type="date" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['aantalec']; ?></label>  
+                                    <label class="col-md-4 control-label"><?php echo $lang['aantalec']; ?></label>  
                                     <div class="col-md-4">
                                         <input name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['cijfer']; ?></label>  
+                                    <label class="col-md-4 control-label"><?php echo $lang['cijfer']; ?></label>  
                                     <div class="col-md-4">
                                         <input name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
                                     </div>
