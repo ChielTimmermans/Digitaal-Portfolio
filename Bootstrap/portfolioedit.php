@@ -74,255 +74,212 @@ if (isset($_POST[submit])) {
         $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         $resupdate = mysqli_query($conn, $updatetext);
 
-        $filename = stripslashes($_FILES['avatar']['name']);
-        echo $filename;
-        $expl = explode('.', $filename);
-        $file_basename = $user; // give new name
-        $file_ext = $expl[1]; // get file extention
-        $filesize = stripslashes($_FILES['avatar']['size']);
-        $allowed_file_types = array('gif', 'jpg', 'pjpg', 'png');
-        $target_dir = "images/avatars/";
-        $newfilename = $file_basename . '.' . $file_ext;
-        $target_file = $target_dir . $newfilename;
+        if (!empty($_POST['avatar'])) {
+            $filename = stripslashes($_FILES['avatar']['name']);
+            echo $filename;
+            $expl = explode('.', $filename);
+            $file_basename = $user; // give new name
+            $file_ext = $expl[1]; // get file extention
+            $filesize = stripslashes($_FILES['avatar']['size']);
+            $allowed_file_types = array('gif', 'jpg', 'pjpg', 'png');
+            $target_dir = "images/avatars/";
+            $newfilename = $file_basename . '.' . $file_ext;
+            $target_file = $target_dir . $newfilename;
 
-        if (in_array($file_ext, $allowed_file_types) && ($filesize < 2000000000)) {
-            if (file_exists($target_dir . $newfilename)) {
-                echo "You have already uploaded this file.";
-            } else {
-                move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
-                if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
-                    echo "There was an error uploading the file, please try again!";
-                    echo $target_file;
+            if (in_array($file_ext, $allowed_file_types) && ($filesize < 2000000000)) {
+                if (file_exists($target_dir . $newfilename)) {
+                    unlink($target_file);
+                    if (!unlink($target_file)){
+                        echo 'bestand vervangen niet gelukt';
+                    }  else {
+                        echo 'bestand vervangen';    
+                    }
                 } else {
-                    $avaq = "UPDATE portfoliotext SET avatar = '$newfilename'";
-                    $resava = mysqli_query($conn, $avaq);
-                    echo "File uploaded successfully.";
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
+                    if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
+                        echo "There was an error uploading the file, please try again!";
+                        echo $target_file;
+                    } else {
+                        $avaq = "UPDATE portfoliotext SET avatar = '$newfilename'";
+                        $resava = mysqli_query($conn, $avaq);
+                        echo "File uploaded successfully.";
+                    }
                 }
+            } elseif ($filesize > 2000000000) {
+                echo "The file you are trying to upload is too large.";
+            } else {
+                echo "Only these file typs are allowed for upload: " . implode(', ', $allowed_file_types);
             }
-        } elseif ($filesize > 2000000000) {
-            echo "The file you are trying to upload is too large.";
-        } else {
-            echo "Only these file typs are allowed for upload: " . implode(', ', $allowed_file_types);
         }
-//        Code van Chiel
-//        $nameFile = stripslashes($_FILES['file']['name']);
-//            $typeFile = explode(".", $nameFile);
-//            echo "<pre>";
-//            print_r ($typeFile);
-//            echo "</pre>";
-//            end($typeFile);
-//            $key = key($typeFile);
-//            var_dump($key);
-//            $sliced = array_slice($typeFile, 0, -1);
-//            $nameFile = $user . '.' . ;
-//            echo $nameFile;
-//            echo "<br/>";
-//            //$typeFile = stripslashes($_FILES['file']['type']);
-//            $sizeFile = stripslashes($_FILES['file']['size']);
-//            $tmpName  = $_FILES['file']['tmp_name'];
-//            $contentFile = $fullFilePath;
-//            echo $fullFilePath;
-//            $SQLstring2 = "UPDATE portfoliotext SET avatar = '$nameFile'";
-//            $QueryResult2 = mysqli_query($conn, $SQLstring2);
-//            echo $SQLstring2;
-//            if($QueryResult2 === FALSE)
-//            {
-//                echo "<p>Unable to execute the query.</p>"
-//                . "<p>Error code " . mysqli_errno($DBConnect)
-//                . ": " . mysqli_error($DBConnect) . "</p>";
-//            } else {
-//                echo "Gelukt.";
-//            }
-//    }
     }
 }
-    ?>
+?>
 
-    <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-            <meta name="description" content="">
-            <meta name="author" content="">
-            <link rel="icon" href="dist/css/images/favicon.ico">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="dist/css/images/favicon.ico">
 
-            <title>Portfolio | Stenden Hogeschool</title>
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-            <!-- Bootstrap core CSS -->
-            <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+        <title>Portfolio | Stenden Hogeschool</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <!-- Bootstrap core CSS -->
+        <link href="dist/css/bootstrap.min.css" rel="stylesheet">
 
-            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-            <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
-            <!-- Custom styles for this template -->
-            <link href="dist/css/dashboard.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="dist/css/dashboard.css" rel="stylesheet">
 
-            <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-            <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-            <script src="assets/js/ie-emulation-modes-warning.js"></script>
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="assets/js/ie-emulation-modes-warning.js"></script>
 
-            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-            <!--[if lt IE 9]>
-              <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
-        </head>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-        <body>
-
-
-            <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="https://stenden.com">
-                            <img src="images/stenden_logo1.png" alt="Stenden Logo">
-                        </a>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
-                            <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
-                            <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                            <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
-                        </ul>
-                        <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                            <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
-                            <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
-                            <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
-                            <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+    <body>
 
 
+        <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
             <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-3 col-md-2 sidebar">
-                        <ul class="nav nav-sidebar">
-                            <li class="active"><a href="portfolio.php"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
-                            <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
-                            <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
-                            <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                        <h1 class="page-header"><?php echo $lang['Portfolio']; ?></h1>
-                    </div>
-                </div></div>  
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://stenden.com">
+                        <img src="images/stenden_logo1.png" alt="Stenden Logo">
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
 
-            <div class="container">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                        <li class="active"><a href="portfolio.php"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
+                    </ul>
+                </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <div class="panel panel-default">
-                        <div class="panel-heading resume-heading">
-                            <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="col-xs-12 col-sm-4">
-                                        <figure>
-                                            <img class="img-circle img-responsive" alt="" src="dist/css/images/profileblank.png">
-                                        </figure>
-                                        <div class="row">
-                                            <div class="col-xs-12 social-btns">
+                    <h1 class="page-header"><?php echo $lang['Portfolio']; ?></h1>
+                </div>
+            </div></div>  
+
+
+        <div class="container">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                <div class="panel panel-default">
+                    <div class="panel-heading resume-heading">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-xs-12 col-sm-4">
+                                    <figure>
+                                        <img class="img-circle img-responsive" alt="" src="dist/css/images/profileblank.png">
+                                    </figure>
+                                    <div class="row">
+                                        <div class="col-xs-12 social-btns">
 
 
 
-                                                <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                                    <a href="#" class="btn btn-social btn-block btn-linkedin">
-                                                        <i class="fa fa-linkedin"></i> </a>
-                                                </div>
-
-
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" class="btn btn-social btn-block btn-linkedin">
+                                                    <i class="fa fa-linkedin"></i> </a>
                                             </div>
 
 
                                         </div>
+
+
                                     </div>
-                                    <div class="col-xs-12 col-sm-8">
-                                        <ul class="list-group">
-                                            <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php
-                                                echo "$userNaam ";
-                                                echo $userAchterNaam;
-                                                ?></li>
-                                            <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?>: Student informatica</li>
-                                            <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?>: Stenden Hogeschool </li>
-                                            <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?> </li>
-                                            <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
-                                            <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail; ?></li>
-                                        </ul>
-                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-8">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php
+                                            echo "$userNaam ";
+                                            echo $userAchterNaam;
+                                            ?></li>
+                                        <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?>: Student informatica</li>
+                                        <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?>: Stenden Hogeschool </li>
+                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?> </li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['Studie']; ?>: <?php echo $userEmail; ?></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <form method="post" action="portfolioedit.php" enctype="multipart/form-data">
-                            <div class="bs-callout bs-callout-danger">
-                                <h4><?php echo $lang['Overmij']; ?></h4>
-                                <textarea class="overmij" name="overmij"><?php
-                                    foreach ($oldovermij as $arrovermij) {
-                                        echo $arrovermij;
-                                    }
-                                    ?></textarea>
-                            </div>
-                            <div>
-                                <?php
-                               
-                                echo 'FILENAME=' . $filename . '<br>';
-                                if (empty($_POST['avatar'])) {
-                                    echo 'upload veld is leeg<br>';
+                    <form method="post" action="portfolioedit.php" enctype="multipart/form-data">
+                        <div class="bs-callout bs-callout-danger">
+                            <h4><?php echo $lang['Overmij']; ?></h4>
+                            <textarea class="overmij" name="overmij"><?php
+                                foreach ($oldovermij as $arrovermij) {
+                                    echo $arrovermij;
                                 }
-                                if (!empty($_POST['avatar'])) {
-                                    echo 'upload veld is niet leeg<br>';
+                                ?></textarea>
+                        </div>
+                        <div>
+                        </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4><?php echo $lang['Diplomas']; ?></h4>
+                            <textarea class="overmij" name="diplomas"><?php
+                                foreach ($olddiplomas as $arrdiplomas) {
+                                    echo $arrdiplomas;
                                 }
-                                echo $file_basename . '<br>';
-                                echo $file_ext . '<br>';
-                                echo $typeFile;
-                                
-                                
-                    echo "tempname: " .$_FILES['avatar']['tmp_name']."<br>";
-                    echo "ext: ".$file_ext."<br>";
-                    echo "allowed types: ".print_r($allow_file_types)."<br>";
-                    echo "size: ". $filesize."<br>";
-                    echo "filename: ".$filename."<br>";
-                    echo "targetdir: ".$target_dir."<br>";
-                                ?>
-                            </div>
-                            <div class="bs-callout bs-callout-danger">
-                                <h4><?php echo $lang['Diplomas']; ?></h4>
-                                <textarea class="overmij" name="diplomas"><?php
-                                    foreach ($olddiplomas as $arrdiplomas) {
-                                        echo $arrdiplomas;
+                                ?></textarea>
+                        </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4>Hobby's en interesses</h4>
+                            <textarea class="overmij" name="hobbies"><?php
+                                foreach ($oldhobbies as $arrhobbies) {
+                                    echo $arrhobbies;
+                                }
+                                ?></textarea>
+                        </div>
+                        <div class="bs-callout bs-callout-danger">
+                            <h4>Werk ervaring</h4>
+                            <ul class="list-group">
+                                <textarea class="overmij" name="werkervaring"><?php
+                                    foreach ($oldwerkervaring as $arrwerkervaring) {
+                                        echo $arrwerkervaring;
                                     }
                                     ?></textarea>
-                            </div>
-                            <div class="bs-callout bs-callout-danger">
-                                <h4>Hobby's en interesses</h4>
-                                <textarea class="overmij" name="hobbies"><?php
-                                    foreach ($oldhobbies as $arrhobbies) {
-                                        echo $arrhobbies;
-                                    }
-                                    ?></textarea>
-                            </div>
-                            <div class="bs-callout bs-callout-danger">
-                                <h4>Werk ervaring</h4>
-                                <ul class="list-group">
-                                    <textarea class="overmij" name="werkervaring"><?php
-                                        foreach ($oldwerkervaring as $arrwerkervaring) {
-                                            echo $arrwerkervaring;
-                                        }
-                                        ?></textarea>
                             </ul>
                         </div>
+                        Avatar:
                         <input type="file" name="avatar"><br><br>
                         <button type="submit" name="submit">Opslaan</button>
                     </form>

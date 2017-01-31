@@ -188,7 +188,7 @@ if (isset($_POST['submit'])) {
         $res = mysqli_query($conn, $query);
         $query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
         $res2 = mysqli_query($conn, $query2);
-        $query3 = "INSERT INTO portfoliotext (Studentnummer,overmij,diplomas,hobbies,werkervaring,avatar) VALUES ('$stnummer', 'Voer text in', 'Voer op de volgende manier de text in: komt nog', 'Voer hier text in', 'Voer text in', 'leeg_profielfoto.jpg')";
+        $query3 = "INSERT INTO portfoliotext (Studentnummer,overmij,diplomas,hobbies,werkervaring,avatar) VALUES ('$stnummer', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in', 'leeg_profielfoto.jpg')";
         $res3 = mysqli_query($conn, $query3);
         $query4 = "INSERT INTO cijfer (studentnummer,Informatiemanagement,PHP,HTML_en_CSS,Digital_Graphic_Design_1,Project_Professionele_Website,Mondelinge_communicatie_1,Databases_1,Unleash_your_Potential_in_PHP,Studieloopbaanbegeleiding_1A,Project_Digitale_Portfolio,Schriftelijke_Communicatie,Java_1,Computernetwerken_1,Inleiding_Wiskunde,Project_Solar_Bot,Studieloopbaanbegeleiding_1B,Csharp_1,Multimedia_Productie,Project_Stenden_Creative_Realization) VALUES ('$stnummer','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-','-')";
         $res4 = mysqli_query($conn, $query4);
