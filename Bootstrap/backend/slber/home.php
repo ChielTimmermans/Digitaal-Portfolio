@@ -67,7 +67,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/slber/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="home.php"><?php echo $lang['Instellingen']; ?></a></li>
                         <li><a href="../../contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="../../logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
