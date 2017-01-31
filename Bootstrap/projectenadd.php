@@ -70,7 +70,7 @@ if (isset($_POST['btn-signup'])) {
         $file_basename = $expl[0]; // give new name
         $file_ext = $expl[1]; // get file extention
         $filesize = stripslashes($_FILES['project']['size']);
-        $allowed_file_types = array('gif', 'jpg', 'pjpg', 'png', 'pdf', 'docx', 'dox', 'doc', 'xlsx', 'pptx', 'potx', 'ppsx', 'sldx');
+        $allowed_file_types = array('gif', 'jpg', 'pjpg', 'png', 'pdf', 'docx', 'dox', 'doc', 'xlsx', 'pptx', 'potx', 'ppsx', 'txt', 'sldx');
         $target_dir = "projecten/";
         $target_file = $target_dir . $filename;
 
