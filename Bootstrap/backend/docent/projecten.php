@@ -1,17 +1,14 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
-} else
-{
+} else {
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
+if (!isset($_SESSION['user'])) {
     header("Location: index.php");
     exit;
 }
@@ -70,16 +67,16 @@ $leerling = $_GET['student'];
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="../../contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                        <li><a href="../../logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -88,15 +85,16 @@ $leerling = $_GET['student'];
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header"><?php echo $lang['projectenvan'];
-echo "<br> $leerling"; ?> </h1>
+echo "<br> $leerling";
+?> </h1>
                 </div>
             </div></div>
         <div class="container">
@@ -104,43 +102,40 @@ echo "<br> $leerling"; ?> </h1>
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
 
-                        <?php
-                        $leerling2 = substr($leerling, -6);
-                        $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
-                        $result2 = mysqli_query($conn, $query2);
-                        $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
+<?php
+$leerling2 = substr($leerling, -6);
+$query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
+$result2 = mysqli_query($conn, $query2);
+$row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
 
-                        $item = 1;
-                        $project = 4;
-                        for ($item = 1; $item <= $project; $item++)
-                        {
-                            if (!empty($row2['Projecttitel' . $item . '']))
-                            {
-                                echo'  <a class="list-group-item inactive-link" href="#">
+$item = 1;
+$project = 4;
+for ($item = 1; $item <= $project; $item++) {
+    if (!empty($row2['Projecttitel' . $item . ''])) {
+        echo'  <a class="list-group-item inactive-link" href="#">
                                                <h4 class="list-group-item-heading">' .
-                                $row2['Projecttitel' . $item . '']
-                                . '</h4>
+        $row2['Projecttitel' . $item . '']
+        . '</h4>
                                                <p class="list-group-item-text">' .
-                                $row2['Projecttitel' . $item . '']
-                                . '</p>
+        $row2['Projecttitel' . $item . '']
+        . '</p>
                                            </a>';
-                                echo "<p><a href='bijlage.php?student=$leerling$item'><button id='button1id' name='bijlagen' class='btn btn-info'>";
-                                echo $lang['bekijkbijlagen'];
-                                echo "</button></a></p>
+        echo "<p><a href='bijlage.php?student=$leerling$item'><button id='button1id' name='bijlagen' class='btn btn-info'>";
+        echo $lang['bekijkbijlagen'];
+        echo "</button></a></p>
                                             <p><a href='beoordeel.php?student=$leerling'><button id='button1id' name='beoordeel' class='btn btn-success'>";
-                                echo $lang['beoordeelproject'];
-                                echo "</button></a></p>";
-                            } elseif ($item === 1)
-                            {
-                                echo '  <div class="list-group-item inactive-link">
+        echo $lang['beoordeelproject'];
+        echo "</button></a></p>";
+    } elseif ($item === 1) {
+        echo '  <div class="list-group-item inactive-link">
                                             <p class="list-group-item-text">' .
-                                "Er zijn geen projecten."
-                                . '</p>
+        "Er zijn geen projecten."
+        . '</p>
                                         </div>';
-                            }
-                        }
-                        echo "<a href='overzichtprojecten.php?student=$leerling'>&#8592;</a>";
-                        ?>  
+    }
+}
+echo "<a href='overzichtprojecten.php?student=$leerling'>&#8592;</a>";
+?>  
                     </div>
                 </div>
             </div>

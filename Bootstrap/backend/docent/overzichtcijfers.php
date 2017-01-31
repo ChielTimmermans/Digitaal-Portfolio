@@ -1,17 +1,14 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
-} else
-{
+} else {
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
+if (!isset($_SESSION['user'])) {
     header("Location: ..\..\index.php");
     exit;
 }
@@ -72,16 +69,16 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="../../contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                        <li><a href="../../logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -91,10 +88,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li class="active"><a href="#"><?php echo $lang['Cijferlijst']; ?> <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -116,54 +113,47 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     <li><a href="#"><?php echo $lang['klas']; ?></a>
                                         <ul>
                                             <li>
-                                                <?php
-                                                echo "  <form method='post' action='#' autocomplete='off'>
+<?php
+echo "  <form method='post' action='#' autocomplete='off'>
                                             <select name='klas[]'>";
-                                                $query = "SELECT Klas FROM klas";
-                                                $result = mysqli_query($conn, $query);
+$query = "SELECT Klas FROM klas";
+$result = mysqli_query($conn, $query);
 
-                                                $column = array();
-                                                while ($row = mysqli_fetch_array($result))
-                                                {
-                                                    $column[] = $row[Klas];
-                                                }
-                                                foreach ($column as $res)
-                                                {
-                                                    echo "<option value='$res'>$res</option>";
-                                                }
-                                                if (isset($_POST['submit']))
-                                                {
-                                                    // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
-                                                    foreach ($_POST['klas'] as $select)
-                                                    {
-                                                        echo "You have selected :" . $select; // Displaying Selected Value
-                                                    }
-                                                }
-                                                echo "  </select>
+$column = array();
+while ($row = mysqli_fetch_array($result)) {
+    $column[] = $row[Klas];
+}
+foreach ($column as $res) {
+    echo "<option value='$res'>$res</option>";
+}
+if (isset($_POST['submit'])) {
+    // As output of $_POST['Color'] is an array we have to use foreach Loop to display individual value
+    foreach ($_POST['klas'] as $select) {
+        echo "You have selected :" . $select; // Displaying Selected Value
+    }
+}
+echo "  </select>
                                             <button type='submit' name='submit'>get students</button>";
-                                                echo " </form>";
-                                                ?>
+echo " </form>";
+?>
                                                 <ul>
-                                                    <?php
-                                                    $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
+                                                <?php
+                                                $query2 = "SELECT Voornaam, Achternaam, Studentnummer From gegevens where klas ='$select'";
 
-                                                    $result2 = mysqli_query($conn, $query2);
-                                                    $column2 = array();
-                                                    while ($row2 = mysqli_fetch_array($result2))
-                                                    {
-                                                        $Voornaam = $row2[Voornaam];
-                                                        $Achternaam = $row2[Achternaam];
-                                                        $studentnummer = $row2[Studentnummer];
-                                                        $column2[] = "$Voornaam $Achternaam $studentnummer";
+                                                $result2 = mysqli_query($conn, $query2);
+                                                $column2 = array();
+                                                while ($row2 = mysqli_fetch_array($result2)) {
+                                                    $Voornaam = $row2[Voornaam];
+                                                    $Achternaam = $row2[Achternaam];
+                                                    $studentnummer = $row2[Studentnummer];
+                                                    $column2[] = "$Voornaam $Achternaam $studentnummer";
+                                                }
+                                                if (isset($_POST['submit']) or isset($_POST['submit2'])) {
+                                                    foreach ($column2 as $res2) {
+                                                        echo "<li><a href='invoercijfers.php?student=$res2' >$res2</a></li>";
                                                     }
-                                                    if (isset($_POST['submit']) or isset($_POST['submit2']))
-                                                    {
-                                                        foreach ($column2 as $res2)
-                                                        {
-                                                            echo "<li><a href='invoercijfers.php?student=$res2' >$res2</a></li>";
-                                                        }
-                                                    }
-                                                    ?>
+                                                }
+                                                ?>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -180,15 +170,15 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
         </div>
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>
