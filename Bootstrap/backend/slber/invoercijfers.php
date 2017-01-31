@@ -11,10 +11,8 @@ if (!isset($_GET['Studentnummer']) || empty($_GET))
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
+if (($_SESSION['Rol']) != "3"){
     header("Location: ..\..\index.php");
-    exit;
 }
 $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";

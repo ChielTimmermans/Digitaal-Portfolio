@@ -4,7 +4,7 @@ include'..\functions\common.php';
 
 if (isset($_SESSION['user']))
 {
-    header("Location: portfolio.php");
+    header("Location: redirected.php");
     exit;
 }
 ?>
