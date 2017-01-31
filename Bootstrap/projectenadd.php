@@ -77,22 +77,22 @@ if (isset($_POST['btn-signup'])) {
         if (in_array($file_ext, $allowed_file_types) && ($filesize < 2000000000)) {
             if (file_exists($target_file)) {
                 echo 'this file already exists';
-            }
-        } else {
-            move_uploaded_file($_FILES['project']['tmp_name'], $target_file);
-            if (!move_uploaded_file($_FILES['project']['tmp_name'], $target_file)) {
-                echo "There was an error uploading the file, please try again!";
-                echo $target_file;
             } else {
-                $query2 = "UPDATE projectbestanden SET projecttitel$item='$titel',Projectcontent$item='$target_file' WHERE studentnummer = $user";
-                $res2 = mysqli_query($conn, $query2);
-                echo "File uploaded successfully.";
+                move_uploaded_file($_FILES['project']['tmp_name'], $target_file);
+                if (!move_uploaded_file($_FILES['project']['tmp_name'], $target_file)) {
+                    echo "There was an error uploading the file, please try again!";
+                    echo $target_file;
+                } else {
+                    $query2 = "UPDATE projectbestanden SET projecttitel$item='$titel',Projectcontent$item='$target_file' WHERE studentnummer = $user";
+                    $res2 = mysqli_query($conn, $query2);
+                    echo "File uploaded successfully.";
+                }
             }
+        } elseif ($filesize > 2000000000) {
+            echo "The file you are trying to upload is too large.";
+        } else {
+            echo "Only these file typs are allowed for upload: " . implode(', ', $allowed_file_types);
         }
-    } elseif ($filesize > 2000000000) {
-        echo "The file you are trying to upload is too large.";
-    } else {
-        echo "Only these file typs are allowed for upload: " . implode(', ', $allowed_file_types);
     }
 }
 ?>
