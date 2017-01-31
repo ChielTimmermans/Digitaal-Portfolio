@@ -9,7 +9,6 @@ if (!isset($_GET['Studentnummer']) || empty($_GET))
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-session_start();
 if (($_SESSION['Rol']) != "3"){
     header("Location: ..\..\index.php");
 }
