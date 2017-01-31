@@ -15,10 +15,9 @@ include_once '..\createdatabases/dbconnect.php';
 
 $error = false;
 
+    
 if (isset($_POST['btn-signup'])) {
-
-    $studentnummer = 469521;
-//    $studentnummer = trim($_POST['studentnummer']);
+    $studentnummer = ($_SESSION['user']);
     $studentnummer = strip_tags($studentnummer);
     $studentnummer = htmlspecialchars($studentnummer);
 
@@ -45,45 +44,13 @@ if (isset($_POST['btn-signup'])) {
     }
 
     $x = $x - 1;
-if (empty($_FILES['project'])){
-    echo 'het is leeg';
-}
-    $filename = $_FILES['project'];
-    echo 'Filename=' . $filename;
-    $expl = explode('.', $filename);
-    $file_basename = $expl[0]; // give new name
-    $file_ext = $expl[1]; // get file extention
-    $filesize = stripslashes($_FILES['project']['size']);
-    $allowed_file_types = array("jpg", "png", "jpeg", "gif", "bmp", "docx", "pdf", "txt", "xlsx", "xlsm", "xlsb", "pptx", "pptm", "ppt");
-    $target_dir = "projecten/";
-    $target_file = $target_dir . $filename;
-
-    if (in_array($file_ext, $allowed_file_types) && ($filesize < 2000000000)) {
-        if (file_exists($target_file)) {
-            echo 'this file already exists';
-        } else {
-            move_uploaded_file($_FILES['project']['tmp_name'], $target_file);
-            if (!move_uploaded_file($_FILES['project']['tmp_name'], $target_file)) {
-                echo "There was an error uploading the file, please try again!";
-                echo $target_file;
-            } else {
-                $query2 = "UPDATE projectbestanden SET projecttitel$item='$titel',Projectcontent$item='$target_file' WHERE studentnummer = $user";
-                $res2 = mysqli_query($conn, $query2);
-                echo "File uploaded successfully.";
-            }
-        }
-    } elseif ($filesize > 2000000000) {
-        echo "The file you are trying to upload is too large.";
-    } else {
-        echo "Only these file typs are allowed for upload: " . implode(', ', $allowed_file_types) . $filename;
-    }
 
     if (!projecttitel5) {
         $query = "ALTER TABLE projecten add projecttitel$x VARCHAR(50)";
     }
     if (!$error) {
         $item = $x;
-        $query = "UPDATE projecten SET projecttitel$item='$titel',Projectcontent$item='$content' WHERE studentnummer = $user";
+        $query = "UPDATE projecten SET projecttitel$item='$titel',Projectcontent$item='$content' WHERE studentnummer = $studentnummer";
         $res = mysqli_query($conn, $query);
 
         if ($res) {
@@ -115,7 +82,7 @@ if (empty($_FILES['project'])){
             <br><br>
             <textarea name="content" placeholder="Enter the content of your project"></textarea>
             <br><br>
-            <input type="file" name="project"><br><br>
+            
             <button type="submit" name="btn-signup">enter project</button>
             <span><?php echo $errMSG; ?></span>
 
