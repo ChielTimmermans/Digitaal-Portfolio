@@ -10,7 +10,10 @@ if (!isset($_SESSION['user'])) {
 }
 
 $user = $_SESSION['user'];
-
+$avaquery = "SELECT avatar FROM portfoliotext WHERE Studentnummer = '$user'";
+$avaresult = mysqli_query($conn, $avaquery)
+        or die("Error: " . mysqli_error($conn));
+$avarow = mysqli_fetch_array($avaresult, MYSQLI_ASSOC);
 $query = "SELECT * FROM users WHERE Studentnummer = $user";
 $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
@@ -74,7 +77,7 @@ if (isset($_POST[submit])) {
         $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         $resupdate = mysqli_query($conn, $updatetext);
 
-        if (!empty($_POST['avatar'])) {
+        if (!empty($_FILES['avatar'])) {
             $filename = stripslashes($_FILES['avatar']['name']);
             echo $filename;
             $expl = explode('.', $filename);
@@ -87,12 +90,16 @@ if (isset($_POST[submit])) {
             $target_file = $target_dir . $newfilename;
 
             if (in_array($file_ext, $allowed_file_types) && ($filesize < 2000000000)) {
-                if (file_exists($target_dir . $newfilename)) {
-                    unlink($target_file);
-                    if (!unlink($target_file)){
+                if (file_exists($target_file)) {
+                    foreach ($avarow as $path) {
+                        unlink('images/avatars/'
+                                . $path
+                        );
+                    }
+                    if (!unlink($target_file)) {
                         echo 'bestand vervangen niet gelukt';
-                    }  else {
-                        echo 'bestand vervangen';    
+                    } else {
+                        echo 'bestand vervangen';
                     }
                 } else {
                     move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
@@ -112,6 +119,8 @@ if (isset($_POST[submit])) {
             }
         }
     }
+    
+    header("Location: portfolio.php");
 }
 ?>
 
@@ -207,7 +216,12 @@ if (isset($_POST[submit])) {
                             <div class="col-lg-12">
                                 <div class="col-xs-12 col-sm-4">
                                     <figure>
-                                        <img class="img-circle img-responsive" alt="" src="dist/css/images/profileblank.png">
+                                        <img class="img-circle img-responsive" alt="" src="<?php
+                                        foreach ($avarow as $path) {
+                                            echo 'images/avatars/'
+                                            . $path;
+                                        }
+                                        ?>">
                                     </figure>
                                     <div class="row">
                                         <div class="col-xs-12 social-btns">
@@ -252,6 +266,14 @@ if (isset($_POST[submit])) {
                                 ?></textarea>
                         </div>
                         <div>
+                            <?php
+                            echo $target_file;
+                            if (!empty($_FILES['avatar'])) {
+                                echo 'fileupload is niet leeg';
+                            } else {
+                                echo 'fileupload leeg';
+                            }
+                            ?> 
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
