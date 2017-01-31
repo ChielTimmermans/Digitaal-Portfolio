@@ -32,6 +32,7 @@ $lang['Cijferlijst'] = 'Grading list';
 $lang['Gastenboek'] = 'Guestbook';
 $lang['naam'] = 'name';
 $lang['date'] = 'date';
+$lang['overzicht'] = 'all portfolios';
 
 //portfolio
 $lang['Diplomas'] = 'Degrees';
