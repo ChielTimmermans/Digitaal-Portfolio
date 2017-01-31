@@ -1,16 +1,14 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
-} else
-{
+} else {
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (($_SESSION['Rol']) != "3"){
+if (($_SESSION['Rol']) != "3") {
     header("Location: ..\..\index.php");
 }
 $user = $_SESSION['user'];
@@ -104,27 +102,27 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                         <form class="form-horizontal">
                             <fieldset>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['codestudie']; ?></label>  
+                                    <label class="col-md-4 control-label"><?php echo $lang['codestudie']; ?></label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md">
+                                        <input name="code" type="text" placeholder="OIXH (X)HTML en CSS" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['date']; ?></label>  
+                                    <label class="col-md-4 control-label"><?php echo $lang['date']; ?></label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="datum" type="date" class="form-control input-md">
+                                        <input name="datum" type="date" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['aantalec']; ?></label>  
+                                    <label class="col-md-4 control-label"><?php echo $lang['aantalec']; ?></label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md">
+                                        <input name="ec" type="number" step="1" min="0" max="60" placeholder="0-60" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput"><?php echo $lang['cijfer']; ?></label>  
+                                    <label class="col-md-4 control-label"><?php echo $lang['cijfer']; ?></label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
+                                        <input name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md">
                                     </div>
                                 </div>
                                 <div class="form-group">
