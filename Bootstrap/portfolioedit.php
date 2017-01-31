@@ -94,7 +94,7 @@ if (isset($_POST[submit])) {
         $gettext = ("SELECT overmij, studie, school, Afstudeerjaar, hobbies, werkervaring FROM portfoliotext WHERE Studentnummer = $user");
         $oldtext = mysqli_query($conn, $gettext);
 
-        $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', studie = '$studie',school='$school',Afstudeerjaar='$afstudeerjaar', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
+        $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', studie = '$studie',school='$school',Afstudeerjaar='$Afstudeerjaar', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
         echo $updatetext;
         $resupdate = mysqli_query($conn, $updatetext);
 

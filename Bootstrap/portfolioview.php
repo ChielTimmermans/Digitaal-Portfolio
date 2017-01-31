@@ -171,36 +171,27 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     </div>
                     <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4><?php echo $lang['Diplomas']; ?></h4>
-                        <?php
-                        $getdiplomas = "SELECT diplomas FROM portfoliotext WHERE Studentnummer = $user";
-                        $diplomasresult = mysqli_query($conn, $getdiplomas);
-                        $diplomas = mysqli_fetch_array($diplomasresult, MYSQLI_ASSOC);
-                        ?>  
                         <table class="table table-striped table-responsive ">
-                            <thead>
-                                <tr>
-                                    <th><?php echo $lang['Studie']; ?></th>
-                                    <th><?php echo $lang['School']; ?></th>
-                                    <th><?php echo $lang['Afstudeerjaar']; ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                foreach ($diplomas as $arrdiplomas) {
-                                    $arrdiplomas[''];
-                                    echo
-                                    "
-                                <tr>
-                                    <td> echo ".$arrdiplomas['school'].";</td>
-                                    <td> echo $arrdiplomas</td>
-                                    <td> echo $arrdiplomas</td>
-                                </tr>
-                             ";
-//                                    echo $arrdiplomas;
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                            <tr>
+                                <th><?php echo $lang['Studie']; ?></th>
+                                <th><?php echo $lang['School']; ?></th>
+                                <th><?php echo $lang['Afstudeerjaar']; ?></th>
+                            </tr>
+                            <?php
+                            $getdiplomas = "SELECT * FROM portfoliotext WHERE Studentnummer = $user";
+                            $diplomasresult = mysqli_query($conn, $getdiplomas);
+                            while ($row = mysqli_fetch_array($diplomasresult, MYSQLI_ASSOC)) {
+                                echo "<tr><td>";
+                                echo $row['studie'];
+                                echo "</td><td>";
+                                echo $row['school'];
+                                echo "</td><td>";
+                                echo $row['Afstudeerjaar'];
+                                echo "</td><td>";
+                                echo "</td></tr>";
+                            }
+                            ?>
+                        </table>  
                     </div>
                     <div class="bs-callout <?php include 'stijl2.php'; ?>">
                         <h4>Hobby's en interesses</h4>
