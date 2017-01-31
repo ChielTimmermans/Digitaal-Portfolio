@@ -71,7 +71,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <<li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
                         <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
@@ -114,7 +114,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textarea"><?php echo $lang['beschrijvingproject']; ?></label>  
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['beschrijvingproject']; ?></label>  
                                 <div class="col-md-4">
                                     <textarea name="beschrijving" placeholder="Beschrijving project" required rows="10" cols="32"></textarea>
                                 </div>
