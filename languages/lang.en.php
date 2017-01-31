@@ -36,7 +36,6 @@ $lang['date'] = 'date';
 //portfolio
 $lang['Diplomas'] = 'Degrees';
 $lang['Overmij'] = 'About me';
-$lang['Afstudeerjaar'] = 'graduation year';
 $lang['Studie'] = 'Study';
 $lang['School'] = 'School';
 $lang['Afstudeerjaar'] = 'Graduation Year';
@@ -54,7 +53,7 @@ $lang['mijnprojecten'] = 'My projects';
 
 //portfolio cijfers
 $lang['codestudie'] ="Code and course";
-$lang['aantalec'] = 'Number of points';
+$lang['aantalec'] = 'Amount of EC';
 $lang['cijfer'] ="Grade";
 
 //Gastenboek
@@ -64,8 +63,8 @@ $lang['verstuur'] ="Send";
 /* menu */
 
 /* gastregistreren */
-$lang['error1'] = 'please enter your email address.';
-$lang['error2'] = 'Provided Email is already in use.';
+$lang['error1'] = 'Please enter your email address.';
+$lang['error2'] = 'Provided e-mail is already in use.';
 
 //berichten
 $lang['berichten'] = 'messages';
