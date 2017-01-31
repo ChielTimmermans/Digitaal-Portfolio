@@ -70,18 +70,13 @@ if (isset($_POST['btn-signup'])) {
         $file_basename = $expl[0]; // give new name
         $file_ext = $expl[1]; // get file extention
         $filesize = stripslashes($_FILES['project']['size']);
-        $allowed_file_types = array('gif', 'jpg', 'pjpg', 'png', 'pdf', 'docx', 'doc', 'xlsx', 'pptx', 'potx', 'ppsx', 'sldx');
+        $allowed_file_types = array('gif', 'jpg', 'pjpg', 'png', 'pdf', 'docx', 'dox', 'doc', 'xlsx', 'pptx', 'potx', 'ppsx', 'sldx');
         $target_dir = "projecten/";
         $target_file = $target_dir . $filename;
 
         if (in_array($file_ext, $allowed_file_types) && ($filesize < 2000000000)) {
             if (file_exists($target_file)) {
                 echo 'this file already exists';
-            }
-            if (!unlink($target_file)) {
-                echo 'bestand vervangen niet gelukt';
-            } else {
-                echo 'bestand vervangen';
             }
         } else {
             move_uploaded_file($_FILES['project']['tmp_name'], $target_file);
