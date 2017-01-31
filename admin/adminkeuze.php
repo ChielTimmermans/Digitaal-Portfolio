@@ -1,4 +1,10 @@
+<?php
+session_start();
+if (($_SESSION['Rol']) != "4"){
+    echo "hallo";
+}
 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -94,7 +100,7 @@
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
-                            <a href="verwijderuser.php" class="btn btn-lg btn-block btn-warning">Registreer user</a>
+                            <a href="verwijderuser.php" class="btn btn-lg btn-block btn-warning">verwijder user</a>
                         </div>
                      </div>
                 </div>

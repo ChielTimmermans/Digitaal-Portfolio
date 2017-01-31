@@ -67,11 +67,27 @@ if (isset($_POST['submit'])) {
     } else if (strlen($stnummer) < 6) {
         $error = true;
         $stnummerError = "Studentnummer heeft minimaal 6 karakters.";
+    }else {
+        $query = "SELECT Studentnummer FROM gegevens WHERE Studentnummer='$stnummer'";
+        $result = mysqli_query($conn, $query);
+        $count = mysqli_num_rows($result);
+        if ($count != 0) {
+            $error = true;
+            $stnummerError = "Provided studentnummer is already in use.";
+        }
     }
 
     if (empty($klas)) {
         $error = true;
         $klasError = "Vul uw klas in.";
+    }else {
+        $query = "SELECT Klas FROM klas WHERE klas='$klas'";
+        $result = mysqli_query($conn, $query);
+        $count = mysqli_num_rows($result);
+        if ($count == 0) {
+            $error = true;
+            $klasError = "Provided klas does not excist.";
+        }
     }
 
     if (empty($fname)) {
@@ -194,6 +210,8 @@ if (isset($_POST['submit'])) {
         $res4 = mysqli_query($conn, $query4);
         $query5 = "INSERT INTO projecten (Studentnummer,Projecttitel1,Projectcontent1,Projecttitel2,Projectcontent2,Projecttitel3,Projectcontent3,Projecttitel4,Projectcontent4) VALUES ('$stnummer','0','0','0','0','0','0','0','0')";
         $res5 = mysqli_query($conn, $query5);
+        $query6 = "INSERT INTO projectcijfer (studentnummer,cijfer1,comment1,cijfer2,comment2,cijfer3,comment3,cijfer4,comment4) VALUES ('$stnummer','-','-','-','-','-','-','-','-')";
+        $res5 = mysqli_query($conn, $query6);
 
         if ($res) {
             $errTyp = "success";

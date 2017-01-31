@@ -98,9 +98,10 @@ $leerling = $_GET['student'];
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['cijferwijzigen'];
-echo "<br> $leerling";
-?></h1>
+                    <h1 class="page-header"><?php
+                        echo $lang['cijferwijzigen'];
+                        echo "<br> $leerling";
+                        ?></h1>
                 </div>
             </div></div>  
 
@@ -128,15 +129,12 @@ echo "<br> $leerling";
                                         $row2 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
                                         echo "<form method='post' action='#' autocomplete='off'>";
                                         echo "<select name='Vak[]'>";
-                                        foreach ($row2 as $res4)
-                                        {
+                                        foreach ($row2 as $res4) {
                                             echo "<option value='$res4'>$res4</option>";
                                         }
                                         echo "</select>";
-                                        if (isset($_POST['submit']))
-                                        {
-                                            foreach ($_POST['Vak'] as $select3)
-                                            {
+                                        if (isset($_POST['submit'])) {
+                                            foreach ($_POST['Vak'] as $select3) {
                                                 
                                             }
                                         }
@@ -146,13 +144,13 @@ echo "<br> $leerling";
                                     <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
                                     <td><button id="button1id" type="submit" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></td>
                                 </tr>
-                                <?php
-                                $cijfer = ($_POST['cijfer']);
-                                $vak = $select3;
-                                $studentnummer = substr($leerling, -6);
-                                $query3 = "Update cijfer set $vak='$cijfer' where studentnummer='$studentnummer'";
-                                $res = mysqli_query($conn, $query3);
-                                ?>
+<?php
+$cijfer = ($_POST['cijfer']);
+$vak = $select3;
+$studentnummer = substr($leerling, -6);
+$query3 = "Update cijfer set $vak='$cijfer' where studentnummer='$studentnummer'";
+$res = mysqli_query($conn, $query3);
+?>
                             </tbody>
                         </table>
                         <a href='invoercijfers.php?student=<?php echo $leerling ?>'>&#8592;</a>

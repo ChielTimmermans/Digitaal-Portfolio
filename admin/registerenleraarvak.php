@@ -11,22 +11,9 @@ ob_start();
 //    
 //}
 
-if (!isset($_SESSION['leraar'])) {
-    header("Location: registerenleraar.php");
-    exit;
-}
-
-
 
 include '..\createdatabases\dbconnect.php';
 $error = false;
-$leraarnummer = $_SESSION['leraar'];
-echo $leraarnummer;
-if ($leraarnummer === "") {
-    echo "wrong";
-}
-
-
 
 if (isset($_POST['submit'])) {
     $vak = trim($_POST['vak']);
@@ -41,45 +28,18 @@ if (isset($_POST['submit'])) {
     $vak3 = strip_tags($vak3);
     $vak3 = htmlspecialchars($vak3);
 
-
-
-    $leraarnummer = $_SESSION['leraar'];
-    echo $leraarnummer;
-    if ($leraarnummer === "") {
-        $error = true;
-        echo "wrong";
-    }
+    $leraarnummer = trim($_POST['leraar']);
+    $leraarnummer = strip_tags($leraarnummer);
+    $leraarnummer = htmlspecialchars($leraarnummer);
 
     if (!$error) {
-        $query = "INSERT INTO leraren Where Lerarennummer = $leraarnummer (vak) VALUES ('$vak')";
+        $query = "UPDATE leraren SET vak='$vak' Where Lerarennummer = '$leraarnummer' ";
         $res = mysqli_query($conn, $query);
     }
 }
-
-
-
-
-
-
-//$query = "INSERT INTO leraren (Voornaam,Achternaam,Email,Mobielnummer,Geboortedatum,Adres,Huisnummer,Postcode,Woonplaats,Geslacht,Rol,vak,vak2,vak3) VALUES ('$Voornaam','$Achternaam','$email','$telnum','$bday','$adr','$hnum','$postc','$plaats','$gender','$rol','$vak','$vak2','$vak3')";
-//$res = mysqli_query($conn, $query);
-//$query2 = "INSERT INTO users (Studentnummer,userEmail,userPass) VALUES ('$stnummer', '$email', '$password')";
-//$res2 = mysqli_query($conn, $query2);
-//
-//if ($res) {
-//    $errTyp = "success";
-//    $errMSG = "Successfully registered, you may login now";
-//} else {
-//    $errTyp = "danger";
-//    $errMSG = "Something went wrong, try again later..";
-//}
-//if ($res2) {
-//    $errTyp = "success";
-//    $errMSG = "Successfully registered, you may login now";
-//} else {
-//    $errTyp = "danger";
-//    $errMSG = "Something went wrong, try again later..";
-//}
+$sql = "SELECT Lerarennummer, Voornaam, Achternaam FROM leraren";
+$result = mysqli_query($conn, $sql)
+        or die("Error: " . mysqli_error($conn));
 ?>
 <!DOCTYPE html>
 <html>
@@ -117,37 +77,60 @@ if (isset($_POST['submit'])) {
         <![endif]-->
     </head>
     <body>
-        <form action="registerenleraarvak.php" method="post" class="form-horizontal">
+        <form action="#" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="vak">Selecteer een leraar</label>
+                <div class="col-md-4">
+                    <select id="blood_group" name="leraar" class="form-control">
+                        <?php
+                        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+                            $leraar = $row['Lerarennummer'];
+                            echo "<option value ='$leraar'>";
+                            echo $row['Voornaam'];
+                            echo " ";
+                            echo $row['Achternaam'];
+                            echo "</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="col-md-4 control-label" for="vak">Selecteer een vak</label>
                 <div class="col-md-4">
                     <select id="blood_group" name="vak" class="form-control">
-                        <option value ="1">Informatiemanagement1</option>
-                        <option value ="2">Inleiding Programmeren in PHP</option>
-                        <option value ="3">HTML en CSS</option>
-                        <option value ="4">Digital Graphic Design 1</option>
-                        <option value ="5">Project Professionele Website</option>
-                        <option value ="6">Mondelinge communicatie 1</option>
-                        <option value ="7">Databases 1</option>
-                        <option value ="8">Unleash your Potential in PHP</option>
-                        <option value ="9">Studieloopbaanbegeleiding 1a</option>
-                        <option value ="10">Project Stenden Support Desk</option>
-                        <option value ="11">Schriftelijke Communicatie 1</option>
-                        <option value ="12">Java 1</option>
-                        <option value ="13">Computernetwerken 1</option>
-                        <option value ="14">Inleiding Wiskunde</option>
-                        <option value ="15">Project Solar Bot</option>
-                        <option value ="16">Studieloopbaanbegeleiding 1b</option>
-                        <option value ="17">C# 1</option>
-                        <option value ="18">Multimedia Productie</option>
-                        <option value ="19">Project Stenden Creative</option>
+                        <option value ="Informatiemanagement">Informatiemanagement1</option>
+                        <option value ="PHP">Inleiding Programmeren in PHP</option>
+                        <option value ="HTML_en_CSS">HTML en CSS</option>
+                        <option value ="Digital_Graphic_Design_1">Digital Graphic Design 1</option>
+                        <option value ="Project_Professionele_Website">Project Professionele Website</option>
+                        <option value ="Mondelinge_communicatie_1">Mondelinge communicatie 1</option>
+                        <option value ="Databases_1">Databases 1</option>
+                        <option value ="Unleash_your_Potential_in_PHP">Unleash your Potential in PHP</option>
+                        <option value ="Studieloopbaanbegeleiding_1A">Studieloopbaanbegeleiding 1a</option>
+                        <option value ="Project_Digitale_Portfolio">Project Stenden Support Desk</option>
+                        <option value ="Schriftelijke_Communicatie">Schriftelijke Communicatie 1</option>
+                        <option value ="Java_1">Java 1</option>
+                        <option value ="Computernetwerken_1">Computernetwerken 1</option>
+                        <option value ="Inleiding_Wiskunde">Inleiding Wiskunde</option>
+                        <option value ="Project_Solar_Bot">Project Solar Bot</option>
+                        <option value ="Studieloopbaanbegeleiding_1B">Studieloopbaanbegeleiding 1b</option>
+                        <option value ="Csharp_1">C# 1</option>
+                        <option value ="Multimedia_Productie">Multimedia Productie</option>
+                        <option value ="Project_Stenden_Creative_Realization">Project Stenden Creative</option>
                     </select>
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-4 control-label" for="signup"></label>
                 <div class="col-md-4">
-                    <button type="submit" id="signup" name="add" class="btn btn-success">Voeg toe</button>
+                    <button type="submit" id="signup" name="submit" class="btn btn-success">Voeg toe</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label" for="signup"></label>
+                <div class="col-md-4">
+                    <a href="adminkeuze.php" class="btn btn-success">Terug naar het keuze menu</a>
                 </div>
             </div>
 

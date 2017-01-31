@@ -230,8 +230,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-echo $query;
-echo "hallo";
 ?>
 <!DOCTYPE html>
 <html>

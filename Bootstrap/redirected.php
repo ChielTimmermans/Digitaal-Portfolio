@@ -4,7 +4,7 @@ session_start();
 if (!isset($_SESSION['user']))
 {
     echo "geen user";
-//header("Location: index.php");
+    header("Location: index.php");
     exit;
 }else{
     if ($_SESSION['Rol'] == 1){
@@ -20,14 +20,14 @@ if (!isset($_SESSION['user']))
         header("Location: ..\admin\adminkeuze.php");
         exit;
     }else{
-        echo "rol session not set";
-        echo ($_SESSION['Rol']);
-        unset($_SESSION['user']);
-        unset($_SESSION['Rol']);
-        session_unset();
-        session_destroy();
-        //header("Location: index.php");
-        exit;
+//        echo "rol session not set";
+//        echo ($_SESSION['Rol']);
+//        unset($_SESSION['user']);
+//        unset($_SESSION['Rol']);
+//        session_unset();
+//        session_destroy();
+//        //header("Location: index.php");
+//        exit;
     }
     
     }
