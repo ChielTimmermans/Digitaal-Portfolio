@@ -141,6 +141,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                                 }
                                                 echo "  </select>
                                             <button type='submit' name='submit'>get students</button>";
+                                                echo " </form>";
                                                 ?>
                                                 <ul>
                                                     <?php
