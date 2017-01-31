@@ -5,9 +5,6 @@ $portnummer = $_GET['portfolio'];
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
-if (($_SESSION['Rol']) != "1"){
-    header("Location: index.php");
-}
 $user = $_GET['portfolio'];
 echo $user;
 //        = $_SESSION['user'];
@@ -16,7 +13,7 @@ $result = mysqli_query($conn, $query)
         or die("Error: " . mysqli_error($conn));
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 ?>
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
@@ -232,7 +229,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

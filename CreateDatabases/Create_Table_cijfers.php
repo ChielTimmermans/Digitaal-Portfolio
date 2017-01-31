@@ -28,7 +28,6 @@
             Csharp_1                        VARCHAR(4),
             Multimedia_Productie            VARCHAR(4),
             Project_Stenden_Creative_Realization VARCHAR(4))";
-            echo $SQLstring;
             $QueryResult = mysqli_query($DBConnect, $SQLstring);
             if ($QueryResult === FALSE)
             {

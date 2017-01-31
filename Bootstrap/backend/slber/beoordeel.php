@@ -163,6 +163,7 @@ if (isset($_POST['submit'])) {
     $result2 = mysqli_query($conn, $sql)
             or die("Error: " . mysqli_error($conn));
 }
+
 ?>
                         </form>
                         <a href="projecten.php?student=<?php echo $leerling; ?>">&#8592;</a>	

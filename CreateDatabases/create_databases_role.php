@@ -1,5 +1,4 @@
-
-        <?php
+<?php
         $ipadress = "localhost";
         $ww = "";
             $DBConnect = mysqli_connect("$ipadress", "root", "$ww");

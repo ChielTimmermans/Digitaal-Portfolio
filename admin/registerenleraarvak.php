@@ -2,11 +2,11 @@
 session_start();
 ob_start();;
 if (($_SESSION['Rol']) != "4"){
-    header("Location: ..\index.php");
+    header("Location: ../bootstrap/index.php");
 }
 
 
-include '..\createdatabases\dbconnect.php';
+include '../createdatabases/dbconnect.php';
 $error = false;
 
 if (isset($_POST['submit'])) {

@@ -291,14 +291,12 @@ if (isset($_POST[submit])) {
                                 ?></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
-                            <h4>Werk ervaring</h4>
-                            <ul class="list-group">
+                            <h4>Werk ervaring</h4>                         
                                 <textarea class="overmij" name="werkervaring"><?php
                                     foreach ($oldwerkervaring as $arrwerkervaring) {
                                         echo $arrwerkervaring;
                                     }
                                     ?></textarea>
-                            </ul>
                         </div>
                         Avatar:
                         <input type="file" name="avatar"><br><br>
@@ -307,7 +305,6 @@ if (isset($_POST[submit])) {
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

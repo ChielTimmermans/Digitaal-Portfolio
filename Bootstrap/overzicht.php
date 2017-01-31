@@ -8,9 +8,6 @@ if (!isset($_GET['Studentnummer']) || empty($_GET)) {
 require_once '..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\databaseArray.php';
-if (($_SESSION['Rol']) != "1"){
-    header("Location: index.php");
-}
 $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";
 $result = mysqli_query($conn, $query)

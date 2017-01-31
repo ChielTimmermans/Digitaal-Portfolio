@@ -104,52 +104,55 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                 <div class="panel panel-default">
 
                     <div class="bs-callout bs-callout-danger">
-                        <table class="table table-striped table-responsive ">
-                            <thead>
-                                <tr>
-                                    <th><?php echo $lang['codestudie']; ?></th>
-                                    <th><?php echo $lang['cijfer']; ?></th>
-                                    <th><?php echo $lang['wijzig']; ?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <?php
-                                        $naam = $_GET['student'];
-                                        $studentnummer = substr($naam, -6);
+                        <form method='post' action='#' autocomplete='off'>
+                            <table class="table table-striped table-responsive ">
+                                <thead>
+                                    <tr>
+                                        <th><?php echo $lang['codestudie']; ?></th>
+                                        <th><?php echo $lang['cijfer']; ?></th>
+                                        <th><?php echo $lang['wijzig']; ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <?php
+                                            $naam = $_GET['student'];
+                                            $studentnummer = substr($naam, -6);
 
-                                        $cijferarray = array("Informatiemanagement", "PHP", "HTML_en_CSS", "Digital_Graphic_Design_1",
-                                            "Project_Professionele_Website", "Mondelinge_communicatie_1", "Databases_1", "Unleash_your_Potential_in_PHP",
-                                            "Studieloopbaanbegeleiding_1A", "Project_Digitale_Portfolio", "Schriftelijke_Communicatie", "Java_1", "Computernetwerken_1",
-                                            "Inleiding_Wiskunde", "Project_Solar_Bot", "Studieloopbaanbegeleiding_1B", "Csharp_1", "Multimedia_Productie", "Project_Stenden_Creative_Realization");
+                                            $cijferarray = array("Informatiemanagement", "PHP", "HTML_en_CSS", "Digital_Graphic_Design_1",
+                                                "Project_Professionele_Website", "Mondelinge_communicatie_1", "Databases_1", "Unleash_your_Potential_in_PHP",
+                                                "Studieloopbaanbegeleiding_1A", "Project_Digitale_Portfolio", "Schriftelijke_Communicatie", "Java_1", "Computernetwerken_1",
+                                                "Inleiding_Wiskunde", "Project_Solar_Bot", "Studieloopbaanbegeleiding_1B", "Csharp_1", "Multimedia_Productie", "Project_Stenden_Creative_Realization");
 
-                                        echo "<form method='post' action='#' autocomplete='off'>";
-                                        echo "<select name='Vak[]'>";
-                                        foreach ($cijferarray as $res4) {
-                                            echo "<option value='$res4'>$res4</option>";
-                                        }
-                                        echo "</select>";
-                                        if (isset($_POST['submit'])) {
-                                            foreach ($_POST['Vak'] as $select3) {
-                                                
+                                            echo "<select name='Vak[]'>";
+                                            foreach ($cijferarray as $res4) {
+                                                echo "<option value='$res4'>$res4</option>";
                                             }
-                                        }
-                                        echo "</form>";
-                                        ?>
+                                            echo "</select>";
+                                            if (isset($_POST['submit'])) {
+                                                foreach ($_POST['Vak'] as $select3) {
+                                                    
+                                                }
+                                            }
+                                            ?>
 
-                                    </td>
-                                    <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
-                                    <td><button id="button1id" type="submit" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></td>
-                                </tr>
-                                <?php
-                                $vak = $select3;
-                                $cijfer = ($_POST['cijfer']);
-                                $query3 = "Update cijfer set $vak='$cijfer' where studentnummer='$studentnummer'";
-                                $res = mysqli_query($conn, $query3);
-                                ?>
-                            </tbody>
-                        </table>
+                                        </td>
+                                        <td><input id="textinput" name="cijfer" type="number" step="0.1" min="0" max="10" placeholder="0-10" class="form-control input-md"></td>
+                                        <td><button id="button1id" type="submit" name="submit" class="btn btn-success pull-right"><?php echo $lang['wijzig']; ?></button></td>
+
+                                    </tr>
+                                    <?php
+                                    if (isset($_POST['submit'])) {
+                                        $vak = $select3;
+                                        $cijfer = ($_POST['cijfer']);
+                                        $query3 = "Update cijfer set $vak='$cijfer' where studentnummer='$studentnummer'";
+                                        $res = mysqli_query($conn, $query3);
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
+                        </form>
                         <?php
                         echo"<a href='invoercijfers.php?student=" . $_GET['student'] . "'>&#8592;</a>";
                         ?>
