@@ -36,7 +36,3 @@ if (!isset($_SESSION['user']))
     
     }
     
-    session_start();
-if (($_SESSION['Rol']) != "4"){
-    header("Location: ..\index.php");
-}
