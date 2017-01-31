@@ -42,6 +42,9 @@ $lang['Overmij'] = 'Over Mij';
 $lang['Studie'] = 'Studie';
 $lang['School'] = 'School';
 $lang['Afstudeerjaar'] = 'Afstudeer jaar';
+$lang['Werkervaring'] = 'Werk ervaring';
+$lang['Hobby'] = 'Hobbys en interesses';
+
 //$lang['Studie'] = 'naam';
 //
 //portfolio main page
