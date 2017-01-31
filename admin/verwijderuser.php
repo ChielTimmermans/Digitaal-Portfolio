@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +7,25 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <meta name="description" content="">
         <meta name="author" content="">
-        <link rel="icon" href="dist/css/images/favicon.ico">
+        <link rel="icon" href="../../favicon.ico">
 
-        <title>Portfolio | Stenden Hogeschool</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <title>Admin</title>
 
         <!-- Bootstrap core CSS -->
-        <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+        <link href="../Bootstrap/assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="dist/css/dashboard.css" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-        <script src="assets/js/ie-emulation-modes-warning.js"></script>
+        <script src="../Bootstrap/assets/js/ie-emulation-modes-warning.js"></script>
+
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -34,25 +35,22 @@
     </head>
     <body>
         <div class="container">
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <div class="panel panel-default">
-                    <div class="bs-callout bs-callout-danger">
-                        <table class="list-group" border="1px">
+            <div class="row">
+                <div class="span5">
+                    <table class="table table-striped table-condensed">
+                        <thead>
                             <tr>
-                                <th>
-                                    username
-                                </th>
-                                <th>
-                                    verwijder deze gebruiker
-                                </th>
+                                <th>Gebruikersnaam</th>
+                                <th>Verwijder gebruiker</th>                                      
                             </tr>
-                            
+                        </thead>   
+                        <tbody>
                             <?php
                             include_once '..\CreateDatabases/dbconnect.php';
                             $sql = "SELECT userEmail, Studentnummer FROM users";
                             $result = mysqli_query($conn, $sql)
                                     or die("Error: " . mysqli_error($conn));
-                            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
+                            while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                                 echo "<tr><td>";
                                 echo $row['userEmail'];
                                 echo "</td><td>";
@@ -60,26 +58,11 @@
                                 echo "<a href='verwijder.php?nummer=$nummer'>verwijder deze gebruiker</a>";
                                 echo "</td></tr>";
                             }
-                            
-
                             ?>
-                            
-                            
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="../../dist/js/bootstrap.min.js"></script>
-        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-        <script src="../../assets/js/vendor/holder.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     </body>
 </html>
