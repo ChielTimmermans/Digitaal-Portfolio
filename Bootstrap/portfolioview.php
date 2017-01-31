@@ -5,9 +5,6 @@ $portnummer = $_GET['portfolio'];
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
-if (($_SESSION['Rol']) != "1"){
-    header("Location: index.php");
-}
 $user = $_GET['portfolio'];
 echo $user;
 //        = $_SESSION['user'];
