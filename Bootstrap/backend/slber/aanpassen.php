@@ -1,15 +1,14 @@
-<?php session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
+<?php
+session_start();
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
-} else
-{
+} else {
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (($_SESSION['Rol']) != "3"){
+if (($_SESSION['Rol']) != "3") {
     header("Location: ..\..\index.php");
 }
 $user = $_SESSION['user'];
@@ -119,12 +118,12 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                         <?php
                                         $naam = $_GET['student'];
                                         $studentnummer = substr($naam, -6);
-                                        
-                                        $cijferarray = array("Informatiemanagement","PHP","HTML_en_CSS","Digital_Graphic_Design_1",
-                                                "Project_Professionele_Website","Mondelinge_communicatie_1","Databases_1","Unleash_your_Potential_in_PHP",
-                                                "Studieloopbaanbegeleiding_1A","Project_Digitale_Portfolio","Schriftelijke_Communicatie","Java_1","Computernetwerken_1",
-                                                "Inleiding_Wiskunde","Project_Solar_Bot","Studieloopbaanbegeleiding_1B","Csharp_1","Multimedia_Productie","Project_Stenden_Creative_Realization"); 
-                                        
+
+                                        $cijferarray = array("Informatiemanagement", "PHP", "HTML_en_CSS", "Digital_Graphic_Design_1",
+                                            "Project_Professionele_Website", "Mondelinge_communicatie_1", "Databases_1", "Unleash_your_Potential_in_PHP",
+                                            "Studieloopbaanbegeleiding_1A", "Project_Digitale_Portfolio", "Schriftelijke_Communicatie", "Java_1", "Computernetwerken_1",
+                                            "Inleiding_Wiskunde", "Project_Solar_Bot", "Studieloopbaanbegeleiding_1B", "Csharp_1", "Multimedia_Productie", "Project_Stenden_Creative_Realization");
+
                                         echo "<form method='post' action='#' autocomplete='off'>";
                                         echo "<select name='Vak[]'>";
                                         foreach ($cijferarray as $res4) {
@@ -136,6 +135,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                                 
                                             }
                                         }
+                                        echo "</form>";
                                         ?>
 
                                     </td>
@@ -151,7 +151,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             </tbody>
                         </table>
                         <?php
-                        echo"<a href='invoercijfers.php?student=".$_GET['student']. "'>&#8592;</a>";
+                        echo"<a href='invoercijfers.php?student=" . $_GET['student'] . "'>&#8592;</a>";
                         ?>
                     </div>
                 </div>

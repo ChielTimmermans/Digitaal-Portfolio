@@ -34,6 +34,7 @@ $lang['naam'] = 'name';
 $lang['date'] = 'date';
 
 //portfolio
+$lang['Mijnportfolio'] = 'My Portfolio';
 $lang['Diplomas'] = 'Degrees';
 $lang['Overmij'] = 'About me';
 $lang['Afstudeerjaar'] = 'graduation year';

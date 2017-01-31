@@ -1,8 +1,8 @@
 <?php
-//session_start();
-//if (($_SESSION['Rol']) != "4"){
-//    header("Location: ..\index.php");
-//}
+session_start();
+if (($_SESSION['Rol']) != "4"){
+    header("Location: ..\index.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,11 +103,16 @@
                         </div>
                     </div>
                 </div>
+                
+                
 
 
                 <p>
-                    <button type="button" class="btn btn-default btn-lg"><a href="../Bootstrap/index.php">Uitloggen</a></button>
+                    <a href="../Bootstrap/index.php" role="button" class="btn btn-default btn-lg">Uitloggen</a>
                 </p>
+                
+            </div>
+        </div>
 
 
                 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

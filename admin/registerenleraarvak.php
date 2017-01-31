@@ -73,9 +73,9 @@ $result = mysqli_query($conn, $sql)
     <body>
         <form action="#" method="post" class="form-horizontal">
             <div class="form-group">
-                <label class="col-md-4 control-label" for="vak">Selecteer een leraar</label>
+                <label class="col-md-4 control-label">Selecteer een leraar</label>
                 <div class="col-md-4">
-                    <select id="blood_group" name="leraar" class="form-control">
+                    <select name="leraar" class="form-control">
                         <?php
                         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
                             $leraar = $row['Lerarennummer'];
@@ -90,9 +90,9 @@ $result = mysqli_query($conn, $sql)
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label" for="vak">Selecteer een vak</label>
+                <label class="col-md-4 control-label">Selecteer een vak</label>
                 <div class="col-md-4">
-                    <select id="blood_group" name="vak" class="form-control">
+                    <select name="vak" class="form-control">
                         <option value ="Informatiemanagement">Informatiemanagement1</option>
                         <option value ="PHP">Inleiding Programmeren in PHP</option>
                         <option value ="HTML_en_CSS">HTML en CSS</option>

@@ -56,12 +56,12 @@ include'..\functions\common.php';
                         echo $name;
                     }
                     ?>
-                           "required autofocus>
-                    <span><p><?php echo $emailError; ?></p></span>
+                           " required autofocus>
+                    <p><?php echo $emailError; ?></p>
                     <label for="inputPassword" class="sr-only" >Password</label>
                     <input type="password" id="inputPassword" class="form-control" name="pass" placeholder="Password" required>
-                    <span><p><?php echo $passError; ?></p></span>
-                    <span><p><?php echo $error; ?></p></span>	
+                    <p><?php echo $passError; ?></p>
+                    <p><?php echo $error; ?></p>
 
 
                     <br><button class='btn btn-lg btn-primary btn-block' type='submit' name="btn-login">Log in</button>
