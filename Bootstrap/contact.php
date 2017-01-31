@@ -1,3 +1,8 @@
+<?php
+if (($_SESSION['Rol']) != "1"){
+    header("Location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>

@@ -177,7 +177,6 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
             </div>
         </div>
-    </div>
 
 
     <!-- Bootstrap core JavaScript

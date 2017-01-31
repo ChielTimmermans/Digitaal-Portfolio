@@ -6,7 +6,9 @@ session_start();
 //}elseif ($row ['role'] != 'admin'){
 //    header("Location: ..\error.php");
 //}
-
+if (($_SESSION['Rol']) != "1"){
+    header("Location: index.php");
+}
 
 
 include_once '..\createdatabases/dbconnect.php';

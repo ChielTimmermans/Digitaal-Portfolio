@@ -80,10 +80,10 @@ $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                        <li><a href="..\..\portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="..\..\projecten.php"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="..\..\cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="..\..\gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="../../portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="../../projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="../../cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
             </div>
@@ -93,10 +93,10 @@ $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="..\..\portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="..\..\projecten.php"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="..\..\cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li class="active"><a href="..\..\gastenboek.php"><?php echo $lang['Gastenboek']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="../../portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="../../projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="../../cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li class="active"><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?><span class="sr-only">(current)</span></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

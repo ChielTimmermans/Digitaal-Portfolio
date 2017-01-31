@@ -4,13 +4,12 @@ if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
 } else {
     $portnummer = $_GET['Studentnummer'];
-}
+}    
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
-if (!isset($_SESSION['user'])) {
+if (($_SESSION['Rol']) != "1"){
     header("Location: index.php");
-    exit;
 }
 $user = $_SESSION['user'];
 $query = "SELECT * FROM users WHERE studentnummer = '$user'";

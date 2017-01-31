@@ -1,9 +1,8 @@
 <?php
-session_start();
-if (($_SESSION['Rol']) != "4"){
-    header("Location: ..\index.php");
-}
-
+//session_start();
+//if (($_SESSION['Rol']) != "4"){
+//    header("Location: ..\index.php");
+//}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +56,7 @@ if (($_SESSION['Rol']) != "4"){
                         <div class="col-md-3 cta-button">
                             <a href="registerengegevens.php" class="btn btn-lg btn-block btn-default">Registreer gegevens</a>
                         </div>
-                     </div>
+                    </div>
                 </div>
 
                 <div class="bs-calltoaction bs-calltoaction-primary">
@@ -68,13 +67,13 @@ if (($_SESSION['Rol']) != "4"){
                                 <p>Registreer de volgende gebruikers:</p>
                                 <p>Leraar.</p>
                                 <p>SLB'er.</p>
-                                 <p>Admin</p>
+                                <p>Admin</p>
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
                             <a href="registerenleraar.php" class="btn btn-lg btn-block btn-primary">Registreer</a>
                         </div>
-                     </div>
+                    </div>
                 </div>
 
                 <div class="bs-calltoaction bs-calltoaction-info">
@@ -88,24 +87,30 @@ if (($_SESSION['Rol']) != "4"){
                         <div class="col-md-3 cta-button">
                             <a href="registerenleraarvak.php" class="btn btn-lg btn-block btn-info">Registreer vak</a>
                         </div>
-                     </div>
+                    </div>
                 </div>
 
-                                <div class="bs-calltoaction bs-calltoaction-warning">
+                <div class="bs-calltoaction bs-calltoaction-warning">
                     <div class="row">
                         <div class="col-md-9 cta-contents">
-                            <h1 class="cta-title">verwijder een user</h1>
+                            <h1 class="cta-title">Verwijder een gebruiker</h1>
                             <div class="cta-desc">
-                                <p>verwijder een user met al zijn content</p>
+                                <p>Verwijder een gebruiker met al zijn content</p>
                             </div>
                         </div>
                         <div class="col-md-3 cta-button">
                             <a href="verwijderuser.php" class="btn btn-lg btn-block btn-warning">verwijder user</a>
                         </div>
-                     </div>
+                    </div>
                 </div>
 
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
-    </body>
-</html>
+
+                <p>
+                    <button type="button" class="btn btn-default btn-lg"><a href="../Bootstrap/index.php">Uitloggen</a></button>
+                </p>
+
+
+                <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+                <script src="assets/js/ie10-viewport-bug-workaround.js"></script>
+                </body>
+                </html>

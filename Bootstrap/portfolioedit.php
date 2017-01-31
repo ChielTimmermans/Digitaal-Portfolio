@@ -4,9 +4,8 @@ require_once '..\CreateDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
 
-if (!isset($_SESSION['user'])) {
+if (($_SESSION['Rol']) != "1"){
     header("Location: index.php");
-    exit;
 }
 
 $user = $_SESSION['user'];
