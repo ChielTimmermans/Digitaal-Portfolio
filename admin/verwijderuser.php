@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (($_SESSION['Rol']) != "4"){
-    header("Location: ..\index.php");
+    header("Location: ../bootstrap/index.php");
 }
 ?>
 <!DOCTYPE html>

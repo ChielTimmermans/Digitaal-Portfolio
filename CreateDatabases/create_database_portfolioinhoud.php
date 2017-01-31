@@ -27,11 +27,13 @@ if ($DBConnect === FALSE) {
     if (mysqli_num_rows($QueryResult) == 0) {
         $SQLstring = "CREATE TABLE $TableName(
                 Studentnummer   INT        UNIQUE KEY,
-                overmij         VARCHAR(1000),
-                diplomas        VARCHAR(150),
-                hobbies         VARCHAR(1000),
-                werkervaring    VARCHAR(1000),
-                avatar          VARCHAR(30)
+                overmij             VARCHAR(1000),
+                studie              VARCHAR(150),
+                school              VARCHAR(150),
+                Afstudeerjaar      VARCHAR(150),
+                hobbies             VARCHAR(1000),
+                werkervaring        VARCHAR(1000),
+                avatar              VARCHAR(30)
                     )";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
         if ($QueryResult === FALSE) {

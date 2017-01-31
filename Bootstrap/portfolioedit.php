@@ -23,11 +23,6 @@ $getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = '$user'";
 $overmijresult = mysqli_query($conn, $getovermij);
 $oldovermij = mysqli_fetch_array($overmijresult, MYSQLI_ASSOC);
 
-
-$getdiplomas = "SELECT diplomas FROM portfoliotext WHERE Studentnummer = $user";
-$diplomasresult = mysqli_query($conn, $getdiplomas);
-$olddiplomas = mysqli_fetch_array($diplomasresult, MYSQLI_ASSOC);
-
 $gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = $user";
 $hobbiesresul = mysqli_query($conn, $gethobbies);
 $oldhobbies = mysqli_fetch_array($hobbiesresul, MYSQLI_ASSOC);
@@ -73,7 +68,8 @@ if (isset($_POST[submit])) {
         $gettext = ("SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext WHERE Studentnummer = $user");
         $oldtext = mysqli_query($conn, $gettext);
 
-        $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', diplomas = '$diplomas', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
+        $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', studie = '$studie',school='$school',Afstudeerjaar='$afstudeerjaar', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
+        echo $updatetext;
         $resupdate = mysqli_query($conn, $updatetext);
 
         if (!empty($_FILES['avatar'])) {
@@ -204,7 +200,8 @@ if (isset($_POST[submit])) {
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header"><?php echo $lang['Portfolio']; ?></h1>
                 </div>
-            </div></div>  
+            </div>
+        </div>  
 
 
         <div class="container">
