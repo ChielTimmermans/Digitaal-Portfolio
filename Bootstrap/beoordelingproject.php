@@ -4,11 +4,11 @@ if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
 } else {
     $portnummer = $_GET['Studentnummer'];
-}    
+}
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
-if (($_SESSION['Rol']) != "1"){
+if (($_SESSION['Rol']) != "1") {
     header("Location: index.php");
 }
 $user = $_SESSION['user'];
@@ -109,31 +109,31 @@ $a = $_GET['a'];
         $sql1 = "SELECT * FROM projecten where studentnummer = '469521'";
         $sql2 = "SELECT * FROM projectcijfer where studentnummer = '469521'";
         $result1 = mysqli_query($conn, $sql1)
-        or die("Error: " . mysqli_error($conn));
+                or die("Error: " . mysqli_error($conn));
         $result2 = mysqli_query($conn, $sql2)
-        or die("Error: " . mysqli_error($conn));
+                or die("Error: " . mysqli_error($conn));
         $row1 = mysqli_fetch_array($result1, MYSQL_ASSOC);
         $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
-        
         ?>
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <?php  echo $row1[$projecttitel]?>
-                                    </h3>
-                                </div>
-                                <div class="panel-body">
-                                    <p>Uw cijfer:
-                                    <?php  echo $row2[$projectcijfer]?>
-                                    </p>
-                                
-                                    <?php  echo $row2[$projectcomment]?>
-                                </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">
+                                    <?php echo $row1[$projecttitel] ?>
+                                </h3>
                             </div>
+                            <div class="panel-body">
+                                <p>Uw cijfer:
+                                    <?php echo $row2[$projectcijfer] ?>
+                                </p>
+
+                                <?php echo $row2[$projectcomment] ?>
+                            </div>
+                        </div>
+                        <a href="projecten.php">&#8592;</a>
                     </div>
                 </div>
             </div>

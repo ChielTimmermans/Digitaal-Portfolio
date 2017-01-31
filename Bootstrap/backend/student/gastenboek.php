@@ -122,9 +122,9 @@ $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
                                 </div>
                             </form>
                         </div>
-                        <a href="berichten.php"><?php echo $lang['berichten']; ?></a>
+                        <a href="berichten.php"><?php echo $lang['berichten']; ?></a><br>
+                        <a href="..\..\portfolio.php">&#8592;</a>
                     </div>
-
                 </div>
             </div>
         </div>

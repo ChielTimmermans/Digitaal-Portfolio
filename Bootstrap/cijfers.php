@@ -241,6 +241,7 @@ if (($_SESSION['Rol']) != "1"){
                                 </tr>
                             </tbody>
                         </table>
+                        <a href="portfolio.php">&#8592;</a>
                     </div>
 
                 </div>
