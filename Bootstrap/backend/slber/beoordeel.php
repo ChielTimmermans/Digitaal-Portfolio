@@ -73,9 +73,9 @@ $leerling2 = substr($leerling, -6);
                         <li><a href="../../logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
                         <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
@@ -85,9 +85,9 @@ $leerling2 = substr($leerling, -6);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
                         <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
