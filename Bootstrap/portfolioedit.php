@@ -117,10 +117,18 @@ if (isset($_POST[submit])) {
                                 . $path
                         );
                     }
+                    move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
+                    if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $target_file)) {
+                        echo "There was an error uploading the file, please try again!";
+                        echo $target_file;
+                    } else {
+                        $avaq = "UPDATE portfoliotext SET avatar = '$newfilename'";
+                        $resava = mysqli_query($conn, $avaq);
+                        echo "File uploaded successfully.";
+                    }
+
                     if (!unlink($target_file)) {
                         echo 'bestand vervangen niet gelukt';
-                    } else {
-                        echo 'bestand vervangen';
                     }
                 } else {
                     move_uploaded_file($_FILES['avatar']['tmp_name'], $target_dir);
@@ -292,7 +300,7 @@ if (isset($_POST[submit])) {
                             echo $target_file;
                             if (!empty($_FILES['avatar'])) {
                                 echo 'fileupload is niet leeg';
-                            } 
+                            }
                             ?> 
                         </div>
                         <div class="bs-callout bs-callout-danger">
@@ -304,25 +312,31 @@ if (isset($_POST[submit])) {
                                     <th><?php echo $lang['Afstudeerjaar']; ?></th>
                                 </tr>
                                 <tr>
-                                    <td><input type="text" name="studie" value="<?php foreach ($oldstudie as $arrstudie) {
-                                echo $arrstudie;
-                            } ?>"></td>
-                                    <td><input type="text" name="school" value="<?php foreach ($oldschool as $arrschool) {
-                                echo $arrschool;
-                            } ?>"></td>
-                                    <td><input type="text" name="Afstudeerjaar" value="<?php foreach ($oldAfstudeerjaar as $arrAfstudeerjaar) {
-                                echo $arrAfstudeerjaar;
-                            } ?>"></td>
+                                    <td><input type="text" name="studie" value="<?php
+                                        foreach ($oldstudie as $arrstudie) {
+                                            echo $arrstudie;
+                                        }
+                                        ?>"></td>
+                                    <td><input type="text" name="school" value="<?php
+                                        foreach ($oldschool as $arrschool) {
+                                            echo $arrschool;
+                                        }
+                                        ?>"></td>
+                                    <td><input type="text" name="Afstudeerjaar" value="<?php
+                                               foreach ($oldAfstudeerjaar as $arrAfstudeerjaar) {
+                                                   echo $arrAfstudeerjaar;
+                                               }
+                                        ?>"></td>
                                 </tr>    
                             </table>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Hobby's en interesses</h4>
                             <textarea class="overmij" name="hobbies"><?php
-                            foreach ($oldhobbies as $arrhobbies) {
-                                echo $arrhobbies;
-                            }
-                            ?></textarea>
+                                               foreach ($oldhobbies as $arrhobbies) {
+                                                   echo $arrhobbies;
+                                               }
+                                        ?></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Werk ervaring</h4>                         
@@ -330,7 +344,7 @@ if (isset($_POST[submit])) {
                                 foreach ($oldwerkervaring as $arrwerkervaring) {
                                     echo $arrwerkervaring;
                                 }
-                            ?></textarea>
+                                        ?></textarea>
                         </div>
                         Avatar:
                         <input type="file" name="avatar"><br><br>
