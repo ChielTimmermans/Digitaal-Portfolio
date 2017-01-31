@@ -74,14 +74,14 @@ $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="../../contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
                         <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
                         <li><a href="../../portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="../../projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
                         <li><a href="../../cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
                         <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
