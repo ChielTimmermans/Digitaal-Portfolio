@@ -136,17 +136,17 @@ if (isset($_POST['btn-signup'])) {
 
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="studentnummer">Studentnummer</label>  
+                    <label class="col-md-4 control-label">Studentnummer</label>  
                     <div class="col-md-4">
-                        <input id="studentnummer" class="form-control input-md" type="number" name="studentnummer" placeholder="Studentnumber" value="<?php echo $studentnummer; ?>" required="">
+                        <input id="studentnummer" class="form-control input-md" type="number" name="studentnummer" value="<?php echo $studentnummer; ?>" required="">
                         <span><?php echo $nummerError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Email</label>  
+                    <label class="col-md-4 control-label">Email</label>  
                     <div class="col-md-4">
-                        <input type="email" name="email" maxlength="50" placeholder="Email address" value="<?php echo $email; ?>" class="form-control input-md" required="">
+                        <input type="email" name="email" placeholder="Email address" value="<?php echo $email; ?>" class="form-control input-md" required="">
                         <span><?php echo $emailError; ?></span><br><br>
                     </div>
                 </div>
@@ -154,17 +154,17 @@ if (isset($_POST['btn-signup'])) {
 
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="wachtwoord">Wachtwoord</label>
+                    <label class="col-md-4 control-label">Wachtwoord</label>
                     <div class="col-md-4">
-                        <input type="password" name="pass" placeholder="Enter Password" maxlength="15" class="form-control input-md" required="">
+                        <input type="password" name="pass" placeholder="Enter Password" class="form-control input-md" required="">
                         <span><?php echo $passError, $passError2; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="wachtwoord2">Herhaal wachtwoord</label>
+                    <label class="col-md-4 control-label">Herhaal wachtwoord</label>
                     <div class="col-md-4">
-                        <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" class="form-control input-md" required="">
+                        <input type="password" name="pass2" placeholder="Enter Password again" class="form-control input-md" required="">
                         <br><br>
                     </div>
                 </div>

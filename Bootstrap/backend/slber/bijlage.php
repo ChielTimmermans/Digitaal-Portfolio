@@ -1,16 +1,14 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
-} else
-{
+} else {
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (($_SESSION['Rol']) != "3"){
+if (($_SESSION['Rol']) != "3") {
     header("Location: ..\..\index.php");
 }
 $user = $_SESSION['user'];

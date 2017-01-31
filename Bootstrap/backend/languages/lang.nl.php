@@ -45,6 +45,7 @@ $lang['Afstudeerjaar'] = 'Afstudeer jaar';
 //$lang['Studie'] = 'naam';
 //
 //portfolio main page
+$lang['Mijnportfolio'] = 'Mijn Portfolio';
 $lang['naam'] = 'naam';
 $lang['Studie/Functie'] = 'Studie/Functie';
 $lang['School/bedrijf'] = 'School/bedrijf';
