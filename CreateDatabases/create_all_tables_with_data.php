@@ -9,6 +9,7 @@ include 'Create_database_leraar.php';
 include 'Create_database_portfolioinhoud.php';
 include 'Create_databases_role.php';
 include 'Create_table_project_cijfers.php';
+include 'Create_Table_Gastenboek.php';
 include 'dbconnect.php';
 
 

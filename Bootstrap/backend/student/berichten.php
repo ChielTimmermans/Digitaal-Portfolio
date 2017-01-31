@@ -140,6 +140,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                     </tbody>
                                 </table>
                                 <hr>
+                                <a href="gastenboek.php">&#8592;</a>
                             </div>
                         </div>
                         <script src="//rawgithub.com/stidges/jquery-searchable/master/dist/jquery.searchable-1.0.0.min.js"></script>

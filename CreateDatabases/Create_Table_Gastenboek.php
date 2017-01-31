@@ -40,8 +40,6 @@
                 echo "<p>Unable to execute the query.</p>"
                 . "<p>Error code " . mysqli_errno($conn)
                 . ": " . mysqli_error($conn) . "</p>";
-            } else {
-               echo "<meta http-equiv='refresh' content='0; url=berichten.php' />";
             }
             mysqli_close($conn);
                 

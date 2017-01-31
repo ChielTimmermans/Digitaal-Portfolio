@@ -146,8 +146,8 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                             }
                             ?>                          
                         </ul>
+                        <a href="portfolio.php">&#8592;</a>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -116,7 +116,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="bs-callout bs-callout-danger">
                         <p>
                         <div class="form-area">  
-                            <form action="gastprocess.php" method="POST">
+                            <form action="..\createdatabases/gastprocess.php" method="POST">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="name" name="name" placeholder="Naam" required/>
                                 </div>
@@ -132,12 +132,12 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             </form>
                         </div>
                         <a href="berichten.php"><?php echo $lang['Cijferlijst']; ?></a>
+                        
                     </div>
-
                 </div>
             </div>
         </div>
-
+        
         <!-- Bootstrap core JavaScript
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
