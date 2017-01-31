@@ -80,7 +80,7 @@ $avarow = mysqli_fetch_array($avaresult, MYSQLI_ASSOC);
                 echo "header-bg5";
                 break;
         }
-        ?>
+        ?>">
              <div class="container-fluid">
              <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -122,7 +122,7 @@ $avarow = mysqli_fetch_array($avaresult, MYSQLI_ASSOC);
                 </ul>
             </div>
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1 class="page-header"><?php echo $lang['Mijnportfolio']; ?></h1>
+                <h1><?php echo $lang['Mijnportfolio']; ?></h1>
             </div>
         </div></div>  
 
@@ -227,7 +227,7 @@ $avarow = mysqli_fetch_array($avaresult, MYSQLI_ASSOC);
             </div>
         </div>
     </div>
-</div>
+
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
