@@ -124,7 +124,8 @@ $avarow = mysqli_fetch_array($avaresult, MYSQLI_ASSOC);
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1><?php echo $lang['Mijnportfolio']; ?></h1>
                 </div>
-            </div></div>  
+            </div>
+        </div>  
 
 
         <div class="container">
@@ -144,18 +145,11 @@ $avarow = mysqli_fetch_array($avaresult, MYSQLI_ASSOC);
                                     </figure>
                                     <div class="row">
                                         <div class="col-xs-12 social-btns">
-
-
-
                                             <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
                                                 <a href="#" class="btn btn-social btn-block btn-linkedin">
                                                     <i class="fa fa-linkedin"></i> </a>
                                             </div>
-
-
                                         </div>
-
-
                                     </div>
                                 </div>
                                 <div class="col-xs-12 col-sm-8">

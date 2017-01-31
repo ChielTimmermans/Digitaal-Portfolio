@@ -4,7 +4,7 @@ require_once '..\CreateDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
 
-if (($_SESSION['Rol']) != "1"){
+if (($_SESSION['Rol']) != "1") {
     header("Location: index.php");
 }
 
@@ -23,9 +23,21 @@ $getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = '$user'";
 $overmijresult = mysqli_query($conn, $getovermij);
 $oldovermij = mysqli_fetch_array($overmijresult, MYSQLI_ASSOC);
 
-$gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = $user";
-$hobbiesresul = mysqli_query($conn, $gethobbies);
-$oldhobbies = mysqli_fetch_array($hobbiesresul, MYSQLI_ASSOC);
+$gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = '$user'";
+$hobbiesresult = mysqli_query($conn, $gethobbies);
+$oldhobbies = mysqli_fetch_array($hobbiesresult, MYSQLI_ASSOC);
+
+$getstudie = "SELECT studie FROM portfoliotext WHERE Studentnummer = $user";
+$studieresul = mysqli_query($conn, $getstudie);
+$oldstudie = mysqli_fetch_array($studieresul, MYSQLI_ASSOC);
+
+$getschool = "SELECT school FROM portfoliotext WHERE Studentnummer = $user";
+$schoolresul = mysqli_query($conn, $getschool);
+$oldschool = mysqli_fetch_array($schoolresul, MYSQLI_ASSOC);
+
+$getAfstudeerjaar = "SELECT Afstudeerjaar FROM portfoliotext WHERE Studentnummer = $user";
+$Afstudeerjaarresul = mysqli_query($conn, $getAfstudeerjaar);
+$oldAfstudeerjaar = mysqli_fetch_array($Afstudeerjaarresul, MYSQLI_ASSOC);
 
 $getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE Studentnummer = $user";
 $werkervaringresult = mysqli_query($conn, $getwerkervaring);
@@ -41,8 +53,14 @@ if (isset($_POST[submit])) {
     $hobbies = trim($_POST['hobbies']);
     $hobbies = strip_tags($hobbies);
 
-    $diplomas = trim($_POST['diplomas']);
-    $diplomas = strip_tags($diplomas);
+    $studie = trim($_POST['studie']);
+    $studie = strip_tags($studie);
+
+    $school = trim($_POST['school']);
+    $school = strip_tags($school);
+
+    $Afstudeerjaar = trim($_POST['Afstudeerjaar']);
+    $Afstudeerjaar = strip_tags($Afstudeerjaar);
 
     $werkervaring = trim($_POST['werkervaring']);
     $werkervaring = strip_tags($werkervaring);
@@ -55,7 +73,15 @@ if (isset($_POST[submit])) {
         $error = true;
         $hobbiesError = "Please enter something.";
     }
-    if (empty($diplomas)) {
+    if (empty($studie)) {
+        $error = true;
+        $diplomasError = "Please enter something.";
+    }
+    if (empty($school)) {
+        $error = true;
+        $diplomasError = "Please enter something.";
+    }
+    if (empty($Afstudeerjaar)) {
         $error = true;
         $diplomasError = "Please enter something.";
     }
@@ -65,7 +91,7 @@ if (isset($_POST[submit])) {
     }
     if (!$error) {
 
-        $gettext = ("SELECT overmij, diplomas, hobbies, werkervaring FROM portfoliotext WHERE Studentnummer = $user");
+        $gettext = ("SELECT overmij, studie, school, Afstudeerjaar, hobbies, werkervaring FROM portfoliotext WHERE Studentnummer = $user");
         $oldtext = mysqli_query($conn, $gettext);
 
         $updatetext = "UPDATE portfoliotext SET overmij = '$overmij', studie = '$studie',school='$school',Afstudeerjaar='$afstudeerjaar', hobbies = '$hobbies', werkervaring = '$werkervaring' WHERE Studentnummer = '$user'";
@@ -114,7 +140,7 @@ if (isset($_POST[submit])) {
             }
         }
     }
-    
+
     header("Location: portfolio.php");
 }
 ?>
@@ -266,34 +292,45 @@ if (isset($_POST[submit])) {
                             echo $target_file;
                             if (!empty($_FILES['avatar'])) {
                                 echo 'fileupload is niet leeg';
-                            } else {
-                                echo 'fileupload leeg';
-                            }
+                            } 
                             ?> 
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4><?php echo $lang['Diplomas']; ?></h4>
-                            <textarea class="overmij" name="diplomas"><?php
-                                foreach ($olddiplomas as $arrdiplomas) {
-                                    echo $arrdiplomas;
-                                }
-                                ?></textarea>
+                            <table class="table table-striped table-responsive ">
+                                <tr>
+                                    <th><?php echo $lang['Studie']; ?></th>
+                                    <th><?php echo $lang['School']; ?></th>
+                                    <th><?php echo $lang['Afstudeerjaar']; ?></th>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" name="studie" value="<?php foreach ($oldstudie as $arrstudie) {
+                                echo $arrstudie;
+                            } ?>"></td>
+                                    <td><input type="text" name="school" value="<?php foreach ($oldschool as $arrschool) {
+                                echo $arrschool;
+                            } ?>"></td>
+                                    <td><input type="text" name="Afstudeerjaar" value="<?php foreach ($oldAfstudeerjaar as $arrAfstudeerjaar) {
+                                echo $arrAfstudeerjaar;
+                            } ?>"></td>
+                                </tr>    
+                            </table>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Hobby's en interesses</h4>
                             <textarea class="overmij" name="hobbies"><?php
-                                foreach ($oldhobbies as $arrhobbies) {
-                                    echo $arrhobbies;
-                                }
-                                ?></textarea>
+                            foreach ($oldhobbies as $arrhobbies) {
+                                echo $arrhobbies;
+                            }
+                            ?></textarea>
                         </div>
                         <div class="bs-callout bs-callout-danger">
                             <h4>Werk ervaring</h4>                         
-                                <textarea class="overmij" name="werkervaring"><?php
-                                    foreach ($oldwerkervaring as $arrwerkervaring) {
-                                        echo $arrwerkervaring;
-                                    }
-                                    ?></textarea>
+                            <textarea class="overmij" name="werkervaring"><?php
+                                foreach ($oldwerkervaring as $arrwerkervaring) {
+                                    echo $arrwerkervaring;
+                                }
+                            ?></textarea>
                         </div>
                         Avatar:
                         <input type="file" name="avatar"><br><br>
@@ -303,15 +340,15 @@ if (isset($_POST[submit])) {
             </div>
         </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../../assets/js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>
