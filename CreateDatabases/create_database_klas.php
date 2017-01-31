@@ -26,9 +26,7 @@ if ($DBConnect === FALSE) {
     $QueryResult = mysqli_query($DBConnect, $SQLstring);
     if (mysqli_num_rows($QueryResult) == 0) {
         $SQLstring = "CREATE TABLE $TableName(
-                    Klas            Varchar(10)  UNIQUE KEY,
-                    vak             Varchar(30),
-                    Studentnummer   INT(8)      UNIQUE KEY
+                    Klas            Varchar(10)  UNIQUE KEY
                     )";
         $QueryResult = mysqli_query($DBConnect, $SQLstring);
         if ($QueryResult === FALSE) {
