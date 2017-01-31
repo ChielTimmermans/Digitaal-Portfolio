@@ -114,7 +114,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textarea"><?php echo $lang['nieuwprojecttoevoegen']; ?></label>  
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['nieuwprojecttoevoegen']; ?></label>  
                                 <div class="col-md-4">
                                     <textarea name="beschrijving" placeholder="Beschrijving project" required rows="10" cols="32"></textarea>
                                 </div>

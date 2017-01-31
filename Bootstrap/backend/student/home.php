@@ -110,10 +110,10 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     <div class="bs-callout bs-callout-danger">
                         <ul>
                             <li>
-                                <a href="..\..\portfolioedit.php"> <?php echo $lang['portfolioaanpassen']; ?> </a>
+                                <a href="../../portfolioedit.php"> <?php echo $lang['portfolioaanpassen']; ?> </a>
                             </li>
                             <li>
-                                <a href="..\..\projectenadd.php"> <?php echo $lang['projectenwijzigentoevoegen']; ?></a>
+                                <a href="../../projectenadd.php"> <?php echo $lang['projectenwijzigentoevoegen']; ?></a>
                             </li>
                             <li>
                                 <a href="thema.php"> <?php echo $lang['Themawijzigen']; ?></a>
