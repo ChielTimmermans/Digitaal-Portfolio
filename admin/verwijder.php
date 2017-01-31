@@ -11,6 +11,7 @@
 </html>
 <?php
 include '..\createdatabases\dbconnect.php';
+//include 'verwijder.php';
 $nummer = $_GET['nummer'];
 $sql = "SELECT Voornaam, Achternaam FROM gegevens where studentnummer ='$nummer'";
 $result = mysqli_query($conn, $sql)

@@ -32,11 +32,11 @@ $sql2= "INSERT INTO Klas VALUES
         ('INF1J')
 ;";
 $sql3= "INSERT INTO portfoliotext VALUES
-        ('469521', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in', 'leeg_profielfoto.jpg'),
-        ('527556', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in', 'leeg_profielfoto.jpg'),
-        ('514942', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in', 'leeg_profielfoto.jpg'),
-        ('518506', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in', 'leeg_profielfoto.jpg'),
-        ('520691', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in', 'leeg_profielfoto.jpg')
+        ('469521', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in','Voer text in','Voer text in', 'leeg_profielfoto.jpg'),
+        ('527556', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in','Voer text in','Voer text in', 'leeg_profielfoto.jpg'),
+        ('514942', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in','Voer text in','Voer text in', 'leeg_profielfoto.jpg'),
+        ('518506', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in','Voer text in','Voer text in', 'leeg_profielfoto.jpg'),
+        ('520691', 'Voer text in', 'Voer text in', 'Voer hier text in', 'Voer text in','Voer text in','Voer text in', 'leeg_profielfoto.jpg')
 ";
 $sql4= "INSERT INTO projectcijfer VALUES
     ('469521','-','-','-','-','-','-','-','-'),
