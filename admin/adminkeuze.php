@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (($_SESSION['Rol']) != "4"){
-    echo "hallo";
+    header("Location: ..\index.php");
 }
 
 ?>

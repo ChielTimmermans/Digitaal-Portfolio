@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (($_SESSION['Rol']) != "4"){
+    header("Location: ..\index.php");
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>

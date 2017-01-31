@@ -1,15 +1,9 @@
 <?php
 session_start();
-ob_start();
-
-//if (!isset($_SESSION['user'])) {
-//    header("Location: index.php");
-//    exit;
-//}
-//if(isset($_SESSION['user'])){
-//    
-//    
-//}
+ob_start();;
+if (($_SESSION['Rol']) != "4"){
+    header("Location: ..\index.php");
+}
 
 
 include '..\createdatabases\dbconnect.php';

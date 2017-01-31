@@ -1,13 +1,10 @@
 <?php
 ob_start();
 session_start();
-//if (isset($_SESSION['user']) != "") {
-//    header("Location: ..\home.php");
-//}elseif ($row ['role'] != 'admin'){
-//    header("Location: ..\error.php");
-//}
-
-
+session_start();
+if (($_SESSION['Rol']) != "4"){
+    header("Location: ..\index.php");
+}
 
 include_once '..\createdatabases/dbconnect.php';
 
