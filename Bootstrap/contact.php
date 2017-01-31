@@ -36,9 +36,7 @@ if (($_SESSION['Rol']) != "1"){
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-
     <body>
-
         <nav class="navbar navbar-inverse navbar-fixed-top header-bg">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -68,8 +66,6 @@ if (($_SESSION['Rol']) != "1"){
                 </div>
             </div>
         </nav>
-
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
@@ -83,17 +79,15 @@ if (($_SESSION['Rol']) != "1"){
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
                     <h1 class="page-header">Contact</h1>
                 </div>
-            </div></div>  
+            </div>
+        </div>  
 
 
         <div class="container">
             <div class="col-sm-9 col-lg-12 col-sm-offset-3 col-md-12 col-md-offset-2 main">
                 <div class="panel panel-default">
-
                     <div class="bs-callout bs-callout-danger">
-
                         <div class="container">
-
                         </div>
                         <div class="container">
                             <div class="row">
@@ -119,15 +113,10 @@ if (($_SESSION['Rol']) != "1"){
                                     <div class="iframe-container">
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.1084113422903!2d6.909820880133019!3d52.777943025057844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b7e61f3ec72443%3A0xbe9d297b3e4fbcc7!2sStenden+hogeschool+Emmen!5e0!3m2!1snl!2snl!4v1484216373026" width="565" height="430" frameborder="0" style="border:0" allowfullscreen></iframe>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-
-
-
                     </div>
-
                 </div>
             </div>
         </div>

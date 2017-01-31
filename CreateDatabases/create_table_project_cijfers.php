@@ -17,7 +17,6 @@
             comment3                        VARCHAR(1000),
             cijfer4                        VARCHAR(4),
             comment4                        VARCHAR(1000))";
-            echo $SQLstring;
             $QueryResult = mysqli_query($DBConnect, $SQLstring);
             if ($QueryResult === FALSE)
             {
