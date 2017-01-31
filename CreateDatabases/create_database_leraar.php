@@ -39,7 +39,7 @@ if ($DBConnect === FALSE) {
                     Woonplaats      varchar(30),
                     Geslacht        ENUM('M','F'),
                     Rol             int,
-                    vak1             Varchar(30),
+                    vak             Varchar(30),
                     vak2            Varchar(30),
                     vak3            Varchar(30),
                     slb             ENUM('Y', 'N'))";
