@@ -42,6 +42,15 @@ $lang['Overmij'] = 'Over Mij';
 $lang['Studie'] = 'Studie';
 $lang['School'] = 'School';
 $lang['Afstudeerjaar'] = 'Afstudeer jaar';
+
+//thema
+$lang['db'] = 'Donkerblauw';
+$lang['or'] = 'Oranje';
+$lang['ro'] = 'Rood';
+$lang['ge'] = 'Geel';
+$lang['gr'] = 'Groen';
+$lang['lb'] = 'Lichtblauw';
+
 //$lang['Studie'] = 'naam';
 //
 //portfolio main page

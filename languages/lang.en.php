@@ -42,13 +42,7 @@ $lang['Afstudeerjaar'] = 'Graduation Year';
 $lang['Werkervaring'] = 'Work experience';
 $lang['Hobby'] = 'Hobbies and interests';
 
-//thema
-$lang['db'] = 'Dark Blue';
-$lang['or'] = 'Orange';
-$lang['ro'] = 'Red';
-$lang['ge'] = 'Yellow';
-$lang['gr'] = 'Green';
-$lang['lb'] = 'Light Blue';
+
 
 //portfolio main page
 $lang['naam'] = 'name';
