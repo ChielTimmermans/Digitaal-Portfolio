@@ -132,7 +132,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                                             
                                         } else {
                                             $query2 = "select $res from cijfer where studentnummer= '$studentnummer'";
-
+                                            echo $query2;
                                             $result2 = mysqli_query($conn, $query2);
                                             $row2 = mysqli_fetch_array($result2);
                                             echo"  <tr>
