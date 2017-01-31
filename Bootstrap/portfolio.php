@@ -8,7 +8,7 @@ if (!isset($_GET['Studentnummer']) || empty($_GET)) {
 require_once '..\createDatabases/dbconnect.php';
 include '..\Functions\common.php';
 include '..\databaseArray.php';
-if (($_SESSION['Rol']) != "1"){
+if (($_SESSION['Rol']) != "1") {
     header("Location: index.php");
 }
 $user = $_SESSION['user'];
@@ -81,163 +81,176 @@ $avarow = mysqli_fetch_array($avaresult, MYSQLI_ASSOC);
                 break;
         }
         ?>">
-             <div class="container-fluid">
-             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="https://stenden.com">
-                    <img src="images/stenden_logo1.png" alt="Stenden Logo">
-                </a>
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="https://stenden.com">
+                        <img src="images/stenden_logo1.png" alt="Stenden Logo">
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
+                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
+                        <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
+                    </ul>
+                </div>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
-                    <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
-                    <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                    <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                    <li><a href="portfolio.php"><?php echo $lang['Portfolio']; ?></a></li>
-                    <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
-                    <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
-                    <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+        </nav>
 
 
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <ul class="nav <?php include "stijl3.php"; ?>">
-                    <li class="active"><a href="portfolio.php"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
-                    <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
-                    <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
-                    <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
-                </ul>
-            </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-3 col-md-2 sidebar">
+                    <ul class="nav <?php include "stijl3.php"; ?>">
+                        <li class="active"><a href="portfolio.php"><?php echo $lang['Portfolio']; ?><span class="sr-only">(current)</span></a></li>
+                        <li><a href="projecten.php"><?php echo $lang['Projecten']; ?></a></li>
+                        <li><a href="cijfers.php"><?php echo $lang['Cijferlijst']; ?></a></li>
+                        <li><a href="gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                    <h1><?php echo $lang['Mijnportfolio']; ?></h1>
+                </div>
+            </div></div>  
+
+
+        <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <h1><?php echo $lang['Mijnportfolio']; ?></h1>
-            </div>
-        </div></div>  
-
-
-    <div class="container">
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <div class="panel panel-default">
-                <div class="panel-heading resume-heading">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="col-xs-12 col-sm-4">
-                                <figure>
-                                    <img class="img-circle img-responsive" alt="" src="<?php
-                                    foreach ($avarow as $path) {
-                                        echo 'images/avatars/'
-                                        . $path;
-                                    }
-                                    ?>">
-                                </figure>
-                                <div class="row">
-                                    <div class="col-xs-12 social-btns">
+                <div class="panel panel-default">
+                    <div class="panel-heading resume-heading">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="col-xs-12 col-sm-4">
+                                    <figure>
+                                        <img class="img-circle img-responsive" alt="" src="<?php
+                                        foreach ($avarow as $path) {
+                                            echo 'images/avatars/'
+                                            . $path;
+                                        }
+                                        ?>">
+                                    </figure>
+                                    <div class="row">
+                                        <div class="col-xs-12 social-btns">
 
 
 
-                                        <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
-                                            <a href="#" class="btn btn-social btn-block btn-linkedin">
-                                                <i class="fa fa-linkedin"></i> </a>
+                                            <div class="col-xs-3 col-md-1 col-lg-1 social-btn-holder">
+                                                <a href="#" class="btn btn-social btn-block btn-linkedin">
+                                                    <i class="fa fa-linkedin"></i> </a>
+                                            </div>
+
+
                                         </div>
 
 
                                     </div>
-
-
                                 </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-8">
-                                <ul class="list-group">
-                                    <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php
-                                        echo "$userNaam ";
-                                        echo $userAchterNaam;
-                                        ?></li>
-                                    <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?></li>
-                                    <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?></li>
-                                    <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?></li>
-                                    <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
-                                    <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['email']; ?>: <?php echo $userEmail; ?></li>
-                                </ul>
+                                <div class="col-xs-12 col-sm-8">
+                                    <ul class="list-group">
+                                        <li class="list-group-item"><?php echo $lang['naam']; ?>: <?php
+                                            echo "$userNaam ";
+                                            echo $userAchterNaam;
+                                            ?></li>
+                                        <li class="list-group-item"><?php echo $lang['Studie/Functie']; ?>: Technische Informatica</li>
+                                        <li class="list-group-item"><?php echo $lang['School/bedrijf']; ?>: Stenden Emmen</li>
+                                        <li class="list-group-item"><?php echo $lang['Woonplaats']; ?>: <?php echo $userWoonplaats; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-phone"></i><?php echo $lang['Nummer']; ?>: <?php echo "0$userMobielNummer"; ?></li>
+                                        <li class="list-group-item"><i class="fa fa-envelope"></i><?php echo $lang['email']; ?>: <?php echo $userEmail; ?></li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="bs-callout <?php include 'stijl2.php'; ?>">
-                    <h4><?php echo $lang['Overmij']; ?></h4>
+                    <div class="bs-callout <?php include 'stijl2.php'; ?>">
+                        <h4><?php echo $lang['Overmij']; ?></h4>
 
-                    <?php
-                    $getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = '$user'";
-                    $overmijresult = mysqli_query($conn, $getovermij);
-                    $overmij = mysqli_fetch_array($overmijresult, MYSQLI_ASSOC);
-                    foreach ($overmij as $arrovermij) {
-                        echo $arrovermij;
-                    }
-                    ?>
+                        <?php
+                        $getovermij = "SELECT overmij FROM portfoliotext WHERE Studentnummer = '$user'";
+                        $overmijresult = mysqli_query($conn, $getovermij);
+                        $overmij = mysqli_fetch_array($overmijresult, MYSQLI_ASSOC);
+                        foreach ($overmij as $arrovermij) {
+                            echo $arrovermij;
+                        }
+                        ?>
 
-                </div>
-                <div class="bs-callout <?php include 'stijl2.php'; ?>">
-                    <h4><?php echo $lang['Diplomas']; ?></h4>
-                    <?php
-                    $getdiplomas = "SELECT diplomas FROM portfoliotext WHERE Studentnummer = $user";
-                    $diplomasresult = mysqli_query($conn, $getdiplomas);
-                    $diplomas = mysqli_fetch_array($diplomasresult, MYSQLI_ASSOC);
-                    foreach ($diplomas as $rij){
-                    echo $rij;
-                    }
-                    ?>
-                </div>
-                <div class="bs-callout <?php include 'stijl2.php'; ?>">
-                    <h4>Hobby's en interesses</h4>
+                    </div>
+                    <div class="bs-callout <?php include 'stijl2.php'; ?>">
+                        <h4><?php echo $lang['Diplomas']; ?></h4>
+                        <table class="table table-striped table-responsive ">
+                            <tr>
+                                <th><?php echo $lang['Studie']; ?></th>
+                                <th><?php echo $lang['School']; ?></th>
+                                <th><?php echo $lang['Afstudeerjaar']; ?></th>
+                            </tr>
+                            <?php
+                            $getdiplomas = "SELECT * FROM portfoliotext WHERE Studentnummer = $user";
+                            $diplomasresult = mysqli_query($conn, $getdiplomas);
+                            while ($row = mysqli_fetch_array($diplomasresult, MYSQLI_ASSOC)) {
+                                echo "<tr><td>";
+                                echo $row['studie'];
+                                echo "</td><td>";
+                                echo $row['school'];
+                                echo "</td><td>";
+                                echo $row['Afstudeerjaar'];
+                                echo "</td><td>";
+                                echo "</td></tr>";
+                            }
+                            ?>
+                        </table>    
+                    </div>
+                    <div class="bs-callout <?php include 'stijl2.php'; ?>">
+                        <h4><?php echo $lang['Hobby']; ?></h4>
 
-                    <?php
-                    $gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = $user";
-                    $hobbiesresul = mysqli_query($conn, $gethobbies);
-                    $hobbies = mysqli_fetch_array($hobbiesresul, MYSQLI_ASSOC);
-                    foreach ($hobbies as $arrhobbies) {
-                        echo $arrhobbies;
-                    }
-                    ?>
+                        <?php
+                        $gethobbies = "SELECT hobbies FROM portfoliotext WHERE Studentnummer = $user";
+                        $hobbiesresul = mysqli_query($conn, $gethobbies);
+                        $hobbies = mysqli_fetch_array($hobbiesresul, MYSQLI_ASSOC);
+                        foreach ($hobbies as $arrhobbies) {
+                            echo $arrhobbies;
+                        }
+                        ?>
 
-                </div>
-                <div class="bs-callout <?php include 'stijl2.php'; ?>">
-                    <h4>Werk ervaring</h4>
-                    <?php
-                    $getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE Studentnummer = $user";
-                    $werkervaringresult = mysqli_query($conn, $getwerkervaring);
-                    $werkervaring = mysqli_fetch_array($werkervaringresult, MYSQLI_ASSOC);
-                    foreach ($werkervaring as $arrwerkervaring) {
-                        echo $arrhobbies;
-                    }
-                    ?>
+                    </div>
+                    <div class="bs-callout <?php include 'stijl2.php'; ?>">
+                        <h4><?php echo $lang['Werkervaring']; ?></h4>
+                        <?php
+                        $getwerkervaring = "SELECT werkervaring FROM portfoliotext WHERE Studentnummer = $user";
+                        $werkervaringresult = mysqli_query($conn, $getwerkervaring);
+                        $werkervaring = mysqli_fetch_array($werkervaringresult, MYSQLI_ASSOC);
+                        foreach ($werkervaring as $arrwerkervaring) {
+                            echo $arrhobbies;
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="../../dist/js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+        <script src="../../dist/js/bootstrap.min.js"></script>
+        <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+        <script src="../../assets/js/vendor/holder.min.js"></script>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>
