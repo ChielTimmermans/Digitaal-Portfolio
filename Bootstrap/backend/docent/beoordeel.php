@@ -1,17 +1,14 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET))
-{
+if (!isset($_GET['Studentnummer']) || empty($_GET)) {
     $portnummer = $_SESSION['user'];
-} else
-{
+} else {
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user']))
-{
+if (!isset($_SESSION['user'])) {
     header("Location: ..\..\index.php");
     exit;
 }
@@ -71,17 +68,16 @@ $leerling2 = substr($leerling, -6);
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="backend/student/home.php"><?php echo $lang['Instellingen']; ?></a></li>
-                        <li><a href="contact.php"><?php echo $lang['Contact']; ?></a></li>
+                        <li><a href="home.php"><?php echo $lang['Instellingen']; ?></a></li>
+                        <li><a href="../../contact.php"><?php echo $lang['Contact']; ?></a></li>
                         <li><a href="<?php echo $lang['TaalLink']; ?>"><?php echo $lang['Taal']; ?></a></li>
-                        <li><a href="logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
+                        <li><a href="../../logout.php?logout"><?php echo $lang['Uitloggen']; ?></a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right hidden-lg hidden-md hidden-sm">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Projecten']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
-                    </ul>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>                    </ul>
                 </div>
             </div>
         </nav>
@@ -89,10 +85,10 @@ $leerling2 = substr($leerling, -6);
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                        <li><a href="#"><?php echo $lang['Portfolio']; ?></a></li>
-                        <li class="active"><a href="#"><?php echo $lang['Projecten']; ?> <span class="sr-only">(current)</span></a></li>
-                        <li><a href="#"><?php echo $lang['Cijferlijst']; ?></a></li>
-                        <li><a href="#"><?php echo $lang['Gastenboek']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="#"><?php echo $lang['nbeschikbaar']; ?></a></li>
+                        <li><a href="../../gastenboek.php"><?php echo $lang['Gastenboek']; ?></a></li>
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -118,22 +114,17 @@ $leerling2 = substr($leerling, -6);
                                     $result4 = mysqli_query($conn, $query4);
                                     $row2 = mysqli_fetch_array($result4, MYSQLI_ASSOC);
                                     echo "<select name='projecten[]'>";
-                                    foreach ($row2 as $res4)
-                                    {
-                                        if ($res4 === "0")
-                                        {
+                                    foreach ($row2 as $res4) {
+                                        if ($res4 === "0") {
                                             
-                                        } else
-                                        {
+                                        } else {
                                             echo "<option value='$a'>$res4</option>";
                                             $a++;
                                         }
                                     }
 
-                                    if (isset($_POST['submit']))
-                                    {
-                                        foreach ($_POST['projecten'] as $select3)
-                                        {
+                                    if (isset($_POST['submit'])) {
+                                        foreach ($_POST['projecten'] as $select3) {
                                             
                                         }
                                     }
@@ -164,8 +155,7 @@ $leerling2 = substr($leerling, -6);
                             </div>
 
                             <?php
-                            if (isset($_POST['submit']))
-                            {
+                            if (isset($_POST['submit'])) {
                                 $project = "cijfer$select3";
                                 $cijfer = ($_POST['cijfer']);
                                 $commentproject = "comment$select3";

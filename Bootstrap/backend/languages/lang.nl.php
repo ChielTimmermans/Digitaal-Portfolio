@@ -145,5 +145,7 @@ $lang['projectwijzigen'] = 'Project wijzigen';
 $lang['naamproject'] = 'Project naam';
 $lang['beschrijvingproject'] = 'Beschrijving van het project';
 
+// Menu niet beschikbaar
+$lang['nbeschikbaar'] = 'Niet beschikbaar';
 
 ?>

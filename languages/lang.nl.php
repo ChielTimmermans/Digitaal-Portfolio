@@ -33,6 +33,7 @@ $lang['Gastenboek'] = 'Gastenboek';
 $lang['School'] = 'naam';
 $lang['naam'] = 'naam';
 $lang['date'] = 'datum';
+$lang['adres'] = 'adres';
 
 //
 

@@ -701,11 +701,11 @@ opacity:0.9;
 }
 
 .bs-callout-danger2 {
-    border-left-color: D82900;
+    border-left-color: #D82900;
 }
 
 .bs-callout-danger2 h4{
-    color: D82900;
+    color: #D82900;
 }
 
 .bs-callout-danger3 {
@@ -717,11 +717,11 @@ opacity:0.9;
 }
 
 .bs-callout-danger4 {
-    border-left-color: 00B047;
+    border-left-color: #00B047;
 }
 
 .bs-callout-danger4 h4{
-    color: 00B047;
+    color: #00B047;
 }
 
 .bs-callout-danger5 {
