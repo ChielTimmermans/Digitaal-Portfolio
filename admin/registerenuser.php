@@ -1,13 +1,10 @@
 <?php
 ob_start();
 session_start();
-//if (isset($_SESSION['user']) != "") {
-//    header("Location: ..\home.php");
-//}elseif ($row ['role'] != 'admin'){
-//    header("Location: ..\error.php");
-//}
-
-
+session_start();
+if (($_SESSION['Rol']) != "4"){
+    header("Location: ..\index.php");
+}
 
 include_once '..\createdatabases/dbconnect.php';
 
@@ -136,52 +133,56 @@ if (isset($_POST['btn-signup'])) {
     <body>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" autocomplete="off" class="form-horizontal">
             <fieldset>
-                <legend> Registreer gebruiker/ Register a user
 
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="studentnummer">Studentnummer</label>  
-                        <div class="col-md-4">
-                            <input id="studentnummer" class="form-control input-md" type="number" name="studentnummer" maxlength="8" placeholder="Studentnumber" value="<?php echo $studentnummer; ?>" required="">
-                            <span><?php echo $nummerError; ?></span><br><br>
-                        </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="studentnummer">Studentnummer</label>  
+                    <div class="col-md-4">
+                        <input id="studentnummer" class="form-control input-md" type="number" name="studentnummer" placeholder="Studentnumber" value="<?php echo $studentnummer; ?>" required="">
+                        <span><?php echo $nummerError; ?></span><br><br>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="email">Email</label>  
-                        <div class="col-md-4">
-                            <input type="email" name="email" maxlength="50" placeholder="Email address" value="<?php echo $email; ?>" class="form-control input-md" required="">
-                            <span><?php echo $emailError; ?></span><br><br>
-                        </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="email">Email</label>  
+                    <div class="col-md-4">
+                        <input type="email" name="email" maxlength="50" placeholder="Email address" value="<?php echo $email; ?>" class="form-control input-md" required="">
+                        <span><?php echo $emailError; ?></span><br><br>
                     </div>
+                </div>
 
 
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="wachtwoord">Wachtwoord</label>
-                        <div class="col-md-4">
-                            <input type="password" name="pass" placeholder="Enter Password" maxlength="15" class="form-control input-md" required="">
-                            <span><?php echo $passError, $passError2; ?></span><br><br>
-                        </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="wachtwoord">Wachtwoord</label>
+                    <div class="col-md-4">
+                        <input type="password" name="pass" placeholder="Enter Password" maxlength="15" class="form-control input-md" required="">
+                        <span><?php echo $passError, $passError2; ?></span><br><br>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="wachtwoord2">Herhaal wachtwoord</label>
-                        <div class="col-md-4">
-                            <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" class="form-control input-md" required="">
-                            <br><br>
-                        </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="wachtwoord2">Herhaal wachtwoord</label>
+                    <div class="col-md-4">
+                        <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" class="form-control input-md" required="">
+                        <br><br>
                     </div>
+                </div>
 
 
-                    <div class="form-group">
-                        <label class="col-md-4 control-label" for="signup"></label>
-                        <div class="col-md-4">
-                            <button type="submit" id="signup" name="btn-signup" class="btn btn-success">Registreer/Register</button>
-                        </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="signup"></label>
+                    <div class="col-md-4">
+                        <button type="submit" id="signup" name="btn-signup" class="btn btn-success">Registreer/Register</button>
                     </div>
-                    <span><?php echo $errMSG; ?></span>
-
+                </div>
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="signup"></label>
+                    <div class="col-md-4">
+                        <a href="adminkeuze.php" class="btn btn-success">Terug naar het keuze menu</a>
+                    </div>
+                </div>
+                <span><?php echo $errMSG; ?></span>
             </fieldset>
         </form>
     </body>

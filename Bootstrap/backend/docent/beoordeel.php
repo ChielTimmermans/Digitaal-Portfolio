@@ -151,7 +151,7 @@ $leerling2 = substr($leerling, -6);
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="col-md-4 control-label" for="textarea"><?php echo $lang['opmerkingen']; ?></label>  
+                                <label class="col-md-4 control-label" for="textinput"><?php echo $lang['opmerkingen']; ?></label>  
                                 <div class="col-md-4">
                                     <textarea name="comment" required rows="10" cols="32"></textarea>
                                 </div>
@@ -173,7 +173,6 @@ $leerling2 = substr($leerling, -6);
                                 echo "gelukt";
 
                                 $sql = "update projectcijfer SET $project='$cijfer',$commentproject='$comment' WHERE studentnummer='$leerling2'";
-                                echo $sql;
                                 $result2 = mysqli_query($conn, $sql)
                                         or die("Error: " . mysqli_error($conn));
                             }
