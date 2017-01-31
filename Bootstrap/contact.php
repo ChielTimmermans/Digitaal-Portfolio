@@ -91,15 +91,15 @@ include '../functions/common.php';
                             <div class="row">
                                 <div class="col-sm-4">
                                     <div class="well">
-                                        <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i> Adres:</h3>               
+                                        <h3 style="line-height:20%;"><i class="fa fa-home fa-1x" style="line-height:6%;color:#339966"></i><?php echo $lang['adres']; ?></h3>               
                                         <p style="margin-top:6%;line-height:35%">Van Schaikweg 94, Emmen</p>
                                         <br />
                                         <br />
-                                        <h3 style="line-height:20%;"><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#339966"></i> E-Mail:</h3>
+                                        <h3 style="line-height:20%;"><i class="fa fa-envelope fa-1x" style="line-height:6%;color:#339966"></i><?php echo $lang['email']; ?></h3>
                                         <p style="margin-top:6%;line-height:35%">emmen@stenden.com</p>
                                         <br />
                                         <br />
-                                        <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i> Telefoonnummer:</h3>
+                                        <h3 style="line-height:20%;"><i class="fa fa-user fa-1x" style="line-height:6%;color:#339966"></i> <?php echo $lang['Nummer']; ?>:</h3>
                                         <p style="margin-top:6%;line-height:35%">0591 853 100</p>
                                         <br />
                                         <br />
