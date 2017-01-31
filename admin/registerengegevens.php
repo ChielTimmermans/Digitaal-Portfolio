@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
     } else if (strlen($stnummer) < 6) {
         $error = true;
         $stnummerError = "Studentnummer heeft minimaal 6 karakters.";
-    }else {
+    } else {
         $query = "SELECT Studentnummer FROM gegevens WHERE Studentnummer='$stnummer'";
         $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
@@ -82,7 +82,7 @@ if (isset($_POST['submit'])) {
     if (empty($klas)) {
         $error = true;
         $klasError = "Vul uw klas in.";
-    }else {
+    } else {
         $query = "SELECT Klas FROM klas WHERE klas='$klas'";
         $result = mysqli_query($conn, $query);
         $count = mysqli_num_rows($result);
@@ -275,114 +275,114 @@ if (isset($_POST['submit'])) {
 
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="studentnummer">Studentnummer</label>  
+                    <label class="col-md-4 control-label">Studentnummer</label>  
                     <div class="col-md-4">
-                        <input id="studentnummer" class="form-control input-md" type="number" name="studentnummer" maxlength="8" placeholder="Studentnumber" value="<?php echo $stnummer; ?>" required="">
+                        <input id="studentnummer" class="form-control input-md" type="number" name="studentnummer" value="<?php echo $stnummer; ?>" required="">
                         <span><?php echo $stnummerError; ?></span><br><br>
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="klas">Klas</label>  
+                    <label class="col-md-4 control-label">Klas</label>  
                     <div class="col-md-4">
-                        <input type="text" name="Klas" maxlength="10" placeholder="Class" value="<?php echo $klas; ?>" class="form-control input-md" required="">
+                        <input type="text" name="Klas" placeholder="Class" value="<?php echo $klas; ?>" class="form-control input-md" required="">
                         <span><?php echo $klasError; ?></span><br><br>
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="wachtwoord">Wachtwoord</label>
+                    <label class="col-md-4 control-label">Wachtwoord</label>
                     <div class="col-md-4">
-                        <input type="password" name="pass" placeholder="Enter Password" maxlength="15" class="form-control input-md" required="">
+                        <input type="password" name="pass" placeholder="Enter Password" class="form-control input-md" required="">
                         <span><?php echo $passError, $passError2; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="wachtwoord2">Herhaal wachtwoord</label>
+                    <label class="col-md-4 control-label">Herhaal wachtwoord</label>
                     <div class="col-md-4">
-                        <input type="password" name="pass2" placeholder="Enter Password again" maxlength="15" class="form-control input-md" required="">
+                        <input type="password" name="pass2" placeholder="Enter Password again" class="form-control input-md" required="">
                         <br><br>
                     </div>
                 </div>
 
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="voornaam">Voornaam</label>  
+                    <label class="col-md-4 control-label">Voornaam</label>  
                     <div class="col-md-4">
-                        <input type="text" name="voornaam" maxlength="30" placeholder="Firstname"  value="<?php echo $fname; ?>" class="form-control input-md" required="">
+                        <input type="text" name="voornaam" placeholder="Firstname"  value="<?php echo $fname; ?>" class="form-control input-md" required="">
                         <span><?php echo $fnameError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="achternaam">Achternaam</label>  
+                    <label class="col-md-4 control-label">Achternaam</label>  
                     <div class="col-md-4">
-                        <input type="text" name="achternaam" maxlength="60" placeholder="Surname" value="<?php echo $lname; ?>" class="form-control input-md" required="">
+                        <input type="text" name="achternaam" placeholder="Surname" value="<?php echo $lname; ?>" class="form-control input-md" required="">
                         <span><?php echo $lnameError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Email</label>  
+                    <label class="col-md-4 control-label">Email</label>  
                     <div class="col-md-4">
-                        <input type="email" name="email" maxlength="50" placeholder="Email address" value="<?php echo $email; ?>" class="form-control input-md" required="">
+                        <input type="email" name="email" placeholder="Email address" value="<?php echo $email; ?>" class="form-control input-md" required="">
                         <span><?php echo $emailError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Telefoonnumber</label>  
+                    <label class="col-md-4 control-label">Telefoonnumber</label>  
                     <div class="col-md-4">
-                        <input type="number" name="telnummer" maxlength="15" placeholder="Phone Number" value="<?php echo $telnum; ?>" class="form-control input-md" required="">
+                        <input type="number" name="telnummer" value="<?php echo $telnum; ?>" class="form-control input-md" required="">
                         <span><?php echo $telError; ?></span><br><br>      
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Geboortedatum/date of birth</label>  
+                    <label class="col-md-4 control-label">Geboortedatum/date of birth</label>  
                     <div class="col-md-4">
-                        <input type="date" name="geboortedatum" maxlenth="10" placeholder="Date of birth"  value="<?php echo $bday; ?>" class="form-control input-md" required="">
+                        <input type="date" name="geboortedatum" value="<?php echo $bday; ?>" class="form-control input-md" required="">
                         <span><?php echo $bdayError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Straatnaam</label>  
+                    <label class="col-md-4 control-label">Straatnaam</label>  
                     <div class="col-md-4">
-                        <input type="text" name="adres" maxlength="30" placeholder="Street name"  value="<?php echo $adr; ?>" class="form-control input-md" required="">
+                        <input type="text" name="adres" placeholder="Street name"  value="<?php echo $adr; ?>" class="form-control input-md" required="">
                         <span><?php echo $adrError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Huisnummer</label>  
+                    <label class="col-md-4 control-label">Huisnummer</label>  
                     <div class="col-md-4">
-                        <input type="number" name="huisnummer" maxlength="5" placeholder="House number" value="<?php echo $hnum; ?>" class="form-control input-md" required="">
+                        <input type="number" name="huisnummer" value="<?php echo $hnum; ?>" class="form-control input-md" required="">
                         <span><?php echo $hnumError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Postcode</label>  
+                    <label class="col-md-4 control-label">Postcode</label>  
                     <div class="col-md-4">
-                        <input type="text" name="postcode" maxlength="6" placeholder="Postal code" value="<?php echo $postc; ?>" class="form-control input-md" required="">
+                        <input type="text" name="postcode" placeholder="Postal code" value="<?php echo $postc; ?>" class="form-control input-md" required="">
                         <span><?php echo $postcError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="email">Woonplaats</label>  
+                    <label class="col-md-4 control-label">Woonplaats</label>  
                     <div class="col-md-4">
-                        <input type="text" name="woonplaats" maxlength="30" placeholder="City" value="<?php echo $plaats; ?>" class="form-control input-md" required="">
+                        <input type="text" name="woonplaats" placeholder="City" value="<?php echo $plaats; ?>" class="form-control input-md" required="">
                         <span><?php echo $plaatsError; ?></span><br><br>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="gender">Geslacht/Gender</label>
+                    <label class="col-md-4 control-label">Geslacht/Gender</label>
                     <div class="col-md-4">
                         <label><input type="radio" name="gender" value="m" checked>Man/Male</label>
                         <label><input type="radio" name="gender" value="f">Vrouw/Female</label>
@@ -391,13 +391,13 @@ if (isset($_POST['submit'])) {
 
                 <!-- Button -->
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="signup"></label>
+                    <label class="col-md-4 control-label"></label>
                     <div class="col-md-4">
                         <button type="submit" id="signup" name="submit" class="btn btn-success">Registreer/Register</button>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-md-4 control-label" for="signup"></label>
+                    <label class="col-md-4 control-label"></label>
                     <div class="col-md-4">
                         <a href="adminkeuze.php" class="btn btn-success">Terug naar het keuze menu</a>
                     </div>

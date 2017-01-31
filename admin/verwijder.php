@@ -1,6 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
     <head>
+        <title>Admin</title>
     </head>
     <body>
         <form action="#" method="post" class="form-horizontal">
