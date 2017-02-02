@@ -110,7 +110,7 @@ $leerling = $_GET['student'];
 $leerling2 = substr($leerling, -6);
 $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
 $result2 = mysqli_query($conn, $query2);
-$row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
+$row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
 
 $item = 1;

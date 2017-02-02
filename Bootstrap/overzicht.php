@@ -109,6 +109,8 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
                     
                     ?>
                     
+                    <a href="gastenboek.php" class="btn btn-info" role="button">Gastenboek</a>
+                    
 
                 </div>
             </div>

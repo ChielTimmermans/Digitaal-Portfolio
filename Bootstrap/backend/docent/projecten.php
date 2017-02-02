@@ -1,14 +1,17 @@
 <?php
 session_start();
-if (!isset($_GET['Studentnummer']) || empty($_GET)) {
+if (!isset($_GET['Studentnummer']) || empty($_GET))
+{
     $portnummer = $_SESSION['user'];
-} else {
+} else
+{
     $portnummer = $_GET['Studentnummer'];
 }
 require_once '..\..\..\createDatabases\dbconnect.php';
 include '..\functions\common.php';
 include '..\..\..\databaseArray.php';
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user']))
+{
     header("Location: index.php");
     exit;
 }
@@ -92,7 +95,8 @@ $leerling = $_GET['student'];
                     </ul>
                 </div>
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header"><?php echo $lang['projectenvan'];
+                    <h1 class="page-header"><?php
+echo $lang['projectenvan'];
 echo "<br> $leerling";
 ?> </h1>
                 </div>
@@ -102,40 +106,43 @@ echo "<br> $leerling";
                 <div class="panel panel-default">
                     <div class="bs-callout bs-callout-danger">
 
-<?php
-$leerling2 = substr($leerling, -6);
-$query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
-$result2 = mysqli_query($conn, $query2);
-$row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
+                        <?php
+                        $leerling2 = substr($leerling, -6);
+                        $query2 = "SELECT * FROM projecten WHERE studentnummer = '$leerling2'";
+                        $result2 = mysqli_query($conn, $query2);
+                        $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-$item = 1;
-$project = 4;
-for ($item = 1; $item <= $project; $item++) {
-    if (!empty($row2['Projecttitel' . $item . ''])) {
-        echo'  <a class="list-group-item inactive-link" href="#">
+                        $item = 1;
+                        $project = 4;
+                        for ($item = 1; $item <= $project; $item++)
+                        {
+                            if (!empty($row2['Projecttitel' . $item . '']))
+                            {
+                                echo'  <a class="list-group-item inactive-link" href="#">
                                                <h4 class="list-group-item-heading">' .
-        $row2['Projecttitel' . $item . '']
-        . '</h4>
+                                $row2['Projecttitel' . $item . '']
+                                . '</h4>
                                                <p class="list-group-item-text">' .
-        $row2['Projecttitel' . $item . '']
-        . '</p>
+                                $row2['Projecttitel' . $item . '']
+                                . '</p>
                                            </a>';
-        echo "<p><a href='bijlage.php?student=$leerling$item'><button id='button1id' name='bijlagen' class='btn btn-info'>";
-        echo $lang['bekijkbijlagen'];
-        echo "</button></a></p>
+                                echo "<p><a href='bijlage.php?student=$leerling$item'><button id='button1id' name='bijlagen' class='btn btn-info'>";
+                                echo $lang['bekijkbijlagen'];
+                                echo "</button></a></p>
                                             <p><a href='beoordeel.php?student=$leerling'><button id='button1id' name='beoordeel' class='btn btn-success'>";
-        echo $lang['beoordeelproject'];
-        echo "</button></a></p>";
-    } elseif ($item === 1) {
-        echo '  <div class="list-group-item inactive-link">
+                                echo $lang['beoordeelproject'];
+                                echo "</button></a></p>";
+                            } elseif ($item === 1)
+                            {
+                                echo '  <div class="list-group-item inactive-link">
                                             <p class="list-group-item-text">' .
-        "Er zijn geen projecten."
-        . '</p>
+                                "Er zijn geen projecten."
+                                . '</p>
                                         </div>';
-    }
-}
-echo "<a href='overzichtprojecten.php?student=$leerling'>&#8592;</a>";
-?>  
+                            }
+                        }
+                        echo "<a href='overzichtprojecten.php?student=$leerling'>&#8592;</a>";
+                        ?>  
                     </div>
                 </div>
             </div>

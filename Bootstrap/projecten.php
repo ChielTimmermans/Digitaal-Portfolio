@@ -21,7 +21,7 @@ $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 $query2 = "SELECT * FROM projecten WHERE studentnummer = '$user'";
 $result2 = mysqli_query($conn, $query2)
         or die("Error: " . mysqli_error($conn));
-$row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
+$row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -129,8 +129,8 @@ $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
                                     $row2['Projectcontent' . $item . '']
                                     . '</p>
                                         </div>';
-                                    echo"<div class='form-group'>
-                                <div class='col-md-8 col-lg-12'>
+                                    echo"<div class='btn-group btn-group-justified'>
+                                <div class='col-md-12 col-lg-12'>
                                     <a href='beoordelingproject.php?a=$item' id='button1id'  value='zie beoordeling' class='btn btn-success pull-right'>zie beoordeling</a>
                                 </div>
                             </div>";

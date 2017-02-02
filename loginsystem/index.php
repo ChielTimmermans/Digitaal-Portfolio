@@ -70,6 +70,6 @@ if (isset($_POST['guest-login']))
 {
     $_SESSION['user'] = "3";
     echo "gelukt";
-    header("Location: gast.php");
+    header("Location: ../bootstrap/overzicht.php");
 }
 ?>
