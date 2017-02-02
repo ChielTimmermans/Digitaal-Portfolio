@@ -112,8 +112,8 @@ $a = $_GET['a'];
                 or die("Error: " . mysqli_error($conn));
         $result2 = mysqli_query($conn, $sql2)
                 or die("Error: " . mysqli_error($conn));
-        $row1 = mysqli_fetch_array($result1, MYSQL_ASSOC);
-        $row2 = mysqli_fetch_array($result2, MYSQL_ASSOC);
+        $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);
+        $row2 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
         ?>
         <div class="container">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
